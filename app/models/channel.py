@@ -1,5 +1,5 @@
-from models.db import db
-from models.subscriptions import channel_subscriptions as cs
+from .db import db
+from .subscription import channel_subscriptions as cs
 
 class Channel(db.Model):
   __tablename__ = "channels"

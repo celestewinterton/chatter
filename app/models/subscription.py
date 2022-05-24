@@ -1,4 +1,4 @@
-from app.models.db import db
+from .db import db
 
 channel_subcriptions = db.Table(
    "channel_subcriptions",

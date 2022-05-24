@@ -1,5 +1,5 @@
-from models.db import db
-from models.subscription import group_subscriptions as gs
+from .db import db
+from .subscription import group_subscriptions as gs
 
 class Group(db.Model):
   __tablename__ = "groups"

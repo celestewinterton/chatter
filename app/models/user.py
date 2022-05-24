@@ -1,8 +1,8 @@
-from models.db import db
+from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from app.models.subscriptions import channel_subcriptions as cs
-from app.models.subscriptions import group_subscriptions as gs
+from .subscription import channel_subcriptions as cs
+from .subscription import group_subscriptions as gs
 
 
 class User(db.Model, UserMixin):

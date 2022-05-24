@@ -18,6 +18,8 @@ wtforms = "*"
 flask-wtf = "*"
 flask-login = "*"
 werkzeug = "*"
+flask-migrate = "*"
+alembic = "*"
 
 [requires]
 python_version = "3.9.4"
