@@ -9,15 +9,17 @@ class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key=True)
+  messages = db.relationship("Message", back_populates='owner')
+  channels = db.relationship("Channel", back_populates='owner')
+  subscribed_channels = db.relationship("Channel", back_populates='users', secondary=cs)
+  subscribed_groups = db.relationship("Group", back_populates='users', secondary=gs)
+
   username = db.Column(db.String(40), nullable=False, unique=True)
   email = db.Column(db.String(255), nullable=False, unique=True)
   hashed_password = db.Column(db.String(255), nullable=False)
   title = db.Column(db.String(50))
   status = db.Column(db.String(50))
   photo = db.Column(db.String(50))
-  channels = db.relationship("Channel", back_populates='owner')
-  subscribed_channels = db.relationship("Channel", back_populates='users', secondary=cs)
-  subscribed_groups = db.relationship("Group", back_populates='users', secondary=gs)
 
   @property
   def password(self):

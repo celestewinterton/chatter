@@ -1,11 +1,11 @@
 from models.db import db
-from models.subscriptions import group_subscriptions as gs
+from models.subscription import group_subscriptions as gs
 
 class Group(db.Model):
   __tablename__ = "groups"
 
   id = db.Column(db.Integer, primary_key=True)
-  messages = db.realtion
+  message = db.realtionship("Message", back_populates='group')
 
   hidden = db.Column(db.Boolean, nullable=False)
 
