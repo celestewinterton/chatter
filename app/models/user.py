@@ -1,18 +1,35 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
-from .subscription import channel_subcriptions as cs
-from .subscription import group_subscriptions as gs
 
 
-class User(db.Model, UserMixin):
+channel_subcriptions = db.Table(
+   "channel_subcriptions",
+   db.Column(
+      "channel_id", db.Integer, db.ForeignKey("channels.id"), primary_key=True
+   ),
+   db.Column(
+      "user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True
+   )
+)
+
+group_subscriptions = db.Table(
+   "group_subscriptions",
+   db.Column(
+      "group_id", db.Integer, db.ForeignKey("groups.id"), primary_key=True
+   ),
+   db.Column(
+      "user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True
+   )
+)
+
+class User(db.Model):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key=True)
   messages = db.relationship("Message", back_populates='owner')
   channels = db.relationship("Channel", back_populates='owner')
-  subscribed_channels = db.relationship("Channel", back_populates='users', secondary=cs)
-  subscribed_groups = db.relationship("Group", back_populates='users', secondary=gs)
+  subscribed_channels = db.relationship("Channel", back_populates='users', secondary=channel_subcriptions)
+  subscribed_groups = db.relationship("Group", back_populates='users', secondary=group_subscriptions)
 
   username = db.Column(db.String(40), nullable=False, unique=True)
   email = db.Column(db.String(255), nullable=False, unique=True)
@@ -43,3 +60,30 @@ class User(db.Model, UserMixin):
       'subcribed_channels':[channel.todict() for channel in self.subscribed_channels],
       'subscribed_groups':[group.todict() for group in self.subscribed_groups]
     }
+
+
+class Group(db.Model):
+  __tablename__ = "groups"
+
+  id = db.Column(db.Integer, primary_key=True)
+  message = db.relationship("Message", back_populates='group')
+
+  hidden = db.Column(db.Boolean, nullable=False)
+
+  users = db.relationship("User", back_populates='subscribed_groups', secondary=group_subscriptions)
+
+
+class Channel(db.Model):
+  __tablename__ = "channels"
+
+  id = db.Column(db.Integer, primary_key=True)
+  messages = db.relationship("Message", back_populates='channel')
+
+  name = db.Column(db.String(50), nullable=False)
+  topic = db.Column(db.String(50))
+  description = db.Column(db.String(255))
+
+  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+  owner = db.relationship("User", back_populates="channels")
+
+  users = db.relationship("User", back_populates='subscribed_channels', secondary=channel_subcriptions)

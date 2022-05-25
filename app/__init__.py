@@ -1,19 +1,17 @@
+import os
 from flask import Flask
-from flask_login import LoginManager
-from .config import Configuration
-from app.models import db
+from flask_cors import CORS
 from flask_migrate import Migrate
+from .models import db
+from .config import Config
 
 app = Flask(__name__)
-app.config.from_object(Configuration)
-# app.register_blueprint(orders.bp)
-# app.register_blueprint(session.bp)
+
+# Setup login manager
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://slackcess:password@localhost/slackcess_db'
 db.init_app(app)
 Migrate(app, db)
-login = LoginManager(app)
-login.login_view = "session.login"
 
-
-# @login.user_loader
-# def load_user(id):
-#     return Employee.query.get(int(id))
+# Application Security
+CORS(app)

@@ -20,6 +20,7 @@ flask-login = "*"
 werkzeug = "*"
 flask-migrate = "*"
 alembic = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.9.4"
