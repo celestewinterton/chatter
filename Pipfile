@@ -21,6 +21,9 @@ werkzeug = "*"
 flask-migrate = "*"
 alembic = "*"
 flask-cors = "*"
+botocore = "*"
+boto3 = "*"
+flask-socketio = "*"
 
 [requires]
 python_version = "3.9.4"
