@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+import { useDispatch, useSelector } from 'react-redux';
+import LoginForm from './components/auth/LoginFormModal/LoginForm';
+import SignUpForm from './components/auth/SignUpFormModal/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import { authenticate } from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -34,14 +33,17 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          {/*We will put the dashboard here */}
+          <h1>Authed</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/channel/:channelId' exact={true} >
+          {/* Specific channel view here */}
+          <h1>Specific channel view</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/group/:groupId' exact={true} >
+          {/* Specific group view here */}
+          <h1>Specific group view</h1>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
