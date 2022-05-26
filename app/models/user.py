@@ -71,7 +71,7 @@ class Group(db.Model):
   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
   
   
-  owner = db.relationship("User", back_populates="groups")
+  owner = db.relationship("User", back_populates="owned_groups")
   message = db.relationship("Message", back_populates='group')
   users = db.relationship("User", back_populates='subscribed_groups', secondary=group_subscriptions)
 
