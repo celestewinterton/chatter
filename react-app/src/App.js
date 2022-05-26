@@ -34,7 +34,16 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/' exact={true} >
+          {/*We will put the dashboard here */}
           <h1>Authed</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/channel/:channelId' exact={true} >
+          {/* Specific channel view here */}
+          <h1>Specific channel view</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/group/:groupId' exact={true} >
+          {/* Specific group view here */}
+          <h1>Specific group view</h1>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
