@@ -87,3 +87,11 @@ class Channel(db.Model):
   owner = db.relationship("User", back_populates="channels")
 
   users = db.relationship("User", back_populates='subscribed_channels', secondary=channel_subcriptions)
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'topic': self.topic,
+      'description': self.description
+    }
