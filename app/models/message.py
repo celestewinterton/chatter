@@ -4,6 +4,7 @@ class Message(db.Model):
   __tablename__ = "messages"
 
   id = db.Column(db.Integer, primary_key=True)
+  
   body = db.Column(db.String(255), nullable=False)
   child = db.relationship("Message", back_populates='parent')
 
