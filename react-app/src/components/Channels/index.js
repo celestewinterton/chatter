@@ -7,20 +7,19 @@ import ChannelCard from "./ChannelCard"
 const Channels = ({ all, user }) => {
     const dispatch = useDispatch()
     const allChannels = useSelector(state => state.chatRooms.channels.all)
+    const channelsArray = Object.values(allChannels)
+    console.log(allChannels)
 
-    const loadChannels = async () => {
-        await dispatch(getRooms('channels'))
-    }
+
     useEffect(() => {
-       loadChannels()
-    }, [])
-
+        getRooms('channels')
+    }, [dispatch, allChannels])
 
     return (
         <>
 
-            {user && Object.values(allChannels).map((channel) => {
-                return < ChannelCard channel={channel} />
+            {user && channelsArray.map((channel, idx) => {
+                return < ChannelCard key={idx} channel={channel} />
             })
             }
         </>

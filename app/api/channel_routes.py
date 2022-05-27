@@ -40,19 +40,17 @@ def create_new_channel():
 
 
 
-@channel_routes.route('/<int:id>',methods=['PATCH'])
+@channel_routes.route('/<int:id>',methods=['PUT'])
 def edit_channel(id):
-  pass
   form = ChannelForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     editable_channel = Channel.query.get(id)
-    editable_channel = {
-    'name': form.data['name'],
-    'topic': form.data['topic'],
-    'description': form.data['description']
-  }
+    editable_channel.name = form.data['name']
+    editable_channel.topic = form.data['topic']
+    editable_channel.description = form.data['description']
     db.session.commit()
-    return editable_channel
+    return editable_channel.to_dict()
   return {'errors': form_validation_errors(form.errors)}, 401
 
 
