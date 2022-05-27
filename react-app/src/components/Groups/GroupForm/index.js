@@ -11,7 +11,7 @@ const GroupForm = ({ setShowModal, edit }) => {
     const [name, setName] = useState('')
 
     useEffect(() => {
-        dispatch(loadUsers(users))
+        dispatch(loadUsers())
     }, [dispatch]);
 
     console.log("users =======> ", users)

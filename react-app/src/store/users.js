@@ -7,7 +7,6 @@ const loadAllUsers = users => ({
 
 export const loadUsers = () => async dispatch => {
   const response = await fetch('/api/users')
-
   if (response.ok) {
     const users = await response.json()
     dispatch(loadAllUsers(users))
@@ -16,20 +15,16 @@ export const loadUsers = () => async dispatch => {
 }
 
 
-const initialState = {
-    users: {}
-};
+const initialState = {};
 
 const usersReducer = (state = initialState, action) => {
-  const newState = { ...state }
   switch (action.type) {
-    case LOAD_USERS:
-      if (action.users.length) {
-        action.users.forEach(user => {
+      case LOAD_USERS:
+        const newState = { ...state }
+        Object.values(action.users)[0].forEach(user => {
           newState[user.id] = user;
         });
-      }
-      return newState;
+        return newState;
     default:
       return state;
   };
