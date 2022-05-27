@@ -1,5 +1,4 @@
 
-
 const Groups = ({ all }) => {
   return (
       <>
