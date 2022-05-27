@@ -19,15 +19,16 @@ const Groups = () => {
           <div></div>
         </div>
       </div>
-      <div className="group-message-history">Display messages here...</div>
-      <div>Example message </div>
-      <div>Example message </div>
-      <div>Example message </div>
-      <div>Example message </div>
-      <div>Example message </div>
-      <div>Example message </div>
+      <div className="group-message-history">Display messages here...
       {/* <div>{messages?.map(message => message)}</div> */}
-      <div className="group-message-form"></div>
+        <div>Example message </div>
+        <div>Example message </div>
+        <div>Example message </div>
+        <div>Example message </div>
+        <div>Example message </div>
+        <div>Example message </div>
+      </div>
+      <div className="group-message-form">New message field</div>
     </div>
   )
 }

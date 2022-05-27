@@ -2,7 +2,8 @@
   display: grid;
   grid-template-areas:
   "headers"
-  "messages";
+  "messages"
+  "message-field";
 }
 
 .group-headers {
@@ -21,4 +22,6 @@
   grid-area: messages
 }
 
-.group-message-form {}
+.group-message-form {
+  grid-area: message-field
+}
