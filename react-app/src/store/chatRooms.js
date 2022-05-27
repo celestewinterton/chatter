@@ -8,6 +8,8 @@ const EDIT_CHANNEL_ROOM = 'chatRooms/EDIT_CHANNEL_ROOM'
 const EDIT_GROUP_ROOM = 'chatRooms/EDIT_GROUP_ROOM'
 const DELETE_CHANNEL_ROOM = 'chatRooms/DELETE_CHANNEL_ROOM'
 const DELETE_GROUP_ROOM = 'chatRooms/DELETE_GROUP_ROOM'
+const JOIN_CHANNEL = 'chatRooms/JOIN_CHANNEL'
+const LEAVE_CHANNEL = 'chatRooms/LEAVE_CHANNEL'
 
 
 const loadChannels = (channels) => ({
@@ -84,8 +86,8 @@ export const createNewRoom = (formData, type) => async (dispatch) => {
     }
 }
 
-export const editRoom = (formData, channelId, type) => async (dispatch) => {
-    const res = await easyFetch(`/api/${type}/${channelId}`, {
+export const editRoom = (formData, roomId, type) => async (dispatch) => {
+    const res = await easyFetch(`/api/${type}/${roomId}`, {
         method: 'PUT',
         body: formData
     })
@@ -99,6 +101,24 @@ export const editRoom = (formData, channelId, type) => async (dispatch) => {
     } else {
         return data
     }
+}
+
+export const deleteRoom = (roomId, type) => async (dispatch) => {
+    const res = await easyFetch(`/api/${type}/${roomId}`, {
+        method: 'DELETE'
+    })
+
+    const data = await res.json()
+    if (res.ok) {
+        if (type === 'channels') {
+            dispatch(deleteChannel(data.id))
+        } else {
+            dispatch(deleteGroup(data))
+        }
+    } else {
+        return data
+    }
+
 }
 
 
@@ -140,6 +160,10 @@ const chatRoomsReducer = (state = initialState, action) => {
             return newState
         case CREATE_GROUP_ROOM:
             newState.groupRooms.subscribed[action.group.id] = action.group
+            return newState
+        case DELETE_CHANNEL_ROOM:
+            delete newState.channels.all[action.channelId]
+            delete newState.channels.subscribed[action.channelId]
             return newState
         default:
             return state;

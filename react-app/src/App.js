@@ -40,7 +40,6 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           {/*We will put the dashboard here */}
           <Dashboard />
-          <h1>Authed</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/channel/:channelId' exact={true} >
           {/* Specific channel view here */}
