@@ -9,7 +9,6 @@ const ChannelCard = ({ channel }) => {
     }
 
     const deleteChannel = () => {
-        console.log('delete')
 
     }
 
