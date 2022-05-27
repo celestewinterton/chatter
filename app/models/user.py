@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(50))
     status = db.Column(db.String(50))
-    photo = db.Column(db.String(50))
+    photo = db.Column(db.String(255))
     online = db.Column(db.Boolean, nullable=False, default=False)
 
     messages = db.relationship("Message", back_populates='owner')
