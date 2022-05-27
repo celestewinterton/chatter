@@ -30,13 +30,13 @@ const ChannelForm = ({ setShowModal, edit, channel }) => {
         }
 
         if (errors) {
-            console.log(errors)
+            setErrors(errors.errors)
+        } else {
+            setShowModal(false);
         }
 
-        setShowModal(false);
 
     }
-
 
     const handleCancelClick = async (e) => {
         e.preventDefault();
@@ -54,21 +54,28 @@ const ChannelForm = ({ setShowModal, edit, channel }) => {
             {(edit) ? <h1>Edit a Channel</h1> : <h1>Create a Channel</h1>}
             <form autoComplete="off" className="channel-form-container" onSubmit={handleSubmit}>
                 <div className='channel-form-input-container'>
-
                     <div className='form-element-container'>
+                        <div className="form-errors">
+                            {errors.name && <p>{errors.name}</p>}
+                        </div>
                         <input
                             type='text'
                             className="input-field"
                             value={name}
+                            required
                             onChange={(e) => setName(e.target.value)}
                             placeholder='Channel Name'></input>
                     </div>
 
                     <div className='form-element-container'>
+                        <div className="form-errors">
+                            {errors.topic && <p>{errors.topic}</p>}
+                        </div>
                         <input
                             className="input-field"
                             value={topic}
                             onChange={(e) => setTopic(e.target.value)}
+                            required
                             placeholder='Channel Topic'></input>
                     </div>
                     <div className='form-element-container'>
@@ -77,8 +84,9 @@ const ChannelForm = ({ setShowModal, edit, channel }) => {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder='Channel Description'></textarea>
+
                     </div>
-                    <button disabled={Object.keys(errors).length > 0} id='create-channel' type="submit">{(edit) ? 'Edit Channel' : 'Create Channel'}</button>
+                    <button id='create-channel' type="submit">{(edit) ? 'Edit Channel' : 'Create Channel'}</button>
                     <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
                 </div>
             </form>

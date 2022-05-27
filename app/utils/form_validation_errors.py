@@ -1,6 +1,6 @@
 def form_validation_errors(err):
-    errors = []
+    errors = {}
     for field in err:
         for error in err[field]:
-            errors.append(f'{field}: {error}')
+            errors[field]= error
     return errors

@@ -61,4 +61,5 @@ def delete_channel(id):
   remove_channel = Channel.query.get(id)
   db.session.delete(remove_channel)
   db.session.commit()
-  return remove_channel
+  return {'id': id}
+
