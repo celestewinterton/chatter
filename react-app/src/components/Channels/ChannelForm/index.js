@@ -14,6 +14,7 @@ const ChannelForm = ({ setShowModal, edit }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(user.id)
         let errors;
         const formData = new FormData();
         formData.append('name', name)
@@ -24,7 +25,7 @@ const ChannelForm = ({ setShowModal, edit }) => {
 
         if (edit) {
         } else {
-            errors = dispatch(createNewRoom(formData))
+            errors = dispatch(createNewRoom(formData, 'channels'))
 
         }
 

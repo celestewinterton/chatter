@@ -8,26 +8,27 @@ from ..models.db import db
 channel_routes = Blueprint('channels', __name__)
 
 
-@channel_routes.route('/channels')
+@channel_routes.route('')
 def get_all_channels():
   all_channels = Channel.query.all()
   return all_channels
 
 
-@channel_routes.route('/channels/<int:id>')
+@channel_routes.route('/<int:id>')
 def get_specific_channel(id):
   channel = Channel.query.get(id)
   return channel
 
 
 
-@channel_routes.route('/channels' ,methods=['POST'])
+@channel_routes.route('' , methods=['POST'])
 def create_new_channel():
   form = ChannelForm()
   params = {
     'name': form.data['name'],
     'topic': form.data['topic'],
-    'description': form.data['description']
+    'description': form.data['description'],
+    'owner_id' : form.data['owner_id']
   }
   if form.validate_on_submit():
     new_channel = Channel(**params)
@@ -38,7 +39,7 @@ def create_new_channel():
 
 
 
-@channel_routes.route('/channels/<int:id>',methods=['PATCH'])
+@channel_routes.route('/<int:id>',methods=['PATCH'])
 def edit_channel(id):
   pass
   form = ChannelForm()
@@ -55,7 +56,7 @@ def edit_channel(id):
 
 
 
-@channel_routes.route('/channels/<int:id>',methods=['DELETE'])
+@channel_routes.route('/<int:id>',methods=['DELETE'])
 def delete_channel(id):
   remove_channel = Channel.query.get(id)
   db.session.delete(remove_channel)

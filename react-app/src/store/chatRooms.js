@@ -15,8 +15,9 @@ const createGroup = (group) => ({
 })
 
 export const createNewRoom = (formData, type) => async (dispatch) => {
-    const res = fetch(`/${type}`, {
+    const res = await fetch(`/api/${type}`, {
         method: 'POST',
+        headers: {},
         body: formData
     })
     const data = await res.json()
