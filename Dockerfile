@@ -2,7 +2,7 @@ FROM node:12 AS build-stage
 WORKDIR /frontend
 COPY frontend/. .
 
-ENV REACT_APP_BASE_URL=
+ENV REACT_APP_BASE_URL=https://chatter-with-us.herokuapp.com/
 
 # Build our React App
 RUN npm install
