@@ -14,8 +14,6 @@ const GroupForm = ({ setShowModal, edit }) => {
         dispatch(loadUsers())
     }, [dispatch]);
 
-    console.log("users =======> ", users)
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         let errors;
