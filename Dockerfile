@@ -19,7 +19,8 @@ EXPOSE 8000
 
 WORKDIR /var/www
 COPY . .
-COPY /reat-app/build/* app/static/
+COPY --from=build-stage /react-app/build/* app/static/
+
 
 # Install Python Dependencies
 RUN pip install -r requirements.txt
