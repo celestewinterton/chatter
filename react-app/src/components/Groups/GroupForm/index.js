@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createNewRoom } from "../../../store/chatRooms";
+import { loadUsers } from "../../../store/users";
 
 const GroupForm = ({ setShowModal, edit }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
+    const users = useSelector(state => state.users)
     const [errors, setErrors] = useState({});
     const [name, setName] = useState('')
+
+    useEffect(() => {
+        dispatch(loadUsers())
+    }, [dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -19,16 +25,12 @@ const GroupForm = ({ setShowModal, edit }) => {
         if (edit) {
         } else {
             errors = dispatch(createNewRoom(formData))
-
         }
 
         if (errors) {
             console.log(errors)
         }
-
-
         setShowModal(false);
-
     }
 
 
