@@ -33,6 +33,7 @@ class User(db.Model, UserMixin):
     title = db.Column(db.String(50))
     status = db.Column(db.String(50))
     photo = db.Column(db.String(50))
+    online = db.Column(db.Boolean, nullable=False, default=False)
 
     messages = db.relationship("Message", back_populates='owner')
     channels = db.relationship("Channel", back_populates='owner')
