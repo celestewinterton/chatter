@@ -6,7 +6,7 @@ import SignUpForm from './components/auth/SignUpFormModal/SignUpForm';
 import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
-import SplashPage from './components/SplashPage';
+import Dashboard from './components/Dashboard';
 import Groups from './components/Groups/index.js';
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/' exact={true}>
-          <SplashPage />
+          <Dashboard />
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
