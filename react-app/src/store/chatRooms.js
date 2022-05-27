@@ -1,4 +1,29 @@
+const LOAD_CHANNEL_ROOMS = 'chatRooms/LOAD_CHANNEL_ROOMS'
+const CREATE_ROOM = 'chatRooms/CREATE_ROOM'
 
+
+
+const createChannel = (channel) => ({
+    type: CREATE_CHANNEL_ROOM,
+    channel
+})
+
+export const createNewRoom = (formData, type) => async (dispatch) => {
+    const res = fetch(`/${type}`, {
+        method: 'POST',
+        body: formData
+    })
+    const data = await res.json()
+    if (res.ok) {
+        if (type === 'channel') {
+            dispatch(createChannel(data))
+        } else {
+            dispatch(createGroup(data))
+        }
+    } else {
+        return data
+    }
+}
 
 
 const initialState = {
