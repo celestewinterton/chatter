@@ -29,9 +29,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/' exact={true}>
-          <Dashboard />
-        </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -40,6 +37,7 @@ function App() {
         </Route> */}
         <ProtectedRoute path='/' exact={true} >
           {/*We will put the dashboard here */}
+          <Dashboard />
           <h1>Authed</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/channel/:channelId' exact={true} >
