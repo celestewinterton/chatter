@@ -4,19 +4,19 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', firstname='Demo', lastname='Lition', password='password')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', email='marnie@aa.io',firstname='Marnie', lastname='Simpson', password='password')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', email='bobbie@aa.io', firstname='Bobbie', lastname='Simpson',password='password')
     austin = User(
-        username='austin', email='austin@aa.io', password='password')
+        username='austin', email='austin@aa.io', firstname='Austin', lastname='Dang',password='password')
     brendan = User(
-        username='brendan', email='brendan@aa.io', password='password')
+        username='brendan', email='brendan@aa.io', firstname='Brendan', lastname='Downing',password='password')
     celeste = User(
-        username='celeste', email='celeste@aa.io', password='password')
+        username='celeste', email='celeste@aa.io', firstname='Celeste', lastname='Winterton',password='password')
     jingling = User(
-        username='jingling', email='jingling@aa.io', password='password')
+        username='jingling', email='jingling@aa.io', firstname='Jingling', lastname='Jin',password='password')
 
 
     db.session.add(demo)
