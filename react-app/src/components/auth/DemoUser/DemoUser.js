@@ -13,7 +13,7 @@ function DemoUser() {
       e.preventDefault();
      (async()=>{
       await dispatch(sessionActions.login('demo@aa.io', 'password'));
-      history.pushState('/')
+      history.push('/')
       })()
    }
    return (
