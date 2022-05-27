@@ -19,7 +19,11 @@ EXPOSE 8000
 
 WORKDIR /var/www
 COPY . .
+<<<<<<< HEAD
 COPY /reat-app/build/* app/static/
+=======
+COPY --from=build-stage /react-app/build/* app/static/
+>>>>>>> 8b8ba4e (Fixed docker file)
 
 # Install Python Dependencies
 RUN pip install -r requirements.txt
