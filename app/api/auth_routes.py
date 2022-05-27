@@ -73,11 +73,14 @@ def sign_up():
         return upload, 400
 
     url = upload["url"]
+    print ('form ======>' ,form.data)
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
+            firstname=form.data['firstname'],
+            lastname=form.data['lastname'],
             photo=url,
             online=True
         )

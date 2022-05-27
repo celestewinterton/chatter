@@ -8,6 +8,8 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [image, setImage] = useState(null);
@@ -22,6 +24,8 @@ const SignUpForm = () => {
       formData.append('email', email)
       formData.append('username', username)
       formData.append('password', password)
+      formData.append('firstname', first)
+      formData.append('lastname', last)
       formData.append('image', image)
       setImageLoading(true);
       const data = await dispatch(signUp(formData));
@@ -51,6 +55,12 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+  const updateFirst =(e) => {
+    setFirst(e.target.value)
+  }
+  const updateLast = (e) =>{
+    setLast(e.target.value)
+  }
 
   if (user) {
     return <Redirect to='/' />;
@@ -99,6 +109,23 @@ const SignUpForm = () => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+          ></input>
+        </div>
+        <div className='add-first'>
+          <label>First Name</label>
+          <input
+            type='text'
+            name='first'
+            onChange={updateFirst}
+            value={first}
+          ></input>
+        </div>
+        <div className='add-last'>
+          <label>Last Name</label>
+          <input
+            type='text'
+            onChange={updateLast}
+            value={last}
           ></input>
         </div>
         <div className="add-image">
