@@ -8,15 +8,9 @@ const SplashPage = () => {
    const dispatch = useDispatch()
    const sessionUser = useSelector((state) => state.session.user)
 
-   useEffect(() => {
-      dispatch(getRooms('channels'))
-   }, [dispatch])
-
    return (
       <div>
          <h1>Helloo this is a test </h1>
-         <CreateChannelModal />
-         <Channels all={true} />
       </div>
    )
 }

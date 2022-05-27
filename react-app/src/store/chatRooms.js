@@ -61,8 +61,13 @@ export const createNewRoom = (formData, type) => async (dispatch) => {
 
 
 const initialState = {
-    groupRooms: {},
-    channels: {}
+    groupRooms: {
+        subscribed: {}
+    },
+    channels: {
+        all: {},
+        subscribed: {}
+    }
 };
 
 const chatRoomsReducer = (state = initialState, action) => {
@@ -71,14 +76,14 @@ const chatRoomsReducer = (state = initialState, action) => {
         case LOAD_CHANNEL_ROOMS:
             if (action.channels.length) {
                 action.channels.forEach(channel => {
-                    newState.channels[channel.id] = channel;
+                    newState.channels.all[channel.id] = channel;
                 });
             }
             return newState;
         case LOAD_GROUP_ROOMS:
             if (action.groups.length) {
                 action.groups.forEach(group => {
-                    newState.groupss[group.id] = group;
+                    newState.groups.subscribed[group.id] = group;
                 });
             }
             return newState;

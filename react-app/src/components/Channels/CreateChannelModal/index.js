@@ -17,7 +17,7 @@ function CreateChannelModal() {
             </ul>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ChannelForm setShowModal={setShowModal} />
+                    <ChannelForm />
                 </Modal>
             )}
         </>
