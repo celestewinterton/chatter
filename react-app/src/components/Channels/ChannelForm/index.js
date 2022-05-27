@@ -25,7 +25,7 @@ const ChannelForm = ({ setShowModal, edit }) => {
 
         if (edit) {
         } else {
-            errors = dispatch(createNewRoom(formData, 'channels'))
+            errors = await dispatch(createNewRoom(formData, 'channels'))
 
         }
 

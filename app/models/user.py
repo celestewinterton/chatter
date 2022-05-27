@@ -97,5 +97,7 @@ class Channel(db.Model):
       'id': self.id,
       'name': self.name,
       'topic': self.topic,
-      'description': self.description
+      'description': self.description,
+      'owner_id': self.owner_id, 
+      'users': [user.to_dict() for user in self.users]
    }

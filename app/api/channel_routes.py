@@ -1,5 +1,5 @@
 from copyreg import remove_extension
-from flask import Blueprint, render_template
+from flask import Blueprint, jsonify, render_template, request
 from datetime import datetime
 from ..forms.channel_form import ChannelForm
 from ..utils import form_validation_errors
@@ -11,7 +11,7 @@ channel_routes = Blueprint('channels', __name__)
 @channel_routes.route('')
 def get_all_channels():
   all_channels = Channel.query.all()
-  return all_channels
+  return {'channels': [channel.to_dict() for channel in all_channels]}
 
 
 @channel_routes.route('/<int:id>')
@@ -30,11 +30,12 @@ def create_new_channel():
     'description': form.data['description'],
     'owner_id' : form.data['owner_id']
   }
+  form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     new_channel = Channel(**params)
     db.session.add(new_channel)
     db.session.commit()
-    return new_channel
+    return new_channel.to_dict()
   return {'errors': form_validation_errors(form.errors)}, 401
 
 
