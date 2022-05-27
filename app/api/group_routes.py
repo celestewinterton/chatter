@@ -1,9 +1,8 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, Group, db
 from ..utils import form_validation_errors
-from flask_login import current_user
 from ..forms import NewGroupForm
-
+from flask_login import current_user
 
 group_routes = Blueprint("groups", __name__)
 
@@ -11,8 +10,8 @@ group_routes = Blueprint("groups", __name__)
 # get all group threads by user
 @group_routes.route("/")
 def all_groups():
-    user = User.query.get(current_user.get_id)
-    return user.to_dict().subscribed_groups
+    all_groups = Group.query.all()
+    return {'groups': [Group.to_dict() for group in all_groups]}
 
 
 # view group thread by group ID
@@ -26,17 +25,23 @@ def get_group(groupId):
 @group_routes.route("/", methods=["POST"])
 def create_group():
     form = NewGroupForm()
-
+    form['csrf_token'].data = request.cookies['csrf_token']
+    params = {
+    'owner_id' : current_user.id
+    }
+    members = form.data["members"]
+    print(">>>>>>", members)
     if form.validate_on_submit():
-        # create new group with userId as owner_id
-        user = User.query.get(current_user.get_id())
-        group = Group({"owner_id": user})
-        db.session.add(group)
-        db.session.commit()
-        # create group_subscriptions with group_id and user_id
-        # for member in form.data["members"]:
-        #     new_member = User.query.filter(User.username == member)
+        new_group = Group(**params)
+        db.session.add(new_group)
+        for member in members:
+            user = User.query.filter(User.username == member)
+            new_group.group_subscriptions.append(user)
 
+        db.session.commit()
+        return new_group.to_dict()
+    return {'errors': form_validation_errors(form.errors)}, 401
+#
 
 # delete group/hide group??
 @group_routes.route("/<int:groupId>", methods=["PUT"])
