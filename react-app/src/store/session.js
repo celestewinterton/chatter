@@ -14,20 +14,20 @@ const removeUser = () => ({
 const initialState = { user: null };
 
 
-export const demoUser = (user) => async (dispatch) => {
-  const { credential, password } = user;
-  const formData = new FormData()
-  formData.append('email', credential )
-  formData.append('password', password)
-  const response = await fetch('/api/auth/login', {
-    method: 'POST',
-    body: formData
-  });
-  const data = await response.json();
-  console.log('data', data)
-  dispatch(setUser(data.user));
-  return response;
-}
+// export const demoUser = (user) => async (dispatch) => {
+//   const { credential, password } = user;
+//   const formData = new FormData()
+//   formData.append('email', credential )
+//   formData.append('password', password)
+//   const response = await fetch('/api/auth/login', {
+//     method: 'POST',
+//     body: formData
+//   });
+//   const data = await response.json();
+//   console.log('data', data)
+//   dispatch(setUser(data.user));
+//   return response;
+// }
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
