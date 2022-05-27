@@ -1,14 +1,20 @@
 import React from 'react';
 import { useDispatch} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../../store/session'
 import './DemoUser.css'
 
+
 function DemoUser() {
    const dispatch = useDispatch();
+   const history = useHistory()
 
    const handleSubmit = e => {
       e.preventDefault();
-      return dispatch(sessionActions.demoUser({credential: 'demo@aa.io', password: 'password'}))
+     (async()=>{
+      await dispatch(sessionActions.login('demo@aa.io', 'password'));
+      history.pushState('/')
+      })()
    }
    return (
       <div>
