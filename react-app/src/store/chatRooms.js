@@ -1,11 +1,17 @@
 const LOAD_CHANNEL_ROOMS = 'chatRooms/LOAD_CHANNEL_ROOMS'
-const CREATE_ROOM = 'chatRooms/CREATE_ROOM'
+const CREATE_CHANNEL_ROOM = 'chatRooms/CREATE_ROOM'
+const CREATE_GROUP_ROOM = 'chatRooms/CREATE_GROUP_ROOM'
 
 
 
 const createChannel = (channel) => ({
     type: CREATE_CHANNEL_ROOM,
     channel
+})
+
+const createGroup = (group) => ({
+    type: CREATE_GROUP_ROOM,
+    group
 })
 
 export const createNewRoom = (formData, type) => async (dispatch) => {
@@ -46,13 +52,6 @@ const chatRoomsReducer = (state = initialState, action) => {
             return newState
         case CREATE_GROUP_ROOM:
             newState.groupRooms[action.room.id] = action.room
-            return newState
-        case EDIT_ROOM:
-        case JOIN_CHANNEL_ROOM:
-            newState.channels[action.room.id] = action.room
-            return newState
-        case LEAVE_CHANNEL_ROOM:
-            newState.channels[action.room.id] = action.room
             return newState
         default:
             return state;
