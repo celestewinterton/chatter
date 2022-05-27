@@ -6,18 +6,16 @@ import ChannelCard from "./ChannelCard"
 
 const Channels = ({ all, user }) => {
     const dispatch = useDispatch()
-    const allChannels = useSelector(state => state.chatRooms.channels.all)
-    const channelsArray = Object.values(allChannels)
-    console.log(allChannels)
+    const rooms = useSelector(state => state.chatRooms)
+    const channelsArray = Object.values(rooms.channels.subscribed)
 
 
     useEffect(() => {
         getRooms('channels')
-    }, [dispatch, allChannels])
+    }, [dispatch, rooms])
 
     return (
         <>
-
             {user && channelsArray.map((channel, idx) => {
                 return < ChannelCard key={idx} channel={channel} />
             })
