@@ -1,6 +1,16 @@
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { createNewRoom, getRooms } from "../../store/chatRooms";
+import { loadUsers } from "../../store/users";
 
 
 const Groups = ({ all }) => {
+  const dispatch = useDispatch();
+  const groups = useSelector(state => state.chatRooms.groupRooms.subscribed)
+  useEffect(() => {
+    dispatch(getRooms())
+  }, [dispatch]);
+
   return (
       <>
           <h1>Groups</h1>

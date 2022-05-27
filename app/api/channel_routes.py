@@ -5,9 +5,10 @@ from ..forms.channel_form import ChannelForm
 from ..utils import form_validation_errors
 from ..models.user import Channel
 from ..models.db import db
+
 channel_routes = Blueprint('channels', __name__)
 
-
+# get all channels
 @channel_routes.route('')
 def get_all_channels():
   all_channels = Channel.query.all()
@@ -61,3 +62,4 @@ def delete_channel(id):
   db.session.delete(remove_channel)
   db.session.commit()
   return {'id': id}
+
