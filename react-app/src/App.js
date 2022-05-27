@@ -7,6 +7,7 @@ import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
+import Groups from './components/Groups/index.js';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,10 +46,13 @@ function App() {
           {/* Specific channel view here */}
           <h1>Specific channel view</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/group/:groupId' exact={true} >
+        <ProtectedRoute path='/groups/:groupId' exact={true} >
           {/* Specific group view here */}
-          <h1>Specific group view</h1>
+          <Groups />
         </ProtectedRoute>
+        <Route path='/groups' exact={true} >
+          <Groups />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
