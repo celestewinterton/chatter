@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import chatRoomsReducer from './chatRooms';
 import messagesReducer from './messages';
 import session from './session'
+import usersReducer from './users';
 
 const rootReducer = combineReducers({
   session,
   messages: messagesReducer,
-  chatRooms: chatRoomsReducer
+  chatRooms: chatRoomsReducer,
+  users: usersReducer
 });
 
 
