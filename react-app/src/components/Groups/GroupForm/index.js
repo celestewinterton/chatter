@@ -25,10 +25,10 @@ const GroupForm = ({ setShowModal, edit, group }) => {
 
 
         if (edit) {
-            dispatch(createNewRoom(formData, group.id,"groups"))
+            dispatch(createNewRoom(formData, group.id, "groups"))
         } else {
-            errors = dispatch(createNewRoom(formData))
-            dispatch(createNewRoom(formData, "groups"))
+            errors = await dispatch(createNewRoom(formData, 'groups'))
+
         }
 
         if (errors) {
@@ -58,7 +58,7 @@ const GroupForm = ({ setShowModal, edit, group }) => {
                         type='text'
                         className="input-field"
                         value={members}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setMembers(e.target.value)}
                         placeholder='@somebody or somebody@example.com'></input>
                 </div>
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Edit DM' : 'Start DM'}</button>

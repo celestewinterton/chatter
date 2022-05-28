@@ -8,7 +8,7 @@ group_routes = Blueprint("groups", __name__)
 
 
 # get all group threads by user
-@group_routes.route("/")
+@group_routes.route("")
 def all_groups():
     all_groups = Group.query.all()
     return {'groups': [Group.to_dict() for group in all_groups]}
@@ -22,7 +22,7 @@ def get_group(groupId):
 
 
 # create new group message thread
-@group_routes.route("/", methods=["POST"])
+@group_routes.route("", methods=["POST"])
 def create_group():
     form = NewGroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -30,14 +30,16 @@ def create_group():
     'owner_id' : current_user.id
     }
     members = form.data["members"]
-    print(">>>>>>", members)
+    membersArray = members.split(',')
+    strippedMembers = [member.strip() for member in membersArray]
     if form.validate_on_submit():
         new_group = Group(**params)
-        db.session.add(new_group)
-        for member in members:
-            user = User.query.filter(User.username == member)
-            new_group.group_subscriptions.append(user)
+        for member in strippedMembers:
+            user = User.query.filter(User.username == member).first()
+            print(user)
+            new_group.users.append(user)
 
+        db.session.add(new_group)
         db.session.commit()
         return new_group.to_dict()
     return {'errors': form_validation_errors(form.errors)}, 401
