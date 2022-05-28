@@ -21,7 +21,7 @@ group_subscriptions = db.Table(
    db.Column(
       "user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True
    ),
-   db.UniqueConstraint('group_id', 'user_id', name='uix_1')
+   db.UniqueConstraint('group_id', 'user_id', name='uix_2')
 )
 
 
