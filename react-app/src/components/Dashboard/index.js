@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import { getRooms } from '../../store/chatRooms';
+import { getGroupRooms } from '../../store/chatRooms';
+import { getChannels } from '../../store/channels';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import Channels from '../Channels';
 import CreateChannelModal from '../Channels/CreateChannelModal';
 import Groups from '../Groups';
 import CreateGroupModal from '../Groups/CreateGroupModal'
-import LeftMenu from '../LeftMenu';
+import LeftMenu from '../LeftMenu'
 import './Dashboard.css'
 
 
@@ -15,9 +16,7 @@ const Dashboard = () => {
    const dispatch = useDispatch()
    const sessionUser = useSelector((state) => state.session.user)
 
-   useEffect(() => {
-      dispatch(getRooms('channels'))
-   }, [dispatch])
+
 
    return (
       <>

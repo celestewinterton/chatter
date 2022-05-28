@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createNewRoom, editRoom, getRooms } from "../../../store/chatRooms";
+import { createChannelRoom, editChannelRoom } from "../../../store/channels";
 
 const ChannelForm = ({ setShowModal, edit, channel }) => {
     const dispatch = useDispatch();
@@ -24,9 +24,9 @@ const ChannelForm = ({ setShowModal, edit, channel }) => {
 
 
         if (edit) {
-            errors = await dispatch(editRoom(formData, channel.id, 'channels'))
+            errors = await dispatch(editChannelRoom(formData, channel.id))
         } else {
-            errors = await dispatch(createNewRoom(formData, 'channels'))
+            errors = await dispatch(createChannelRoom(formData))
         }
 
         if (errors) {

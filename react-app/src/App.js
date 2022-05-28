@@ -8,7 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Dashboard from './components/Dashboard';
 import Groups from './components/Groups/index.js';
-import { getRooms } from './store/chatRooms';
+import { getGroupRooms, getRooms } from './store/chatRooms';
+import { getChannels } from './store/channels';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,7 +19,8 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      await dispatch(getRooms('channels'))
+      await dispatch(getChannels())
+      await dispatch(getGroupRooms())
       setLoaded(true);
     })();
   }, [dispatch]);

@@ -12,7 +12,7 @@ group_routes = Blueprint("groups", __name__)
 @group_routes.route("")
 def all_groups():
     all_groups = Group.query.all()
-    return {'groups': [Group.to_dict() for group in all_groups]}
+    return {'groups': [group.to_dict() for group in all_groups]}
 
 
 # view group thread by group ID
@@ -34,7 +34,10 @@ def create_group():
     members_list = members.split(',')
     strippedMembers = [member.strip() for member in members_list]
 
-    # groups = Group.query.all()
+    groups = Group.query.all()
+    groups_as_dicts = [group.compare_dict() for group in groups]
+    print(groups_as_dicts)
+
     # groups_as_dicts = [{index: [user['username'] for user in (groups[index].to_dict())['users']]}
     #                    for index, group in enumerate(groups)]
     # for index, group in enumerate(groups_as_dicts):

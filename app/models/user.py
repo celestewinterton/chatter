@@ -90,6 +90,11 @@ class Group(db.Model):
          'owner': self.owner_id,
          'users': [user.to_username() for user in self.users]
       }
+   def compare_dict(self):
+      return {
+         'id': self.id,
+         'user_id': [user.id for user in self.users]
+      }
 
 
 class Channel(db.Model):

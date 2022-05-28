@@ -2,7 +2,7 @@ import { Modal } from "../../../context/Modal"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import ChannelForm from "../ChannelForm"
-import { deleteRoom, getRooms } from "../../../store/chatRooms";
+import { getChannels, deleteChannelRoom } from "../../../store/channels";
 const ChannelCard = ({ channel }) => {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false);
@@ -13,8 +13,8 @@ const ChannelCard = ({ channel }) => {
     }
 
     const deleteChannel = () => {
-        dispatch(deleteRoom(channel.id, 'channels'))
-        dispatch(getRooms('channels'))
+        dispatch(deleteChannelRoom(channel.id))
+        dispatch(getChannels())
         setShowDeleteModal(false)
     }
 

@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import chatRoomsReducer from './chatRooms';
+import channelsReducer from './channels'
 import messagesReducer from './messages';
 import session from './session'
 import usersReducer from './users';
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   session,
   messages: messagesReducer,
   chatRooms: chatRoomsReducer,
+  channels: channelsReducer,
   users: usersReducer
 });
 

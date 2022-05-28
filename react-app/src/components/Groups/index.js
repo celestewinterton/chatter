@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createNewRoom, getRooms } from "../../store/chatRooms";
+import { getGroupRooms } from "../../store/chatRooms";
 import { loadUsers } from "../../store/users";
+import GroupCard from "./GroupCard";
 
 
-const Groups = ({ all }) => {
+const Groups = () => {
   const dispatch = useDispatch();
-  const groups = useSelector(state => state.chatRooms.groupRooms.subscribed)
+  const groups = useSelector(state => state.chatRooms)
+  const groupsArray = Object.values(groups.subscribed)
+
   useEffect(() => {
-    dispatch(getRooms())
-  }, [dispatch]);
+  }, [groups]);
 
   return (
-      <>
-          <h1>Groups</h1>
-          {(all) ? <h1>Direct messages</h1> : <h1>User messages</h1>}
-      </>
+    <>
+      {groupsArray.map((group, idx) => {
+        return <GroupCard key={idx} group={group} />
+      })}
+    </>
   )
 }
 
