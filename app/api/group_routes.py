@@ -1,4 +1,5 @@
-from flask import Blueprint, jsonify, session, request
+from tabnanny import check
+from flask import Blueprint, jsonify, redirect, session, request
 from app.models import User, Group, db
 from ..utils import form_validation_errors
 from ..forms import NewGroupForm
@@ -27,13 +28,24 @@ def create_group():
     form = NewGroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     params = {
-    'owner_id' : current_user.id
+        'owner_id': current_user.id
     }
     members = form.data["members"]
-    membersArray = members.split(',')
-    strippedMembers = [member.strip() for member in membersArray]
+    members_list = members.split(',')
+    strippedMembers = [member.strip() for member in members_list]
+
+    # groups = Group.query.all()
+    # groups_as_dicts = [{index: [user['username'] for user in (groups[index].to_dict())['users']]}
+    #                    for index, group in enumerate(groups)]
+    # for index, group in enumerate(groups_as_dicts):
+    #     if group[index].sort() == [*strippedMembers, current_user.username].sort():
+    #         return redirect("/")
+
+    # print("C U R R E N T   U S E R  ======> ")
+
     if form.validate_on_submit():
         new_group = Group(**params)
+        new_group.users.append(current_user)
         for member in strippedMembers:
             user = User.query.filter(User.username == member).first()
             print(user)
@@ -46,6 +58,8 @@ def create_group():
 #
 
 # delete group/hide group??
+
+
 @group_routes.route("/<int:groupId>", methods=["PUT"])
 def hide_group(groupId):
     pass
