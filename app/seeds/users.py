@@ -4,19 +4,19 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', email='marnie@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', email='bobbie@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
     austin = User(
-        username='austin', email='austin@aa.io', password='password')
+        username='austin', email='austin@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
     brendan = User(
-        username='brendan', email='brendan@aa.io', password='password')
+        username='brendan', email='brendan@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
     celeste = User(
-        username='celeste', email='celeste@aa.io', password='password')
+        username='celeste', email='celeste@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
     jingling = User(
-        username='jingling', email='jingling@aa.io', password='password')
+        username='jingling', email='jingling@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
 
 
     db.session.add(demo)
