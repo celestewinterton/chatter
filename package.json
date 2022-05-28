@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-search-autocomplete": "^6.1.3"
+  }
+}
