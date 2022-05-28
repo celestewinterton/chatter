@@ -47,7 +47,6 @@ def create_group():
 
 
 
-    validate_group(strippedMembers)
     if form.validate_on_submit():
         if validate_group(strippedMembers):
             return {'errors': 'group already exists'}, 401
