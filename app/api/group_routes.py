@@ -32,31 +32,35 @@ def create_group():
     }
     members = form.data["members"]
     members_list = members.split(',')
-    strippedMembers = [member.strip() for member in members_list]
+    strippedMembers = [int(member.strip()) for member in members_list]
 
-    groups = Group.query.all()
-    groups_as_dicts = [group.compare_dict() for group in groups]
-    print(groups_as_dicts)
 
-    # groups_as_dicts = [{index: [user['username'] for user in (groups[index].to_dict())['users']]}
-    #                    for index, group in enumerate(groups)]
-    # for index, group in enumerate(groups_as_dicts):
-    #     if group[index].sort() == [*strippedMembers, current_user.username].sort():
-    #         return redirect("/")
+    def validate_group(input):
+        groups = Group.query.all()
+        groups_as_dicts = [group.compare_dict() for group in groups]
+        for group in groups_as_dicts:
+            print('GROUP     ', group['user_id'] == input)
+            print('INPUT      ', input)
+            if group['user_id'] == input:
+                return True
+        
 
-    # print("C U R R E N T   U S E R  ======> ")
 
+
+    validate_group(strippedMembers)
     if form.validate_on_submit():
-        new_group = Group(**params)
-        new_group.users.append(current_user)
-        for member in strippedMembers:
-            user = User.query.filter(User.username == member).first()
-            print(user)
-            new_group.users.append(user)
+        if validate_group(strippedMembers):
+            return {'errors': 'group already exists'}, 401
+        else:
+            new_group = Group(**params)
+            new_group.users.append(current_user)
+            for member in strippedMembers:
+                user = User.query.filter(User.id == member).first()
+                new_group.users.append(user)
 
-        db.session.add(new_group)
-        db.session.commit()
-        return new_group.to_dict()
+            db.session.add(new_group)
+            db.session.commit()
+            return new_group.to_dict()
     return {'errors': form_validation_errors(form.errors)}, 401
 #
 
