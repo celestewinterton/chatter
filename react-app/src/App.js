@@ -31,27 +31,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        {/* <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route> */}
         <ProtectedRoute path='/' exact={true} >
-          {/*We will put the dashboard here */}
           <Dashboard />
         </ProtectedRoute>
-        <ProtectedRoute path='/channel/:channelId' exact={true} >
-          {/* Specific channel view here */}
-          <h1>Specific channel view</h1>
-        </ProtectedRoute>
-        <ProtectedRoute path='/groups/:groupId' exact={true} >
-          {/* Specific group view here */}
-          <Groups />
-        </ProtectedRoute>
-        <Route path='/groups' exact={true} >
-          <Groups />
-        </Route>
       </Switch>
     </BrowserRouter>
   );

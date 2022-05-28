@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 import { getRooms } from '../../store/chatRooms';
+import ProtectedRoute from '../auth/ProtectedRoute';
 import Channels from '../Channels';
 import CreateChannelModal from '../Channels/CreateChannelModal';
 import Groups from '../Groups';
 import CreateGroupModal from '../Groups/CreateGroupModal'
+import LeftMenu from '../LeftMenu';
+import './Dashboard.css'
 
 
 const Dashboard = () => {
@@ -16,17 +20,24 @@ const Dashboard = () => {
    }, [dispatch])
 
    return (
-      <div>
-         <div>
-            <h1>Helloo this is a test </h1>
-            <CreateChannelModal />
-            <Channels user={true} />
+      <>
+         <div className='dashboard-container'>
+            <LeftMenu />
+            <Switch>
+               <ProtectedRoute path='/' exact={true} >
+                  <div className='app-body'>
+                     <h1>All channel view</h1>
+                  </div>
+               </ProtectedRoute>
+               <ProtectedRoute path='/groups/:groupId' exact={true} >
+                  <Groups />
+               </ProtectedRoute>
+               <Route path='/groups' exact={true} >
+                  <Groups />
+               </Route>
+            </Switch>
          </div>
-         <div>
-            <CreateGroupModal />
-            <Groups all={true} />
-         </div>
-      </div>
+      </>
    )
 }
 export default Dashboard

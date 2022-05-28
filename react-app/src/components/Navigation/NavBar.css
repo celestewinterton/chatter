@@ -1,3 +1,15 @@
 .profile-btn {
    font-size: 10px;
+
+}
+
+.navbar-container{
+   display: flex;
+   justify-content: flex-end;
+   padding-right: 10px;
+}
+
+.user-image-nav{
+   width: 25px;
+   height: 25px;
 }
