@@ -3,17 +3,17 @@ import Channels from "../Channels"
 import CreateGroupModal from "../Groups/CreateGroupModal"
 import Groups from "../Groups"
 
-const LeftMenu = () => {
+const LeftMenu = ({ channels, groups }) => {
     return (
         <>
             <div className="left-navigation-menu">
                 <div className="channel-container">
                     <CreateChannelModal />
-                    <Channels user={true} />
+                    <Channels user={true} channels={channels} />
                 </div>
                 <div className="instant-message-container">
                     <CreateGroupModal />
-                    <Groups all={true} />
+                    <Groups all={true} groups={groups} />
                 </div>
             </div>
         </>

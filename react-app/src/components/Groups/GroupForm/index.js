@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createNewRoom } from "../../../store/chatRooms";
+import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
 
 const GroupForm = ({ setShowModal, edit, group }) => {
@@ -9,11 +9,9 @@ const GroupForm = ({ setShowModal, edit, group }) => {
     const users = useSelector(state => state.users)
     const [errors, setErrors] = useState({});
     const [members, setMembers] = useState((edit) ? group.members : '')//change later
-    const groups = useSelector(state => state.chatRooms.groupRooms.subscribed)
 
     useEffect(() => {
         dispatch(loadUsers())
-
     }, [dispatch]);
 
     const handleSubmit = async (e) => {
@@ -25,9 +23,9 @@ const GroupForm = ({ setShowModal, edit, group }) => {
 
 
         if (edit) {
-            dispatch(createNewRoom(formData, group.id, "groups"))
+            dispatch(editGroupRoom(formData, group.id))
         } else {
-            errors = await dispatch(createNewRoom(formData, 'groups'))
+            errors = await dispatch(createGroupRoom(formData))
 
         }
 

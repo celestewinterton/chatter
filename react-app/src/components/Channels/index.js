@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { getRooms } from "../../store/chatRooms"
+import { getChannels } from "../../store/channels"
 import ChannelCard from "./ChannelCard"
 
 
 const Channels = ({ all, user }) => {
     const dispatch = useDispatch()
-    const rooms = useSelector(state => state.chatRooms)
-    const channelsArray = Object.values(rooms.channels.subscribed)
+    const rooms = useSelector(state => state.channels)
+    const channelsArray = Object.values(rooms.subscribed)
 
-
-    useEffect(() => {
-        getRooms('channels')
-    }, [dispatch, rooms])
 
     return (
         <>
