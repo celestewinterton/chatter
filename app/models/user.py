@@ -60,21 +60,34 @@ class User(db.Model, UserMixin):
         'title': self.title,
         'status': self.status,
         'photo': self.photo,
-        'subcribed_channels':[channel.todict() for channel in self.subscribed_channels],
-        'subscribed_groups':[group.todict() for group in self.subscribed_groups],
+        'subcribed_channels':[channel.to_dict() for channel in self.subscribed_channels],
+        'subscribed_groups':[group.to_dict() for group in self.subscribed_groups],
         }
+    def to_username(self):
+       return {
+          'id' : self.id,
+          'username' : self.username,
+          'photo' : self.photo
+       }
 
 
 class Group(db.Model):
-  __tablename__ = "groups"
+   __tablename__ = "groups"
 
-  id = db.Column(db.Integer, primary_key=True)
-  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-  
-  
-  owner = db.relationship("User", back_populates="owned_groups")
-  message = db.relationship("Message", back_populates='group')
-  users = db.relationship("User", back_populates='subscribed_groups', secondary=group_subscriptions)
+   id = db.Column(db.Integer, primary_key=True)
+   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+   
+   
+   owner = db.relationship("User", back_populates="owned_groups")
+   message = db.relationship("Message", back_populates='group')
+   users = db.relationship("User", back_populates='subscribed_groups', secondary=group_subscriptions)
+   
+   def to_dict(self):
+      return {
+         'id': self.id,
+         'owner': self.owner_id,
+         'users': [user.to_username() for user in self.users]
+      }
 
 
 class Channel(db.Model):
