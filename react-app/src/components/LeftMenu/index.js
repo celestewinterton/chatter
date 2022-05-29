@@ -7,6 +7,9 @@ const LeftMenu = ({ channels, groups }) => {
     return (
         <>
             <div className="left-navigation-menu">
+                <div className="left-menu-header">
+                    <h1 className="left-menu-title">Chatter</h1>
+                </div>
                 <div className="channel-container">
                     <CreateChannelModal />
                     <Channels user={true} channels={channels} />

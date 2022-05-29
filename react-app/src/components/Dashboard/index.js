@@ -20,12 +20,18 @@ const Dashboard = () => {
 
    return (
       <>
+
          <div className='dashboard-container'>
             <LeftMenu />
             <Switch>
                <ProtectedRoute path='/' exact={true} >
                   <div className='app-body'>
-                     <h1>All channel view</h1>
+                     <Channels all={true} />
+                  </div>
+               </ProtectedRoute>
+               <ProtectedRoute path='/channels/:channelId' exact={true} >
+                  <div className='app-body'>
+                     <Channels single={true} />
                   </div>
                </ProtectedRoute>
                <ProtectedRoute path='/groups/:groupId' exact={true} >
