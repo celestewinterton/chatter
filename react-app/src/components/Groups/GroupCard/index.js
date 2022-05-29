@@ -15,10 +15,18 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const filtered = usernames?.includes(sessionUser?.username)
     const groupName = usernames?.filter(user => user != sessionUser.username).join(", ")
     const history = useHistory()
+<<<<<<< HEAD
+=======
+    const users = group.users.filter(user => user.username)
+>>>>>>> dfbdf86 (fixing merge conflicts)
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
 
+<<<<<<< HEAD
+=======
+    console.log("GROUPCARD ===> ", single, all)
+>>>>>>> dfbdf86 (fixing merge conflicts)
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
@@ -27,8 +35,13 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     }
 
     return (
+<<<<<<< HEAD
         <>
             <div>{filtered && nav ?
+=======
+        <div>
+            {filtered && nav ?
+>>>>>>> dfbdf86 (fixing merge conflicts)
             <NavLink className="groups-nav" to={`/groups/${group.id}`}>
                 <img className="side-nav-img" src="https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png" />
                 <div>
@@ -41,6 +54,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
             {single &&
             <div className="groups-header">
                 <h1 className="groups-title" onClick={modal}>{groupName}</h1>
+<<<<<<< HEAD
             </div>
             }
 
@@ -51,8 +65,20 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
                         <button onClick={() => setShowDeleteModal(false)}>No</button>
                     </Modal>
                 )}
+=======
+>>>>>>> dfbdf86 (fixing merge conflicts)
             </div>
-        </>
+            }
+
+            {showDeleteModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <h1>Are you sure you want to delete this chatting room?</h1>
+                    <button onClick={deleteGroup}>Yes</button>
+                    <button onClick={() => setShowDeleteModal(false)}>No</button>
+                </Modal>
+            )}
+
+        </div>
     )
 }
 
