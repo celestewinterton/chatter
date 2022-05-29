@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getGroupRooms } from "../../store/chatRooms";
 import { loadUsers } from "../../store/users";
 import GroupCard from "./GroupCard";
+import './Groups.css'
 
 
 const Groups = () => {

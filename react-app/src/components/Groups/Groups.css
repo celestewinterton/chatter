@@ -25,3 +25,8 @@
 .group-message-form {
   grid-area: message-field
 }
+
+.create-group{
+  color: #a1a1a4;
+  padding-left: 16px;
+}

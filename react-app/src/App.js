@@ -33,7 +33,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path='/' >
           <Dashboard />
         </ProtectedRoute>
       </Switch>

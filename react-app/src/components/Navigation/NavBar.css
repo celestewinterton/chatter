@@ -7,6 +7,9 @@
    display: flex;
    justify-content: flex-end;
    padding-right: 10px;
+   height: 44px;
+   background-color: #121016;
+   border-bottom: 1px solid #504e52;;
 }
 
 .user-image-nav{

@@ -1,4 +1,29 @@
 .dashboard-container{
     display: flex;
     flex-direction: row;
+    height: 100vh;
+}
+
+.left-menu-header{
+    display: flex;
+    padding-left: 16px;
+    height: 40px;
+    align-items: center;
+    border-bottom: 1px solid #2b2a2f
+}
+
+.left-menu-title{
+    color: #d1d2d3
+}
+
+.left-navigation-menu{
+    background-color: #19171D;
+    border-right: 1px solid #504e52;
+    z-index: 20;
+    width: 240px;
+}
+
+.app-body{
+    background-color: #1a1d21;
+    width: 100%;
 }

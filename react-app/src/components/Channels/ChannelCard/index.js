@@ -1,9 +1,11 @@
 import { Modal } from "../../../context/Modal"
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ChannelForm from "../ChannelForm"
 import { getChannels, deleteChannelRoom } from "../../../store/channels";
-const ChannelCard = ({ channel }) => {
+import { NavLink } from "react-router-dom";
+import ChannelHeader from "../ChannelHeader";
+const ChannelCard = ({ channel, single }) => {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -33,7 +35,8 @@ const ChannelCard = ({ channel }) => {
                     <button onClick={() => setShowDeleteModal(false)}>No</button>
                 </Modal>
             )}
-            <p>{channel.name}<i className="fa-solid fa-pen-to-square" onClick={editChannel}></i><i className="fas fa-minus" onClick={() => setShowDeleteModal(true)}></i></p>
+            {single && <ChannelHeader single={true} channel={channel} modal={() => setShowModal(true)} />}
+            <NavLink to={`/channels/${channel.id}`}>{channel.name}</NavLink>
         </>
     )
 }

@@ -1,0 +1,13 @@
+.create-channel{
+    color: #a1a1a4;
+    padding-left: 16px;
+}
+
+.channel-header{
+    height: 40px;
+    border-bottom: 1px solid #3a3d40;
+}
+
+.channel-title{
+    color: #d1d2d3
+}
