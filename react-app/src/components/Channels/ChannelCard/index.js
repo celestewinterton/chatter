@@ -6,6 +6,7 @@ import ChannelForm from "../ChannelForm"
 import { getChannels, deleteChannelRoom, joinChannelRoom } from "../../../store/channels";
 import { NavLink } from "react-router-dom";
 import ChannelHeader from "../ChannelHeader";
+import Chat from "../../Chat";
 const ChannelCard = ({ channel, single, nav }) => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -61,7 +62,7 @@ const ChannelCard = ({ channel, single, nav }) => {
                 </div></NavLink>
             }
             {nav && <NavLink to={`/channels/${channel.id}`}><h1 className="channel-card-name">#{channel.name}</h1></NavLink>}
-
+            {single && <Chat />}
         </>
     )
 }

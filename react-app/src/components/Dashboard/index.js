@@ -30,12 +30,12 @@ const Dashboard = () => {
                      <Channels all={true} />
                   </div>
                </ProtectedRoute>
-               <ProtectedRoute path='/channels/:channelId' exact={true} >
+               <ProtectedRoute path='/channels/:id' exact={true} >
                   <div className='app-body'>
                      <Channels single={true} />
                   </div>
                </ProtectedRoute>
-               <ProtectedRoute path='/groups/:groupId' exact={true} >
+               <ProtectedRoute path='/groups/:id' exact={true} >
                   <GroupsPage single={true} />
                </ProtectedRoute>
             </Switch>
