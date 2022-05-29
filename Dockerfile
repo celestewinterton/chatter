@@ -19,12 +19,8 @@ EXPOSE 8000
 
 WORKDIR /var/www
 COPY . .
-<<<<<<< Updated upstream
 COPY /react-app/build/* app/static/
 
-=======
-COPY --from=build-stage /react-app/build/* app/static/
->>>>>>> Stashed changes
 
 # Install Python Dependencies
 RUN pip install -r requirements.txt
