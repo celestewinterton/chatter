@@ -37,12 +37,11 @@ const Chat = ({ group }) => {
 
 
 
-
     const sendChat = async (e) => {
         e.preventDefault();
         console.log('sending')
         socket.emit('chat', {
-            user: `${user.username}`, msg: messageBody, room: roomId, user_image: user.image, created_at: (new Date()).toLocaleTimeString()
+            user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
         });
         // const errors = await dispatch(createChatMessage(roomId, messageBody));
         //consider creating messages within socketIo for efficiency
@@ -51,9 +50,9 @@ const Chat = ({ group }) => {
 
     useEffect(() => {
         if (group) {
-            dispatch(loadChatMessages(roomId, type))
+            dispatch(loadChatMessages(id, type))
         } else {
-            dispatch(loadChatMessages(roomId, type))
+            dispatch(loadChatMessages(id, type))
         }
 
     }, [roomId, dispatch])
@@ -108,9 +107,7 @@ const Chat = ({ group }) => {
                                 </div>
                             }
                             <div className='chat-message'>
-                                {message.user !== 'weStudy-Bot' &&
-                                    <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
-                                }
+                                <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
                                 <p className='chat-text' id={message.id}>{message.msg}</p>
                             </div>
                         </div>
@@ -118,7 +115,7 @@ const Chat = ({ group }) => {
                 </div>
                 <div className='message-editor' id='editor'>
                     <ReactQuill value={messageBody}
-                        onChange={(e) => setMessageBody(e.target.value)} ></ReactQuill>
+                        onChange={(e) => setMessageBody(e)} />
                     <button onClick={(e) => sendChat(e)}>Send</button>
                 </div>
             </div>

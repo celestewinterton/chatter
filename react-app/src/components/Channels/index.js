@@ -9,13 +9,11 @@ import './Channels.css'
 
 const Channels = ({ all, user, single }) => {
     const dispatch = useDispatch()
-    const { channelId } = useParams()
     const rooms = useSelector(state => state.channels)
     const subbedChannels = useSelector(state => state.session.user)
     const channelsArray = Object.values(rooms.subscribed)
-    const subscribedChannelsArray = subbedChannels.subcribed_channels
+    const subscribedChannelsArray = subbedChannels.subscribed_channels
     const allChannelsArray = Object.values(rooms.all)
-    const singleChannel = rooms.all[channelId]
 
 
     return (
@@ -31,7 +29,7 @@ const Channels = ({ all, user, single }) => {
                     return < ChannelCard key={idx} channel={channel} all={true} />
                 })}
             </div>}
-            {single && <ChannelCard channel={singleChannel} single={true} />}
+            {single && <ChannelCard channel={rooms} single={true} />}
         </>
     )
 }
