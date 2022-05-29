@@ -13,10 +13,9 @@ const Channels = ({ all, user, single }) => {
     const rooms = useSelector(state => state.channels)
     const subbedChannels = useSelector(state => state.session.user)
     const channelsArray = Object.values(rooms.subscribed)
-    const subscribedChannelsArray = Object.values(subbedChannels.subscribed_channels)
+    const subscribedChannelsArray = subbedChannels.subcribed_channels
     const allChannelsArray = Object.values(rooms.all)
     const singleChannel = rooms.all[channelId]
-
 
 
     return (
