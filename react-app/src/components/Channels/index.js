@@ -10,12 +10,11 @@ import './Channels.css'
 const Channels = ({ all, user, single }) => {
     const dispatch = useDispatch()
     const { channelId } = useParams()
-    console.log(channelId)
     const rooms = useSelector(state => state.channels)
     const channelsArray = Object.values(rooms.subscribed)
     const allChannelsArray = Object.values(rooms.all)
     const singleChannel = rooms.all[channelId]
-    console.log(singleChannel)
+
 
 
     return (
@@ -26,9 +25,11 @@ const Channels = ({ all, user, single }) => {
             })
             }
             {all && <ChannelHeader all={true} />}
-            {all && allChannelsArray.map((channel, idx) => {
-                return < ChannelCard key={idx} channel={channel} all={true} />
-            })}
+            {all && <div className="channel-container">
+                {allChannelsArray.map((channel, idx) => {
+                    return < ChannelCard key={idx} channel={channel} all={true} />
+                })}
+            </div>}
             {single && <ChannelCard channel={singleChannel} single={true} />}
         </>
     )

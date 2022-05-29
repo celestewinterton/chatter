@@ -16,16 +16,17 @@ const Chat = ({ group }) => {
     const [messageBody, setMessageBody] = useState("");
     const { roomId } = useParams();
     const dispatch = useDispatch();
+    const groupRooms = useSelector(state => state.chatRooms);
+    const channelRooms = useSelector(state => state.channels)
     const user = useSelector(state => state.session.user);
     const stateMessages = useSelector(state => state.messages);
     chatMessages = Object.values(stateMessages)
 
 
-    const chatRooms = useSelector(state => state.chatRooms);
     if (group) {
-        chatRoom = chatRooms.groupRooms[roomId];
+        chatRoom = groupRooms.groupRooms.subscribed[roomId];
     } else {
-        chatRoom = chatRooms.channels[roomId];
+        chatRoom = channelRooms.subscribed[roomId];
     }
 
 
@@ -63,8 +64,6 @@ const Chat = ({ group }) => {
         dispatch(joinChatRoom(roomId, type));
 
         socket.emit('join', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId });
-        socket.emit('join_room', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId })
-        socket.emit('chat', { user: '', msg: `${user.firstName} ${user.lastName} has joined the room.`, room: roomId });
 
 
         socket.on('chat', (message) => {
@@ -83,8 +82,6 @@ const Chat = ({ group }) => {
         return (() => {
             dispatch(leaveChatRoom(roomId, 'site'));
             socket.emit('leave', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId });
-            socket.emit('leave_room', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId })
-            socket.emit('chat', { user: '', msg: `${user.firstName} ${user.lastName} has left the room.`, room: roomId });
             dispatch(clearMessages())
             setMessages([]);
 

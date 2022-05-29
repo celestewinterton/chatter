@@ -1,12 +1,14 @@
 import { Modal } from "../../../context/Modal"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import ChannelForm from "../ChannelForm"
-import { getChannels, deleteChannelRoom } from "../../../store/channels";
+import { getChannels, deleteChannelRoom, joinChannelRoom } from "../../../store/channels";
 import { NavLink } from "react-router-dom";
 import ChannelHeader from "../ChannelHeader";
 const ChannelCard = ({ channel, single }) => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -19,6 +21,14 @@ const ChannelCard = ({ channel, single }) => {
         dispatch(getChannels())
         setShowDeleteModal(false)
     }
+
+    const joinChannel = (e) => {
+        e.preventDefault()
+        dispatch(joinChannelRoom(channel.id))
+        history.push(`/channels/${channel.id}`)
+    }
+
+    console.log(channel)
 
 
     return (
@@ -35,8 +45,22 @@ const ChannelCard = ({ channel, single }) => {
                     <button onClick={() => setShowDeleteModal(false)}>No</button>
                 </Modal>
             )}
+
             {single && <ChannelHeader single={true} channel={channel} modal={() => setShowModal(true)} />}
-            <NavLink to={`/channels/${channel.id}`}>{channel.name}</NavLink>
+            {!single && <NavLink to={`/channels/${channel.id}`}>
+                <div className="channel-card">
+                    <div className="channel-information">
+                        <h1 className="channel-card-name">#{channel.name}</h1>
+                        <h1 className="channel-users">{channel.users.length} members</h1>
+                    </div>
+                    <div className="channel-buttons">
+                        <button className="view-channel-button">View</button>
+                        <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>
+                    </div>
+
+                </div></NavLink>
+            }
+
         </>
     )
 }

@@ -1,9 +1,12 @@
 import { easyFetch } from "../utils/easyFetch"
 
-const LOAD_CHANNEL_ROOMS = 'chatRooms/LOAD_CHANNEL_ROOMS'
-const CREATE_CHANNEL_ROOM = 'chatRooms/CREATE_ROOM'
-const EDIT_CHANNEL_ROOM = 'chatRooms/EDIT_CHANNEL_ROOM'
-const DELETE_CHANNEL_ROOM = 'chatRooms/DELETE_CHANNEL_ROOM'
+const LOAD_CHANNEL_ROOMS = 'channels/LOAD_CHANNEL_ROOMS'
+const CREATE_CHANNEL_ROOM = 'channels/CREATE_ROOM'
+const EDIT_CHANNEL_ROOM = 'channels/EDIT_CHANNEL_ROOM'
+const DELETE_CHANNEL_ROOM = 'channels/DELETE_CHANNEL_ROOM'
+const JOIN_CHANNEL = 'channels/JOIN_CHANNEL'
+const LEAVE_CHANNEL = 'channels/LEAVE_CHANNEL'
+
 
 
 const loadChannels = (channels) => ({
@@ -24,6 +27,16 @@ const createChannel = (channel) => ({
 const deleteChannel = (channelId) => ({
     type: DELETE_CHANNEL_ROOM,
     channelId
+})
+
+const joinChannel = (channel) => ({
+    type: JOIN_CHANNEL,
+    channel
+})
+
+const leaveChannel = (channel) => ({
+    type: LEAVE_CHANNEL,
+    channel
 })
 
 export const getChannels = () => async (dispatch) => {
@@ -65,7 +78,7 @@ export const editChannelRoom = (formData, roomId) => async (dispatch) => {
     }
 }
 
-export const deleteChannelRoom = (roomId, type) => async (dispatch) => {
+export const deleteChannelRoom = (roomId) => async (dispatch) => {
     const res = await easyFetch(`/api/channels/${roomId}`, {
         method: 'DELETE'
     })
@@ -75,6 +88,34 @@ export const deleteChannelRoom = (roomId, type) => async (dispatch) => {
         dispatch(deleteChannel(data.id))
     } else {
         return data
+    }
+
+}
+
+export const joinChannelRoom = (roomId) => async (dispatch) => {
+    const res = await easyFetch(`/api/channels/${roomId}/join`, {
+        method: 'PATCH'
+    })
+
+    const channel = await res.json()
+    if (res.ok) {
+        dispatch(joinChannel(channel))
+    } else {
+        return channel
+    }
+
+}
+
+export const leaveChannelRoom = (roomId) => async (dispatch) => {
+    const res = await easyFetch(`/api/channels/${roomId}/leave`, {
+        method: 'PATCH'
+    })
+
+    const channel = await res.json()
+    if (res.ok) {
+        dispatch(leaveChannel(channel))
+    } else {
+        return channel
     }
 
 }
@@ -109,6 +150,12 @@ const channelsReducer = (state = initialState, action) => {
             delete newState.all[action.channelId]
             delete newState.subscribed[action.channelId]
             return newState
+        case JOIN_CHANNEL:
+            newState.all[action.channel.id] = action.channel
+            newState.subscribed[action.channel.id] = action.channel
+        case LEAVE_CHANNEL:
+            newState.all[action.channel.id] = action.channel
+            delete newState.subscribed[action.channel.id]
         default:
             return state;
     }
