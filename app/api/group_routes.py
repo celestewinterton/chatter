@@ -43,7 +43,7 @@ def create_group():
             print('INPUT      ', input)
             if group['user_id'] == input:
                 return True
-        
+
 
 
 
@@ -69,3 +69,10 @@ def create_group():
 @group_routes.route("/<int:groupId>", methods=["PUT"])
 def hide_group(groupId):
     pass
+
+@group_routes.route("/<int:groupId>", methods=["DELETE"])
+def delete_group(groupId):
+    remove_group = Group.query.get(groupId)
+    db.session.delete(remove_group)
+    db.session.commit()
+    return {'id': groupId}
