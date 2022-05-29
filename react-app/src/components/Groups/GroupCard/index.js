@@ -19,6 +19,7 @@ const GroupCard = ({ group }) => {
         dispatch(deleteGroupRoom(group.id))
         setShowDeleteModal(false)
         history.push('/')
+
     }
 
     return (
