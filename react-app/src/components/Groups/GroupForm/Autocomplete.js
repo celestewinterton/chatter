@@ -3,12 +3,17 @@ import { useSelector } from 'react-redux';
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 
-function SearchAutocomplete() {
+function SearchAutocomplete({members, setMembers}) {
   const users = useSelector(state => state.users)
   const usersArr = Object.values(users)
   // To Do:
   // allow user to autofill multiple users
   // Search for existing groups with same users, pull up that thread
+
+  const handleOnSelect = (item) => {
+    console.log(item, item.id);
+    setMembers(item.id)
+  };
 
   const formatResult = (item) => {
     console.log(item);
@@ -29,6 +34,7 @@ function SearchAutocomplete() {
         resultStringKeyName="username" // String to display in the results
         showIcon={false}
         placeholder={'@Somebody'}
+        onSelect={handleOnSelect}
         styling={{
           borderRadius: "0px",
           backgroundColor: "white",
