@@ -36,7 +36,7 @@ const Dashboard = () => {
                   </div>
                </ProtectedRoute>
                <ProtectedRoute path='/groups/:groupId' exact={true} >
-                  <GroupsPage />
+                  <GroupsPage single={true} />
                </ProtectedRoute>
             </Switch>
          </div>
