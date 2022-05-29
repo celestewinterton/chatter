@@ -6,7 +6,7 @@ import ChannelForm from "../ChannelForm"
 import { getChannels, deleteChannelRoom, joinChannelRoom } from "../../../store/channels";
 import { NavLink } from "react-router-dom";
 import ChannelHeader from "../ChannelHeader";
-const ChannelCard = ({ channel, single }) => {
+const ChannelCard = ({ channel, single, nav }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [showModal, setShowModal] = useState(false);
@@ -47,7 +47,7 @@ const ChannelCard = ({ channel, single }) => {
             )}
 
             {single && <ChannelHeader single={true} channel={channel} modal={() => setShowModal(true)} />}
-            {!single && <NavLink to={`/channels/${channel.id}`}>
+            {!single && !nav && <NavLink to={`/channels/${channel.id}`}>
                 <div className="channel-card">
                     <div className="channel-information">
                         <h1 className="channel-card-name">#{channel.name}</h1>
@@ -60,6 +60,7 @@ const ChannelCard = ({ channel, single }) => {
 
                 </div></NavLink>
             }
+            {nav && <NavLink to={`/channels/${channel.id}`}><h1 className="channel-card-name">#{channel.name}</h1></NavLink>}
 
         </>
     )
