@@ -15,23 +15,20 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const filtered = usernames?.includes(sessionUser?.username)
     const groupName = usernames?.filter(user => user != sessionUser.username).join(", ")
     const history = useHistory()
-    const users = group.users.filter(user => user.username)
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
 
-    console.log("GROUPCARD ===> ", single, all)
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
         setShowDeleteModal(false)
         history.push('/')
-
     }
 
     return (
-        <div>
-            {filtered && nav ?
+        <>
+            <div>{filtered && nav ?
             <NavLink className="groups-nav" to={`/groups/${group.id}`}>
                 <img className="side-nav-img" src="https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png" />
                 <div>
@@ -47,15 +44,15 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
             </div>
             }
 
-            {showDeleteModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <h1>Are you sure you want to delete this chatting room?</h1>
-                    <button onClick={deleteGroup}>Yes</button>
-                    <button onClick={() => setShowDeleteModal(false)}>No</button>
-                </Modal>
-            )}
-
-        </div>
+                {showDeleteModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <h1>Are you sure you want to delete this chatting room?</h1>
+                        <button onClick={deleteGroup}>Yes</button>
+                        <button onClick={() => setShowDeleteModal(false)}>No</button>
+                    </Modal>
+                )}
+            </div>
+        </>
     )
 }
 
