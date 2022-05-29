@@ -18,7 +18,7 @@ const Search = ({query, setQuery, setSearchResults}) => {
     const subStringTwo = result.slice(index+len);
 
     return (
-        <span>{subStringOne}<span className='match'>{match}</span>{subStringTwo}</span>
+      <span>{subStringOne}<span className='match'>{match}</span>{subStringTwo}</span>
     )
   }
 

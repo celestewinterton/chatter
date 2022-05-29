@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
-import SearchAutocomplete from "../UserSearch/Autocomplete";
+import SearchAutocomplete from "./Autocomplete";
 
 const GroupForm = ({ setShowModal, edit, group }) => {
     const dispatch = useDispatch();
