@@ -49,7 +49,7 @@ export const createChatMessage = (roomID, messageBody, type) => async (dispatch)
 }
 
 export const loadChatMessages = (roomId, type) => async (dispatch) => {
-    const res = await fetch(`/messages/${type}/${roomId}`)
+    const res = await fetch(`/api/messages/${type}/${roomId}`)
 
     const messages = await res.json();
     if (res.ok) {

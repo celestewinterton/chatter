@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import Parser from 'html-react-parser';
 import ReactQuill from 'react-quill'
 import { io } from 'socket.io-client';
 import { loadChatMessages, clearMessages } from '../../store/messages'
+import ChatInput from './ChatInput';
+import ChatMessage from './ChatMessage';
 
 
 let socket;
@@ -39,7 +42,6 @@ const Chat = ({ group }) => {
 
     const sendChat = async (e) => {
         e.preventDefault();
-        console.log('sending')
         socket.emit('chat', {
             user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
         });
@@ -47,6 +49,9 @@ const Chat = ({ group }) => {
         //consider creating messages within socketIo for efficiency
         setMessageBody("");
     };
+
+
+
 
     useEffect(() => {
         if (group) {
@@ -71,6 +76,11 @@ const Chat = ({ group }) => {
             setMessages(messages => [...messages, message]);
         });
 
+        socket.on('edit', (message) => {
+            dispatch(loadChatMessages(id, type))
+            console.log(message)
+        })
+
 
 
 
@@ -90,9 +100,11 @@ const Chat = ({ group }) => {
                 <div className='chat-messages-container'>
                     {chatMessages?.map(msg => {
                         return (
-                            <div className='chat-message' id={msg.id}>
-                                <p className='chat-username'>{msg.firstName}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
-                                <p className='chat-text'>{msg.message}</p>
+                            <div className='chat-message' id={msg.owner} key={msg.id}>
+                                <p className='chat-username'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
+                                <div className='chat-text' id={msg.id}>
+                                    <ChatMessage msg={msg} socket={socket} roomId={roomId} />
+                                </div>
                             </div>
                         )
 
@@ -108,15 +120,13 @@ const Chat = ({ group }) => {
                             }
                             <div className='chat-message'>
                                 <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
-                                <p className='chat-text' id={message.id}>{message.msg}</p>
+                                <div className='chat-text' id={message.id} dangerouslySetInnerHTML={{ __html: message.msg }}></div>
                             </div>
                         </div>
                     ))}
                 </div>
                 <div className='message-editor' id='editor'>
-                    <ReactQuill value={messageBody}
-                        onChange={(e) => setMessageBody(e)} />
-                    <button onClick={(e) => sendChat(e)}>Send</button>
+                    <ChatInput value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />
                 </div>
             </div>
         </>
