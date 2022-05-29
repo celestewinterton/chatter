@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
+import SearchAutocomplete from "./Autocomplete";
 
 const GroupForm = ({ setShowModal, edit, group }) => {
     const dispatch = useDispatch();
@@ -26,7 +27,6 @@ const GroupForm = ({ setShowModal, edit, group }) => {
             dispatch(editGroupRoom(formData, group.id))
         } else {
             errors = await dispatch(createGroupRoom(formData))
-
         }
 
         if (errors) {
@@ -35,12 +35,10 @@ const GroupForm = ({ setShowModal, edit, group }) => {
         setShowModal(false);
     }
 
-
     const handleCancelClick = async (e) => {
         e.preventDefault();
         setShowModal(false);
     };
-
 
     useEffect(() => {
         setErrors(errors)
@@ -50,15 +48,7 @@ const GroupForm = ({ setShowModal, edit, group }) => {
     return (
         <form autoComplete="off" className="channel-form-container" onSubmit={handleSubmit}>
             <div className='channel-form-input-container'>
-
-                <div className='form-element-container'>
-                    <input
-                        type='text'
-                        className="input-field"
-                        value={members}
-                        onChange={(e) => setMembers(e.target.value)}
-                        placeholder='@somebody or somebody@example.com'></input>
-                </div>
+                <SearchAutocomplete members={members} setMembers={setMembers} />
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Edit DM' : 'Start DM'}</button>
                 <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
             </div>
