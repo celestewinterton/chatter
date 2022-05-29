@@ -16,9 +16,9 @@ const loadGroups = (groups) => ({
 })
 
 
-const deleteGroup = (channelId) => ({
+const deleteGroup = (groupId) => ({
     type: DELETE_GROUP_ROOM,
-    channelId
+    groupId
 })
 
 const editGroup = (group) => ({
@@ -69,14 +69,14 @@ export const editGroupRoom = (formData, roomId) => async (dispatch) => {
     }
 }
 
-export const deleteGroupRoom = (roomId, type) => async (dispatch) => {
+export const deleteGroupRoom = (roomId) => async (dispatch) => {
     const res = await easyFetch(`/api/groups/${roomId}`, {
         method: 'DELETE'
     })
 
     const data = await res.json()
     if (res.ok) {
-        dispatch(deleteGroup(data))
+        dispatch(deleteGroup(data.id))
     } else {
         return data
     }
@@ -100,6 +100,9 @@ const chatRoomsReducer = (state = initialState, action) => {
             return newState;
         case CREATE_GROUP_ROOM:
             newState.subscribed[action.group.id] = action.group
+            return newState
+        case DELETE_GROUP_ROOM:
+            delete newState.subscribed[action.groupId]
             return newState
         default:
             return state;
