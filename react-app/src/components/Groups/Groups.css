@@ -1,32 +1,23 @@
-.group-container {
-  display: grid;
-  grid-template-areas:
-  "headers"
-  "messages"
-  "message-field";
-}
-
-.group-headers {
-  grid-area: headers;
-  display: flex;
-  flex-direction: column;
-}
-
-.group-header-1, .group-header-2 {
+.groups-nav {
+  all: unset;
+  color: rgb(163,163,166);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
-.group-message-history {
-  grid-area: messages
+.side-nav-img {
+  height: 20px;
+  border-radius: 8px;
+  padding: 5px;
 }
 
-.group-message-form {
-  grid-area: message-field
+.groups-header {
+  height: 40px;
+  border-bottom: 1px solid #3a3d40;
 }
 
-.create-group{
-  color: #a1a1a4;
-  padding-left: 16px;
+.groups-title {
+  color: #d1d2d3
 }
