@@ -108,7 +108,7 @@ const Chat = ({ group }) => {
                             }
                             <div className='chat-message'>
                                 <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
-                                <p className='chat-text' id={message.id}>{message.msg}</p>
+                                <div className='chat-text' id={message.id} dangerouslySetInnerHTML={{ __html: message.msg }}></div>
                             </div>
                         </div>
                     ))}

@@ -18,13 +18,13 @@ const Channels = ({ all, user, single }) => {
     return (
         <>
 
-            {user && subscribedChannelsArray.map((channel, idx) => {
+            {user && subscribedChannelsArray?.map((channel, idx) => {
                 return < ChannelCard key={idx} channel={channel} nav={true} />
             })
             }
             {all && <ChannelHeader all={true} />}
             {all && <div className="channel-container">
-                {allChannelsArray.map((channel, idx) => {
+                {allChannelsArray?.map((channel, idx) => {
                     return < ChannelCard key={idx} channel={channel} all={true} />
                 })}
             </div>}
