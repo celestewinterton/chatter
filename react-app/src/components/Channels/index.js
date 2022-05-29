@@ -15,7 +15,6 @@ const Channels = ({ all, user, single }) => {
     const channelsArray = Object.values(rooms.subscribed)
     const allChannelsArray = Object.values(rooms.all)
     const singleChannel = rooms.all[channelId]
-    console.log(singleChannel)
 
 
     return (
