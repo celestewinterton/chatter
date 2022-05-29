@@ -23,6 +23,14 @@ def handle_chat(data):
     db.session.commit()
     emit("chat", data, broadcast=True, to=room)
 
+@socketio.on("edit")
+def edit_chat(data):
+    room = data['room']
+    message = Message.query.get(data['msgId'])
+    message.body = data['msg']
+    db.session.commit()
+    emit("edit", data, broadcast=True, to=room)
+
 
 
 @socketio.on('join')
