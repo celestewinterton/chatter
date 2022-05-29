@@ -62,7 +62,7 @@ class User(db.Model, UserMixin):
         'title': self.title,
         'status': self.status,
         'photo': self.photo,
-        'subcribed_channels':[channel.to_dict() for channel in self.subscribed_channels],
+        'subscribed_channels':[channel.to_dict() for channel in self.subscribed_channels],
         'subscribed_groups':[group.to_dict() for group in self.subscribed_groups],
         }
     def to_username(self):

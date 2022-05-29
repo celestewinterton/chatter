@@ -1,11 +1,14 @@
 from flask_socketio import emit, join_room, leave_room, send, SocketIO
 
+
+
 socketio = SocketIO()
 
 socketio = SocketIO(cors_allowed_origins="*")
 
 @socketio.on("chat")
 def handle_chat(data):
+    print(data)
     room = data['room']
     emit("chat", data, broadcast=True, to=room)
 
