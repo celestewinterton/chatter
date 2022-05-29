@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 const Search = ({query, setQuery, setSearchResults}) => {
   const users = useSelector(state => state.users)
@@ -22,8 +21,6 @@ const Search = ({query, setQuery, setSearchResults}) => {
         <span>{subStringOne}<span className='match'>{match}</span>{subStringTwo}</span>
     )
   }
-
-
 
   return (
     <div className='search-results'

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
-import SearchInput from "../UserSearch/SearchInput";
+import SearchAutocomplete from "../UserSearch/Autocomplete";
 
 const GroupForm = ({ setShowModal, edit, group }) => {
     const dispatch = useDispatch();
@@ -60,7 +60,7 @@ const GroupForm = ({ setShowModal, edit, group }) => {
                         onChange={(e) => setMembers(e.target.value)}
                         placeholder='@somebody (Form))'></input>
                 </div>
-                <SearchInput />
+                <SearchAutocomplete />
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Edit DM' : 'Start DM'}</button>
                 <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
             </div>
