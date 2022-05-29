@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 
-const Search = ({query, setQuery, setSearchResults}) => {
+const SearchUsers = ({query, setQuery, setSearchResults}) => {
   const users = useSelector(state => state.users)
 
   const userResults = Object.values(users)?.filter(
@@ -42,4 +42,4 @@ const Search = ({query, setQuery, setSearchResults}) => {
   )
 }
 
-export default Search;
+export default SearchUsers;

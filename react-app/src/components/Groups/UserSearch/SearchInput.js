@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Search from '.';
+import SearchUsers from '.';
 
 function SearchInput(){
   // const users = group.users.filter(user => user.username)

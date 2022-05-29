@@ -4,6 +4,27 @@
 
 .navbar-container {
    display: flex;
+   justify-content: space-between;
+   padding-right: 10px;
+   height: 44px;
+   width: 100%;
+   background-color: #121016;
+   border-bottom: 1px solid #504e52;
+}
+
+/* ****************** Navbar Search Input ***************** */
+
+.search-container {
+   width: 300px;
+   height: 20px;
+   margin-top: 8px;
+}
+
+/* ****************** Profile Button and Dropdown ***************** */
+
+
+.navbar-profile-container {
+   display: flex;
    justify-content: flex-end;
    padding-right: 10px;
    height: 44px;
@@ -11,9 +32,6 @@
    border-bottom: 1px solid #504e52;
    position: relative;
 }
-
-
-/* ****************** Profile Button and Dropdown ***************** */
 
 .profile-and-dropdown {
    display: flex;
