@@ -1,6 +1,7 @@
 import { easyFetch } from "../utils/easyFetch"
 
 const LOAD_CHANNEL_ROOMS = 'channels/LOAD_CHANNEL_ROOMS'
+const LOAD_SUBSCRIBED_ROOMS = 'channels/LOAD_SUBSCRIBED_ROOMS'
 const CREATE_CHANNEL_ROOM = 'channels/CREATE_ROOM'
 const EDIT_CHANNEL_ROOM = 'channels/EDIT_CHANNEL_ROOM'
 const DELETE_CHANNEL_ROOM = 'channels/DELETE_CHANNEL_ROOM'
@@ -11,6 +12,11 @@ const LEAVE_CHANNEL = 'channels/LEAVE_CHANNEL'
 
 const loadChannels = (channels) => ({
     type: LOAD_CHANNEL_ROOMS,
+    channels
+})
+
+const loadSubscribedChannels = (channels) => ({
+    type: LOAD_SUBSCRIBED_ROOMS,
     channels
 })
 
@@ -153,9 +159,11 @@ const channelsReducer = (state = initialState, action) => {
         case JOIN_CHANNEL:
             newState.all[action.channel.id] = action.channel
             newState.subscribed[action.channel.id] = action.channel
+            return newState
         case LEAVE_CHANNEL:
             newState.all[action.channel.id] = action.channel
             delete newState.subscribed[action.channel.id]
+            return newState
         default:
             return state;
     }

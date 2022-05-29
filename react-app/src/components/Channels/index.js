@@ -11,7 +11,9 @@ const Channels = ({ all, user, single }) => {
     const dispatch = useDispatch()
     const { channelId } = useParams()
     const rooms = useSelector(state => state.channels)
+    const subbedChannels = useSelector(state => state.session.user)
     const channelsArray = Object.values(rooms.subscribed)
+    const subscribedChannelsArray = Object.values(subbedChannels.subscribed_channels)
     const allChannelsArray = Object.values(rooms.all)
     const singleChannel = rooms.all[channelId]
 
@@ -20,8 +22,8 @@ const Channels = ({ all, user, single }) => {
     return (
         <>
 
-            {user && channelsArray.map((channel, idx) => {
-                return < ChannelCard key={idx} channel={channel} />
+            {user && subscribedChannelsArray.map((channel, idx) => {
+                return < ChannelCard key={idx} channel={channel} nav={true} />
             })
             }
             {all && <ChannelHeader all={true} />}
