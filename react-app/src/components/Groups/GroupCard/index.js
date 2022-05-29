@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteGroupRoom } from "../../../store/chatRooms";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { Modal } from "../../../context/Modal"
 
 const GroupCard = ({ group }) => {
     const sessionUser = useSelector(state => state.session.user)
+    const history = useHistory()
     const users = group.users.filter(user => user.username)
     const usernames = users.map(user => user.username)
     const filtered = usernames.includes(sessionUser.username)
@@ -17,6 +18,8 @@ const GroupCard = ({ group }) => {
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
         setShowDeleteModal(false)
+        history.push('/')
+
     }
 
     return (

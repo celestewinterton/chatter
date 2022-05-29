@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import ReactQuill from 'react-quill'
 import { io } from 'socket.io-client';
-import { joinChatRoom, leaveChatRoom, getSiteChatRooms } from '../../../store/chatRoom'
-import { loadChatMessages, clearMessages } from '../../../store/messages'
+import { loadChatMessages, clearMessages } from '../../store/messages'
 
 
 let socket;
@@ -12,9 +12,10 @@ const Chat = ({ group }) => {
     let type = group ? 'groups' : 'channels'
     let chatMessages;
     let chatRoom;
+    let roomId;
     const [messages, setMessages] = useState([]);
     const [messageBody, setMessageBody] = useState("");
-    const { roomId } = useParams();
+    const { id } = useParams();
     const dispatch = useDispatch();
     const groupRooms = useSelector(state => state.chatRooms);
     const channelRooms = useSelector(state => state.channels)
@@ -24,11 +25,12 @@ const Chat = ({ group }) => {
 
 
     if (group) {
-        chatRoom = groupRooms.groupRooms.subscribed[roomId];
+        chatRoom = groupRooms.subscribed[id];
+        roomId = 'g' + id
     } else {
-        chatRoom = channelRooms.subscribed[roomId];
+        chatRoom = channelRooms.subscribed[id];
+        roomId = 'c' + id
     }
-
 
 
 
@@ -37,8 +39,9 @@ const Chat = ({ group }) => {
 
     const sendChat = async (e) => {
         e.preventDefault();
+        console.log('sending')
         socket.emit('chat', {
-            user: `${user.firstName} ${user.lastName}`, msg: messageBody, room: roomId, user_image: user.image, created_at: (new Date()).toLocaleTimeString()
+            user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
         });
         // const errors = await dispatch(createChatMessage(roomId, messageBody));
         //consider creating messages within socketIo for efficiency
@@ -47,9 +50,9 @@ const Chat = ({ group }) => {
 
     useEffect(() => {
         if (group) {
-            dispatch(loadChatMessages(roomId, type))
+            dispatch(loadChatMessages(id, type))
         } else {
-            dispatch(loadChatMessages(roomId, type))
+            dispatch(loadChatMessages(id, type))
         }
 
     }, [roomId, dispatch])
@@ -61,8 +64,6 @@ const Chat = ({ group }) => {
     useEffect(() => {
         socket = io();
 
-        dispatch(joinChatRoom(roomId, type));
-
         socket.emit('join', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId });
 
 
@@ -70,17 +71,10 @@ const Chat = ({ group }) => {
             setMessages(messages => [...messages, message]);
         });
 
-        socket.on('join_room', () => {
-            dispatch(getSiteChatRooms(siteId));
-        });
 
-        socket.on('leave_room', (user) => {
-            dispatch(getSiteChatRooms(siteId));
-        });
 
 
         return (() => {
-            dispatch(leaveChatRoom(roomId, 'site'));
             socket.emit('leave', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId });
             dispatch(clearMessages())
             setMessages([]);
@@ -113,22 +107,17 @@ const Chat = ({ group }) => {
                                 </div>
                             }
                             <div className='chat-message'>
-                                {message.user !== 'weStudy-Bot' &&
-                                    <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
-                                }
+                                <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
                                 <p className='chat-text' id={message.id}>{message.msg}</p>
                             </div>
                         </div>
                     ))}
                 </div>
-                <form autoComplete="off" className='message-input-form' onSubmit={sendChat}>
-                    <input
-                        value={messageBody}
-                        onChange={(e) => setMessageBody(e.target.value)}
-                        placeholder={`Message #${chatRoom?.room_name}`}
-                    />
-                    <button disabled={!messageBody.length} id='send-message' type='submit'>Send</button>
-                </form>
+                <div className='message-editor' id='editor'>
+                    <ReactQuill value={messageBody}
+                        onChange={(e) => setMessageBody(e)} />
+                    <button onClick={(e) => sendChat(e)}>Send</button>
+                </div>
             </div>
         </>
     )

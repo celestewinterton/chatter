@@ -23,7 +23,6 @@ def get_specific_channel(id):
   return channel
 
 
-
 @channel_routes.route('' , methods=['POST'])
 def create_new_channel():
   form = ChannelForm()
