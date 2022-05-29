@@ -10,6 +10,7 @@ import Groups from '../Groups';
 import CreateGroupModal from '../Groups/CreateGroupModal'
 import LeftMenu from '../LeftMenu'
 import './Dashboard.css'
+import GroupsPage from '../Groups/GroupsPage';
 
 
 const Dashboard = () => {
@@ -35,11 +36,8 @@ const Dashboard = () => {
                   </div>
                </ProtectedRoute>
                <ProtectedRoute path='/groups/:groupId' exact={true} >
-                  <Groups />
+                  <GroupsPage single={true} />
                </ProtectedRoute>
-               <Route path='/groups' exact={true} >
-                  <Groups />
-               </Route>
             </Switch>
          </div>
       </>
