@@ -11,3 +11,38 @@
 .channel-title{
     color: #d1d2d3
 }
+
+.channel-card{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    border-top: solid 1px #35373b;
+    border-bottom: solid 1px #35373b;
+}
+
+.channel-container{
+    padding-left: 16px;
+    padding-right: 12px;
+
+}
+
+.channel-card-name{
+    color: #d1d2d3;
+    text-decoration: none;
+}
+
+.channel-users{
+    padding-top: 5px;
+    color: #6f7072;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.view-channel-button{
+    z-index: 100;
+}
+
+.join-channel-button{
+    z-index: 100
+}

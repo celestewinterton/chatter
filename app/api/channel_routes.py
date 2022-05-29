@@ -1,9 +1,11 @@
 from copyreg import remove_extension
 from flask import Blueprint, jsonify, render_template, request
 from datetime import datetime
+
+from flask_login import login_required, current_user
 from ..forms.channel_form import ChannelForm
 from ..utils import form_validation_errors
-from ..models.user import Channel
+from ..models.user import Channel, User
 from ..models.db import db
 
 channel_routes = Blueprint('channels', __name__)
@@ -62,4 +64,23 @@ def delete_channel(id):
   db.session.delete(remove_channel)
   db.session.commit()
   return {'id': id}
+
+@channel_routes.route('/<int:id>/join', methods=['PATCH'])
+@login_required
+def join_channel(id):
+    channel = Channel.query.get(id)
+    user = User.query.get(current_user.id)
+    channel.users.append(user)
+    db.session.commit()
+    return channel.to_dict()
+
+
+@channel_routes.route('/<int:id>/leave', methods=['PATCH'])
+@login_required
+def leave_channel(id):
+    channel = Channel.query.get(id)
+    user = User.query.get(current_user.id)
+    channel.users.pop(channel.users.index(user))
+    db.session.commit()
+    return channel.to_dict()
 

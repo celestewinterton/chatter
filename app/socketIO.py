@@ -15,11 +15,14 @@ def handle_chat(data):
 def on_join(data):
     room = data['room']
     join_room(room)
+    emit('chat','poopmonster' ,to=room)
 
 
 
 @socketio.on('leave')
 def on_leave(data):
     room = data['room']
+    print(data)
     leave_room(room)
+    emit('chat','poopmonster' ,to=room)
 
