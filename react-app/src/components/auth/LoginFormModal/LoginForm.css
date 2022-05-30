@@ -8,14 +8,6 @@
    display:flex;
    justify-content: center;
 }
-.login-form-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 500px;
-   height: 600px;
-   font-size: 30px;
-}
 .signin-header1 {
    font-size: 45px;
 }
@@ -32,7 +24,7 @@
    display:flex;
    justify-content: center;
    align-items: center;
-
+   
 }
 .signin-form-error-container {
    font-size: 18px;
@@ -47,7 +39,7 @@
    color:rgb(163, 17, 17)
 }
 .error-list {
-margin-left: 7px;
+   margin-left: 7px;
 }
 /****************** NAV BUTTONS ********************************* */
 .nav-login-button {
@@ -63,6 +55,14 @@ margin-left: 7px;
    transform: scale(1.03)
 }
 /******************* SIGN IN FORM INPUT FIELDS *****************************/
+.login-form-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 500px;
+   height: 600px;
+   font-size: 30px;
+}
 input {
    display: flex;
    flex-direction: column;

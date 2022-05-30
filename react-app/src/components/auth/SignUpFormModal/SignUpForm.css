@@ -1,8 +1,10 @@
-.signup-container {
+/******************** NAV SIGNUP BUTTON  ****************************/
+
+.nav-signup-container {
    padding-right:20px;
 }
 
-.signup-button {
+.nav-signup-button {
    font-size: 20px;
    width:125px;
    border-radius: 5px;
@@ -10,8 +12,116 @@
    background-color: rgb(44, 7, 80);
    color: white;
    font-family: 'Noto Sans';
-   font-weight: bodler;
+
 }
-.signup-button:hover {
+.nav-signup-button:hover {
    transform: scale(1.03)
+}
+/* ************************SIGNUP ERRORS ******************** */
+.error-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.signin-form-error-container {
+   font-size: 18px;
+   display: flex;
+   flex-direction: column;
+   border: 1px solid red;
+   border-radius: 5px;
+   width: 308px;
+   margin: 0px 0px 10px 3px;
+   padding: 10px 0px 10px 0px;
+   background-color: rgba(238, 67, 67, 0.507);
+   color: rgb(163, 17, 17)
+}
+
+.error-list {
+   margin-left: 7px;
+}
+
+/* ********************SIGNUP CONTAINER**************************** */
+.signup-form-logo {
+   display: block;
+   text-align: center;
+   height: 60px;
+   padding: 10px;
+}
+
+.signup-form-logo-container {
+   display: flex;
+   justify-content: center;
+}
+.signup-header1 {
+   font-size: 45px;
+   margin-bottom:20px;
+}
+
+.signup-form-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 500px;
+   height: 600px;
+   font-size: 30px;
+}
+
+.signup-form-user {
+   padding: 7px;
+   display: flex;
+   justify-content: center;
+}
+.signup-form-email {
+   padding: 7px;
+   display: flex;
+   justify-content: center;
+}
+
+.signup-form-pass {
+   padding: 7px;
+   display: flex;
+   justify-content: center;
+}
+.signup-form-confirmpass {
+   padding: 7px;
+   display: flex;
+   justify-content: center;
+}
+.add-image {
+   padding: 7px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.image-upload {
+   width:278px;
+}
+.fas.fa-image {
+   color: rgb(44, 7, 80)
+}
+
+/********************** SIGN UP FORM BUTTONS ************* */
+.signup-form-buttons {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 7px;
+   flex-direction: column;
+}
+.signup-button {
+   width: 308px;
+   padding: 7px;
+   display: flex;
+   justify-content: center;
+   border-radius: 5px;
+   background-color: rgb(44, 7, 80);
+   color: white;
+   font-size: 20px;
+}
+
+.signup-button:hover {
+   color: white;
+   transform: scale(1.02);
 }
