@@ -11,6 +11,7 @@ import './NavBar.css'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
+
   let sessionLinks
   let search
   if (!sessionUser) {
