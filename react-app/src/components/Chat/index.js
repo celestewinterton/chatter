@@ -46,7 +46,6 @@ const Chat = ({ group }) => {
             user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
         });
         // const errors = await dispatch(createChatMessage(roomId, messageBody));
-        //consider creating messages within socketIo for efficiency
         setMessageBody("");
     };
 
@@ -69,7 +68,7 @@ const Chat = ({ group }) => {
     useEffect(() => {
         socket = io();
 
-        socket.emit('join', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId });
+        socket.emit('join', { 'username': `${user.username}`, 'room': roomId });
 
 
         socket.on('chat', (message) => {
@@ -78,7 +77,10 @@ const Chat = ({ group }) => {
 
         socket.on('edit', (message) => {
             dispatch(loadChatMessages(id, type))
-            console.log(message)
+        })
+
+        socket.on('join', (data) => {
+            console.log(data)
         })
 
 

@@ -37,7 +37,7 @@ def edit_chat(data):
 def on_join(data):
     room = data['room']
     join_room(room)
-    emit('chat','poopmonster' ,to=room)
+    emit('join','poopmonster' ,to=room)
 
 
 
