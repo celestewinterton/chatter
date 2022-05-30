@@ -12,3 +12,6 @@
    font-family: 'Noto Sans';
    font-weight: bodler;
 }
+.signup-button:hover {
+   transform: scale(1.03)
+}
