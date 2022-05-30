@@ -4,7 +4,7 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { loadUsers } from "../../store/users";
 
 
-function Search() {
+function OldSearch() {
   const dispatch = useDispatch()
   const channels = useSelector(state => state.channels.all)
   const users = useSelector(state => state.users)
@@ -58,4 +58,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default OldSearch;

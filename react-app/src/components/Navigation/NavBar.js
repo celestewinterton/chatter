@@ -7,6 +7,7 @@ import SignUpFormModal from '../auth/SignUpFormModal';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import Search from './Search';
+import SearchInput from './Search/SearchInput';
 import './NavBar.css'
 
 const NavBar = () => {
@@ -24,7 +25,7 @@ const NavBar = () => {
   } else {
     search = (
       <div>
-        <Search />
+        <SearchInput />
       </div>
     )
     sessionLinks = (
