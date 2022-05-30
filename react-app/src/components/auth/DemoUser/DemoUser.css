@@ -1,0 +1,11 @@
+.demo-button {
+   width:308px;
+   padding:6px;
+   margin-top: 10px;
+   border-radius: 5px;
+   font-size: 20px;
+}
+.demo-button:hover {
+   border-color: rgb(44, 7, 80);
+   transform: scale(1.01)
+}

@@ -65,65 +65,71 @@ const SignUpForm = () => {
           ))}
         </div>
         <div>
-          <label>User Name</label>
-          <input
-            type='text'
-            name='username'
-            onChange={updateUsername}
-            value={username}
-          ></input>
-        </div>
-        <div>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={updateEmail}
-            value={email}
-          ></input>
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        <div>
-          <label>Confirm Password</label>
-          <input
-            type='password'
-            name='confirm_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <div className="add-image">
-          <input
-            id="file-upload"
-            type="file"
-            accept="image/*"
-            onChange={updateImage}
-          ></input>
-          <div className="preview-container site">
-            {image && (
-              <img
-                alt="preview"
-                src={URL.createObjectURL(image)}
-                className="preview-image site"
-              ></img>
-            )}
+          <div className='signup-form-container'>
+            {/* <label>User Name</label> */}
+            <input
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+              placeholder='First/Last Name'
+              ></input>
           </div>
-          <label htmlFor="file-upload">
-            {imageLoading ?
-              <i className="fas fa-spinner fa-pulse"></i>
-              :
-              <i className="fas fa-image"></i>
-            }
-          </label>
+          <div>
+            {/* <label>Email</label> */}
+            <input
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+              placeholder='Email Address'
+              ></input>
+          </div>
+          <div>
+            {/* <label>Password</label> */}
+            <input
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+              placeholder='Password'
+            ></input>
+          </div>
+          <div>
+            {/* <label>Confirm Password</label> */}
+            <input
+              type='password'
+              name='confirm_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+              placeholder='Confirm Password'
+              ></input>
+          </div>
+          <div className="add-image">
+            <input
+              id="file-upload"
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
+              ></input>
+            <div className="preview-container site">
+              {image && (
+                <img
+                alt="preview"
+                  src={URL.createObjectURL(image)}
+                  className="preview-image site"
+                  ></img>
+                  )}
+            </div>
+            <label htmlFor="file-upload">
+              {imageLoading ?
+                <i className="fas fa-spinner fa-pulse"></i>
+                :
+                <i className="fas fa-image"></i>
+              }
+            </label>
+            </div>
         </div>
         <button type='submit'>Sign Up</button>
       </form>

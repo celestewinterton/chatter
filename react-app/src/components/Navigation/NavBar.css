@@ -17,7 +17,7 @@
    padding: 5px;
 }
 .logo {
-   height: 30px;
+   height: 25px;
    padding-left: 10px;
 }
 
@@ -31,7 +31,7 @@
    align-self: center;
    color: white;
    padding-left: 10px;
-   font-size: 35px;
+   font-size: 25px;
    font-family: 'Noto Sans';
    
 }
@@ -123,6 +123,7 @@
    border-radius: 4px;
    padding-left: 10px;
 }
+
 
 .user-image-nav-2 {
    width: 36px;
