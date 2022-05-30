@@ -27,12 +27,12 @@ const SignUpForm = () => {
       formData.append('image', image)
       setImageLoading(true);
       const data = await dispatch(signUp(formData));
+      console.log('errors', errors)
       if (data) {
         setErrors(data)
-      }
+      } 
     }
   };
-  console.log('errors', errors)
   const updateImage = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -61,20 +61,20 @@ const SignUpForm = () => {
   return (
     <div className='signup-form-container'>
       <form onSubmit={onSignUp}>
-        <div className='signup-form-logo-container'href='/#'>
-          <img className='signup-form-logo' alt='signup form logo'src={chatter}></img>
-        </div>
-          <h2 className='signup-header1'>Sign up for Chatter </h2>
         <div className='error-container'>
           {errors.length>0 && (
-            <div className='signin-form-error-container'>
-            <span className="error-title">The following errors occured:</span>
+              <div className='signup-form-error-container'>
+            {/* <span className="error-title">The following errors occured:</span> */}
               {errors.map((error, ind) => (
                 <li className='error-list'key={ind}>{error}</li>
               ))}
             </div>
           )}
         </div>           
+        <div className='signup-form-logo-container'href='/#'>
+          <img className='signup-form-logo' alt='signup form logo'src={chatter}></img>
+        </div>
+        <h2 className='signup-header1'>Sign up for Chatter </h2>
         <div className='signup-form-user'>
           <input
             type='text'
@@ -119,9 +119,9 @@ const SignUpForm = () => {
           <input className='image-upload'
             id="file-upload"
             type="file"
-            accept="image/png*"
-            onChange={updateImage}
+            accept="image*"
             required
+            onChange={updateImage}
             />
           <div className="preview-container-site">
             {image && (
@@ -132,18 +132,18 @@ const SignUpForm = () => {
               ></img>
               )}
           </div>
-          {/* <label htmlFor="file-upload"> */}
+          <label htmlFor="file-upload">
             {imageLoading ?
               <i className="fas fa-spinner fa-pulse"></i>
               :
               <i className="fas fa-image"></i>
             }
-          {/* </label> */}
-          </div>
-      <div className='signup-form-buttons'>
-        <button className='signup-button'type='submit'>Sign Up</button>
-        <DemoUser />
-      </div>
+          </label>
+        </div>
+        <div className='signup-form-buttons'>
+          <button className='signup-button'type='submit'>Sign Up</button>
+          <DemoUser />
+        </div>
       </form>
     </div>
   );

@@ -24,6 +24,7 @@
    display:flex;
    justify-content: center;
    align-items: center;
+   padding: 0px 5px 0px 5px;
    
 }
 .signin-form-error-container {
@@ -40,6 +41,7 @@
 }
 .error-list {
    margin-left: 7px;
+   padding-top: 5px;
 }
 /****************** NAV BUTTONS ********************************* */
 .nav-login-button {

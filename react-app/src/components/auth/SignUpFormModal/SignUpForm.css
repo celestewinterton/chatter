@@ -25,7 +25,7 @@
 
 }
 
-.signin-form-error-container {
+.signup-form-error-container {
    font-size: 18px;
    display: flex;
    flex-direction: column;
@@ -64,7 +64,7 @@
    justify-content: center;
    align-items: center;
    width: 500px;
-   height: 600px;
+   height: 700px;
    font-size: 30px;
 }
 
