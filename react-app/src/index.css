@@ -1,6 +1,6 @@
 /* TODO Add site wide styles */
 *{
-    font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;;
+    font-family: Slack-Lato, Slack-Fractions, appleLogo, 'Lato', sans-serif;
 }
 .whole-page-container{
     height: 100vh;
