@@ -63,7 +63,8 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    image = form["image"].data
+    image = request.files['image']
+    print('upload', image)
     if not allowed_file(image.filename):
         return {"errors": "file type not allowed"}, 400
     image.filename = get_unique_filename(image.filename)
@@ -85,6 +86,7 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
+    print('errors', form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
