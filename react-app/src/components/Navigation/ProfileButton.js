@@ -31,23 +31,29 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <div>
+    <div className="profile-and-dropdown">
       <div className='profile-container'>
-        <img className="user-image-nav"
+        <img className="user-image-nav-1"
           src={user.photo}
           onClick={openMenu}
         />
       </div>
       {showMenu && (
-        <li className="profile-dropdown">
-          <div className='dropdown-list'>
-            {/* <a>{user.username}</a> */}
-            <a>{user.email}</a>
-            <div>
+        <div className="profile-dropdown">
+          <div className='profile-dropdown-content'>
+            <div className="profile-dropdown-name">
+              <img className="user-image-nav-2"
+                src={user.photo}
+                onClick={openMenu}
+              />
+              <a>{user.username}</a>
+            </div>
+            <div className="line"></div>
+            <div className="profile-link-container">
               <button onClick={logout}>Logout</button>
             </div>
           </div>
-        </li>
+        </div>
       )}
     </div>
   );

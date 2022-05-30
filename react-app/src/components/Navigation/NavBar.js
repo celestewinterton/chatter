@@ -6,11 +6,15 @@ import LoginFormModal from '../auth/LoginFormModal';
 import SignUpFormModal from '../auth/SignUpFormModal';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import Search from './Search';
+import SearchInput from './Search/SearchInput';
 import './NavBar.css'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
+
   let sessionLinks
+  let search
   if (!sessionUser) {
     sessionLinks = (
       <div>
@@ -19,8 +23,13 @@ const NavBar = () => {
       </div>
     )
   } else {
-    sessionLinks = (
+    search = (
       <div>
+        <SearchInput />
+      </div>
+    )
+    sessionLinks = (
+      <div className='navbar-profile-container'>
         <ProfileButton user={sessionUser} />
       </div>
     )
@@ -29,14 +38,8 @@ const NavBar = () => {
 
   return (
     <div className='navbar-container'>
-      <nav>
-        <ul>
-          <li>
-            {/* <LogoutButton /> */}
-            {sessionLinks}
-          </li>
-        </ul>
-      </nav>
+        {search}
+        {sessionLinks}
     </div>
   );
 }
