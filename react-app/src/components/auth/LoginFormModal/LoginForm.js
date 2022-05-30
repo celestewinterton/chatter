@@ -38,8 +38,8 @@ const LoginForm = () => {
       <div className='login-form-container'>
         <form onSubmit={onLogin}>
           <div signin-form-headers>
-            <a className='signin-form-logo-container'href=''>
-              <img className='signin-form-logo'src={chatter}></img>
+            <a className='signin-form-logo-container'href='/#'>
+              <img className='signin-form-logo' alt='sign up form logo'src={chatter}></img>
             </a>
             <h2 className='signin-header1'> Sign in to Chatter</h2>
             <h4 className='signin-header2'>New to Chatter?</h4>

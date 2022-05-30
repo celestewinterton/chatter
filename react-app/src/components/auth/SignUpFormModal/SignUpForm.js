@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 import DemoUser from '../DemoUser/DemoUser';
+import chatter from '../../../images/chatter.png'
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -57,84 +59,88 @@ const SignUpForm = () => {
   }
 
   return (
-    <>
+    <div className='signup-form-container'>
       <form onSubmit={onSignUp}>
-        <div>
+        {/* <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
-        </div>
-        <div>
-          <div className='signup-form-container'>
-            {/* <label>User Name</label> */}
-            <input
-              type='text'
-              name='username'
-              onChange={updateUsername}
-              value={username}
-              placeholder='First/Last Name'
-              ></input>
-          </div>
-          <div>
-            {/* <label>Email</label> */}
-            <input
-              type='text'
-              name='email'
-              onChange={updateEmail}
-              value={email}
-              placeholder='Email Address'
-              ></input>
-          </div>
-          <div>
-            {/* <label>Password</label> */}
-            <input
-              type='password'
-              name='password'
-              onChange={updatePassword}
-              value={password}
-              placeholder='Password'
-            ></input>
-          </div>
-          <div>
-            {/* <label>Confirm Password</label> */}
-            <input
-              type='password'
-              name='confirm_password'
-              onChange={updateRepeatPassword}
-              value={repeatPassword}
-              required={true}
-              placeholder='Confirm Password'
-              ></input>
-          </div>
-          <div className="add-image">
-            <input
-              id="file-upload"
-              type="file"
-              accept="image/*"
-              onChange={updateImage}
-              ></input>
-            <div className="preview-container site">
-              {image && (
-                <img
-                alt="preview"
+        </div> */}
+            <a className='signup-form-logo-container'href='/#'>
+              <img className='signup-form-logo' alt='signup form logo'src={chatter}></img>
+            </a>
+            <h2 className='signup-header1'>Sign up for Chatter </h2>
+            <div className='signup-form-user'>
+              <input
+                type='text'
+                name='username'
+                onChange={updateUsername}
+                value={username}
+                placeholder='First/Last Name'
+                />
+            </div>
+            <div className='signup-form-email'>
+            { /* <label>Email</label> */}
+              <input
+                type='text'
+                name='email'
+                onChange={updateEmail}
+                value={email}
+                placeholder='Email Address'
+                />
+            </div>
+            <div className='signup-form-pass'>
+              {/* <label>Password</label> */}
+              <input
+                type='password'
+                name='password'
+                onChange={updatePassword}
+                value={password}
+                placeholder='Password'
+                />
+            </div>
+            <div className='signup-form-confirmpass'>
+                {/* <label>Confirm Password</label> */}
+              <input
+                type='password'
+                name='confirm_password'
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+                placeholder='Confirm Password'
+                />
+            </div>
+            <div className="add-image">
+              <input className='image-upload'
+                id="file-upload"
+                type="file"
+                accept="image/png*"
+                onChange={updateImage}
+                required
+                />
+              <div className="preview-container-site">
+                {image && (
+                  <img
+                  alt="preview"
                   src={URL.createObjectURL(image)}
                   className="preview-image site"
                   ></img>
                   )}
-            </div>
-            <label htmlFor="file-upload">
-              {imageLoading ?
-                <i className="fas fa-spinner fa-pulse"></i>
-                :
-                <i className="fas fa-image"></i>
-              }
-            </label>
-            </div>
-        </div>
-        <button type='submit'>Sign Up</button>
+              </div>
+              <label htmlFor="file-upload">
+                {imageLoading ?
+                  <i className="fas fa-spinner fa-pulse"></i>
+                  :
+                  <i className="fas fa-image"></i>
+                }
+              </label>
+              </div>
+          <div className='signup-form-buttons'>
+            <button className='signup-button'type='submit'>Sign Up</button>
+            <DemoUser />
+          </div>
       </form>
-      <DemoUser />
-    </>
+    </div>
   );
 };
 
