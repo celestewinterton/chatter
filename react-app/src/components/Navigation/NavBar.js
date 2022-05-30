@@ -6,34 +6,21 @@ import LoginFormModal from '../auth/LoginFormModal';
 import SignUpFormModal from '../auth/SignUpFormModal';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import DemoUser from '../auth/DemoUser/DemoUser';
 import './NavBar.css'
-import chatter from "../../images/chatter.png"
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
   let sessionLinks
   if (!sessionUser) {
     sessionLinks = (
-      <div className='nav-container'>
-        <div className='nav-left'>
-            <NavLink className='nav-app-name' to='/home'>
-              <a>
-                <img className='logo' src={chatter}/>
-              </a>
-            </NavLink>
-        </div>
-        <div className='nav-right'>
-          <div className='ui-buttons'>
-            <LoginFormModal />
-            <SignUpFormModal />
-          </div>
-        </div>
+      <div>
+        <LoginFormModal />
+        <SignUpFormModal />
       </div>
     )
   } else {
     sessionLinks = (
-      <div className='nav-profile'>
+      <div>
         <ProfileButton user={sessionUser} />
       </div>
     )
@@ -43,8 +30,9 @@ const NavBar = () => {
   return (
     <div className='navbar-container'>
       <nav>
-        <ul className='navbar-ul'>
-          <li className='navbar-li'>
+        <ul>
+          <li>
+            {/* <LogoutButton /> */}
             {sessionLinks}
           </li>
         </ul>

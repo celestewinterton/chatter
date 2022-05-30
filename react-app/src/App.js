@@ -10,7 +10,6 @@ import Dashboard from './components/Dashboard';
 import Groups from './components/Groups/index.js';
 import { getGroupRooms, getRooms } from './store/chatRooms';
 import { getChannels } from './store/channels';
-import SplashPage from './components/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,9 +33,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/home'>
-          <SplashPage />
-        </Route>
         <ProtectedRoute path='/' >
           <Dashboard />
         </ProtectedRoute>
