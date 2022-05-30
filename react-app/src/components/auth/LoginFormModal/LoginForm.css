@@ -16,5 +16,16 @@ input {
    display: flex;
    flex-direction: column;
    align-items: center;
+}
 
+.login-container {
+   padding-right: 15px;
+}
+.login-button {
+   font-size: 20px;
+   width:125px;
+   border-radius: 5px;
+   height: 37px;
+   font-family: 'Noto Sans';
+   font-weight: bodler;
 }
