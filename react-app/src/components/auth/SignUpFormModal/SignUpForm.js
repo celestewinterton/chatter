@@ -21,8 +21,8 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password === repeatPassword) {
       const formData = new FormData()
-      formData.append('email', email)
       formData.append('username', username)
+      formData.append('email', email)
       formData.append('password', password)
       formData.append('image', image)
       setImageLoading(true);
@@ -30,7 +30,9 @@ const SignUpForm = () => {
       console.log('errors', errors)
       if (data) {
         setErrors(data)
-      } 
+      } else {
+        setErrors('password: Password doesn\'t match')
+      }
     }
   };
   const updateImage = (e) => {
@@ -55,7 +57,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/'/>;
   }
 
   return (
@@ -64,7 +66,7 @@ const SignUpForm = () => {
         <div className='error-container'>
           {errors.length>0 && (
               <div className='signup-form-error-container'>
-            {/* <span className="error-title">The following errors occured:</span> */}
+            <span className="error-title">The following errors occured:</span>
               {errors.map((error, ind) => (
                 <li className='error-list'key={ind}>{error}</li>
               ))}
@@ -119,8 +121,8 @@ const SignUpForm = () => {
           <input className='image-upload'
             id="file-upload"
             type="file"
-            accept="image*"
-            required
+            accept="image/*"
+            // required
             onChange={updateImage}
             />
           <div className="preview-container-site">
