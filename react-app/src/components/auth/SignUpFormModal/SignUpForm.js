@@ -32,7 +32,7 @@ const SignUpForm = () => {
       }
     }
   };
-
+  console.log('errors', errors)
   const updateImage = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -61,84 +61,89 @@ const SignUpForm = () => {
   return (
     <div className='signup-form-container'>
       <form onSubmit={onSignUp}>
-        {/* <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div> */}
-            <a className='signup-form-logo-container'href='/#'>
-              <img className='signup-form-logo' alt='signup form logo'src={chatter}></img>
-            </a>
-            <h2 className='signup-header1'>Sign up for Chatter </h2>
-            <div className='signup-form-user'>
-              <input
-                type='text'
-                name='username'
-                onChange={updateUsername}
-                value={username}
-                placeholder='First/Last Name'
-                />
+        <div className='signup-form-logo-container'href='/#'>
+          <img className='signup-form-logo' alt='signup form logo'src={chatter}></img>
+        </div>
+          <h2 className='signup-header1'>Sign up for Chatter </h2>
+        <div className='error-container'>
+          {errors.length>0 && (
+            <div className='signin-form-error-container'>
+            <span className="error-title">The following errors occured:</span>
+              {errors.map((error, ind) => (
+                <li className='error-list'key={ind}>{error}</li>
+              ))}
             </div>
-            <div className='signup-form-email'>
-            { /* <label>Email</label> */}
-              <input
-                type='text'
-                name='email'
-                onChange={updateEmail}
-                value={email}
-                placeholder='Email Address'
-                />
-            </div>
-            <div className='signup-form-pass'>
-              {/* <label>Password</label> */}
-              <input
-                type='password'
-                name='password'
-                onChange={updatePassword}
-                value={password}
-                placeholder='Password'
-                />
-            </div>
-            <div className='signup-form-confirmpass'>
-                {/* <label>Confirm Password</label> */}
-              <input
-                type='password'
-                name='confirm_password'
-                onChange={updateRepeatPassword}
-                value={repeatPassword}
-                required={true}
-                placeholder='Confirm Password'
-                />
-            </div>
-            <div className="add-image">
-              <input className='image-upload'
-                id="file-upload"
-                type="file"
-                accept="image/png*"
-                onChange={updateImage}
-                required
-                />
-              <div className="preview-container-site">
-                {image && (
-                  <img
-                  alt="preview"
-                  src={URL.createObjectURL(image)}
-                  className="preview-image site"
-                  ></img>
-                  )}
-              </div>
-              <label htmlFor="file-upload">
-                {imageLoading ?
-                  <i className="fas fa-spinner fa-pulse"></i>
-                  :
-                  <i className="fas fa-image"></i>
-                }
-              </label>
-              </div>
-          <div className='signup-form-buttons'>
-            <button className='signup-button'type='submit'>Sign Up</button>
-            <DemoUser />
+          )}
+        </div>           
+        <div className='signup-form-user'>
+          <input
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            value={username}
+            placeholder='First/Last Name'
+            />
+        </div>
+        <div className='signup-form-email'>
+        { /* <label>Email</label> */}
+          <input
+            type='text'
+            name='email'
+            onChange={updateEmail}
+            value={email}
+            placeholder='Email Address'
+            />
+        </div>
+        <div className='signup-form-pass'>
+          {/* <label>Password</label> */}
+          <input
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+            placeholder='Password'
+            />
+        </div>
+        <div className='signup-form-confirmpass'>
+            {/* <label>Confirm Password</label> */}
+          <input
+            type='password'
+            name='confirm_password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+            placeholder='Confirm Password'
+            />
+        </div>
+        <div className="add-image">
+          <input className='image-upload'
+            id="file-upload"
+            type="file"
+            accept="image/png*"
+            onChange={updateImage}
+            required
+            />
+          <div className="preview-container-site">
+            {image && (
+              <img
+              alt="preview"
+              src={URL.createObjectURL(image)}
+              className="preview-image site"
+              ></img>
+              )}
           </div>
+          {/* <label htmlFor="file-upload"> */}
+            {imageLoading ?
+              <i className="fas fa-spinner fa-pulse"></i>
+              :
+              <i className="fas fa-image"></i>
+            }
+          {/* </label> */}
+          </div>
+      <div className='signup-form-buttons'>
+        <button className='signup-button'type='submit'>Sign Up</button>
+        <DemoUser />
+      </div>
       </form>
     </div>
   );

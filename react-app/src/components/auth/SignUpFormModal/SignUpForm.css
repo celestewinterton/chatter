@@ -101,7 +101,9 @@
 .fas.fa-image {
    color: rgb(44, 7, 80)
 }
-
+.preview-image.site {
+   height: 50px;
+} 
 /********************** SIGN UP FORM BUTTONS ************* */
 .signup-form-buttons {
    display: flex;
