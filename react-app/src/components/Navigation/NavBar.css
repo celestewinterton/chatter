@@ -15,11 +15,33 @@
 /* ****************** Navbar Search Input ***************** */
 
 .search-container {
-   width: 300px;
-   height: 20px;
+   height: 26px;
    margin-top: 8px;
    margin-left: 240px;
    position: relative;
+}
+
+.search-input {
+   all: unset;
+   height: 26px;
+   width: 300px;
+   border-radius: 6px;
+   border: 1px solid #504e52;
+   background-color: #d1d2d333;
+   color: #d1d2d3;
+   padding: 0px 5px;
+   z-index: 1;
+}
+
+.search-results-item {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.search-result-text {
+   all: unset;
+   color: #d1d2d3;
 }
 
 /* ****************** Profile Button and Dropdown ***************** */

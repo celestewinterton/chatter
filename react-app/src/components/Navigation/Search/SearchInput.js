@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import SearchUsers from '.';
+import Search from '.';
 
-function SearchInput(){
+const SearchInput = () => {
   // const users = group.users.filter(user => user.username)
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState(false);
@@ -13,11 +12,11 @@ function SearchInput(){
   }, [query])
 
   return (
-    <div>
+    <div className='search-container'>
       {<div>
         <input
           className='search-input'
-          placeholder='@somebody (Search)'
+          placeholder='Search for channels or users'
           value={query}
           onChange={e=>setQuery(e.target.value)}
           onClick={e => e.stopPropagation}/>
