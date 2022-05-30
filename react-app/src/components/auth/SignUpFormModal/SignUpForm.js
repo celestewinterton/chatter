@@ -19,22 +19,22 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    // if (password === repeatPassword) {
+    if (password === repeatPassword) {
       const formData = new FormData()
       formData.append('username', username)
       formData.append('email', email)
       formData.append('password', password)
       formData.append('image', image)
-      formData.append('repeat_password', repeatPassword)
-
       setImageLoading(true);
       const data = await dispatch(signUp(formData));
       console.log('errors', errors)
       if (data) {
         setErrors(data)
+        return 
+      
       } else {
         setErrors('password: Password doesn\'t match')
-      // }
+      }
     }
   };
   const updateImage = (e) => {
