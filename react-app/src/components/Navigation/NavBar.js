@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import Search from './Search';
 import SearchInput from './Search/SearchInput';
+import chatter from "../../images/chatter.png"
 import './NavBar.css'
 
 const NavBar = () => {
@@ -17,9 +18,21 @@ const NavBar = () => {
   let search
   if (!sessionUser) {
     sessionLinks = (
-      <div>
-        <LoginFormModal />
-        <SignUpFormModal />
+      <div className='nav-container'>
+        <div className='nav-left'>
+            <NavLink className='nav-logo' to='/home'>
+              <a>
+                <img className='logo' src={chatter}/>
+              </a>
+            </NavLink>
+            <p className='nav-appname'>Chatter</p>
+        </div>
+        <div className='nav-right'>
+          <div className='ui-buttons'>
+            <LoginFormModal />
+            <SignUpFormModal />
+          </div>
+        </div>
       </div>
     )
   } else {

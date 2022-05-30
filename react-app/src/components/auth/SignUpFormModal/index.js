@@ -7,8 +7,8 @@ function SignUpFormModal() {
    const [showModal, setShowModal] = useState(false);
 
    return (
-      <div> 
-         <button className='sign-up-button'onClick={() => setShowModal(true)}>SignUp</button>
+      <div className= 'signup-container'> 
+         <button className='signup-button'onClick={() => setShowModal(true)}>Get Started</button>
          {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                <SignUpForm />
