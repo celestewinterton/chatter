@@ -33,6 +33,7 @@ function ProfileButton({ user }) {
   return (
     <div className="profile-and-dropdown">
       <div className='profile-container'>
+        {user.username}
         <img className="user-image-nav-1"
           src={user.photo}
           onClick={openMenu}

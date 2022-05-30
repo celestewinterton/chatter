@@ -6,12 +6,35 @@
    display: flex;
    justify-content: space-between;
    padding-right: 10px;
-   height: 44px;
+   height: 50px;
    width: 100%;
    background-color: #121016;
    border-bottom: 1px solid #504e52;
 }
+.ui-buttons {
+   display: flex;
+   padding-top: 10px;
+   padding: 5px;
+}
+.logo {
+   height: 30px;
+   padding-left: 10px;
+}
 
+.nav-right {
+   display:flex;
+   align-items: center;
+}
+
+.nav-appname {
+   display:flex;
+   align-self: center;
+   color: white;
+   padding-left: 10px;
+   font-size: 35px;
+   font-family: 'Noto Sans';
+   
+}
 /* ****************** Navbar Search Input ***************** */
 
 .search-container {
@@ -19,8 +42,19 @@
    margin-top: 8px;
    margin-left: 240px;
    position: relative;
+   padding-left: 300px;
+}
+.nav-container {
+   display: flex;
+   width: 100vw;
+   justify-content: space-between;
 }
 
+.nav-left {
+   display: flex;
+   padding-left: 10px;
+   align-items: center;
+}
 .search-input {
    all: unset;
    height: 26px;
@@ -78,17 +112,22 @@
 
 .profile-container {
    margin-top: 9px;
+   display:flex;
+   color: white;
+   align-items: center;
 }
 
-.user-image-nav-1, .user-image-nav-2 {
+.user-image-nav-1 {
    width: 25px;
    height: 25px;
    border-radius: 4px;
+   padding-left: 10px;
 }
 
 .user-image-nav-2 {
    width: 36px;
    height: 36px;
+
 }
 
 .profile-dropdown {
