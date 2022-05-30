@@ -24,19 +24,31 @@
 .search-input {
    all: unset;
    height: 26px;
-   width: 300px;
+   width: 400px;
    border-radius: 6px;
    border: 1px solid #504e52;
    background-color: #d1d2d333;
    color: #d1d2d3;
-   padding: 0px 5px;
+   text-align: center;
    z-index: 1;
+}
+
+.search-input::selection {
+   background-color: #1a1d21;
+}
+
+.search-results {
+   background-color: #1a1d21;
+   border: 1px solid #504e52;
+   height: 400px;
+   padding: 20px;
 }
 
 .search-results-item {
    display: flex;
    flex-direction: row;
    align-items: center;
+   margin: 10px 0px;
 }
 
 .search-result-text {
