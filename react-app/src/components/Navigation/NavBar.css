@@ -1,18 +1,70 @@
 .profile-btn {
    font-size: 10px;
-
 }
+
+.nav-container {
+   display: flex;
+   width: 100vw;
+   justify-content: space-between;
+}
+.nav-left {
+   display: flex;
+   padding-left: 10px;
+   align-items: center;
+}
+
+
 
 .navbar-container{
    display: flex;
-   justify-content: flex-end;
-   padding-right: 10px;
    height: 44px;
    background-color: #121016;
    border-bottom: 1px solid #504e52;;
+   justify-content: flex-end;
+   padding-top: 10px;
 }
 
 .user-image-nav{
    width: 25px;
    height: 25px;
+   padding-left: 10px;
 }
+
+.ui-buttons {
+   display: flex;
+   padding-top: 10px;
+   padding: 5px;
+}
+.nav-profile {
+   padding-right: 10px;
+}
+
+.profile-container {
+   display:flex;
+   color: white;
+   align-items: center;
+}
+
+.profile-dropdown {
+   width: 90px;
+   margin-top: 20px;
+   margin-right: 50px;
+   background-color: black;
+   position:absolute;
+}
+.dropdown-list {
+   display:flex;
+   flex-direction: column;
+   color: white;
+}
+.logo {
+   height: 30px;
+
+}
+
+
+
+
+
+
+

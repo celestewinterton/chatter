@@ -127,7 +127,7 @@ const SignUpForm = () => {
         </div>
         <button type='submit'>Sign Up</button>
       </form>
-      <DemoUser />
+      {/* <DemoUser /> */}
     </>
   );
 };
