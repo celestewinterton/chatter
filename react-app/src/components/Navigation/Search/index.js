@@ -1,10 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from "react";
+import { loadUsers } from "../../../store/users";
 
 const Search = ({query, setQuery, setSearchResults}) => {
   const users = useSelector(state => state.users)
   const channels = useSelector(state => state.channels.all)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(loadUsers())
+  }, [dispatch]);
 
   const userResults = Object.values(users)?.filter(
     user => user?.username?.toLowerCase().includes(query?.toLowerCase())
