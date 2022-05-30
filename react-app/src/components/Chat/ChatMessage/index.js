@@ -10,8 +10,6 @@ const ChatMessage = ({ msg, socket, roomId }) => {
 
     const editMessage = async (e, msgId) => {
         e.preventDefault()
-        console.log(msgId)
-        console.log(message)
         socket.emit('edit', {
             user: `${user.username}`, userId: `${user.id}`, msgId: msgId, msg: message, room: roomId, created_at: (new Date()).toLocaleTimeString()
         });
