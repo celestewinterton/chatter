@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
                 src={user.photo}
                 onClick={openMenu}
               />
-              <a>{user.username}</a>
+              <p>{user.username}</p>
             </div>
             <div className="line"></div>
             <div className="profile-link-container">

@@ -21,9 +21,7 @@ const NavBar = () => {
       <div className='nav-container'>
         <div className='nav-left'>
             <NavLink className='nav-logo' to='/home'>
-              <a>
                 <img className='logo' src={chatter}/>
-              </a>
             </NavLink>
             <p className='nav-appname'>Chatter</p>
         </div>
