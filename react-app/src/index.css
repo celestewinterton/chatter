@@ -14,6 +14,18 @@
     background-color: #1264a3;
 }
 
- .unset {
+.app-body-hover:hover {
+    background-color: #1e2227;
+}
+
+.grey-hover:hover {
+    background-color: #232129;
+}
+
+.unset {
     all: unset;
+}
+
+.bold, div > .bold {
+    font-weight: 600;
 }
