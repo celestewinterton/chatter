@@ -11,7 +11,7 @@ const ChannelHeader = ({ all, single, channel, modal }) => {
                     <div className="channel-header">
                         <h1 className="channel-title">Channel Browser</h1>
                     </div>
-                    <div className="channel-search-container">
+                    <div className="channel-search-container muted">
                         <h1>{allChannels && Object.keys(allChannels).length} channels</h1>
                     </div>
                 </>

@@ -29,3 +29,10 @@
 .bold, div > .bold {
     font-weight: 600;
 }
+
+.muted {
+    color: #6f7072;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 5px 16px;
+}

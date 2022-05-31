@@ -9,8 +9,9 @@ import { Modal } from "../../../context/Modal"
 const GroupCard = ({ group, all, single, modal, nav }) => {
     const sessionUser = useSelector(state => state.session.user)
     const groups = useSelector(state => state.chatRooms.subscribed)
-    const { groupId } = useParams()
-    if (single) group = Object.values(groups)?.find(group => group.id == groupId)
+    const params = useParams()
+    const groupId = params.id
+    const singleGroupName = Object.values(groups)?.find(group => group.id == groupId)?.users?.map(user => user?.username)
     const usernames = group?.users?.map(user => user?.username)
     const filtered = usernames?.includes(sessionUser?.username)
     const groupName = usernames?.filter(user => user != sessionUser.username).join(", ")
@@ -25,6 +26,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -33,6 +35,9 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
 >>>>>>> dfbdf86 (fixing merge conflicts)
 =======
 >>>>>>> befa05e (moves some things around in groups to match channels logic)
+=======
+    console.log("==========> ",  singleGroupName, groupId)
+>>>>>>> 1108619 (groups title showing on single group page again)
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
@@ -72,6 +77,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
 
             {single &&
             <div className="groups-header">
+<<<<<<< HEAD
                 <h1 className="groups-title" onClick={modal}>{groupName}</h1>
 <<<<<<< HEAD
             </div>
@@ -86,6 +92,9 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
                 )}
 =======
 >>>>>>> dfbdf86 (fixing merge conflicts)
+=======
+                <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
+>>>>>>> 1108619 (groups title showing on single group page again)
             </div>
             }
 

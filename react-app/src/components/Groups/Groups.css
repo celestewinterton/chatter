@@ -16,6 +16,9 @@
 .groups-header {
   height: 40px;
   border-bottom: 1px solid #3a3d40;
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
 }
 
 .groups-title {

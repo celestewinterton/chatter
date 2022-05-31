@@ -12,6 +12,7 @@ const Groups = ({all, single}) => {
   const groupsArray = Object.values(groups.subscribed)
   const singleGroup = groupsArray[groupId]
 
+
   useEffect(() => {
   }, [groups]);
 
@@ -26,11 +27,11 @@ const Groups = ({all, single}) => {
         })}
       </div>}
 
-      {all && <div className="group-container">
+      {/* {all && <div className="group-container">
         {groupsArray.map((group, idx) => {
           return <GroupCard key={idx} group={group} all={true} />
         })}
-      </div>}
+      </div>} */}
 
       {single && <GroupCard group={singleGroup} single={true} />}
     </>
