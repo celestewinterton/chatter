@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
 import SearchAutocomplete from "./Autocomplete";
+import DropdownMultipleCombobox from "./Downshift";
 
 const GroupForm = ({ setShowModal, edit, group }) => {
     const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const GroupForm = ({ setShowModal, edit, group }) => {
         <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
             <div className='group-create-input-container'>
                 <SearchAutocomplete members={members} setMembers={setMembers} />
+                <DropdownMultipleCombobox  members={members} setMembers={setMembers}/>
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Edit DM' : 'Start DM'}</button>
                 {/* <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button> */}
             </div>
