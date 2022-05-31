@@ -1,11 +1,18 @@
 .create-channel{
     color: #a1a1a4;
-    padding-left: 16px;
+    padding: 0px 16px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .channel-header{
     height: 40px;
     border-bottom: 1px solid #3a3d40;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
 }
 
 .channel-title{
@@ -22,9 +29,8 @@
 }
 
 .channel-container{
-    padding-left: 16px;
-    padding-right: 12px;
-
+    /* padding-left: 16px;
+    padding-right: 12px; */
 }
 
 .channel-card-name{
@@ -37,12 +43,44 @@
     color: #6f7072;
     font-size: 13px;
     text-decoration: none;
+    padding: 0px 18px;
 }
 
 .view-channel-button{
-    z-index: 100;
+    all: unset;
+    color: transparent;
 }
 
-.join-channel-button{
-    z-index: 100
+.join-channel-button {
+    all: unset;
+    color: transparent;
+
+}
+
+.app-body-hover:hover .view-channel-button {
+    background-color: #1a1d21;
+    z-index: 100;
+    border: 1px solid #35373b;
+    color: #d1d2d3;
+    padding: 8px 20px;
+    border-radius: 6px;
+    margin: 6px;
+}
+
+.app-body-hover:hover .join-channel-button {
+    all: unset;
+    z-index: 100;
+    border: 1px solid #35373b;
+    background-color: #007A5A;
+    padding: 8px 24px;
+    border-radius: 6px;
+    margin-right: 16px;
+}
+
+.view-channel-button:hover  {
+    background-color: #1f2228;
+}
+
+.join-channel-button:hover  {
+    background-color: #048d68;
 }

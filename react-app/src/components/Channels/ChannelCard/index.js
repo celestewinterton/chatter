@@ -54,10 +54,10 @@ const ChannelCard = ({ channel, single, nav }) => {
             )}
 
             {single && <ChannelHeader single={true} channel={selectedChannel} modal={() => setShowModal(true)} />}
-            {!single && !nav && <NavLink to={`/channels/${channel.id}`}>
-                <div className="channel-card">
+            {!single && !nav && <NavLink className="unset" to={`/channels/${channel.id}`}>
+                <div className="channel-card app-body-hover">
                     <div className="channel-information">
-                        <h1 className="channel-card-name">#{channel.name}</h1>
+                        <h1 className="channel-card-name bold"># {channel.name}</h1>
                         <h1 className="channel-users">{channel.users.length} members</h1>
                     </div>
                     <div className="channel-buttons">
@@ -67,7 +67,7 @@ const ChannelCard = ({ channel, single, nav }) => {
 
                 </div></NavLink>
             }
-            {nav && <NavLink to={`/channels/${channel.id}`}><h1 className="channel-card-name">#{channel.name}</h1></NavLink>}
+            {nav && <NavLink className="channel-nav" to={`/channels/${channel.id}`}><h1 className="channel-card-name grey-hover"># {channel.name}</h1></NavLink>}
             {single && <Chat />}
         </>
     )

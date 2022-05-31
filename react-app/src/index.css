@@ -1,6 +1,6 @@
 /* TODO Add site wide styles */
 *{
-    font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;;
+    font-family: Slack-Lato, Slack-Fractions, appleLogo, 'Lato', sans-serif;
 }
 .whole-page-container{
     height: 100vh;
@@ -8,4 +8,31 @@
 
 #root{
     overflow-y: hidden;
+}
+
+.blue-hover:hover {
+    background-color: #1264a3;
+}
+
+.app-body-hover:hover {
+    background-color: #1e2227;
+}
+
+.grey-hover:hover {
+    background-color: #232129;
+}
+
+.unset {
+    all: unset;
+}
+
+.bold, div > .bold {
+    font-weight: 600;
+}
+
+.muted {
+    color: #6f7072;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 5px 16px;
 }

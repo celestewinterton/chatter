@@ -16,6 +16,9 @@
 .groups-header {
   height: 40px;
   border-bottom: 1px solid #3a3d40;
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
 }
 
 .groups-title {
@@ -24,5 +27,9 @@
 
 .create-group{
     color: #a1a1a4;
-    padding-left: 16px;
+    padding: 0px 16px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
 }

@@ -33,7 +33,6 @@ function ProfileButton({ user }) {
   return (
     <div className="profile-and-dropdown">
       <div className='profile-container'>
-        {user.username}
         <img className="user-image-nav-1"
           src={user.photo}
           onClick={openMenu}
@@ -47,8 +46,62 @@ function ProfileButton({ user }) {
                 src={user.photo}
                 onClick={openMenu}
               />
-              <p>{user.username}</p>
+              <div className="profile-username">{user.username}</div>
             </div>
+
+
+            <div className="line"></div>
+            <div className="profile-item">Meet the developers</div>
+
+            <div className="profile-item blue-hover">
+              <div>Austin Dang</div>
+              <div>
+                <a className="unset" href="https://www.linkedin.com/in/austin-dang-106834191/">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a className="unset" href="https://github.com/AuDang">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div className="profile-item blue-hover">
+              <div>Brendan Downing</div>
+              <div>
+                <a className="unset" href="https://www.linkedin.com/in/brendan-downing-641672228/">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a className="unset" href="https://github.com/Downster">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div className="profile-item blue-hover">
+              <div>Celeste Winterton</div>
+              <div>
+                <a className="unset" href="https://angel.co/u/celeste-winterton">
+                  <i class="fa-brands fa-angellist"></i>
+                </a>
+                <a className="unset" href="https://www.linkedin.com/in/celestewinterton/">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a className="unset" href="https://github.com/celestewinterton">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div className="profile-item blue-hover">
+              <div>Jingling Jin</div>
+              <div>
+                <a className="unset" href="https://github.com/ellen20">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+
             <div className="line"></div>
             <div className="profile-link-container">
               <button onClick={logout}>Logout</button>
