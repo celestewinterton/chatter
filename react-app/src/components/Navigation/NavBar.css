@@ -136,7 +136,7 @@
    border-radius: 6px;
    display: flex;
 
-   box-shadow: 0 0 0 1pxvar(--saf-0),0 4px 12px 0 #0000001f;
+   /* box-shadow: 0 0 0 1pxvar(--saf-0),0 4px 12px 0 #0000001f; */
    width: 300px;
    margin-top: 6px;
    width: 300px;

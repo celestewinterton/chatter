@@ -58,21 +58,23 @@ def logout():
 
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
-    """
-    Creates a new user and logs them in
-    """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     image = form["image"].data
-    if not allowed_file(image.filename):
-        return {"errors": "file type not allowed"}, 400
-    image.filename = get_unique_filename(image.filename)
-    upload = upload_file_to_s3(image)
+    if image:
+        if not allowed_file(image.filename):
+            return {"errors": "file type not allowed"}, 400
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(upload)
 
-    if "url" not in upload:
-        return upload, 400
-
-    url = upload["url"]
+        if "url" not in upload:
+            return upload, 400
+        url = upload["url"]
+    else:
+        url = 'https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png'
+    
+    print(url)
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
