@@ -3,9 +3,14 @@ import Channels from "../Channels"
 import CreateGroupModal from "../Groups/CreateGroupModal"
 import Groups from "../Groups"
 import { NavLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import "./LeftMenu.css"
 
+
 const LeftMenu = () => {
+    const dispatch = useDispatch()
+
+
     return (
         <>
             <div className="left-navigation-menu">

@@ -71,3 +71,29 @@ def on_leave(data):
     room = data['room']
     leave_room(room)
 
+@socketio.on('sign-in')
+def on_sign_in(data):
+    emit('sign-in', data, broadcast=True)
+
+@socketio.on('log-out')
+def on_sign_in(data):
+    emit('log-out', data, broadcast=True)
+
+
+
+@socketio.on('leave-channel')
+def on_join(data):
+    room = data['room']
+    params = {
+        'owner_id': 8,
+        'body': data['username'] + ' has left the channel.'
+    }
+    if room[0] == 'c':
+        params['channel_id'] = int(room[1:])
+    else:
+        params['group_id'] = int(room[1:])
+    message = Message(**params)
+    db.session.add(message)
+    db.session.commit()
+    emit("chat", data, broadcast=True, to=room)
+

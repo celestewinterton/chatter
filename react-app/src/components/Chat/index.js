@@ -45,7 +45,6 @@ const Chat = ({ group }) => {
         socket.emit('chat', {
             user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
         });
-        // const errors = await dispatch(createChatMessage(roomId, messageBody));
         setMessageBody("");
     };
 
