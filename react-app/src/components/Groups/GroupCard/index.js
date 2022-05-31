@@ -21,7 +21,6 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
-    console.log("==========> ", singleGroupName, singleGroupId, groupId)
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
@@ -49,6 +48,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
                         <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
                     </div>
                 }
+
 
                 {showDeleteModal && (
                     <Modal onClose={() => setShowModal(false)}>

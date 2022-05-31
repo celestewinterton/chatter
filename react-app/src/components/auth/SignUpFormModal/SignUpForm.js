@@ -6,6 +6,7 @@ import { io } from 'socket.io-client'
 import DemoUser from '../DemoUser/DemoUser';
 import chatter from '../../../images/chatter.png'
 
+
 let socket;
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
