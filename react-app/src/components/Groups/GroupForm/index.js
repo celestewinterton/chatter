@@ -10,7 +10,7 @@ const GroupForm = ({ setShowModal, edit, group }) => {
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
     const [errors, setErrors] = useState({});
-    const [members, setMembers] = useState((edit) ? group.members : '')//change later
+    const [members, setMembers] = useState((edit) ? group.members : '')
 
     useEffect(() => {
         dispatch(loadUsers())
@@ -45,16 +45,15 @@ const GroupForm = ({ setShowModal, edit, group }) => {
         setErrors(errors)
     }, [errors]);
 
-
     return (
-        <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
+        // <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
             <div className='group-create-input-container'>
                 <SearchAutocomplete members={members} setMembers={setMembers} />
-                <DropdownMultipleCombobox  members={members} setMembers={setMembers}/>
+                <DropdownMultipleCombobox  edit={edit} group={group}/>
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Edit DM' : 'Start DM'}</button>
                 {/* <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button> */}
             </div>
-        </form>
+        // </form>
     );
 };
 
