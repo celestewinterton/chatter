@@ -31,6 +31,14 @@ def edit_chat(data):
     db.session.commit()
     emit("edit", data, broadcast=True, to=room)
 
+@socketio.on("delete")
+def edit_chat(data):
+    room = data['room']
+    message = Message.query.get(data['msgId'])
+    db.session.delete(message)
+    db.session.commit()
+    emit("delete", data, broadcast=True, to=room)
+
 
 
 @socketio.on('join')

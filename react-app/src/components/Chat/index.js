@@ -79,6 +79,10 @@ const Chat = ({ group }) => {
             dispatch(loadChatMessages(id, type))
         })
 
+        socket.on('delete', (message) => {
+            dispatch(loadChatMessages(id, type))
+        })
+
         socket.on('join', (data) => {
             console.log(data)
         })
@@ -105,7 +109,7 @@ const Chat = ({ group }) => {
                             <div className='chat-message' id={msg.owner} key={msg.id}>
                                 <p className='chat-username'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
                                 <div className='chat-text' id={msg.id}>
-                                    <ChatMessage msg={msg} socket={socket} roomId={roomId} />
+                                    <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
                                 </div>
                             </div>
                         )
