@@ -5,7 +5,7 @@
 }
 
 .nav-signup-button {
-   font-size: 20px;
+   font-size: 18px;
    width:125px;
    border-radius: 5px;
    height:37px;
@@ -15,7 +15,7 @@
 
 }
 .nav-signup-button:hover {
-   transform: scale(1.03)
+
 }
 /* ************************SIGNUP ERRORS ******************** */
 .error-container {
@@ -125,5 +125,4 @@
 
 .signup-button:hover {
    color: white;
-   transform: scale(1.02);
 }

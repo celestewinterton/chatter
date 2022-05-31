@@ -127,7 +127,6 @@ const SignUpForm = () => {
             id="file-upload"
             type="file"
             accept="image/*"
-            // required
             onChange={updateImage}
           />
           <div className="preview-container-site">
