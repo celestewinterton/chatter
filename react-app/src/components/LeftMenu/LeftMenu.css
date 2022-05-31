@@ -1,0 +1,36 @@
+
+
+.channel-card-name {
+  padding: 5px 12px;
+  font-weight: 300;
+}
+
+.channel-nav {
+  text-decoration: none;
+}
+
+.groups-nav {
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.groups-nav-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 300;
+}
+
+.fa-xmark {
+  color: transparent;
+}
+
+.groups-nav:hover .fa-xmark {
+  color: #d1d2d3;
+}
+
+.grey-hover:hover {
+  background-color: #232129;
+}
