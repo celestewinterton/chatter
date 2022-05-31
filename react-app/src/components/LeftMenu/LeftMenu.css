@@ -1,7 +1,7 @@
 
 
 .channel-card-name {
-  padding: 5px 12px;
+  padding: 5px 20px;
   font-weight: 300;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .groups-nav {
-  padding: 0px 10px;
+  padding: 0px 17px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,4 +33,8 @@
 
 .grey-hover:hover {
   background-color: #232129;
+}
+
+.groups-nav:active {
+  background-color: blue;
 }
