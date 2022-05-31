@@ -38,7 +38,7 @@ const Search = ({query, setQuery, setSearchResults}) => {
       onClick={e=>e.stopPropagation()}>
         <ul>{userResults.length ? userResults.map(user =>
           <li key={`search-card-${user.id}`}>
-            <div className='search-results-item'>
+            <div className='search-results-item blue-hover'>
               <img className='side-nav-img' src={user?.image ? user.image : "https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png"} alt=''></img>
               <NavLink className='search-result-text' to={`/`} onClick={e => {
                 setSearchResults(false)
@@ -51,7 +51,7 @@ const Search = ({query, setQuery, setSearchResults}) => {
         : null}</ul>
         <ul>{channelResults.length ? channelResults.map(channel =>
           <li key={`search-card-${channel.id}`}>
-            <div className='search-results-item'>
+            <div className='search-results-item blue-hover'>
               <NavLink className='search-result-text' to={`/channels/${channel.id}`} onClick={e => {
                 setSearchResults(false)
                 setQuery('')
