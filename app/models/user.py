@@ -78,12 +78,12 @@ class Group(db.Model):
 
    id = db.Column(db.Integer, primary_key=True)
    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-   
-   
+
+
    owner = db.relationship("User", back_populates="owned_groups")
-   message = db.relationship("Message", back_populates='group')
+   message = db.relationship("Message", back_populates="group", cascade="all, delete")
    users = db.relationship("User", back_populates='subscribed_groups', secondary=group_subscriptions)
-   
+
    def to_dict(self):
       return {
          'id': self.id,
@@ -118,6 +118,6 @@ class Channel(db.Model):
       'name': self.name,
       'topic': self.topic,
       'description': self.description,
-      'owner_id': self.owner_id, 
+      'owner_id': self.owner_id,
       'users': [user.to_username() for user in self.users]
    }

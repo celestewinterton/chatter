@@ -9,9 +9,11 @@ import { Modal } from "../../../context/Modal"
 const GroupCard = ({ group, all, single, modal, nav }) => {
     const sessionUser = useSelector(state => state.session.user)
     const groups = useSelector(state => state.chatRooms.subscribed)
+    const { groupId } = useParams()
+    // if (single) group = Object.values(groups)?.find(group => group.id == groupId)
     const params = useParams()
-    const groupId = params.id
-    const singleGroupName = Object.values(groups)?.find(group => group.id == groupId)?.users?.map(user => user?.username)
+    const singleGroupId = params.id
+    const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
     const usernames = group?.users?.map(user => user?.username)
     const filtered = usernames?.includes(sessionUser?.username)
     const groupName = usernames?.filter(user => user != sessionUser.username).join(", ")
@@ -27,6 +29,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -38,9 +41,13 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
 =======
     console.log("==========> ",  singleGroupName, groupId)
 >>>>>>> 1108619 (groups title showing on single group page again)
+=======
+    console.log("==========> ",  singleGroupName, singleGroupId, groupId)
+>>>>>>> b4c041d (updated model for group cascade delte)
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
+        console.log("Deleteing ===>", group.id)
         setShowDeleteModal(false)
         history.push('/')
     }
