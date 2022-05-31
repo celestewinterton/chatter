@@ -67,8 +67,14 @@ def create_group():
 
 
 @group_routes.route("/<int:groupId>", methods=["PUT"])
-def hide_group(groupId):
-    pass
+def edit_group(groupId):
+    form = NewGroupForm()
+    user_id = form.data["user_id"]
+
+    params = {
+        "group_id" : groupId,
+        "user_id" : user_id
+    }
 
 @group_routes.route("/<int:groupId>", methods=["DELETE"])
 def delete_group(groupId):
