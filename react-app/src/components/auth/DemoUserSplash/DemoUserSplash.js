@@ -1,8 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../../store/session'
-import './DemoUser.css'
+import './DemoUserSplash.css'
+
 
 function DemoUser() {
    const dispatch = useDispatch();
@@ -10,14 +11,14 @@ function DemoUser() {
 
    const handleSubmit = e => {
       e.preventDefault();
-      (async () => {
-         await dispatch(sessionActions.login('demo@aa.io', 'password'));
-         history.push('/')
+     (async()=>{
+      await dispatch(sessionActions.login('demo@aa.io', 'password'));
+      history.push('/')
       })()
    }
    return (
       <div>
-         <button className='demo-button' onClick={handleSubmit}>Try a Demo</button>
+         <button className='demo-button-splash' onClick={handleSubmit}>Try a Demo</button>
       </div>
    )
 }
