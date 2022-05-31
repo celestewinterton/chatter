@@ -24,7 +24,9 @@
 
 .create-group{
     color: #a1a1a4;
-    padding-left: 16px;
+    padding: 0px 16px;
     margin-top: 20px;
     margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
 }
