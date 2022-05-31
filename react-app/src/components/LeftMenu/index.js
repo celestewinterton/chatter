@@ -2,6 +2,7 @@ import CreateChannelModal from "../Channels/CreateChannelModal"
 import Channels from "../Channels"
 import CreateGroupModal from "../Groups/CreateGroupModal"
 import Groups from "../Groups"
+import "./LeftMenu.css"
 
 const LeftMenu = () => {
     return (

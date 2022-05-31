@@ -67,7 +67,7 @@ const ChannelCard = ({ channel, single, nav }) => {
 
                 </div></NavLink>
             }
-            {nav && <NavLink to={`/channels/${channel.id}`}><h1 className="channel-card-name">#{channel.name}</h1></NavLink>}
+            {nav && <NavLink className="channel-nav" to={`/channels/${channel.id}`}><h1 className="channel-card-name grey-hover"># {channel.name}</h1></NavLink>}
             {single && <Chat />}
         </>
     )
