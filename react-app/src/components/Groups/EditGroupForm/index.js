@@ -6,19 +6,18 @@ import SearchAutocomplete from "./Autocomplete";
 import { useParams } from 'react-router-dom';
 
 const EditGroupForm = ({ setShowModal, edit, group }) => {
+    edit = true
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
     const usersArr = Object.values(users)
-    console.log(">>>>>", usersArr)
-
     const params = useParams()
     const singleGroupId = params.id
     const groups = useSelector(state => state.chatRooms.subscribed)
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
     const [errors, setErrors] = useState({});
-    const [members, setMembers] = useState((edit) ? group.members : '')//change later
-    edit = true
+    const [members, setMembers] = useState((edit) ? '' : '')//change later
+
 
     useEffect(() => {
         dispatch(loadUsers())
@@ -28,6 +27,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         e.preventDefault()
         let errors;
         const formData = new FormData();
+        console.log("<<<<<<<<", formData)
         formData.append('members', members)
         formData.append('user_id', sessionUser.id)
         edit = true
@@ -58,7 +58,8 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         <form autoComplete="off" className="channel-form-container" onSubmit={handleSubmit}>
             <h1 className="groups-title" >{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
             <div className='channel-form-input-container'>
-                <SearchAutocomplete members={members} setMembers={setMembers} />
+                {/* <SearchAutocomplete members={members} setMembers={setMembers} /> */}
+                <input placeholder="Find People"></input>
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Add People' : 'Start DM'}</button>
                 <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
             </div>

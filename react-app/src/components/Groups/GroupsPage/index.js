@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Modal } from '../../../context/Modal'
 import EditGroupForm from "../EditGroupForm"
 
-const GroupsPage = ({}) => {
+const GroupsPage = () => {
     const dispatch = useDispatch()
     const groups = useSelector(state => state.chatRooms.subscribed)
     const params = useParams()

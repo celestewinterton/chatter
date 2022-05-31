@@ -43,7 +43,8 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
 
                 {single &&
                     <div className="groups-header">
-                        <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
+                        {/* <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1> */}
+                        <GroupsPage />
                     </div>
                 }
 
