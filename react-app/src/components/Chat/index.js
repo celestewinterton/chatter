@@ -72,7 +72,7 @@ const Chat = ({ group }) => {
 
 
         socket.on('chat', (message) => {
-            setMessages(messages => [...messages, message]);
+            dispatch(loadChatMessages(id, type))
         });
 
         socket.on('edit', (message) => {
@@ -111,21 +111,6 @@ const Chat = ({ group }) => {
                         )
 
                     })}
-                    {messages?.map((message, idx) => (
-                        <div
-                            className={message.user === 'weStudy-Bot' ? 'center chat-msg' : message.user === user.username ? 'right chat-msg' : 'left chat-msg'}
-                            key={idx}>
-                            {message.user !== 'weStudy-Bot' &&
-                                <div className='profile-pic-div chat-profile-pic'>
-                                    <img src={message.user_image} alt={message.user}></img>
-                                </div>
-                            }
-                            <div className='chat-message'>
-                                <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
-                                <div className='chat-text' id={message.id} dangerouslySetInnerHTML={{ __html: message.msg }}></div>
-                            </div>
-                        </div>
-                    ))}
                 </div>
                 <div className='message-editor' id='editor'>
                     <ChatInput value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />

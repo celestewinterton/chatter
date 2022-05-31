@@ -16,6 +16,8 @@ const ChatMessage = ({ msg, socket, roomId }) => {
         setEdit(false)
     }
 
+
+
     return (
         <>
             {(edit) ? <ChatInput value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
