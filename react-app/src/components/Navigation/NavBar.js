@@ -34,10 +34,7 @@ const NavBar = () => {
   } else {
     search = (
       <div>
-        <div className='searchbar-spacer'></div>
-        <div>
-          <SearchInput />
-        </div>
+        <SearchInput />
       </div>
     )
     sessionLinks = (
