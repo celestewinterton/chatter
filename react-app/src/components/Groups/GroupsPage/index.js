@@ -19,7 +19,7 @@ const GroupsPage = ({ single }) => {
     return (
         <div className="app-body">
             <div className="groups-header">
-                <h1 className="groups-title">'members</h1>
+                <h1 className="groups-title">members</h1>
             </div>
         </div>
     )

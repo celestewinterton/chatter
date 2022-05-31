@@ -9,8 +9,9 @@ import { Modal } from "../../../context/Modal"
 const GroupCard = ({ group, all, single, modal, nav }) => {
     const sessionUser = useSelector(state => state.session.user)
     const groups = useSelector(state => state.chatRooms.subscribed)
-    const { groupId } = useParams()
-    if (single) group = Object.values(groups)?.find(group => group.id == groupId)
+    const params = useParams()
+    const groupId = params.id
+    const singleGroupName = Object.values(groups)?.find(group => group.id == groupId)?.users?.map(user => user?.username)
     const usernames = group?.users?.map(user => user?.username)
     const filtered = usernames?.includes(sessionUser?.username)
     const groupName = usernames?.filter(user => user != sessionUser.username).join(", ")
@@ -18,7 +19,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
-
+    console.log("==========> ",  singleGroupName, groupId)
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
@@ -42,7 +43,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
 
             {single &&
             <div className="groups-header">
-                <h1 className="groups-title" onClick={modal}>{groupName}</h1>
+                <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
             </div>
             }
 
