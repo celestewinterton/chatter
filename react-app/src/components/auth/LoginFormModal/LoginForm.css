@@ -54,7 +54,7 @@
 }
 .nav-login-button:hover {
    border-color:rgb(79, 24, 134) ;
-   transform: scale(1.03)
+
 }
 /******************* SIGN IN FORM INPUT FIELDS *****************************/
 .login-form-container {
@@ -112,5 +112,5 @@ input {
 
 .signin-button:hover {
    color:white;
-   transform: scale(1.02);
+
 }
