@@ -57,6 +57,7 @@
 .signup-header1 {
    font-size: 45px;
    margin-bottom:20px;
+   color:black;
 }
 
 .signup-form-container {
@@ -97,6 +98,7 @@
 }
 .image-upload {
    width:278px;
+   color:black;
 }
 .fas.fa-image {
    color: rgba(74, 21, 75, 255);

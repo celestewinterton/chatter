@@ -8,14 +8,13 @@
    flex-direction: column;
 }
 .splash-signup-button {
-   width: 308px;
-   padding: 7px;
-   display: flex;
-   justify-content: center;
+   width: 200px;
+   padding: 6px;
+   margin-top: 10px;
    border-radius: 5px;
+   font-size: 20px;
    background-color: rgba(74, 21, 75, 255);
    color: white;
-   font-size: 20px;
 }
 
 .signup-button:hover {

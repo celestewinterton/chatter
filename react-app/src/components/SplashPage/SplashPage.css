@@ -42,7 +42,13 @@
    padding:10px 0 10px 0;
    line-height: 1.4;
 }
+.splash-buttons {
+   display:flex;
 
+   /* flex-direction: row; */
+
+
+}
 
 .dashboard {
    width: 600px;
