@@ -135,14 +135,6 @@
    background-color: rgb(34,37,41);
    border-radius: 6px;
    display: flex;
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-   /* box-shadow: 0 0 0 1pxvar(--saf-0),0 4px 12px 0 #0000001f; */
->>>>>>> c909e05 (Fixed password validations)
-=======
->>>>>>> b4c041d (updated model for group cascade delte)
    width: 300px;
    margin-top: 6px;
 }
