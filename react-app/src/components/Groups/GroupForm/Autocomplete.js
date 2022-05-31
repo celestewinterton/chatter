@@ -29,6 +29,7 @@ function SearchAutocomplete({members, setMembers}) {
   return (
     <div>
       <ReactSearchAutocomplete
+        className="autocomplete-input"
         items={usersArr}
         fuseOptions={{ keys: ["username"] }} // Search on both fields
         resultStringKeyName="username" // String to display in the results
@@ -37,11 +38,14 @@ function SearchAutocomplete({members, setMembers}) {
         onSelect={handleOnSelect}
         styling={{
           borderRadius: "0px",
-          backgroundColor: "white",
+          backgroundColor: "#1a1d21",
+          border: "none",
+          color: "#d1d2d3",
           boxShadow: "none",
           hoverBackgroundColor: "steelblue",
           clearIconMargin: "3px 8px 0 0",
           zIndex: 2,
+          height: "38px",
         }}
       />
     </div>
