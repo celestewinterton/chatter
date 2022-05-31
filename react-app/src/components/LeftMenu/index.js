@@ -2,6 +2,7 @@ import CreateChannelModal from "../Channels/CreateChannelModal"
 import Channels from "../Channels"
 import CreateGroupModal from "../Groups/CreateGroupModal"
 import Groups from "../Groups"
+import { NavLink } from "react-router-dom"
 import "./LeftMenu.css"
 
 const LeftMenu = () => {
@@ -9,7 +10,9 @@ const LeftMenu = () => {
         <>
             <div className="left-navigation-menu">
                 <div className="left-menu-header">
-                    <h1 className="left-menu-title">Chatter</h1>
+                    <NavLink className="unset" to={`/`}>
+                        <h1 className="left-menu-title">Chatter</h1>
+                    </NavLink>
                 </div>
                 <div className="channel-container">
                     <CreateChannelModal />
