@@ -45,14 +45,29 @@ def edit_chat(data):
 def on_join(data):
     room = data['room']
     join_room(room)
-    emit('join','poopmonster' ,to=room)
+
+
+
+@socketio.on('join-channel')
+def on_join(data):
+    room = data['room']
+    params = {
+        'owner_id': 8,
+        'body': data['username'] + ' has joined the channel.'
+    }
+    if room[0] == 'c':
+        params['channel_id'] = int(room[1:])
+    else:
+        params['group_id'] = int(room[1:])
+    message = Message(**params)
+    db.session.add(message)
+    db.session.commit()
+    emit("chat", data, broadcast=True, to=room)
 
 
 
 @socketio.on('leave')
 def on_leave(data):
     room = data['room']
-    print(data)
     leave_room(room)
-    emit('chat','poopmonster' ,to=room)
 

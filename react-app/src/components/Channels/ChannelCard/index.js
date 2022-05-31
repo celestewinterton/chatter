@@ -3,11 +3,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ChannelForm from "../ChannelForm"
+import { io } from 'socket.io-client';
 import { getChannels, deleteChannelRoom, joinChannelRoom } from "../../../store/channels";
 import { NavLink } from "react-router-dom";
 import ChannelHeader from "../ChannelHeader";
 import Chat from "../../Chat";
+
+let socket;
 const ChannelCard = ({ channel, single, nav }) => {
+    const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const history = useHistory()
     const { id } = useParams()
@@ -17,6 +21,7 @@ const ChannelCard = ({ channel, single, nav }) => {
     if (single) {
         selectedChannel = channel.all[id]
     }
+
 
 
     const editChannel = () => {
@@ -31,6 +36,9 @@ const ChannelCard = ({ channel, single, nav }) => {
 
     const joinChannel = (e) => {
         e.preventDefault()
+        const roomId = 'c' + channel.id
+        socket = io()
+        socket.emit('join-channel', { 'username': `${user.username}`, 'room': roomId });
         dispatch(joinChannelRoom(channel.id))
         history.push(`/channels/${channel.id}`)
     }

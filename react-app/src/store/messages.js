@@ -18,15 +18,11 @@ export const clearMessages = () => ({
     type: CLEAR_MESSAGE
 })
 
-const removeMessage = (messageID) => ({
+export const removeMessage = (messageId) => ({
     type: DELETE_MESSAGE,
-    messageID
+    messageId
 })
 
-const editMessage = (message) => ({
-    type: EDIT_MESSAGE,
-    message
-})
 
 export const createChatMessage = (roomID, messageBody, type) => async (dispatch) => {
     const res = await fetch(`/messages/${type}`, {
@@ -82,9 +78,6 @@ const messagesReducer = (state = initialState, action) => {
             return newState
         case CLEAR_MESSAGE:
             return initialState
-        case EDIT_MESSAGE:
-            newState[action.message.id] = action.message
-            return newState
         case DELETE_MESSAGE:
             delete newState[action.messageId]
             return newState

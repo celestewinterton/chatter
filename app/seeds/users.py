@@ -17,7 +17,7 @@ def seed_users():
         username='celeste', email='celeste@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
     jingling = User(
         username='jingling', email='jingling@aa.io', password='password', photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
-
+    chatterBot = User(username = 'chatter-bot', email = 'chatter@chatter.io', password='password',  photo='https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png')
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -26,6 +26,7 @@ def seed_users():
     db.session.add(brendan)
     db.session.add(celeste)
     db.session.add(jingling)
+    db.session.add(chatterBot)
 
     db.session.commit()
 

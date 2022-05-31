@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import Parser from 'html-react-parser';
 import ReactQuill from 'react-quill'
 import { io } from 'socket.io-client';
-import { loadChatMessages, clearMessages } from '../../store/messages'
+import { loadChatMessages, clearMessages, removeMessage } from '../../store/messages'
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
 
@@ -80,10 +80,10 @@ const Chat = ({ group }) => {
         })
 
         socket.on('delete', (message) => {
-            dispatch(loadChatMessages(id, type))
+            dispatch(removeMessage(message.msgId))
         })
 
-        socket.on('join', (data) => {
+        socket.on('join-channel', (data) => {
             console.log(data)
         })
 
