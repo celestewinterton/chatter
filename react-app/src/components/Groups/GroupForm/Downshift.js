@@ -18,8 +18,7 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     let errors;
-    const memberIds = Object.values(users).filter(user => selectedItems.includes(user.username)).map(user => user.id)
-    console.log("From Downshift..... ", selectedItems, memberIds)
+    const memberIds = Object.values(users).filter(user => selectedItems.includes(user.username)).map(user => user.id).join(", ")
     setMembers(memberIds)
     const formData = new FormData();
     formData.append('members', members)
@@ -30,7 +29,7 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
 
     if (errors) console.log(errors)
 
-    setShowModal(false);
+    // setShowModal(false);
   }
 
   useEffect(() => {
