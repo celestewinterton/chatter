@@ -22,7 +22,10 @@ const LeftMenu = () => {
                     <Channels user={true} />
                 </div>
                 <div className="instant-message-container">
-                    <CreateGroupModal />
+                    {/* <CreateGroupModal /> */}
+                    <NavLink className='create-group unset' to={`/groups/new`}>
+                        Direct Messages <i className="fas fa-plus"></i>
+                    </NavLink>
                     <Groups all={true} />
                 </div>
             </div>

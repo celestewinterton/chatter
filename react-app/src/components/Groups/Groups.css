@@ -26,10 +26,47 @@
 }
 
 .create-group{
-    color: #a1a1a4;
-    padding: 0px 16px;
-    margin-top: 20px;
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
+  color: #a1a1a4;
+  padding: 0px 16px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.autocomplete-input {
+  background-color: red;
+}
+
+.hCOnUy {
+  background-color: #1a1d21;
+  border: 1px solid #3a3d40;
+}
+
+.hCOnUy > input {
+  color: #d1d2d3;
+}
+
+.ijlXwp > .wrapper {
+  background-color: #1a1d21;
+  border: none;
+}
+
+#create-group {
+  all: unset;
+  z-index: 100;
+  background-color: #007A5A;
+  padding: 6px 16px;
+  border-radius: 6px;
+  margin: 16px;
+  display: flex;
+
+}
+
+.group-create-input-container {
+  width: 100%;
+}
+
+.group-create-input-container > div {
+  border-bottom: 1px solid #3a3d40;
 }

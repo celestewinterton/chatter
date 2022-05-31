@@ -12,6 +12,7 @@ import CreateGroupModal from '../Groups/CreateGroupModal'
 import LeftMenu from '../LeftMenu'
 import './Dashboard.css'
 import { loadUsers } from '../../store/users';
+import GroupForm from '../Groups/GroupForm';
 
 let socket;
 const Dashboard = () => {
@@ -54,6 +55,11 @@ const Dashboard = () => {
                <ProtectedRoute path='/channels/:id' exact={true} >
                   <div className='app-body'>
                      <Channels single={true} />
+                  </div>
+               </ProtectedRoute>
+               <ProtectedRoute path='/groups/new' exact={true} >
+                  <div className='app-body'>
+                     <Groups form={true} />
                   </div>
                </ProtectedRoute>
                <ProtectedRoute path='/groups/:id' exact={true} >
