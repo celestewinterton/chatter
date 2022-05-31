@@ -12,7 +12,7 @@ function CreateChannelModal() {
 
     return (
         <>
-            <ul className='create-channel'><NavLink to='/'>
+            <ul className='create-channel'><NavLink className="unset" to='/'>
                 Channels </NavLink><i className="fas fa-plus" onClick={() => setShowModal(true)}></i>
             </ul>
             {showModal && (
