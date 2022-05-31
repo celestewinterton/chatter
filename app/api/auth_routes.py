@@ -54,7 +54,7 @@ def logout():
     """
     Logs a user out
     """
-    user = User.query.get(current_user.id)
+    user = User.query.get(current_user.get_id())
     user.online = False
     db.session.commit()
     logout_user()

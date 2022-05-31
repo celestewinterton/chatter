@@ -4,15 +4,16 @@ import { useParams } from "react-router-dom"
 import { getChannels } from "../../store/channels"
 import ChannelCard from "./ChannelCard"
 import ChannelHeader from "./ChannelHeader"
+import ChannelPage from "./ChannelPage"
 import './Channels.css'
 
 
 const Channels = ({ all, user, single }) => {
     const dispatch = useDispatch()
     const rooms = useSelector(state => state.channels)
-    const subbedChannels = useSelector(state => state.session.user)
+    const subbedChannels = useSelector(state => state.channels.subscribed)
     const channelsArray = Object.values(rooms.subscribed)
-    const subscribedChannelsArray = subbedChannels.subscribed_channels
+    const subscribedChannelsArray = Object.values(subbedChannels)
     const allChannelsArray = Object.values(rooms.all)
 
     return (
@@ -28,7 +29,7 @@ const Channels = ({ all, user, single }) => {
                     return < ChannelCard key={idx} channel={channel} all={true} />
                 })}
             </div>}
-            {single && <ChannelCard channel={rooms} single={true} />}
+            {single && <ChannelPage />}
         </>
     )
 }

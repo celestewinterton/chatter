@@ -17,6 +17,7 @@ def get_all_channels():
   return {'channels': [channel.to_dict() for channel in all_channels]}
 
 
+
 @channel_routes.route('/<int:id>')
 def get_specific_channel(id):
   channel = Channel.query.get(id)
