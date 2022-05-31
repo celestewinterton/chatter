@@ -16,7 +16,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     const groups = useSelector(state => state.chatRooms.subscribed)
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
     const [errors, setErrors] = useState({});
-    const [members, setMembers] = useState((edit) ? '' : '')//change later
+    const [members, setMembers] = useState('')//change later
 
 
     useEffect(() => {
@@ -27,13 +27,13 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         e.preventDefault()
         let errors;
         const formData = new FormData();
-        console.log("<<<<<<<<", formData)
         formData.append('members', members)
         formData.append('user_id', sessionUser.id)
+        // console.log("<<<<<<<<", formData)
         edit = true
 
         if (edit) {
-            dispatch(editGroupRoom(formData, group.id))
+            dispatch(editGroupRoom(formData, singleGroupId))
         } else {
             errors = await dispatch(createGroupRoom(formData))
         }
@@ -49,6 +49,10 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         setShowModal(false);
     };
 
+    const inputMembers = (e) => {
+        setMembers(e.target.value)
+    }
+
     useEffect(() => {
         setErrors(errors)
     }, [errors]);
@@ -59,7 +63,11 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
             <h1 className="groups-title" >{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
             <div className='channel-form-input-container'>
                 {/* <SearchAutocomplete members={members} setMembers={setMembers} /> */}
-                <input placeholder="Find People"></input>
+                <input
+                name="member"
+                type="text"
+                onChange={inputMembers}
+                placeholder="Find People"></input>
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Add People' : 'Start DM'}</button>
                 <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
             </div>
