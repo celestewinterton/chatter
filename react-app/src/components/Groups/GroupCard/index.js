@@ -8,20 +8,10 @@ import GroupsPage from "../GroupsPage";
 
 const GroupCard = ({ group, all, single, modal, nav }) => {
     const sessionUser = useSelector(state => state.session.user)
-    // console.log(">>>>>>", sessionUser.subscribed_groups)
-    console.log("????", group)
     const groups = useSelector(state => state.chatRooms.subscribed)
-    console.log(">>>>>", groups)
-    const { groupId } = useParams()
-<<<<<<< Updated upstream
-    // if (single) group = Object.values(groups)?.find(group => group.id == groupId)
     const params = useParams()
     const singleGroupId = params.id
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
-=======
-    console.log("!!!!!", groupId)
-    if (single) group = Object.values(groups)?.find(group => group.id == groupId)
->>>>>>> Stashed changes
     const usernames = group?.users?.map(user => user?.username)
     const filtered = usernames?.includes(sessionUser?.username)
     const groupName = usernames?.filter(user => user != sessionUser.username).join(", ")
@@ -32,9 +22,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const dispatch = useDispatch()
 
     const deleteGroup = () => {
-        // console.log("IIIIII", group.id)
         dispatch(deleteGroupRoom(group.id))
-        console.log("Deleteing ===>", group.id)
         setShowDeleteModal(false)
         history.push('/')
     }
