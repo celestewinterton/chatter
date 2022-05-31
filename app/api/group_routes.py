@@ -61,52 +61,42 @@ def create_group():
             db.session.commit()
             return new_group.to_dict()
     return {'errors': form_validation_errors(form.errors)}, 401
-#
-
-# delete group/hide group??
 
 
 @group_routes.route("/<int:groupId>", methods=["PUT"])
 def edit_group(groupId):
-    pass
-    # form = NewGroupForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    # pass
+    form = NewGroupForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     # user_id = form.data["user_id"]
+    members = form.data["members"]
+    print(">>>>>>>", members)
+    members_list = members.split(',')
+    strippedMembers = [int(member.strip()) for member in members_list]
 
-    # params = {
-    #     "group_id" : groupId,
-    #     "user_id" : user_id
-    # }
+    def validate_group(input):
+        groups = Group.query.all()
+        groups_as_dicts = [group.compare_dict() for group in groups]
+        for group in groups_as_dicts:
+            print('GROUP     ', group['user_id'] == input)
+            print('INPUT      ', input)
+            if group['user_id'] == input:
+                return True
 
-    # members = form.data["members"]
-    # members_list = members.split(',')
-    # strippedMembers = [int(member.strip()) for member in members_list]
+    if form.validate_on_submit():
+        if validate_group(strippedMembers):
+            return {'errors': 'group already exists'}, 401
+        else:
+            edit_group = Group.query.get(groupId)
+            # edit_group.users.append(current_user)
+            for member in strippedMembers:
+                user = User.query.filter(User.username == member).first()
+                edit_group.users.append(user.id)
 
-    # def validate_group(input):
-    #     groups = Group.query.all()
-    #     groups_as_dicts = [group.compare_dict() for group in groups]
-    #     for group in groups_as_dicts:
-    #         print('GROUP     ', group['user_id'] == input)
-    #         print('INPUT      ', input)
-    #         if group['user_id'] == input:
-    #             return True
-
-    # if form.validate_on_submit():
-    #     if validate_group(strippedMembers):
-    #         return {'errors': 'group already exists'}, 401
-    #     else:
-    #         new_group = Group(**params)
-    #         new_group.users.append(current_user)
-    #         for member in strippedMembers:
-    #             user = User.query.filter(User.id == member).first()
-    #             new_group.users.append(user)
-
-    #         db.session.add(new_group)
-    #         db.session.commit()
-    #         return new_group.to_dict()
-    # return {'errors': form_validation_errors(form.errors)}, 401
-
-
+            db.session.add(edit_group)
+            db.session.commit()
+            return edit_group.to_dict()
+    return {'errors': form_validation_errors(form.errors)}, 401
 
 
 @group_routes.route("/<int:groupId>", methods=["DELETE"])
