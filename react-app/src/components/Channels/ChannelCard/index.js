@@ -1,4 +1,4 @@
-import { Modal } from "../../../context/Modal"
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
@@ -14,25 +14,7 @@ const ChannelCard = ({ channel, single, nav }) => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const history = useHistory()
-    const { id } = useParams()
-    const [showModal, setShowModal] = useState(false);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    let selectedChannel;
-    if (single) {
-        selectedChannel = channel.all[id]
-    }
 
-
-
-    const editChannel = () => {
-        setShowModal(true)
-    }
-
-    const deleteChannel = () => {
-        dispatch(deleteChannelRoom(channel.id))
-        dispatch(getChannels())
-        setShowDeleteModal(false)
-    }
 
     const joinChannel = (e) => {
         e.preventDefault()
@@ -40,6 +22,7 @@ const ChannelCard = ({ channel, single, nav }) => {
         socket = io()
         socket.emit('join-channel', { 'username': `${user.username}`, 'room': roomId });
         dispatch(joinChannelRoom(channel.id))
+        dispatch(getChannels())
         history.push(`/channels/${channel.id}`)
     }
 
@@ -48,20 +31,7 @@ const ChannelCard = ({ channel, single, nav }) => {
 
     return (
         <>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <ChannelForm setShowModal={setShowModal} edit={true} channel={channel} />
-                </Modal>
-            )}
-            {showDeleteModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <h1>Are you sure you want to delete this channel?</h1>
-                    <button onClick={deleteChannel}>Yes</button>
-                    <button onClick={() => setShowDeleteModal(false)}>No</button>
-                </Modal>
-            )}
 
-            {single && <ChannelHeader single={true} channel={selectedChannel} modal={() => setShowModal(true)} />}
             {!single && !nav && <NavLink className="unset" to={`/channels/${channel.id}`}>
                 <div className="channel-card app-body-hover">
                     <div className="channel-information">
@@ -76,7 +46,6 @@ const ChannelCard = ({ channel, single, nav }) => {
                 </div></NavLink>
             }
             {nav && <NavLink className="channel-nav" to={`/channels/${channel.id}`}><h1 className="channel-card-name grey-hover"># {channel.name}</h1></NavLink>}
-            {single && <Chat />}
         </>
     )
 }

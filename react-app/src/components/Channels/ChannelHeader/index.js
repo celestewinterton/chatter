@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 
 const ChannelHeader = ({ all, single, channel, modal }) => {
-
+    console.log(channel)
     const allChannels = useSelector(state => state.channels.all)
 
     return (

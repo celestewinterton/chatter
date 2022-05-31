@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createChannelRoom, editChannelRoom } from "../../../store/channels";
+import { useHistory } from "react-router-dom";
+import { createChannelRoom, editChannelRoom, getChannels, leaveChannelRoom } from "../../../store/channels";
 
-const ChannelForm = ({ setShowModal, edit, channel }) => {
+const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
+    const history = useHistory()
     const [errors, setErrors] = useState({});
     const [name, setName] = useState((edit) ? channel.name : '')
     const [topic, setTopic] = useState((edit) ? channel.topic : '')
     const [description, setDescription] = useState((edit) ? channel.description : '')
 
 
-
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(user.id)
         let errors;
         const formData = new FormData();
         formData.append('name', name)
@@ -36,6 +36,16 @@ const ChannelForm = ({ setShowModal, edit, channel }) => {
         }
 
 
+    }
+
+    const deleteChannel = () => {
+        setShowDeleteModal(true)
+    }
+
+    const leaveChannel = () => {
+        dispatch(leaveChannelRoom(channel.id))
+        dispatch(getChannels())
+        history.push('/')
     }
 
     const handleCancelClick = async (e) => {
@@ -88,6 +98,8 @@ const ChannelForm = ({ setShowModal, edit, channel }) => {
                     </div>
                     <button id='create-channel' type="submit">{(edit) ? 'Edit Channel' : 'Create Channel'}</button>
                     <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
+                    {edit && <button className="leave-button" onClick={leaveChannel}>Leave Channel</button>}
+                    {edit && <button className="delete-button" onClick={deleteChannel}>Delete Channel</button>}
                 </div>
             </form>
         </>
