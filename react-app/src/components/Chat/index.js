@@ -7,6 +7,8 @@ import { io } from 'socket.io-client';
 import { loadChatMessages, clearMessages, removeMessage } from '../../store/messages'
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
+import './Chat.css'
+import ChatUserCard from './ChatUserCard';
 
 
 let socket;
@@ -97,6 +99,7 @@ const Chat = ({ group }) => {
             socket.disconnect();
         })
     }, [roomId, user.firstName, user.lastName, dispatch]);
+    console.log(chatMessages)
 
 
     return (
@@ -106,6 +109,9 @@ const Chat = ({ group }) => {
                     {chatMessages?.map(msg => {
                         return (
                             <div className='chat-message' id={msg.owner} key={msg.id}>
+                                <div className='pic-container'>
+                                    <ChatUserCard msg={msg} />
+                                </div>
                                 <p className='chat-username'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
                                 <div className='chat-text' id={msg.id}>
                                     <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
