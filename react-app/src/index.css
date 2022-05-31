@@ -2,9 +2,9 @@
 *{
     font-family: Slack-Lato, Slack-Fractions, appleLogo, 'Lato', sans-serif;
 }
-.whole-page-container{
+/* .whole-page-container{
     height: 100vh;
-}
+} */
 
 #root{
     overflow-y: hidden;

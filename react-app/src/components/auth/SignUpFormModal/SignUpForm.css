@@ -5,17 +5,17 @@
 }
 
 .nav-signup-button {
-   font-size: 20px;
+   font-size: 18px;
    width:125px;
    border-radius: 5px;
    height:37px;
-   background-color: rgb(44, 7, 80);
+   background-color: rgba(74, 21, 75, 255);
    color: white;
    font-family: 'Noto Sans';
 
 }
 .nav-signup-button:hover {
-   transform: scale(1.03)
+
 }
 /* ************************SIGNUP ERRORS ******************** */
 .error-container {
@@ -99,7 +99,7 @@
    width:278px;
 }
 .fas.fa-image {
-   color: rgb(44, 7, 80)
+   color: rgba(74, 21, 75, 255);
 }
 .preview-image.site {
    height: 50px;
@@ -118,12 +118,11 @@
    display: flex;
    justify-content: center;
    border-radius: 5px;
-   background-color: rgb(44, 7, 80);
+   background-color: rgba(74, 21, 75, 255);
    color: white;
    font-size: 20px;
 }
 
 .signup-button:hover {
    color: white;
-   transform: scale(1.02);
 }

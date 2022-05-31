@@ -1,0 +1,23 @@
+
+/********************** SIGN UP FORM BUTTONS ************* */
+.signup-form-buttons {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 7px;
+   flex-direction: column;
+}
+.splash-signup-button {
+   width: 308px;
+   padding: 7px;
+   display: flex;
+   justify-content: center;
+   border-radius: 5px;
+   background-color: rgba(74, 21, 75, 255);
+   color: white;
+   font-size: 20px;
+}
+
+.signup-button:hover {
+   color: white;
+}
