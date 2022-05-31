@@ -53,7 +53,7 @@
    font-weight: bodler;
 }
 .nav-login-button:hover {
-   border-color:rgb(79, 24, 134) ;
+   border-color:rgba(74, 21, 75, 255) ;
 
 }
 /******************* SIGN IN FORM INPUT FIELDS *****************************/
@@ -105,7 +105,7 @@ input {
    display:flex;
    justify-content: center;
    border-radius: 5px;
-   background-color: rgb(44, 7, 80);
+   background-color: rgba(74, 21, 75, 255);
    color:white;
    font-size: 20px;
 }

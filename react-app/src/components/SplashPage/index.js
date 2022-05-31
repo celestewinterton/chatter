@@ -71,6 +71,44 @@ const SplashPage = () => {
                <img className='teamwork' src={teamwork} alt='teamwork gif'/>
             </div>
          </div>
+         <div className='splash-container-6'>
+            <div className='splash-container-6-title'>
+               <h1 className='splash-container-6-header'>Get started with Chatter</h1>
+            </div>
+            <div className='splash-container-steps'>
+               <div className='splash-container-6-boxes'>
+                  <div className='splash-number'>
+                     <p className='number'>1</p>
+                  </div>
+                  <div>
+                     <h1 className='splash-container-6-text-headers'>Sign Up</h1>
+                     <p className='splash-container-6-text'>Create a new Chatter workspace in just a few moments. It’s free to try for teams of any size.</p>
+                  </div>
+               </div>
+               <div className='splash-container-6-boxes'>
+                  <div className='splash-number'>
+                     <p className='number'>2</p>
+                  </div>
+                  <div>      
+                     <h1 className='splash-container-6-text-headers'> Invite your coworkers</h1>
+                     <p className='splash-container-6-text'>Chatter is better together (no, really, it’s a bit underwhelming by yourself), and it’s easy to invite your team.</p>
+                  </div>
+               </div>
+               <div className='splash-container-6-boxes'>
+                  <div className='splash-number'>
+                     <p className='number'>3</p>
+                  </div>
+                  <div> 
+                     <h1 className='splash-container-6-text-headers'>Try it out</h1>
+                     <p className='splash-container-6-text'>Run a project, coordinate with your team, or just talk it out. Chatter is a blank canvas for teamwork.</p>
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+         <div className='splash-container-7'>
+            <h1>Welcome to where the future works</h1>
+         </div>
       </div>
    )
 }

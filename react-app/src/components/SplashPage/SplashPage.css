@@ -44,10 +44,6 @@
 }
 
 
-/* .splash-buttons {
-   display:flex;
-} */
-
 .dashboard {
    width: 600px;
    height: 345px;
@@ -137,7 +133,7 @@
    display: grid;
    grid-template-columns: 45% 45%;
    grid-column-gap: 80px;
-   padding: 50px 0px 30px;
+   padding: 50px 0px 50px;
 }
 .splash-container-5-title {
    display: flex;
@@ -154,4 +150,62 @@
 .teamwork {
    height: 450px;
    width: 450px;
+}
+
+/* CONTAINER 6 */
+.splash-container-6 {
+   background-color: rgba(246, 239, 232, 255);
+   height:400px;
+
+}
+
+.splash-container-6-title {
+   display: flex;
+   justify-content: center;
+   font-size: 50px;
+   color:black;
+   padding:50px 0px 20px;
+}
+.splash-container-6-text-headers {
+   color:black;
+   padding: 10px 0px 10px 0px;
+   font-size:20px;
+   font-weight:bolder;
+}
+.splash-container-6-text {
+padding: 10px 0px 10px 0px;
+line-height: 1.1;
+font-weight:400;
+font-size: 20px;
+}
+.splash-container-steps {
+   display:flex;
+   justify-content: center;
+   color: black;
+}
+.splash-container-6-boxes {
+   width:380px;
+   padding:30px 40px 30px 40px;
+}
+.fa-solid.fa-square-1 {
+   color:black;
+   font-size:100px
+}
+.splash-number {
+   color:white;
+   background-color: rgba(74, 21, 75, 255);
+   border-radius:5px;
+   height: 30px;
+   width:30px;
+   text-align:center;
+   margin-bottom: 10px;
+
+}
+.number {
+   display: flex;
+   justify-content: center;
+   padding-top:3px;
+   font-size: 20px;
+   font-weight:bolder
+
 }
