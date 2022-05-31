@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Modal} from '../../../context/Modal'
-import SignUpForm from './SignUpFormSplash';
-import './SignUpFormSplash.css'
+import SignUpForm from '../../auth/SignUpFormModal'
+
 
 function SignUpFormModal() {
    const [showModal, setShowModal] = useState(false);
