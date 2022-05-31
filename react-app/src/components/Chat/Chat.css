@@ -34,3 +34,8 @@
     background-color: var(--main-container);
 
 }
+
+.chat-card-pic{
+    width: 280px;
+    height: 280px;
+}
