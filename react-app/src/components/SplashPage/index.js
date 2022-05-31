@@ -16,17 +16,14 @@ const SplashPage = () => {
    return (
       <div className='splash-container'>
          <div className='splash-section-1'>
-            <h1 className='splash-title-1'>Chatter is your Digital HQ
-            {/* <span className='splash-title-name'>
-            </span> */}
-            </h1>
-            <br></br>
-            <p className='splash-title-2'>Transform the way you work with one place for everyone and everything you need to get stuff done</p>
-            <div className='splash-signup'>
+            <h1 className='splash-title-1'>Chatter is your Digital HQ </h1>
+            {/* <br></br> */}
+            <p className='splash-title-2'>Transform the way you work with one place for everyone and everything you need to get stuff done.</p>
+            <p className='splash-signup'>
                <DemoUser />
                <SignUpFormModal />
-            </div>
-            <div className='splash-section-1-p2'>
+            </p>
+            <div className='splash-section-1-image'>
                <img className='dashboard'src={dashboard} alt='details-dashboard'/>
             </div>
          </div>

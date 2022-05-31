@@ -6,7 +6,8 @@
 }
 
 .splash-title-1 {
-   font-size: 65px;
+   font-size: 45px;
+   color:black;
 }
 .splash-title-name {
    color: rgb(44, 7, 80);
@@ -14,9 +15,19 @@
 }
 
 .splash-title-2 {
-   font-size: 50px;
+   font-size: 30px;
 }
 
-.splash-signup {
+.splash-buttons {
    padding-top: 30px;   
+}
+
+.splash-section-1 {
+   display:inline-grid;
+   grid-template-columns: auto,auto,auto;
+}
+
+
+.dashboard {
+   height:300px
 }
