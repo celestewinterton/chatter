@@ -1,31 +1,116 @@
-.login-form-container {
-   display: flex;
+.signin-form-logo {
+   display:block;
+   text-align: center;
+   height:60px;
+   padding:10px;
+}
+.signin-form-logo-container {
+   display:flex;
+   justify-content: center;
+}
+.signin-header1 {
+   font-size: 45px;
+}
+
+.signin-header2 {
+   font-size: 20px;
+   padding-top:10px;
+   display:flex;
+   justify-content: center;
+   margin-bottom:20px;
+}
+/* ************************ SIGN IN FORM ERRORS *******************************/ 
+.error-container {
+   display:flex;
    justify-content: center;
    align-items: center;
-   width: 400px;
-   height: 400px;
+   padding: 0px 5px 0px 5px;
+   
 }
-label {
-   display: flex;
+.signin-form-error-container {
+   font-size: 18px;
+   display:flex;
    flex-direction: column;
-   align-items: center;
-   /* width: 300px; */
-
+   border: 1px solid red;
+   border-radius: 5px;
+   width: 308px;
+   margin: 0px 0px 10px 3px;
+   padding:10px 0px 10px 0px;
+   background-color: rgba(238, 67, 67, 0.507);
+   color:rgb(163, 17, 17)
 }
-input {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+.error-list {
+   margin-left: 7px;
+   padding-top: 5px;
 }
-
-.login-container {
-   padding-right: 15px;
-}
-.login-button {
+/****************** NAV BUTTONS ********************************* */
+.nav-login-button {
    font-size: 20px;
    width:125px;
    border-radius: 5px;
    height: 37px;
    font-family: 'Noto Sans';
    font-weight: bodler;
+}
+.nav-login-button:hover {
+   border-color:rgb(79, 24, 134) ;
+   transform: scale(1.03)
+}
+/******************* SIGN IN FORM INPUT FIELDS *****************************/
+.login-form-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 500px;
+   height: 600px;
+   font-size: 30px;
+}
+input {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 300px;
+   height:30px;
+   border-radius: 4px;
+   font-size: 20px;
+}
+
+.login-container {
+   padding-right: 15px;
+}
+
+.signin-form-email {
+   padding:7px;
+   display:flex;
+   justify-content: center;
+}
+
+.signin-form-password {
+   padding:7px;
+   display:flex;
+   justify-content: center;
+}
+
+.signin-form-buttons {
+   display:flex;
+   align-items: center;
+   justify-content: center;
+   padding:7px;
+   flex-direction: column;
+
+}
+.signin-button {
+   width: 308px;
+   padding:7px;
+   display:flex;
+   justify-content: center;
+   border-radius: 5px;
+   background-color: rgb(44, 7, 80);
+   color:white;
+   font-size: 20px;
+}
+
+.signin-button:hover {
+   color:white;
+   transform: scale(1.02);
 }

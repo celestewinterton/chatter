@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 import DemoUser from '../DemoUser/DemoUser';
+import chatter from '../../../images/chatter.png'
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -19,18 +21,22 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password === repeatPassword) {
       const formData = new FormData()
-      formData.append('email', email)
       formData.append('username', username)
+      formData.append('email', email)
       formData.append('password', password)
       formData.append('image', image)
       setImageLoading(true);
       const data = await dispatch(signUp(formData));
+      console.log('errors', errors)
       if (data) {
         setErrors(data)
+        return 
+      
+      } else {
+        setErrors('password: Password doesn\'t match')
       }
     }
   };
-
   const updateImage = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -53,69 +59,82 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/'/>;
   }
 
   return (
-    <>
+    <div className='signup-form-container'>
       <form onSubmit={onSignUp}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+        <div className='error-container'>
+          {errors.length>0 && (
+              <div className='signup-form-error-container'>
+            <span className="error-title">The following errors occured:</span>
+              {errors.map((error, ind) => (
+                <li className='error-list'key={ind}>{error}</li>
+              ))}
+            </div>
+          )}
+        </div>           
+        <div className='signup-form-logo-container'href='/#'>
+          <img className='signup-form-logo' alt='signup form logo'src={chatter}></img>
         </div>
-        <div>
-          <label>User Name</label>
+        <h2 className='signup-header1'>Sign up for Chatter </h2>
+        <div className='signup-form-user'>
           <input
             type='text'
             name='username'
             onChange={updateUsername}
             value={username}
-          ></input>
+            placeholder='First/Last Name'
+            />
         </div>
-        <div>
-          <label>Email</label>
+        <div className='signup-form-email'>
+        { /* <label>Email</label> */}
           <input
             type='text'
             name='email'
             onChange={updateEmail}
             value={email}
-          ></input>
+            placeholder='Email Address'
+            />
         </div>
-        <div>
-          <label>Password</label>
+        <div className='signup-form-pass'>
+          {/* <label>Password</label> */}
           <input
             type='password'
             name='password'
             onChange={updatePassword}
             value={password}
-          ></input>
+            placeholder='Password'
+            />
         </div>
-        <div>
-          <label>Confirm Password</label>
+        <div className='signup-form-confirmpass'>
+            {/* <label>Confirm Password</label> */}
           <input
             type='password'
             name='confirm_password'
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
-          ></input>
+            placeholder='Confirm Password'
+            />
         </div>
         <div className="add-image">
-          <input
+          <input className='image-upload'
             id="file-upload"
             type="file"
             accept="image/*"
+            // required
             onChange={updateImage}
-          ></input>
-          <div className="preview-container site">
+            />
+          <div className="preview-container-site">
             {image && (
               <img
-                alt="preview"
-                src={URL.createObjectURL(image)}
-                className="preview-image site"
+              alt="preview"
+              src={URL.createObjectURL(image)}
+              className="preview-image site"
               ></img>
-            )}
+              )}
           </div>
           <label htmlFor="file-upload">
             {imageLoading ?
@@ -125,10 +144,12 @@ const SignUpForm = () => {
             }
           </label>
         </div>
-        <button type='submit'>Sign Up</button>
+        <div className='signup-form-buttons'>
+          <button className='signup-button'type='submit'>Sign Up</button>
+          <DemoUser />
+        </div>
       </form>
-      <DemoUser />
-    </>
+    </div>
   );
 };
 

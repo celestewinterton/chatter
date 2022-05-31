@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import DemoUser from '../DemoUser/DemoUser';
+import { NavLink } from 'react-router-dom';
+import chatter from '../../../images/chatter.png'
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -35,14 +37,29 @@ const LoginForm = () => {
   return (
       <div className='login-form-container'>
         <form onSubmit={onLogin}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
-          <div>
-            <h2 className='sign-in-header'> Sign in to Chatter</h2>
-            <label htmlFor='email'>Email</label>
+          <div className='signin-form-headers'>
+            <div className='signin-form-logo-container'href='/#'>
+              <img className='signin-form-logo' alt='sign up form logo'src={chatter}></img>
+            </div>
+            <h2 className='signin-header1'> Sign in to Chatter</h2>
+            <h4 className='signin-header2'>New to Chatter?</h4>
+          </div>   
+          <div className='error-container'>
+              {errors.length>0 && (
+                <div className='signin-form-error-container'>
+              <span className="error-title">The following errors occured:</span>
+              {/* <ul className='signin-form-errors'> */}
+                {errors.map((error, ind) => (
+                  <li className='error-list'key={ind}>{error}</li>
+                  ))}
+              {/* </ul> */}
+            </div>
+            )}
+          </div>           
+          {/* </div> */}
+          <div className='signin-form-email'>
+            {/* <NavLink>Create an account</NavLink> */}
+            {/* <label htmlFor='email'>Email</label> */}
             <input
               name='email'
               type='text'
@@ -51,8 +68,8 @@ const LoginForm = () => {
               onChange={updateEmail}
               />
           </div>
-          <div>
-            <label htmlFor='password'>Password</label>
+          <div className='signin-form-password'>
+            {/* <label htmlFor='password'>Password</label> */}
             <input
               name='password'
               type='password'
@@ -60,7 +77,9 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
               />
-            <button type='submit'>Login</button>
+          </div>
+          <div className='signin-form-buttons'>
+            <button className='signin-button'type='submit'>Login</button>
             <DemoUser />
           </div>
         </form>
