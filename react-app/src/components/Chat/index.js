@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import Parser from 'html-react-parser';
 import ReactQuill from 'react-quill'
 import { io } from 'socket.io-client';
-import { loadChatMessages, clearMessages } from '../../store/messages'
+import { loadChatMessages, clearMessages, removeMessage } from '../../store/messages'
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
 
@@ -45,7 +45,6 @@ const Chat = ({ group }) => {
         socket.emit('chat', {
             user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
         });
-        // const errors = await dispatch(createChatMessage(roomId, messageBody));
         setMessageBody("");
     };
 
@@ -72,14 +71,18 @@ const Chat = ({ group }) => {
 
 
         socket.on('chat', (message) => {
-            setMessages(messages => [...messages, message]);
+            dispatch(loadChatMessages(id, type))
         });
 
         socket.on('edit', (message) => {
             dispatch(loadChatMessages(id, type))
         })
 
-        socket.on('join', (data) => {
+        socket.on('delete', (message) => {
+            dispatch(removeMessage(message.msgId))
+        })
+
+        socket.on('join-channel', (data) => {
             console.log(data)
         })
 
@@ -105,27 +108,12 @@ const Chat = ({ group }) => {
                             <div className='chat-message' id={msg.owner} key={msg.id}>
                                 <p className='chat-username'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
                                 <div className='chat-text' id={msg.id}>
-                                    <ChatMessage msg={msg} socket={socket} roomId={roomId} />
+                                    <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
                                 </div>
                             </div>
                         )
 
                     })}
-                    {messages?.map((message, idx) => (
-                        <div
-                            className={message.user === 'weStudy-Bot' ? 'center chat-msg' : message.user === user.username ? 'right chat-msg' : 'left chat-msg'}
-                            key={idx}>
-                            {message.user !== 'weStudy-Bot' &&
-                                <div className='profile-pic-div chat-profile-pic'>
-                                    <img src={message.user_image} alt={message.user}></img>
-                                </div>
-                            }
-                            <div className='chat-message'>
-                                <p className='chat-username'>{message.user}<span className='created-at-msg'>{message.created_at}</span></p>
-                                <div className='chat-text' id={message.id} dangerouslySetInnerHTML={{ __html: message.msg }}></div>
-                            </div>
-                        </div>
-                    ))}
                 </div>
                 <div className='message-editor' id='editor'>
                     <ChatInput value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />

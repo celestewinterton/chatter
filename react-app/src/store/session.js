@@ -1,6 +1,9 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const SET_EDIT_TRUE = 'session/SET_EDIT_TRUE';
+const SET_EDIT_FALSE = 'session/SET_EDIT_FALSE'
+
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +14,15 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const initialState = { user: null };
+export const setEditTrue = () => ({
+  type: SET_EDIT_TRUE
+})
+
+export const setEditFalse = () => ({
+  type: SET_EDIT_FALSE
+})
+
+
 
 
 // export const demoUser = (user) => async (dispatch) => {
@@ -107,12 +118,25 @@ export const signUp = (formData) => async (dispatch) => {
   }
 }
 
+const initialState = { user: null, edit: true };
+
 export default function reducer(state = initialState, action) {
+  const newState = { ...state }
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload }
+      newState.user = action.payload
+      return newState
     case REMOVE_USER:
-      return { user: null }
+      newState.user = null
+      return newState
+    case SET_EDIT_TRUE:
+      newState.edit = true
+      return newState
+    case SET_EDIT_FALSE:
+      newState.edit = false
+      return newState
+
+
     default:
       return state;
   }

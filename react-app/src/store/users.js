@@ -19,12 +19,12 @@ const initialState = {};
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-      case LOAD_USERS:
-        const newState = { ...state }
-        Object.values(action.users)[0].forEach(user => {
-          newState[user.id] = user;
-        });
-        return newState;
+    case LOAD_USERS:
+      const newState = { ...state }
+      Object.values(action.users)[0].forEach(user => {
+        newState[user.id] = user;
+      });
+      return newState;
     default:
       return state;
   };

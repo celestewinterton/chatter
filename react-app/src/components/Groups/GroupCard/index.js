@@ -21,7 +21,6 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
-    console.log("==========> ",  singleGroupName, singleGroupId, groupId)
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
@@ -33,22 +32,23 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     return (
         <>
             <div>{filtered && nav ?
-            <NavLink className="groups-nav grey-hover" to={`/groups/${group.id}`}>
-                <div className="groups-nav-name">
-                    <img className="side-nav-img" src="https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png" />
-                    <div>{groupName}</div>
-                </div>
-                <div>
-                    <i className="fas fa-xmark" onClick={() => setShowDeleteModal(true)}></i>
-                </div>
-            </NavLink> : null}
+                <NavLink className="groups-nav grey-hover" to={`/groups/${group.id}`}>
+                    <div className="groups-nav-name">
+                        <img className="side-nav-img" src="https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png" />
+                        <div>{groupName}</div>
+                    </div>
+                    <div>
+                        <i className="fas fa-xmark" onClick={() => setShowDeleteModal(true)}></i>
+                    </div>
+                </NavLink> : null}
 
 
-            {single &&
-            <div className="groups-header">
-                <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
-            </div>
-            }
+                {single &&
+                    <div className="groups-header">
+                        <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
+                    </div>
+                }
+
 
                 {showDeleteModal && (
                     <Modal onClose={() => setShowModal(false)}>

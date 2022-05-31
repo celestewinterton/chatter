@@ -42,7 +42,9 @@ def login():
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
+        user.online = True
         login_user(user)
+        db.session.commit()
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -52,6 +54,9 @@ def logout():
     """
     Logs a user out
     """
+    user = User.query.get(current_user.id)
+    user.online = False
+    db.session.commit()
     logout_user()
     return {'message': 'User logged out'}
 

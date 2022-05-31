@@ -31,20 +31,69 @@ def edit_chat(data):
     db.session.commit()
     emit("edit", data, broadcast=True, to=room)
 
+@socketio.on("delete")
+def edit_chat(data):
+    room = data['room']
+    message = Message.query.get(data['msgId'])
+    db.session.delete(message)
+    db.session.commit()
+    emit("delete", data, broadcast=True, to=room)
+
 
 
 @socketio.on('join')
 def on_join(data):
     room = data['room']
     join_room(room)
-    emit('join','poopmonster' ,to=room)
+
+
+
+@socketio.on('join-channel')
+def on_join(data):
+    room = data['room']
+    params = {
+        'owner_id': 8,
+        'body': data['username'] + ' has joined the channel.'
+    }
+    if room[0] == 'c':
+        params['channel_id'] = int(room[1:])
+    else:
+        params['group_id'] = int(room[1:])
+    message = Message(**params)
+    db.session.add(message)
+    db.session.commit()
+    emit("chat", data, broadcast=True, to=room)
 
 
 
 @socketio.on('leave')
 def on_leave(data):
     room = data['room']
-    print(data)
     leave_room(room)
-    emit('chat','poopmonster' ,to=room)
+
+@socketio.on('sign-in')
+def on_sign_in(data):
+    emit('sign-in', data, broadcast=True)
+
+@socketio.on('log-out')
+def on_sign_in(data):
+    emit('log-out', data, broadcast=True)
+
+
+
+@socketio.on('leave-channel')
+def on_join(data):
+    room = data['room']
+    params = {
+        'owner_id': 8,
+        'body': data['username'] + ' has left the channel.'
+    }
+    if room[0] == 'c':
+        params['channel_id'] = int(room[1:])
+    else:
+        params['group_id'] = int(room[1:])
+    message = Message(**params)
+    db.session.add(message)
+    db.session.commit()
+    emit("chat", data, broadcast=True, to=room)
 

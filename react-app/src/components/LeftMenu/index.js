@@ -5,7 +5,10 @@ import Groups from "../Groups"
 import { NavLink } from "react-router-dom"
 import "./LeftMenu.css"
 
+
 const LeftMenu = () => {
+
+
     return (
         <>
             <div className="left-navigation-menu">
