@@ -1,12 +1,10 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from '../auth/LoginFormModal';
 import SignUpFormModal from '../auth/SignUpFormModal';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import Search from './Search';
 import SearchInput from './Search/SearchInput';
 import chatter from "../../images/chatter.png"
 import './NavBar.css'
@@ -36,7 +34,10 @@ const NavBar = () => {
   } else {
     search = (
       <div>
-        <SearchInput />
+        <div className='searchbar-spacer'></div>
+        <div>
+          <SearchInput />
+        </div>
       </div>
     )
     sessionLinks = (

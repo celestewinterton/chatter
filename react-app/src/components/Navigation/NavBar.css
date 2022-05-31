@@ -40,7 +40,7 @@
 .search-container {
    height: 26px;
    margin-top: 8px;
-   margin-left: 220px;
+   margin-left: 200px;
    position: relative;
 }
 
@@ -138,8 +138,7 @@
    display: flex;
 
    box-shadow: 0 0 0 1pxvar(--saf-0),0 4px 12px 0 #0000001f;
-   max-width: 340px;
-   min-width: 200px;
+   width: 300px;
    margin-top: 6px;
    width: 300px;
 }
@@ -157,7 +156,7 @@
 
 .profile-dropdown-content button {
    all: unset;
-   width: 260px;
+   width: 278px;
    margin-left: 14px;
    padding: 4px;
 }
@@ -184,4 +183,6 @@
 .line {
    border-top: 1px solid #504e52;
    margin: 4px 0px;
+   display: flex;
+   align-items: center;
 }
