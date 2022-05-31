@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
 import SearchAutocomplete from "./Autocomplete";
+import DropdownMultipleCombobox from "./Downshift";
 
 const GroupForm = ({ setShowModal, edit, group }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
     const [errors, setErrors] = useState({});
-    const [members, setMembers] = useState((edit) ? group.members : '')//change later
+    const [members, setMembers] = useState((edit) ? group.members : '')
 
     useEffect(() => {
         dispatch(loadUsers())
@@ -44,15 +45,15 @@ const GroupForm = ({ setShowModal, edit, group }) => {
         setErrors(errors)
     }, [errors]);
 
-
     return (
-        <form autoComplete="off" className="channel-form-container" onSubmit={handleSubmit}>
-            <div className='channel-form-input-container'>
+        // <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
+            <div className='group-create-input-container'>
                 <SearchAutocomplete members={members} setMembers={setMembers} />
+                <DropdownMultipleCombobox  edit={edit} group={group}/>
                 <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Edit DM' : 'Start DM'}</button>
-                <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
+                {/* <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button> */}
             </div>
-        </form>
+        // </form>
     );
 };
 
