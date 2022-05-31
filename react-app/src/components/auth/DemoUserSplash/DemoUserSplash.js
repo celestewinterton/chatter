@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../../store/session'
-import './DemoUser.css'
+import './DemoUserSplash.css'
 
 
 function DemoUser() {
@@ -18,7 +18,7 @@ function DemoUser() {
    }
    return (
       <div>
-         <button className='demo-button' onClick={handleSubmit}>Try a Demo</button>
+         <button className='demo-button-splash' onClick={handleSubmit}>Try a Demo</button>
       </div>
    )
 }
