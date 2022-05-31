@@ -11,8 +11,6 @@ const DropdownMultipleCombobox = ({members, setMembers}) => {
   const items = usernames
   const [inputValue, setInputValue] = useState('')
 
-  console.log("From Downshift..... ", usernames)
-
 
   const {
     getSelectedItemProps,
@@ -27,6 +25,7 @@ const DropdownMultipleCombobox = ({members, setMembers}) => {
         selectedItems.indexOf(item) < 0 &&
         item.toLowerCase().startsWith(inputValue.toLowerCase()),
     )
+
   const {
     isOpen,
     getToggleButtonProps,
@@ -60,12 +59,16 @@ const DropdownMultipleCombobox = ({members, setMembers}) => {
       }
     },
   })
+
+  console.log("From Downshift..... ", usernames)
+
   return (
     <div>
-      <label {...getLabelProps()}>Choose some elements:</label>
-      <div>
+      <div className='multiselect-container'>
+        <label className='multiselect-label' {...getLabelProps()}>To: </label>
         {selectedItems.map((selectedItem, index) => (
           <span
+            className='multiselected-user'
             key={`selected-item-${index}`}
             {...getSelectedItemProps({selectedItem, index})}
           >
@@ -79,12 +82,12 @@ const DropdownMultipleCombobox = ({members, setMembers}) => {
         ))}
         <div {...getComboboxProps()}>
           <input
+            className='multiselect-input'
+            placeholder='@somebody'
             {...getInputProps(getDropdownProps({preventKeyAction: isOpen}))}
           />
-          <button {...getToggleButtonProps()} aria-label={'toggle menu'}>
-            &#8595;
-          </button>
         </div>
+        <button className='multiselect-dropdown' {...getToggleButtonProps()} aria-label={'toggle menu'}></button>
       </div>
       <ul {...getMenuProps()}>
         {isOpen &&

@@ -70,3 +70,34 @@
 .group-create-input-container > div {
   border-bottom: 1px solid #3a3d40;
 }
+
+.multiselect-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.multiselect-input {
+  all: unset;
+  padding: 5px;
+}
+
+.multiselected-user {
+  background-color: #1d9bd11a;
+  padding: 6px 12px;
+  margin: 5px;
+  border-radius: 4px;
+}
+
+.multiselected-user > span {
+  padding-left: 4px;
+}
+
+.multiselect-dropdown {
+  all: unset;
+}
+
+.multiselect-label {
+  margin: 5px 16px ;
+}
