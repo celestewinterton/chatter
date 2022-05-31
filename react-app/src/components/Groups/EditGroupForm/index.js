@@ -29,7 +29,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         let errors;
         const formData = new FormData();
         formData.append('members', members)
-        formData.append('owner_id', sessionUser.id)
+        formData.append('user_id', sessionUser.id)
         edit = true
 
         if (edit) {
