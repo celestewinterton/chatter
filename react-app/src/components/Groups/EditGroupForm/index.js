@@ -5,7 +5,7 @@ import { loadUsers } from "../../../store/users";
 import SearchAutocomplete from "./Autocomplete";
 import { useParams } from 'react-router-dom';
 
-const GroupForm = ({ setShowModal, edit, group }) => {
+const EditGroupForm = ({ setShowModal, edit, group }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
@@ -81,4 +81,4 @@ const GroupForm = ({ setShowModal, edit, group }) => {
     );
 };
 
-export default GroupForm;
+export default EditGroupForm;
