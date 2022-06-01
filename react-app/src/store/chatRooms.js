@@ -56,12 +56,14 @@ export const createGroupRoom = (formData) => async (dispatch) => {
     }
 }
 
-export const editGroupRoom = (formData, roomId) => async (dispatch) => {
-    const res = await easyFetch(`/api/groups/${roomId}`, {
+export const editGroupRoom = (formData, groupId) => async (dispatch) => {
+    console.log(">>>>>>>", formData.get("members"), formData.get("user_id"))
+    const res = await easyFetch(`/api/groups/${groupId}`, {
         method: 'PUT',
         body: formData
     })
     const data = await res.json()
+
     if (res.ok) {
         dispatch(editGroup(data))
     } else {

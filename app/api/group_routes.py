@@ -65,7 +65,6 @@ def create_group():
 
 @group_routes.route("/<int:groupId>", methods=["PUT"])
 def edit_group(groupId):
-    # pass
     form = NewGroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     # user_id = form.data["user_id"]
@@ -90,8 +89,9 @@ def edit_group(groupId):
             edit_group = Group.query.get(groupId)
             # edit_group.users.append(current_user)
             for member in strippedMembers:
-                user = User.query.filter(User.username == member).first()
-                edit_group.users.append(user.id)
+                user = User.query.filter(User.id == member).first()
+                print(">>>>>", user)
+                edit_group.users.append(user)
 
             db.session.add(edit_group)
             db.session.commit()

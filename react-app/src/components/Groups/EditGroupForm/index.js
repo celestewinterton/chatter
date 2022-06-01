@@ -15,6 +15,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     const singleGroupId = params.id
     const groups = useSelector(state => state.chatRooms.subscribed)
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
+    // console.log("SSSSSS",singleGroupName)
     const [errors, setErrors] = useState({});
     const [members, setMembers] = useState('')//change later
 
@@ -27,12 +28,11 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         e.preventDefault()
         let errors;
         const formData = new FormData();
-        formData.append('members', members)
-        formData.append('user_id', sessionUser.id)
-        // console.log("<<<<<<<<", formData)
         edit = true
 
         if (edit) {
+            formData.append('members', members)
+            formData.append('user_id', sessionUser.id)
             dispatch(editGroupRoom(formData, singleGroupId))
         } else {
             errors = await dispatch(createGroupRoom(formData))
@@ -50,7 +50,15 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     };
 
     const inputMembers = (e) => {
-        setMembers(e.target.value)
+        const addedMember = e.target.value
+        const addedMemberArr = addedMember?.split(" ")
+        let addedMemberIdArr = []
+        addedMemberArr?.forEach(member => {
+            let memberObj = usersArr?.find(user => user?.username == member)
+            if(memberObj) addedMemberIdArr.push(memberObj["id"])
+        });
+        console.log("????", addedMemberIdArr)
+        setMembers(addedMemberIdArr.join(" "))
     }
 
     useEffect(() => {
