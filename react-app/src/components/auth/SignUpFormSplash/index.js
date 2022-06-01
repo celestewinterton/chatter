@@ -8,7 +8,7 @@ function SignUpFormModal1() {
 
    return (
       <div className= 'nav-signup-container'> 
-         <button className='splash-signup-button'onClick={() => setShowModal(true)}>SIGN UP WITH EMAIL</button>
+         <button className='splash-signup-button'onClick={() => setShowModal(true)}>Sign up with email</button>
          {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                <SignUpForm />
