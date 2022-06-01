@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 import { io } from 'socket.io-client'
 import DemoUser from '../DemoUser/DemoUser';
@@ -18,6 +19,7 @@ const SignUpForm = () => {
   const [imageLoading, setImageLoading] = useState(false);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history =useHistory()
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -34,10 +36,11 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
         return
-
       }
-    } else {
+    } if (password !== repeatPassword) {
       setErrors(['password: Password doesn\'t match'])
+    } else {
+    history.push('/')
     }
   };
   const updateImage = (e) => {
@@ -62,7 +65,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    history.push('/')
   }
 
   return (
