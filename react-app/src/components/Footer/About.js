@@ -13,10 +13,10 @@ return (
                </div>
                <div className="links">
                   <a className='linkedin' href='https://www.linkedin.com/in/austin-dang-106834191/'target="_blank" rel="noopener noreferrer" >
-                     <i class="fa-brands fa-linkedin"></i>
+                     <i className="fa-brands fa-linkedin"></i>
                   </a>
                   <a className='github' href='https://github.com/AuDang' target="_blank" rel="noopener noreferrer">
-                     <i class="fa-brands fa-github"></i>
+                     <i className="fa-brands fa-github"></i>
                   </a>
                </div>
             </div>
@@ -26,10 +26,10 @@ return (
                </div>
                <div className='links'>
                   <a className='linkedin' href='https://www.linkedin.com/in/brendan-downing-641672228/' target="_blank" rel="noopener noreferrer">
-                     <i class="fa-brands fa-linkedin"></i>
+                     <i className="fa-brands fa-linkedin"></i>
                   </a>
                   <a className='github' href='https://github.com/Downster' target="_blank" rel="noopener noreferrer">
-                     <i class="fa-brands fa-github"></i>
+                     <i className="fa-brands fa-github"></i>
                   </a>
                </div>
             </div>
@@ -39,13 +39,13 @@ return (
                </div>
                <div className='links'>
                   <a className="angel" href="https://angel.co/u/celeste-winterton" target="_blank" rel="noopener noreferrer">
-                     <i class="fa-brands fa-angellist"></i>
+                     <i className="fa-brands fa-angellist"></i>
                   </a>
                   <a className='linkedin' href='https://www.linkedin.com/in/celestewinterton/' target="_blank" rel="noopener noreferrer">
-                     <i class="fa-brands fa-linkedin"></i>
+                     <i className="fa-brands fa-linkedin"></i>
                   </a>
                   <a className='github' href="https://github.com/celestewinterton" target="_blank" rel="noopener noreferrer">
-                     <i class="fa-brands fa-github"></i>
+                     <i className="fa-brands fa-github"></i>
                   </a>
                </div>
             </div>
@@ -55,7 +55,7 @@ return (
                </div>
                 <div className='links'>
                   <a className='github' href='https://github.com/ellen20' target="_blank" rel="noopener noreferrer">
-                     <i class="fa-brands fa-github"></i>
+                     <i className="fa-brands fa-github"></i>
                   </a>
                </div>
             </div>

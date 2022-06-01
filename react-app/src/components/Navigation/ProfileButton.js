@@ -57,10 +57,10 @@ function ProfileButton({ user }) {
               <div>Austin Dang</div>
               <div>
                 <a className="unset" href="https://www.linkedin.com/in/austin-dang-106834191/">
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
                 <a className="unset" href="https://github.com/AuDang">
-                  <i class="fa-brands fa-github"></i>
+                  <i className="fa-brands fa-github"></i>
                 </a>
               </div>
             </div>
@@ -69,10 +69,10 @@ function ProfileButton({ user }) {
               <div>Brendan Downing</div>
               <div>
                 <a className="unset" href="https://www.linkedin.com/in/brendan-downing-641672228/">
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
                 <a className="unset" href="https://github.com/Downster">
-                  <i class="fa-brands fa-github"></i>
+                  <i className="fa-brands fa-github"></i>
                 </a>
               </div>
             </div>
@@ -81,13 +81,13 @@ function ProfileButton({ user }) {
               <div>Celeste Winterton</div>
               <div>
                 <a className="unset" href="https://angel.co/u/celeste-winterton">
-                  <i class="fa-brands fa-angellist"></i>
+                  <i className="fa-brands fa-angellist"></i>
                 </a>
                 <a className="unset" href="https://www.linkedin.com/in/celestewinterton/">
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
                 <a className="unset" href="https://github.com/celestewinterton">
-                  <i class="fa-brands fa-github"></i>
+                  <i className="fa-brands fa-github"></i>
                 </a>
               </div>
             </div>
@@ -96,7 +96,7 @@ function ProfileButton({ user }) {
               <div>Jingling Jin</div>
               <div>
                 <a className="unset" href="https://github.com/ellen20">
-                  <i class="fa-brands fa-github"></i>
+                  <i className="fa-brands fa-github"></i>
                 </a>
               </div>
             </div>
