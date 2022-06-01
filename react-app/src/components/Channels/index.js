@@ -11,7 +11,7 @@ import './Channels.css'
 const Channels = ({ all, user, single }) => {
     const dispatch = useDispatch()
     const rooms = useSelector(state => state.channels)
-    const subbedChannels = useSelector(state => state.channels.subscribed)
+    const subbedChannels = useSelector(state => state.session.user.subscribed_channels)
     const channelsArray = Object.values(rooms.subscribed)
     const subscribedChannelsArray = Object.values(subbedChannels)
     const allChannelsArray = Object.values(rooms.all)
