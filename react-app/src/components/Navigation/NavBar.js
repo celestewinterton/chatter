@@ -16,7 +16,7 @@ const NavBar = () => {
   let search
   if (!sessionUser) {
     sessionLinks = (
-      <div className='nav-container'>
+      <div className='splash-nav-container'>
         <div className='nav-left'>
             <NavLink className='nav-logo' to='/home'>
                 <img className='logo' src={chatter}/>
