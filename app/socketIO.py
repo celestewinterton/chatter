@@ -79,7 +79,9 @@ def on_sign_in(data):
 def on_sign_in(data):
     emit('log-out', data, broadcast=True)
 
-
+@socketio.on('delete-channel')
+def delete_channel(data):
+    emit('delete-channel', data, broadcast=True)
 
 @socketio.on('leave-channel')
 def on_join(data):

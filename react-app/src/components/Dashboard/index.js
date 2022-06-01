@@ -26,17 +26,20 @@ const Dashboard = () => {
       socket.emit('sign-in', { 'id': sessionUser.id, 'username': sessionUser.username, 'room': 'chatter', 'online': true })
 
       socket.on('sign-in', (data) => {
-         console.log('loading')
          dispatch(loadUsers())
       });
 
       socket.on('log-out', (data) => {
-         console.log('logout')
          dispatch(loadUsers())
       })
 
+      socket.on('delete-channel', (data) => {
+         console.log('deletingggggg')
+         dispatch(reloadCurrentUser(sessionUser.id))
+      })
+
       return (() => {
-         socket.emit('log-out', { 'id': sessionUser.id, 'username': sessionUser.username, 'room': 'we-study', 'online': false })
+         socket.emit('log-out', { 'id': sessionUser.id, 'username': sessionUser.username, 'room': 'chatter', 'online': false })
          socket.disconnect();
       });
    }, [dispatch])
