@@ -10,6 +10,8 @@
 }
 .signin-header1 {
    font-size: 45px;
+   color:black;
+   padding-bottom:20px;
 }
 
 .signin-header2 {
@@ -50,10 +52,11 @@
    border-radius: 5px;
    height: 37px;
    font-family: 'Noto Sans';
-   font-weight: bodler;
+   font-weight: bold;
+   border: unset;
 }
 .nav-login-button:hover {
-   border-color:rgba(74, 21, 75, 255) ;
+   cursor: pointer;
 
 }
 /******************* SIGN IN FORM INPUT FIELDS *****************************/
@@ -112,5 +115,6 @@ input {
 
 .signin-button:hover {
    color:white;
+   cursor: pointer;
 
 }

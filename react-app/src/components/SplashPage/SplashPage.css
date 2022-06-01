@@ -1,3 +1,5 @@
+
+
 .splash-main-container {
    min-height: 100vw;
 }
@@ -42,7 +44,34 @@
    padding:10px 0 10px 0;
    line-height: 1.4;
 }
+.splash-buttons {
+   display:flex;
+}
+.demo-button-splash {
+   width: 200px;
+   padding: 6px;
+   margin-top: 10px;
+   border-radius: 5px;
+   font-size: 20px;
+}
+.demo-button-splash:hover {
+   cursor: pointer;
+}
 
+
+.splash-signup-button {
+   width: 200px;
+   padding: 6px;
+   margin-top: 10px;
+   border-radius: 5px;
+   font-size: 20px;
+   background-color: rgba(74, 21, 75, 255);
+   color: white;
+}
+
+.splash-signup-button:hover {
+   cursor:pointer
+}
 
 .dashboard {
    width: 600px;
@@ -208,4 +237,71 @@ font-size: 20px;
    font-size: 20px;
    font-weight:bolder
 
+}
+
+/* CONTAINER 7 */
+.splash-container-7 {
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   height:450px;
+   margin-bottom: 50px;
+   background-color: rgba(74, 21, 75, 255);
+   clip-path: ellipse(75% 100% at center top);
+
+}
+.splash-container-7-header {
+   font-size: 70px;
+   color:white;
+   font-weight:bolder;
+}
+.splash-container-7-title {
+   display:flex;
+   justify-content: center;
+   padding-bottom: 30px;
+}
+.splash-container-7-buttons {
+   display:flex;
+   justify-content: center;
+   padding-top:10px;
+}
+.demo-button-1 {
+   width: 200px;
+   padding: 6px;
+   margin-top: 10px;
+   border-radius: 5px;
+   background-color: rgba(74, 21, 75, 255);
+   font-size: 20px;
+   height:50px;
+   font-weight: 520;
+   color:white;
+   border: 1px solid white;
+}
+
+.demo-button-1:hover {
+   cursor: pointer;
+}
+.splash-bottom-signup-button {
+   width: 200px;
+   padding: 6px;
+   margin-top: 10px;
+   border-radius: 5px;
+   font-size: 20px;
+   font-weight:520;
+   color: rgba(74, 21, 75, 255);
+   height: 50px;
+   border: 1px solid white;
+}
+.splash-bottom-signup-button:hover {
+   cursor: pointer;
+}
+.splash-footer {
+   margin-top:40px;
+   padding: 0px 10px 0px 10px;
+}
+.copyright {
+   color:black;
+   font-size:12px;
+   margin-left:50px;
+   padding:20px 0px 20px;
 }

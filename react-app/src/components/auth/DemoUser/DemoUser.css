@@ -7,5 +7,6 @@
 }
 .demo-button:hover {
    border-color: rgb(44, 7, 80);
+   cursor:pointer;
 
 }

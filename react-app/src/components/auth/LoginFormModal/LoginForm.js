@@ -42,7 +42,7 @@ const LoginForm = () => {
             <img className='signin-form-logo' alt='sign up form logo' src={chatter}></img>
           </div>
           <h2 className='signin-header1'> Sign in to Chatter</h2>
-          <h4 className='signin-header2'>New to Chatter?</h4>
+          {/* <h4 className='signin-header2'>New to Chatter?</h4> */}
         </div>
         <div className='error-container'>
           {errors.length > 0 && (

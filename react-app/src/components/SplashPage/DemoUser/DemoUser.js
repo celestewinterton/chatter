@@ -1,25 +1,25 @@
 import React from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../../store/session'
 
 
-function DemoUser() {
+function DemoUser1() {
    const dispatch = useDispatch();
    const history = useHistory()
 
    const handleSubmit = e => {
       e.preventDefault();
-     (async()=>{
-      await dispatch(sessionActions.login('demo@aa.io', 'password'));
-      history.push('/')
+      (async () => {
+         await dispatch(sessionActions.login('demo@aa.io', 'password'));
+         history.push('/')
       })()
    }
    return (
       <div>
-         <button className='demo-button-splash' onClick={handleSubmit}>Try a Demo</button>
+         <button className='demo-button-1' onClick={handleSubmit}>Try a Demo</button>
       </div>
    )
 }
 
-export default DemoUser
+export default DemoUser1
