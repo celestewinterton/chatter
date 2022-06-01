@@ -3,7 +3,7 @@ import { NavLink, useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteGroupRoom } from "../../../store/chatRooms";
 import { useState, useEffect } from "react";
-import { Modal } from "../../../context/Modal"
+import { DarkModal } from "../../../context/Modal"
 import GroupsPage from "../GroupsPage";
 
 const GroupCard = ({ group, all, single, modal, nav }) => {
@@ -50,11 +50,13 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
                 }
 
                 {showDeleteModal && (
-                    <Modal onClose={() => setShowModal(false)}>
+                    <DarkModal onClose={() => setShowModal(false)}>
                         <h1>Are you sure you want to delete this message thread?</h1>
-                        <button onClick={deleteGroup}>Yes</button>
-                        <button onClick={() => setShowDeleteModal(false)}>No</button>
-                    </Modal>
+                        <div className="buttons-right-container">
+                            <button className="grey-button" onClick={() => setShowDeleteModal(false)}>No</button>
+                            <button className="green-button" onClick={deleteGroup}>Yes</button>
+                        </div>
+                    </DarkModal>
                 )}
             </div>
         </>
