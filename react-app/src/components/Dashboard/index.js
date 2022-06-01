@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
-import { getGroupRooms } from '../../store/chatRooms';
-import { getChannels } from '../../store/channels';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import Channels from '../Channels';
-import CreateChannelModal from '../Channels/CreateChannelModal';
 import Groups from '../Groups';
 import { io } from 'socket.io-client'
-import CreateGroupModal from '../Groups/CreateGroupModal'
 import LeftMenu from '../LeftMenu'
 import './Dashboard.css'
 import { loadUsers } from '../../store/users';
@@ -17,6 +13,7 @@ import { reloadCurrentUser } from '../../store/session';
 
 let socket;
 const Dashboard = () => {
+   const history = useHistory()
    const dispatch = useDispatch()
    const sessionUser = useSelector((state) => state.session.user)
 
@@ -34,8 +31,8 @@ const Dashboard = () => {
       })
 
       socket.on('delete-channel', (data) => {
-         console.log('deletingggggg')
          dispatch(reloadCurrentUser(sessionUser.id))
+         history.push('/')
       })
 
       return (() => {
