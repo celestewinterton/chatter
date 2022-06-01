@@ -1,6 +1,9 @@
+import { easyFetch } from "../utils/easyFetch";
+
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const RELOAD_USER = 'session/RELOAD_USER';
 const SET_EDIT_TRUE = 'session/SET_EDIT_TRUE';
 const SET_EDIT_FALSE = 'session/SET_EDIT_FALSE'
 
@@ -9,6 +12,11 @@ const setUser = (user) => ({
   type: SET_USER,
   payload: user
 });
+
+const relaodUser = (user) => ({
+  type: RELOAD_USER,
+  user
+})
 
 const removeUser = () => ({
   type: REMOVE_USER,
@@ -24,21 +32,16 @@ export const setEditFalse = () => ({
 
 
 
+export const reloadCurrentUser = (userId) => async (dispatch) => {
+  const res = await easyFetch(`/api/users/${userId}`)
 
-// export const demoUser = (user) => async (dispatch) => {
-//   const { credential, password } = user;
-//   const formData = new FormData()
-//   formData.append('email', credential )
-//   formData.append('password', password)
-//   const response = await fetch('/api/auth/login', {
-//     method: 'POST',
-//     body: formData
-//   });
-//   const data = await response.json();
-//   console.log('data', data)
-//   dispatch(setUser(data.user));
-//   return response;
-// }
+  const user = await res.json()
+  if (res.ok) {
+    dispatch(relaodUser(user))
+  } else {
+    return user
+  }
+}
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -125,6 +128,9 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       newState.user = action.payload
+      return newState
+    case RELOAD_USER:
+      newState.user = action.user
       return newState
     case REMOVE_USER:
       newState.user = null

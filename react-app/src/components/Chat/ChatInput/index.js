@@ -7,7 +7,7 @@ const ChatInput = ({ value, onChange, send, group, room }) => {
     if (group) {
         users = room.users.map(user => user.username).join(', ')
     } else {
-        users = room.name
+        users = room?.name
     }
     const toolbarOptions = [['bold', 'italic', 'strike'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['blockquote'], ['code', 'codeblock']];
     const modules = {
@@ -23,7 +23,7 @@ const ChatInput = ({ value, onChange, send, group, room }) => {
                     theme='snow'
                     onChange={onChange} />
                 <div className='button-div'>
-                    <button className='send-button' onClick={send}><i class="fa-solid fa-paper-plane"></i></button>
+                    <button className='send-button' onClick={send}><i className="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
         </>

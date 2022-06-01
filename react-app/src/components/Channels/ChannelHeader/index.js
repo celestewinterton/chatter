@@ -19,7 +19,7 @@ const ChannelHeader = ({ all, single, channel, modal }) => {
             }
             {single &&
                 <div className="channel-header">
-                    <h1 className="channel-title" onClick={modal}># {channel.name}</h1>
+                    <h1 className="channel-title" onClick={modal}># {channel?.name}</h1>
 
                 </div>}
         </>

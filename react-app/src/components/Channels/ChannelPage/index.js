@@ -4,12 +4,14 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteChannelRoom, getChannels } from "../../../store/channels";
+import { reloadCurrentUser } from "../../../store/session";
 import ChannelForm from "../ChannelForm";
 import ChannelHeader from "../ChannelHeader";
 import Chat from "../../Chat";
 
 const ChannelPage = () => {
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
     const history = useHistory()
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -21,11 +23,12 @@ const ChannelPage = () => {
         setShowModal(true)
     }
 
-    const deleteChannel = () => {
-        dispatch(deleteChannelRoom(channel.id))
-        dispatch(getChannels())
-        setShowDeleteModal(false)
+    const deleteChannel = async () => {
+        await dispatch(deleteChannelRoom(channel.id))
+        await dispatch(getChannels())
+        await dispatch(reloadCurrentUser(user.id))
         history.push('/')
+        setShowDeleteModal(false)
     }
 
 
