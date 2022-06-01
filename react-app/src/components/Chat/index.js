@@ -44,10 +44,14 @@ const Chat = ({ group }) => {
 
     const sendChat = async (e) => {
         e.preventDefault();
-        socket.emit('chat', {
-            user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
-        });
-        setMessageBody("");
+        if (messageBody !== '') {
+            socket.emit('chat', {
+                user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
+            });
+            setMessageBody("");
+        } else {
+            setMessageBody('Message cannot be empty, please input a message')
+        }
     };
 
 
@@ -104,26 +108,31 @@ const Chat = ({ group }) => {
 
     return (
         <>
-            <div className='chat-room-container'>
-                <div className='chat-messages-container'>
-                    {chatMessages?.map(msg => {
-                        return (
-                            <div className='chat-message' id={msg.owner} key={msg.id}>
-                                <div className='pic-container'>
-                                    <ChatUserCard msg={msg} />
-                                </div>
-                                <p className='chat-username'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
-                                <div className='chat-text' id={msg.id}>
-                                    <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
-                                </div>
-                            </div>
-                        )
+            <div className='hope-this-works'>
 
-                    })}
+                <div className='outer-chat-container'>
+                    <div className='chat-room-container'>
+                        <div className='chat-messages-container'>
+                            {chatMessages?.map(msg => {
+                                return (
+                                    <div className='chat-message' id={msg.owner} key={msg.id}>
+                                        <div className='pic-container'>
+                                            <ChatUserCard msg={msg} />
+                                        </div>
+                                        <p className='chat-username'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
+                                        <div className='chat-text' id={msg.id}>
+                                            <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
+                                        </div>
+                                    </div>
+                                )
+
+                            })}
+                        </div>
+                    </div>
                 </div>
-                <div className='message-editor' id='editor'>
-                    <ChatInput value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />
-                </div>
+            </div>
+            <div className='message-editor' id='editor'>
+                <ChatInput value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />
             </div>
         </>
     )

@@ -32,13 +32,17 @@ def create_group():
     }
     members = form.data["members"]
     members_list = members.split(',')
-    strippedMembers = [int(member.strip()) for member in members_list]
+    strippedMembers = [member.strip() for member in members_list]
+    print(strippedMembers)
+    intMembers = [int(member) for member in strippedMembers]
+    intMembers.append(current_user.id)
 
 
     def validate_group(input):
         groups = Group.query.all()
         groups_as_dicts = [group.compare_dict() for group in groups]
         for group in groups_as_dicts:
+            print('group      ', group)
             print('GROUP     ', group['user_id'] == input)
             print('INPUT      ', input)
             if group['user_id'] == input:
@@ -48,7 +52,7 @@ def create_group():
 
 
     if form.validate_on_submit():
-        if validate_group(strippedMembers):
+        if validate_group(intMembers):
             return {'errors': 'group already exists'}, 401
         else:
             new_group = Group(**params)
