@@ -15,8 +15,14 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     const singleGroupId = params.id
     const groups = useSelector(state => state.chatRooms.subscribed)
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
+<<<<<<< HEAD
     const [errors, setErrors] = useState({});
     const [members, setMembers] = useState('')
+=======
+    // console.log("SSSSSS",singleGroupName)
+    const [errors, setErrors] = useState({});
+    const [members, setMembers] = useState('')//change later
+>>>>>>> 52a9a16 (aedit GrouCard and GroupsPage and add EditGroupForm components)
 
 
     useEffect(() => {
@@ -27,6 +33,10 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         e.preventDefault()
         let errors;
         const formData = new FormData();
+<<<<<<< HEAD
+=======
+        edit = true
+>>>>>>> 52a9a16 (aedit GrouCard and GroupsPage and add EditGroupForm components)
 
         if (edit) {
             formData.append('members', members)
