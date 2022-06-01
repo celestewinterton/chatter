@@ -16,6 +16,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     const groups = useSelector(state => state.chatRooms.subscribed)
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
 <<<<<<< HEAD
+<<<<<<< HEAD
     const [errors, setErrors] = useState({});
     const [members, setMembers] = useState('')
 =======
@@ -23,6 +24,10 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     const [errors, setErrors] = useState({});
     const [members, setMembers] = useState('')//change later
 >>>>>>> 52a9a16 (aedit GrouCard and GroupsPage and add EditGroupForm components)
+=======
+    const [errors, setErrors] = useState({});
+    const [members, setMembers] = useState('')
+>>>>>>> 63a6566 (eadd edit groups reducer in chatRooms store)
 
 
     useEffect(() => {
@@ -34,9 +39,12 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         let errors;
         const formData = new FormData();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         edit = true
 >>>>>>> 52a9a16 (aedit GrouCard and GroupsPage and add EditGroupForm components)
+=======
+>>>>>>> 63a6566 (eadd edit groups reducer in chatRooms store)
 
         if (edit) {
             formData.append('members', members)
