@@ -12,10 +12,10 @@ return (
                   Austin Dang
                </div>
                <div className="links">
-                  <a className='linkedin' href='https://www.linkedin.com/in/austin-dang-106834191/'>
+                  <a className='linkedin' href='https://www.linkedin.com/in/austin-dang-106834191/'target="_blank" rel="noopener noreferrer" >
                      <i class="fa-brands fa-linkedin"></i>
                   </a>
-                  <a className='github' href='https://github.com/AuDang'>
+                  <a className='github' href='https://github.com/AuDang' target="_blank" rel="noopener noreferrer">
                      <i class="fa-brands fa-github"></i>
                   </a>
                </div>
@@ -25,10 +25,10 @@ return (
                   Brendan Downing
                </div>
                <div className='links'>
-                  <a className='linkedin' href='https://www.linkedin.com/in/brendan-downing-641672228/'>
+                  <a className='linkedin' href='https://www.linkedin.com/in/brendan-downing-641672228/' target="_blank" rel="noopener noreferrer">
                      <i class="fa-brands fa-linkedin"></i>
                   </a>
-                  <a className='github' href='https://github.com/Downster'>
+                  <a className='github' href='https://github.com/Downster' target="_blank" rel="noopener noreferrer">
                      <i class="fa-brands fa-github"></i>
                   </a>
                </div>
@@ -38,13 +38,13 @@ return (
                   Celeste Winterton
                </div>
                <div className='links'>
-                  <a className="angel" href="https://angel.co/u/celeste-winterton">
+                  <a className="angel" href="https://angel.co/u/celeste-winterton" target="_blank" rel="noopener noreferrer">
                      <i class="fa-brands fa-angellist"></i>
                   </a>
-                  <a className='linkedin' href='https://www.linkedin.com/in/celestewinterton/'>
+                  <a className='linkedin' href='https://www.linkedin.com/in/celestewinterton/' target="_blank" rel="noopener noreferrer">
                      <i class="fa-brands fa-linkedin"></i>
                   </a>
-                  <a className='github' href="https://github.com/celestewinterton">
+                  <a className='github' href="https://github.com/celestewinterton" target="_blank" rel="noopener noreferrer">
                      <i class="fa-brands fa-github"></i>
                   </a>
                </div>
@@ -54,7 +54,7 @@ return (
                   Jingling Jin
                </div>
                 <div className='links'>
-                  <a className='github' href='https://github.com/ellen20'>
+                  <a className='github' href='https://github.com/ellen20' target="_blank" rel="noopener noreferrer">
                      <i class="fa-brands fa-github"></i>
                   </a>
                </div>
