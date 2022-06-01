@@ -7,17 +7,22 @@ import Channels from '../Channels';
 import CreateChannelModal from '../Channels/CreateChannelModal'
 import SignUpFormModal1 from '../auth/SignUpFormSplash';
 import SignUpFormModal2 from './SignUpButtonFooter';
-import dashboard from '../../images/dashboard.png'
-import corkboard from '../../images/corkboard.jpg'
-import folders from '../../images/folders.gif'
-import teamwork from '../../images/teamwork.gif'
-import yarn from '../../images/yarn.gif'
 import Footer from '../Footer';
 import heroUI1 from '../../videos/heroUI1.webm'
 import heroUI2 from '../../videos/heroUI2.webm'
 import heroUI3 from '../../videos/heroUI3.webm'
 import heroUI4 from '../../videos/heroUI4.webm'
 import heroUI6 from '../../videos/heroUI6.mp4'
+import airbnb from '../../images/airbnb.png'
+import uber from '../../images/uber.png'
+import spotify from '../../images/spotify.png'
+import netflix from '../../images/netflix.png'
+import onemedical from '../../images/onemedical.png'
+import ameritrade from '../../images/ameritrade.png'
+import target from '../../images/target.png'
+import intuit from '../../images/intuit.png'
+import nasa from '../../images/nasa.png'
+import time from '../../images/time.png'
 import './SplashPage.css'
 
 // import 
@@ -41,23 +46,29 @@ const SplashPage = () => {
             </div>
             <div className='splash-section-1-video'>
                <video className='video1' playsinline autostart autoPlay loop muted src={heroUI1} type='video/webm'/> 
-               {/* <img className='dashboard'src={dashboard} alt='details-dashboard'/> */}
             </div>
          </div>
 
-         {/* <div className='splash-container-2'>
-            <div className='splash-container-2-image'>
-               <img className='corkboard' src={corkboard} alt='corkboard image'/>
-            </div>
+         <div className='splash-container-2'>
             <div className='splash-container-2-title'>
-               <h2 className='splash-container-header'>Now is your movement to build a better tomorrow</h2>
-               <p className='splash-container-text'>We've seen what the future can be. Now it's time to decide what it will be.</p>
+               <p className='splash-container-2-header'>Trusted by companies all over the world</p>
             </div>
-         </div> */}
+            <div className='splash-container-2-images'>
+               <img className='airbnb'src={airbnb} alt='airbnb logo'/>
+               <img className='uber'src={uber} alt='uber logo'/>
+               <img className='spotify'src={spotify} alt='spotify'/>
+               <img className='netflix'src={netflix} alt='netflix logo'/>
+               <img className='onemedical'src={onemedical} alt='onemedical logo'/>
+               <img className='ameritrade'src={ameritrade} alt='ameritrade'/>
+               <img className='target'src={target} alt='target'/>
+               <img className='intuit'src={intuit} alt='intuit logo'/>
+               <img className='nasa'src={nasa} alt='nasa logo'/>
+               <img className='time'src={time} alt='time'/>
+            </div>
+         </div>
 
          <div className='splash-container-3'>
             <div className='splash-container-3-video'>
-               {/* <img className='yarn' src={yarn} alt='yarn gif'/>   */}
                <video className='video3' playsinline autostart autoPlay loop muted src={heroUI2} type='video/webm'/>
             </div>
             <div className='splash-container-3-title'>
@@ -72,13 +83,11 @@ const SplashPage = () => {
             </div>
             <div className='splash-container-4-video'>
                <video className='video4' playsinline autostart autoPlay loop muted src={heroUI3} type='video/webm'/>
-               {/* <img className='folders' src={folders} alt='folders gif'/> */}
             </div>
          </div>
          <div className='splash-container-5'>
             <div className='splash-container-5-video'>
                <video className='video5' playsinline autostart autoPlay loop muted src={heroUI4} type='video/webm'/>
-               {/* <img className='teamwork' src={teamwork} alt='teamwork gif'/> */}
             </div>
             <div className='splash-container-5-title'>
                <h1 className='splash-container-header'>Move faster with your tools in one place</h1>
