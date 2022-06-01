@@ -11,7 +11,7 @@ const SearchInput = () => {
   setSearchResults(true)
   }, [query])
 
-  const icon = (<i class="fa fa-search" aria-hidden="true"></i>)
+  const icon = (<i className="fa fa-search" aria-hidden="true"></i>)
 
   return (
     <div className='search-container'>
