@@ -6,7 +6,7 @@ import GroupForm from "./GroupForm";
 import './Groups.css'
 
 
-const Groups = ({all, single, form}) => {
+const Groups = ({ all, single, form }) => {
   const dispatch = useDispatch();
   const { groupId } = useParams()
   const groups = useSelector(state => state.chatRooms)

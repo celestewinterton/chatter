@@ -12,6 +12,7 @@ import Chat from "../../Chat";
 let socket;
 const ChannelCard = ({ channel, single, nav }) => {
     const user = useSelector(state => state.session.user)
+    const subbedChannels = user.subscribed_channels
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -24,6 +25,15 @@ const ChannelCard = ({ channel, single, nav }) => {
         dispatch(joinChannelRoom(channel.id))
         dispatch(getChannels())
         history.push(`/channels/${channel.id}`)
+    }
+
+    const checkChannels = (id) => {
+        for (let channel of subbedChannels) {
+            if (channel.id === id) {
+                return false
+            }
+        }
+        return true
     }
 
 
@@ -40,7 +50,8 @@ const ChannelCard = ({ channel, single, nav }) => {
                     </div>
                     <div className="channel-buttons">
                         <button className="view-channel-button">View</button>
-                        <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>
+                        {checkChannels(channel.id) && <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>}
+                        {!checkChannels(channel.id) && <button className="leave-channel-button" onClick={(e) => joinChannel(e)}>Leave</button>}
                     </div>
 
                 </div></NavLink>

@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react'
-import {useCombobox, useMultipleSelection} from 'downshift'
+import React, { useState, useEffect } from 'react'
+import { useCombobox, useMultipleSelection } from 'downshift'
 import { useSelector, useDispatch } from 'react-redux'
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 
 
-const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
+const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const users = useSelector(state => state.users)
   const usernames = Object.values(users)?.map(user => user.username)
   const items = usernames
-  const [members, setMembers] = useState((edit) ? group.members : '')
+  const [members, setMembers] = useState((edit) ? group.members : [])
   const [inputValue, setInputValue] = useState('')
   const [errors, setErrors] = useState({});
 
@@ -18,10 +18,9 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     let errors;
-    const memberIds = Object.values(users).filter(user => selectedItems.includes(user.username)).map(user => user.id).join(", ")
-    setMembers(memberIds)
+    const memberIds = Object.values(users).filter(user => members.includes(user.username)).map(user => user.id).join(", ")
     const formData = new FormData();
-    formData.append('members', members)
+    formData.append('members', memberIds)
     formData.append('owner_id', user.id)
 
     if (edit) dispatch(editGroupRoom(formData, group.id))
@@ -42,7 +41,7 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
     addSelectedItem,
     removeSelectedItem,
     selectedItems,
-  } = useMultipleSelection({initialSelectedItems: []})
+  } = useMultipleSelection({ initialSelectedItems: [] })
   const getFilteredItems = (items) =>
     items.filter(
       (item) =>
@@ -63,7 +62,7 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
   } = useCombobox({
     inputValue,
     items: getFilteredItems(items),
-    onStateChange: ({inputValue, type, selectedItem}) => {
+    onStateChange: ({ inputValue, type, selectedItem }) => {
       switch (type) {
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(inputValue)
@@ -94,11 +93,12 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
             <span
               className='multiselected-user'
               key={`selected-item-${index}`}
-              {...getSelectedItemProps({selectedItem, index})}
+              {...getSelectedItemProps({ selectedItem, index })}
             >
               {selectedItem}
               <span
                 onClick={() => removeSelectedItem(selectedItem)}
+                onMouseDown={(e) => setMembers(members.filter((member) => member !== selectedItem))}
               >
                 &#10005;
               </span>
@@ -108,7 +108,7 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
             <input
               className='multiselect-input'
               placeholder='@somebody'
-              {...getInputProps(getDropdownProps({preventKeyAction: isOpen}))}
+              {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
             />
           </div>
           <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">Start DM</button>
@@ -119,10 +119,11 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
             getFilteredItems(items).map((item, index) => (
               <li
                 style={
-                  highlightedIndex === index ? {backgroundColor: '#bde4ff'} : {}
+                  highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}
                 }
                 key={`${item}${index}`}
-                {...getItemProps({item, index})}
+                {...getItemProps({ item, index })}
+                onMouseDown={(e) => setMembers(members => [...members, item])}
               >
                 {item}
               </li>

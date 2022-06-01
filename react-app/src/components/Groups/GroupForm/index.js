@@ -19,6 +19,7 @@ const GroupForm = ({ setShowModal, edit, group }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         let errors;
+        console.log(members)
         const formData = new FormData();
         formData.append('members', members)
         formData.append('owner_id', user.id)
@@ -47,12 +48,11 @@ const GroupForm = ({ setShowModal, edit, group }) => {
 
     return (
         // <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
-            <div className='group-create-input-container'>
-                <SearchAutocomplete members={members} setMembers={setMembers} />
-                <DropdownMultipleCombobox  edit={edit} group={group}/>
-                <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Edit DM' : 'Start DM'}</button>
-                {/* <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button> */}
-            </div>
+        <div className='group-create-input-container'>
+            <SearchAutocomplete members={members} setMembers={setMembers} />
+            <DropdownMultipleCombobox edit={edit} group={group} />
+            {/* <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button> */}
+        </div>
         // </form>
     );
 };
