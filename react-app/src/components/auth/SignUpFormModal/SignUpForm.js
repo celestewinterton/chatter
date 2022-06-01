@@ -18,8 +18,13 @@ const SignUpForm = () => {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const user = useSelector(state => state.session.user);
+  const emailRegex = /\S+@\S+\.\S+/;
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const history =useHistory()
+=======
+  const emailValidator = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+>>>>>>> e3baa3c (email validator)
 
   const onSignUp = async (e) => {
     e.preventDefault();
