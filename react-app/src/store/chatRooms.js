@@ -56,8 +56,9 @@ export const createGroupRoom = (formData) => async (dispatch) => {
     }
 }
 
-export const editGroupRoom = (formData, roomId) => async (dispatch) => {
-    const res = await easyFetch(`/api/groups/${roomId}`, {
+export const editGroupRoom = (formData, groupId) => async (dispatch) => {
+    console.log(">>>>>>>", formData.get("members"), formData.get("user_id"))
+    const res = await easyFetch(`/api/groups/${groupId}`, {
         method: 'PUT',
         body: formData
     })
@@ -99,6 +100,9 @@ const chatRoomsReducer = (state = initialState, action) => {
             }
             return newState;
         case CREATE_GROUP_ROOM:
+            newState.subscribed[action.group.id] = action.group
+            return newState
+        case EDIT_GROUP_ROOM:
             newState.subscribed[action.group.id] = action.group
             return newState
         case DELETE_GROUP_ROOM:
