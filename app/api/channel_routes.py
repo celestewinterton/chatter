@@ -36,6 +36,7 @@ def create_new_channel():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     new_channel = Channel(**params)
+    new_channel.users.append(current_user)
     db.session.add(new_channel)
     db.session.commit()
     return new_channel.to_dict()

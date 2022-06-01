@@ -102,7 +102,7 @@ class Channel(db.Model):
   __tablename__ = "channels"
 
   id = db.Column(db.Integer, primary_key=True)
-  messages = db.relationship("Message", back_populates='channel')
+  messages = db.relationship("Message", back_populates='channel', cascade='all, delete')
 
   name = db.Column(db.String(50), nullable=False)
   topic = db.Column(db.String(50))

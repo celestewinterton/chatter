@@ -13,6 +13,7 @@ import LeftMenu from '../LeftMenu'
 import './Dashboard.css'
 import { loadUsers } from '../../store/users';
 import GroupForm from '../Groups/GroupForm';
+import { reloadCurrentUser } from '../../store/session';
 
 let socket;
 const Dashboard = () => {
@@ -20,6 +21,7 @@ const Dashboard = () => {
    const sessionUser = useSelector((state) => state.session.user)
 
    useEffect(() => {
+      dispatch(reloadCurrentUser(sessionUser.id))
       socket = io();
       socket.emit('sign-in', { 'id': sessionUser.id, 'username': sessionUser.username, 'room': 'chatter', 'online': true })
 

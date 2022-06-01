@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createChannelRoom, editChannelRoom, getChannels, leaveChannelRoom } from "../../../store/channels";
+import { reloadCurrentUser } from "../../../store/session";
 
 const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
         if (errors) {
             setErrors(errors.errors)
         } else {
+            await dispatch(reloadCurrentUser(user.id))
             setShowModal(false);
         }
 
