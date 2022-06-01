@@ -13,6 +13,11 @@ import folders from '../../images/folders.gif'
 import teamwork from '../../images/teamwork.gif'
 import yarn from '../../images/yarn.gif'
 import Footer from '../Footer';
+import heroUI1 from '../../videos/heroUI1.webm'
+import heroUI2 from '../../videos/heroUI2.webm'
+import heroUI3 from '../../videos/heroUI3.webm'
+import heroUI4 from '../../videos/heroUI4.webm'
+import heroUI6 from '../../videos/heroUI6.mp4'
 import './SplashPage.css'
 
 // import 
@@ -25,19 +30,20 @@ const SplashPage = () => {
       <div className='splash-main-container'>
          <div className='splash-container-1'>
             <div className='splash-container-1-title'>
-               <h1 className='splash-container-1-header'>Chatter is your digital HQ </h1>
-               <p className='splash-container-1-text'>Transform the way you work with one place for everyone and everything you need to get stuff done.</p>
+               <h1 className='splash-container-1-header'>Great teamwork starts with a digital HQ </h1>
+               <p className='splash-container-1-text'>With all your people, tools and communication in one place, you can work faster and more flexibly than ever before.</p>
                <div className='splash-buttons'>
                   <SignUpFormModal1 />
                   <DemoUser />
                </div>
             </div>
-            <div className='splash-section-1-image'>
-               <img className='dashboard'src={dashboard} alt='details-dashboard'/>
+            <div className='splash-section-1-video'>
+               <video className='video1' playsinline autostart autoPlay loop muted src={heroUI1} type='video/webm'/> 
+               {/* <img className='dashboard'src={dashboard} alt='details-dashboard'/> */}
             </div>
          </div>
 
-         <div className='splash-container-2'>
+         {/* <div className='splash-container-2'>
             <div className='splash-container-2-image'>
                <img className='corkboard' src={corkboard} alt='corkboard image'/>
             </div>
@@ -45,34 +51,36 @@ const SplashPage = () => {
                <h2 className='splash-container-header'>Now is your movement to build a better tomorrow</h2>
                <p className='splash-container-text'>We've seen what the future can be. Now it's time to decide what it will be.</p>
             </div>
-         </div>
+         </div> */}
 
          <div className='splash-container-3'>
-            <div className='splash-container-3-title'>
-               <h1 className='splash-container-header'>Move faster by organizing your work life</h1>
-               <p className='splash-container-text'>The key to productivity in Cahtter is organized spaces called 
-                  channels—a different one for everything you’re working on. With all the people, messages and files related to a topic in one place, you can move a whole lot faster.</p>
+            <div className='splash-container-3-video'>
+               {/* <img className='yarn' src={yarn} alt='yarn gif'/>   */}
+               <video className='video3' playsinline autostart autoPlay loop muted src={heroUI2} type='video/webm'/>
             </div>
-            <div className='splash-container-3-image'>
-               <img className='yarn' src={yarn} alt='yarn gif'/>  
+            <div className='splash-container-3-title'>
+               <h1 className='splash-container-header'>Bring your team together</h1>
+               <p className='splash-container-text'>At the heart of Chatter are channels: organized spaces for everyone and everything you need for work. In channels, it’s easier to connect across departments, offices, time zones and even other companies.</p>
             </div>
          </div>
          <div className='splash-container-4'>
-            <div className='splash-container-4-image'>
-               <img className='folders' src={folders} alt='folders gif'/>
-            </div>
             <div className='splash-container-4-title'>
-               <h1 className='splash-container-header'>Focus your time, on your own terms</h1>
-               <p className='splash-container-text'>Give yourself the flexibility to work when, where and how you work best. Take control of notifications, collaborate live or on your own time, and find answers in conversations from across your company.</p>
+               <h1 className='splash-container-header'>Choose how you want to work</h1>
+               <p className='splash-container-text'>In Chatter, you’ve got all the flexibility to work when, where and how it’s best for you. You can easily chat, send audio and video clips, or hop on a huddle to talk things out live.</p>
+            </div>
+            <div className='splash-container-4-video'>
+               <video className='video4' playsinline autostart autoPlay loop muted src={heroUI3} type='video/webm'/>
+               {/* <img className='folders' src={folders} alt='folders gif'/> */}
             </div>
          </div>
          <div className='splash-container-5'>
-            <div className='splash-container-5-title'>
-               <h1 className='splash-container-header'>Simplify teamwork for everyone</h1>
-               <p className='splash-container-text'>Give everyone you work with—inside and outside your company—a more productive way to stay in sync. Respond faster with emoji, keep conversations focused in channels, and simplify all your communication into one place.</p>
+            <div className='splash-container-5-video'>
+               <video className='video5' playsinline autostart autoPlay loop muted src={heroUI4} type='video/webm'/>
+               {/* <img className='teamwork' src={teamwork} alt='teamwork gif'/> */}
             </div>
-            <div className='splash-container-5-image'>
-               <img className='teamwork' src={teamwork} alt='teamwork gif'/>
+            <div className='splash-container-5-title'>
+               <h1 className='splash-container-header'>Move faster with your tools in one place</h1>
+               <p className='splash-container-text'>With your other work apps connected to Chatter, you can work faster by switching tabs less. And with powerful tools like Workflow Builder, you can automate away routine tasks.</p>
             </div>
          </div>
          <div className='splash-container-6'>
@@ -107,14 +115,25 @@ const SplashPage = () => {
                      <p className='splash-container-6-text'>Run a project, coordinate with your team, or just talk it out. Chatter is a blank canvas for teamwork.</p>
                   </div>
                </div>
-               
             </div>
          </div>
          <div className='splash-container-7'>
-            <div className='splash-container-7-title'>
-               <h1 className='splash-container-7-header'>Welcome to where the future works</h1>
+            <div className='splash-container-7-video'>
+               <video className='video7' playsinline autostart autoPlay loop muted src={heroUI6} type='video/mp4'/> 
             </div>
-            <div className='splash-container-7-buttons'>
+            <div className='splash-container-7-title'>
+               <p className='splash-container-7-text'>
+                  “We were able to create a large virtual network of employees that can communicate as though they are together. There was a lot of disruption in terms of where we worked, but in terms of how we worked—very little disruption.”
+               </p>
+               <span className='splash-7-name'>Mark Smith</span>
+               <span className='splash-7-name-title'>Senior Technical Product Manager, T-Mobile</span>
+            </div>
+         </div>
+         <div className='splash-container-8'>
+            <div className='splash-container-8-title'>
+               <h1 className='splash-container-8-header'>Welcome to your new digital HQ</h1>
+            </div>
+            <div className='splash-container-8-buttons'>
                <SignUpFormModal2/>
                <DemoUser1 />
             </div>
