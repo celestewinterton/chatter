@@ -34,14 +34,17 @@
 .github {
    font-size: 20px;
    color: unset;
+   cursor: pointer;
 }
 .angel {
    font-size:20px;
    color: unset;
+   cursor: pointer;
 }
 .linkedin {
    font-size: 20px;
    color: unset;
+   cursor: pointer;
 }
 
 .technologies-container {

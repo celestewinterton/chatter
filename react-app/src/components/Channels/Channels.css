@@ -1,4 +1,4 @@
-.create-channel{
+.create-channel {
     color: #a1a1a4;
     padding: 0px 16px;
     margin-top: 20px;
@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.channel-header{
+.channel-header {
     height: 40px;
     border-bottom: 1px solid #3a3d40;
     display: flex;
@@ -16,11 +16,11 @@
     padding-left: 18px;
 }
 
-.channel-title{
+.channel-title {
     color: #d1d2d3
 }
 
-.channel-card{
+.channel-card {
     display: flex;
     justify-content: space-between;
     height: 70px;
@@ -29,17 +29,18 @@
     border-bottom: solid 1px #35373b;
 }
 
-.channel-container{
+.channel-container {
     /* padding-left: 16px;
     padding-right: 12px; */
 }
 
-.channel-card-name{
+.channel-card-name {
     color: #d1d2d3;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.channel-users{
+.channel-users {
     padding-top: 5px;
     color: #6f7072;
     font-size: 13px;
@@ -47,13 +48,15 @@
     padding: 0px 18px;
 }
 
-.view-channel-button{
+.view-channel-button {
     all: unset;
+    cursor: pointer;
     color: transparent;
 }
 
 .join-channel-button {
     all: unset;
+    cursor: pointer;
     color: transparent;
 
 }
@@ -70,6 +73,7 @@
 
 .app-body-hover:hover .join-channel-button {
     all: unset;
+    cursor: pointer;
     z-index: 100;
     border: 1px solid #35373b;
     background-color: #007A5A;
