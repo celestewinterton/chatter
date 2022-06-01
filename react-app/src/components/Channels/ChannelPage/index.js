@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteChannelRoom, getChannels } from "../../../store/channels";
 import { reloadCurrentUser } from "../../../store/session";
+import { io } from 'socket.io-client'
 import ChannelForm from "../ChannelForm";
 import ChannelHeader from "../ChannelHeader";
 import Chat from "../../Chat";
 
+let socket;
 const ChannelPage = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -24,6 +26,10 @@ const ChannelPage = () => {
     }
 
     const deleteChannel = async () => {
+        socket = io()
+        socket.emit('delete-channel', { 'username': `${user.username}` });
+
+
         await dispatch(deleteChannelRoom(channel.id))
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))

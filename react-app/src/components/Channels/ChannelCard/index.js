@@ -8,6 +8,7 @@ import { getChannels, deleteChannelRoom, joinChannelRoom } from "../../../store/
 import { NavLink } from "react-router-dom";
 import ChannelHeader from "../ChannelHeader";
 import Chat from "../../Chat";
+import { reloadCurrentUser } from "../../../store/session";
 
 let socket;
 const ChannelCard = ({ channel, single, nav }) => {
@@ -17,13 +18,14 @@ const ChannelCard = ({ channel, single, nav }) => {
     const history = useHistory()
 
 
-    const joinChannel = (e) => {
+    const joinChannel = async (e) => {
         e.preventDefault()
         const roomId = 'c' + channel.id
         socket = io()
         socket.emit('join-channel', { 'username': `${user.username}`, 'room': roomId });
-        dispatch(joinChannelRoom(channel.id))
-        dispatch(getChannels())
+        await dispatch(joinChannelRoom(channel.id))
+        await dispatch(getChannels())
+        await dispatch(reloadCurrentUser(user.id))
         history.push(`/channels/${channel.id}`)
     }
 
