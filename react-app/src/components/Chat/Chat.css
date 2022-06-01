@@ -51,8 +51,8 @@
 .chat-profile-pic{
     width: 36px;
     height: 36px;
+    border-radius: 4px;
 }
-
 
 
 .status-circle.online {
@@ -111,4 +111,35 @@
 .button-div{
     display: flex;
     justify-content: flex-end;
+}
+
+.chat-message{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 30px;
+}
+
+.chat-metadata {
+    display: flex;
+    flex-direction: column;
+}
+
+.created-at-msg {
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: lighter;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.chat-text {
+    font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    padding: 8px 6px;
+
+}
+
+.chat-username {
+    padding: 0px 6px;
 }

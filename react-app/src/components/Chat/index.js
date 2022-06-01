@@ -119,9 +119,11 @@ const Chat = ({ group }) => {
                                         <div className='pic-container'>
                                             <ChatUserCard msg={msg} />
                                         </div>
-                                        <p className='chat-username'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
-                                        <div className='chat-text' id={msg.id}>
-                                            <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
+                                        <div className='chat-metadata'>
+                                            <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
+                                            <div className='chat-text' id={msg.id}>
+                                                <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
+                                            </div>
                                         </div>
                                     </div>
                                 )
