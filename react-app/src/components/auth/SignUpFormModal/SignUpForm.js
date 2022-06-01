@@ -17,9 +17,7 @@ const SignUpForm = () => {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const user = useSelector(state => state.session.user);
-  const emailRegex = /\S+@\S+\.\S+/;
   const dispatch = useDispatch();
-  const emailValidator = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -70,6 +68,11 @@ const SignUpForm = () => {
   return (
     <div className='signup-form-container'>
       <form onSubmit={onSignUp}>
+        <div className='signup-form-logo-container' href='/#'>
+          <img className='signup-form-logo' alt='signup form logo' src={chatter}></img>
+          <p className='signup-form-name'>chatter</p>
+        </div>
+        <h2 className='signup-header1'>Sign up for Chatter </h2>
         <div className='error-container'>
           {errors.length > 0 && (
             <div className='signup-form-error-container'>
@@ -80,10 +83,6 @@ const SignUpForm = () => {
             </div>
           )}
         </div>
-        <div className='signup-form-logo-container' href='/#'>
-          <img className='signup-form-logo' alt='signup form logo' src={chatter}></img>
-        </div>
-        <h2 className='signup-header1'>Sign up for Chatter </h2>
         <div className='signup-form-user'>
           <input
             type='text'
@@ -100,7 +99,7 @@ const SignUpForm = () => {
             name='email'
             onChange={updateEmail}
             value={email}
-            placeholder='Email Address'
+            placeholder='name@work-email.com'
           />
         </div>
         <div className='signup-form-pass'>

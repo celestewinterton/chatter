@@ -18,7 +18,7 @@
    font-weight: 700;
 }
 
-.nav-signup-button:hover {
+.nav-signup-button-purple:hover {
    cursor:pointer
 }
 
@@ -48,21 +48,32 @@
 }
 
 /* ********************SIGNUP CONTAINER**************************** */
-.signup-form-logo {
-   display: block;
-   text-align: center;
-   height: 60px;
-   padding: 10px;
-}
-
 .signup-form-logo-container {
    display: flex;
    justify-content: center;
+   flex-direction: row;
+   align-items: center;
+   margin-bottom: 40px;
 }
+.signup-form-logo {
+   display: flex;
+   height: 40px;
+   padding: 10px;
+}
+.signup-form-name {
+   color:black;
+   height:34px;
+   display:flex;
+   font-weight:700;
+   font-size: 1.3em;
+   letter-spacing: -1px;
+}
+
 .signup-header1 {
    font-size: 45px;
    margin-bottom:20px;
    color:black;
+   letter-spacing: -1px;
 }
 
 .signup-form-container {
