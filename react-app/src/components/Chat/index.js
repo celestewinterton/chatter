@@ -33,7 +33,7 @@ const Chat = ({ group }) => {
         chatRoom = groupRooms.subscribed[id];
         roomId = 'g' + id
     } else {
-        chatRoom = channelRooms.subscribed[id];
+        chatRoom = channelRooms.all[id];
         roomId = 'c' + id
     }
 
@@ -132,7 +132,7 @@ const Chat = ({ group }) => {
                 </div>
             </div>
             <div className='message-editor' id='editor'>
-                <ChatInput value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />
+                <ChatInput group={group} room={chatRoom} value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />
             </div>
         </>
     )
