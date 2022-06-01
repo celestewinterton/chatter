@@ -1,3 +1,13 @@
+#editor{
+    position: fixed;
+    bottom: 0;
+    width: 70%;
+    padding-left: 30px;
+
+}
+
+
+
 .chat-profile-pic{
     width: 36px;
     height: 36px;

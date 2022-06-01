@@ -1,7 +1,7 @@
 .dashboard-container{
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: calc(100% - 45px)
 }
 
 .left-menu-header{
@@ -27,3 +27,4 @@
     background-color: #1a1d21;
     width: 100%;
 }
+

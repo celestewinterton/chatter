@@ -7,8 +7,16 @@
     height: 100vh;
 } */
 
+html, body {
+    height: 100vh;
+  }
+
+body{ display: flex;}
+
 #root{
-    overflow-y: hidden;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .blue-hover:hover {
