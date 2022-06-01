@@ -38,3 +38,20 @@ export function Modal({ onClose, children, style }) {
         modalNode
     );
 }
+
+export function DarkModal({ onClose, children, style }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    console.log(style)
+
+    return ReactDOM.createPortal(
+        <div id="modal">
+            <div id="dark-modal-background" onClick={onClose} />
+            <div id="dark-modal-content" style={style}>
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

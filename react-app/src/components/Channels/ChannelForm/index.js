@@ -70,7 +70,7 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
                         </div>
                         <input
                             type='text'
-                            className="input-field"
+                            className="dark-input"
                             value={name}
                             required
                             onChange={(e) => setName(e.target.value)}
@@ -82,7 +82,7 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
                             {errors.topic && <p>{errors.topic}</p>}
                         </div>
                         <input
-                            className="input-field"
+                            className="dark-input"
                             value={topic}
                             onChange={(e) => setTopic(e.target.value)}
                             required
@@ -90,16 +90,18 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
                     </div>
                     <div className='form-element-container'>
                         <textarea
-                            className="input-field"
+                            className="dark-textarea"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder='Channel Description'></textarea>
 
                     </div>
-                    <button id='create-channel' type="submit">{(edit) ? 'Edit Channel' : 'Create Channel'}</button>
-                    <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
-                    {edit && <button className="leave-button" onClick={leaveChannel}>Leave Channel</button>}
-                    {edit && <button className="delete-button" onClick={deleteChannel}>Delete Channel</button>}
+                    <div className="buttons-right-container">
+                        <button className='cancel-btn grey-button' onClick={handleCancelClick}>Cancel</button>
+                        <button id='create-channel' className="green-button" type="submit">{(edit) ? 'Edit Channel' : 'Create Channel'}</button>
+                        {edit && <button className="leave-button" onClick={leaveChannel}>Leave Channel</button>}
+                        {edit && <button className="delete-button" onClick={deleteChannel}>Delete Channel</button>}
+                    </div>
                 </div>
             </form>
         </>
