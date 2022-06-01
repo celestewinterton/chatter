@@ -2,11 +2,20 @@
    font-size: 10px;
 }
 
-.navbar-container {
+.splash-nav-container {
    display: flex;
    justify-content: space-between;
    padding-right: 10px;
    height: 60px;
+   width: 100%;
+   background-color: rgba(246, 239, 232, 255);
+}
+
+.navbar-container {
+   display: flex;
+   justify-content: space-between;
+   padding-right: 10px;
+   height: 44px;
    width: 100%;
    background-color: #121016;
    border-bottom: 1px solid #504e52;
@@ -29,11 +38,11 @@
 .nav-appname {
    display:flex;
    align-self: center;
-   color: white;
+   color: black;
    padding-left: 10px;
    font-size: 25px;
-   font-family: 'Noto Sans';
-
+   font-weight: 800;
+   font-family: Slack-Circular-Pro,"Helvetica Neue",Helvetica,"Segoe UI",Tahoma,Arial,sans-serif;
 }
 /* ****************** Navbar Search Input ***************** */
 
@@ -123,13 +132,13 @@
    width: 25px;
    height: 25px;
    border-radius: 4px;
-   padding-left: 10px;
 }
 
 .user-image-nav-2 {
    width: 36px;
    height: 36px;
    margin-right: 10px;
+   border-radius: 4px;
 }
 
 .profile-dropdown {
@@ -209,4 +218,3 @@
 .unset {
    all: unset;
 }
-
