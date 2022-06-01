@@ -44,6 +44,7 @@
    font-weight: 800;
    font-family: Slack-Circular-Pro,"Helvetica Neue",Helvetica,"Segoe UI",Tahoma,Arial,sans-serif;
 }
+
 /* ****************** Navbar Search Input ***************** */
 
 .search-container {
@@ -98,6 +99,7 @@
 
 .search-result-text {
    all: unset;
+   cursor: pointer;
    color: #d1d2d3;
 }
 .search-container-title {
@@ -178,6 +180,7 @@
 
 .profile-dropdown-content button {
    all: unset;
+   cursor: pointer;
    width: 278px;
    margin-left: 14px;
    margin-bottom: 2px;
@@ -218,6 +221,7 @@
 
 .profile-item {
    all: unset;
+   cursor: pointer;
    width: 278px;
    margin-left: 14px;
    padding: 4px;

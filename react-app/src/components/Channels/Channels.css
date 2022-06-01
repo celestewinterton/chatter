@@ -16,9 +16,14 @@
     padding-left: 18px;
 }
 
+<<<<<<< HEAD
 .channel-title{
     color: #d1d2d3;
     cursor: pointer;
+=======
+.channel-title {
+    color: #d1d2d3
+>>>>>>> 638d66d (fixed pointers on unsets)
 }
 
 .channel-card {
