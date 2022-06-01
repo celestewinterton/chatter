@@ -26,8 +26,7 @@ const GroupsPage = () => {
         <div className="app-body">
             <div className="groups-header">
                 <h1 className="groups-title" >{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
-                <i className="fas fa-plus" onClick={() => setShowModal(true)}></i>
-
+                <i class="fa-solid fa-angle-down" onClick={() => setShowModal(true)}></i>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <EditGroupForm setShowModal={setShowModal} />
