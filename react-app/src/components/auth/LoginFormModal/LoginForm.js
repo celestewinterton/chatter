@@ -5,6 +5,7 @@ import { login } from '../../../store/session';
 import DemoUser from '../DemoUser/DemoUser';
 import { NavLink } from 'react-router-dom';
 import chatter from '../../../images/chatter.png'
+import { useHistory } from 'react-router-dom';
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -13,12 +14,15 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      history.push('/')
     }
   };
 
@@ -31,7 +35,8 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    history.push('/')
+    // return <Redirect to='/'/>;
   }
 
   return (
