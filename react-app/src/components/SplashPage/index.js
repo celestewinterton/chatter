@@ -46,7 +46,11 @@ const SplashPage = () => {
                </div>
             </div>
             <div className='splash-section-1-video'>
+<<<<<<< HEAD
                <video className='video1' playsInline autostart="true" autoPlay loop muted src={heroUI1} type='video/webm'/> 
+=======
+               <video className='video1' playsinline autostart autoPlay loop muted src={heroUI1} type='video/webm'/> 
+>>>>>>> 3a978e1 (added container)
             </div>
          </div>
 
@@ -70,7 +74,11 @@ const SplashPage = () => {
 
          <div className='splash-container-3'>
             <div className='splash-container-3-video'>
+<<<<<<< HEAD
                <video className='video3' playsInline autostart="true" autoPlay loop muted src={heroUI2} type='video/webm'/>
+=======
+               <video className='video3' playsinline autostart autoPlay loop muted src={heroUI2} type='video/webm'/>
+>>>>>>> 3a978e1 (added container)
             </div>
             <div className='splash-container-3-title'>
                <h1 className='splash-container-header'>Bring your team together</h1>
@@ -83,12 +91,20 @@ const SplashPage = () => {
                <p className='splash-container-text'>In Chatter, you’ve got all the flexibility to work when, where and how it’s best for you. You can easily chat, send audio and video clips, or hop on a huddle to talk things out live.</p>
             </div>
             <div className='splash-container-4-video'>
+<<<<<<< HEAD
                <video className='video4' playsInline autostart="true" autoPlay loop muted src={heroUI3} type='video/webm'/>
+=======
+               <video className='video4' playsinline autostart autoPlay loop muted src={heroUI3} type='video/webm'/>
+>>>>>>> 3a978e1 (added container)
             </div>
          </div>
          <div className='splash-container-5'>
             <div className='splash-container-5-video'>
+<<<<<<< HEAD
                <video className='video5' playsInline autostart="true" autoPlay loop muted src={heroUI4} type='video/webm'/>
+=======
+               <video className='video5' playsinline autostart autoPlay loop muted src={heroUI4} type='video/webm'/>
+>>>>>>> 3a978e1 (added container)
             </div>
             <div className='splash-container-5-title'>
                <h1 className='splash-container-header'>Move faster with your tools in one place</h1>
