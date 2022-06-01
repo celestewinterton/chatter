@@ -47,10 +47,14 @@ const SplashPage = () => {
             </div>
             <div className='splash-section-1-video'>
 <<<<<<< HEAD
+<<<<<<< HEAD
                <video className='video1' playsInline autostart="true" autoPlay loop muted src={heroUI1} type='video/webm'/> 
 =======
                <video className='video1' playsinline autostart autoPlay loop muted src={heroUI1} type='video/webm'/> 
 >>>>>>> 3a978e1 (added container)
+=======
+               <video className='video1' playsInline autostart="true" autoPlay loop muted src={heroUI1} type='video/webm'/> 
+>>>>>>> b8b7b6b (video format)
             </div>
          </div>
 
@@ -75,10 +79,14 @@ const SplashPage = () => {
          <div className='splash-container-3'>
             <div className='splash-container-3-video'>
 <<<<<<< HEAD
+<<<<<<< HEAD
                <video className='video3' playsInline autostart="true" autoPlay loop muted src={heroUI2} type='video/webm'/>
 =======
                <video className='video3' playsinline autostart autoPlay loop muted src={heroUI2} type='video/webm'/>
 >>>>>>> 3a978e1 (added container)
+=======
+               <video className='video3' playsInline autostart="true" autoPlay loop muted src={heroUI2} type='video/webm'/>
+>>>>>>> b8b7b6b (video format)
             </div>
             <div className='splash-container-3-title'>
                <h1 className='splash-container-header'>Bring your team together</h1>
@@ -92,19 +100,27 @@ const SplashPage = () => {
             </div>
             <div className='splash-container-4-video'>
 <<<<<<< HEAD
+<<<<<<< HEAD
                <video className='video4' playsInline autostart="true" autoPlay loop muted src={heroUI3} type='video/webm'/>
 =======
                <video className='video4' playsinline autostart autoPlay loop muted src={heroUI3} type='video/webm'/>
 >>>>>>> 3a978e1 (added container)
+=======
+               <video className='video4' playsInline autostart="true" autoPlay loop muted src={heroUI3} type='video/webm'/>
+>>>>>>> b8b7b6b (video format)
             </div>
          </div>
          <div className='splash-container-5'>
             <div className='splash-container-5-video'>
 <<<<<<< HEAD
+<<<<<<< HEAD
                <video className='video5' playsInline autostart="true" autoPlay loop muted src={heroUI4} type='video/webm'/>
 =======
                <video className='video5' playsinline autostart autoPlay loop muted src={heroUI4} type='video/webm'/>
 >>>>>>> 3a978e1 (added container)
+=======
+               <video className='video5' playsInline autostart="true" autoPlay loop muted src={heroUI4} type='video/webm'/>
+>>>>>>> b8b7b6b (video format)
             </div>
             <div className='splash-container-5-title'>
                <h1 className='splash-container-header'>Move faster with your tools in one place</h1>
