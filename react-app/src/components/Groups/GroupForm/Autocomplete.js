@@ -27,14 +27,15 @@ function SearchAutocomplete({members, setMembers}) {
   };
 
   return (
-    <div>
-      <ReactSearchAutocomplete
+    <div className='search-container-title'>
+      <h1 className='search-message'>New Message</h1>
+      {/* <ReactSearchAutocomplete
         className="autocomplete-input"
         items={usersArr}
         fuseOptions={{ keys: ["username"] }} // Search on both fields
         resultStringKeyName="username" // String to display in the results
         showIcon={false}
-        placeholder={'@Somebody'}
+        placeholder='New Message'
         onSelect={handleOnSelect}
         styling={{
           borderRadius: "0px",
@@ -47,7 +48,7 @@ function SearchAutocomplete({members, setMembers}) {
           zIndex: 2,
           height: "38px",
         }}
-      />
+      /> */}
     </div>
   );
 }
