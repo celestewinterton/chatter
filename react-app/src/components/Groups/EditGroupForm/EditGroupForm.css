@@ -1,0 +1,13 @@
+.edit-group-form-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.cancel-btn{
+    all: unset;
+    z-index: 100;
+    background-color: transparent;
+    padding: 6px 16px;
+    border-radius: 6px;
+    margin: 16px;
+}
