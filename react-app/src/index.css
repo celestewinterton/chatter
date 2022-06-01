@@ -11,7 +11,10 @@ html, body {
     height: 100vh;
   }
 
-body{ display: flex;}
+body{ 
+    display: flex;
+    overflow: overlay;
+}
 
 #root{
     width: 100%;
@@ -45,6 +48,17 @@ body{ display: flex;}
     text-decoration: none;
     padding: 5px 16px;
 }
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+  }
+
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: 
+    #818384;
+}
+
 
 
 input {
