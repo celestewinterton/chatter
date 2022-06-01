@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteGroupRoom } from "../../../store/chatRooms";
 import { useState, useEffect } from "react";
 import { Modal } from "../../../context/Modal"
-
+import GroupsPage from "../GroupsPage";
 
 const GroupCard = ({ group, all, single, modal, nav }) => {
     const sessionUser = useSelector(state => state.session.user)
@@ -24,7 +24,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
 
     const deleteGroup = () => {
         dispatch(deleteGroupRoom(group.id))
-        console.log("Deleteing ===>", group.id)
+        // console.log("Deleteing ===>", group.id)
         setShowDeleteModal(false)
         history.push('/')
     }
@@ -45,10 +45,9 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
 
                 {single &&
                     <div className="groups-header">
-                        <h1 className="groups-title" onClick={modal}>{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
+                        <GroupsPage />
                     </div>
                 }
-
 
                 {showDeleteModal && (
                     <Modal onClose={() => setShowModal(false)}>
