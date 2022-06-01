@@ -21,12 +21,16 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const history =useHistory()
 =======
   const emailValidator = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 >>>>>>> e3baa3c (email validator)
 =======
 >>>>>>> 4a614bb (form ui)
+=======
+  const history =useHistory()
+>>>>>>> b43c918 (redirect)
 
   const onSignUp = async (e) => {
     e.preventDefault();
