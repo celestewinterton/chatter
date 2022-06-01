@@ -46,14 +46,14 @@
    padding-top: 5px;
 }
 /****************** NAV BUTTONS ********************************* */
-.nav-login-button {
+.nav-login-button-purple {
    width:130px;
    border-radius: 5px;
    height: 40px;
    font-size: .875rem;
    font-weight: 700;
    text-transform: uppercase;
-   border: unset;
+   border: 1px solid white;
    color:white;
    background-color: rgba(74, 21, 75, 255);
 }

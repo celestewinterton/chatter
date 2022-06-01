@@ -4,7 +4,7 @@
    padding-right:20px;
 }
 
-.nav-signup-button {
+.nav-signup-button-purple {
    font-size: .875rem;
    font-weight: 700;
    text-transform: uppercase;
@@ -14,7 +14,8 @@
    /* border: 1px solid rgba(74, 21, 75, 255); */
    background-color: white;
    color: rgba(74, 21, 75, 255);
-   border:unset
+   border:unset;
+   font-weight: 700;
 }
 
 .nav-signup-button:hover {
