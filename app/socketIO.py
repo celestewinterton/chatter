@@ -83,6 +83,10 @@ def on_sign_in(data):
 def delete_channel(data):
     emit('delete-channel', data, broadcast=True)
 
+@socketio.on('create-channel')
+def delete_channel(data):
+    emit('create-channel', data, broadcast=True)
+
 @socketio.on('leave-channel')
 def on_join(data):
     room = data['room']
