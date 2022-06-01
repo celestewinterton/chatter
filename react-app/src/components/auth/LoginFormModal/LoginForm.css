@@ -1,13 +1,24 @@
 .signin-form-logo {
-   display:block;
-   text-align: center;
-   height:60px;
-   padding:10px;
+   display: flex;
+   height: 40px;
+   padding: 10px;
 }
 .signin-form-logo-container {
-   display:flex;
+   display: flex;
    justify-content: center;
+   flex-direction: row;
+   align-items: center;
+   margin-bottom: 40px;
 }
+
+.signin-form-name {
+   color: black;
+   height: 34px;
+   display: flex;
+   font-weight: 700;
+   font-size: 1.3em;
+   letter-spacing: -1px;
+} 
 .signin-header1 {
    font-size: 45px;
    color:black;
@@ -57,7 +68,7 @@
    color:white;
    background-color: rgba(74, 21, 75, 255);
 }
-.nav-login-button:hover {
+.nav-login-button-purple:hover {
    cursor: pointer;
 
 }
@@ -69,6 +80,7 @@
    width: 500px;
    height: 600px;
    font-size: 30px;
+   letter-spacing: -1px;
 }
 input {
    display: flex;
@@ -105,7 +117,7 @@ input {
 
 }
 .signin-button {
-   width: 308px;
+   width: 323px;
    padding:7px;
    display:flex;
    justify-content: center;
