@@ -8,7 +8,7 @@
    padding-right: 10px;
    height: 60px;
    width: 100%;
-   background-color: rgba(246, 239, 232, 255);
+   background-color: rgba(84, 21, 84, 255);
 }
 
 .navbar-container {
@@ -38,7 +38,7 @@
 .nav-appname {
    display:flex;
    align-self: center;
-   color: black;
+   color: white;
    padding-left: 10px;
    font-size: 25px;
    font-weight: 800;

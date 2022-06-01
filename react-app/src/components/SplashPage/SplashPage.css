@@ -104,31 +104,31 @@
 }
 /* CONTAINER 2 */
 
-/* .splash-container-2 {
+.splash-container-2 {
    display: grid;
-   grid-template-columns: 50% 50%;
-   grid-column-gap: 40px;
-   background-color: rgba(74, 21, 75, 255);
-   padding: 50px 0px 30px;
-} */
-
-/* .splash-container-2-image {
-   justify-self: end;
-   width:510px
-}
-.corkboard {
-   width:510px;
-   height: 300px;
-} */
-
-/* .splash-container-2-title {
-   display:flex;
+   background-color: rgba(244, 237, 228, 255);
+   justify-content: center;
    flex-direction: column;
-   color:white;
-   width: 516px;
-   height:200px;
-   padding-top:50px;
-} */
+}
+
+.splash-container-2-images {
+   display:grid;
+   grid-template-columns: repeat(5, auto);
+   justify-items: center;
+   justify-content: space-around;
+   grid-gap:45px;
+}
+.splash-container-2-header {
+   display:flex;
+   justify-content: center;
+   text-transform: uppercase;
+   color:black;
+   font-weight:700;
+   font-size: 1rem;
+   line-height: 1.125;
+   margin: 40px 0px 35px;
+   font-family: Slack-Circular-Pro, "Helvetica Neue", Helvetica, "Segoe UI", Tahoma, Arial, sans-serif;
+}
 
 /* CONTAINER 3 */
 .splash-container-3 {
