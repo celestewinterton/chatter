@@ -2,15 +2,19 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRooms } from '../../store/chatRooms';
 import DemoUser from '../auth/DemoUserSplash/DemoUserSplash';
-import SignUpFormModal from '../auth/SignUpFormSplash';
+import DemoUser1 from './DemoUser/DemoUser';
 import Channels from '../Channels';
 import CreateChannelModal from '../Channels/CreateChannelModal'
+import SignUpFormModal1 from '../auth/SignUpFormSplash';
+import SignUpFormModal2 from './SignUpButtonFooter';
 import dashboard from '../../images/dashboard.png'
 import corkboard from '../../images/corkboard.jpg'
 import folders from '../../images/folders.gif'
 import teamwork from '../../images/teamwork.gif'
 import yarn from '../../images/yarn.gif'
+import Footer from '../Footer';
 import './SplashPage.css'
+
 // import 
 
 const SplashPage = () => {
@@ -24,7 +28,7 @@ const SplashPage = () => {
                <h1 className='splash-container-1-header'>Chatter is your digital HQ </h1>
                <p className='splash-container-1-text'>Transform the way you work with one place for everyone and everything you need to get stuff done.</p>
                <div className='splash-buttons'>
-                  <SignUpFormModal />
+                  <SignUpFormModal1 />
                   <DemoUser />
                </div>
             </div>
@@ -107,8 +111,19 @@ const SplashPage = () => {
             </div>
          </div>
          <div className='splash-container-7'>
-            <h1>Welcome to where the future works</h1>
+            <div className='splash-container-7-title'>
+               <h1 className='splash-container-7-header'>Welcome to where the future works</h1>
+            </div>
+            <div className='splash-container-7-buttons'>
+               <SignUpFormModal2/>
+               <DemoUser1 />
+            </div>
          </div>
+         <div className='splash-footer'>
+            <Footer />
+            <p className='copyright'>©2022 Chatter Technologies, LLC, a Salesforce company. All rights reserved. Various trademarks held by their respective owners.</p>
+         </div>
+
       </div>
    )
 }

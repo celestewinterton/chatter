@@ -1,0 +1,76 @@
+.footer-container {
+   display: flex;
+   justify-content: space-between;
+   height:auto;
+   border-top: 1px solid rgba(0, 0, 0, 0.26);
+   padding-top:15px;
+}
+.dev-title {
+   padding-bottom: 10px;
+   font-size: 23px;
+   font-weight:bolder;
+   text-align: center;
+}
+.about-container {
+   display: flex;
+   justify-content: center;
+   padding-top: 20px;
+   color:black;
+   padding-right:20px;
+   padding-bottom:20px;
+   width:390px;
+   line-height: 1.2;
+}
+.team-member {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+.member-name {
+   font-size: 20px;
+}
+.github {
+   font-size: 20px;
+   color: unset;
+}
+.angel {
+   font-size:20px;
+   color: unset;
+}
+.linkedin {
+   font-size: 20px;
+   color: unset;
+}
+
+.technologies-container {
+   display:flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 200px;
+   height:auto;
+}
+.tech-image {
+   height:40px;
+   width:40px;
+}
+.technologies-title {
+   margin-bottom:3px;
+   padding-bottom:15px;
+   font-size: 23px;
+   color:black;
+   font-weight: bolder;
+   text-align: center;
+}
+.technologies-logo {
+   display:grid;
+   grid-template-columns: repeat(3,50px);
+   grid-gap:10px;
+   justify-content: center;
+   padding-left:8px;
+}
+.footer-logo{
+   height:40px;
+   align-items: center;
+   margin-top: 60px;
+   margin-left:20px;
+}

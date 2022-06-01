@@ -9,14 +9,17 @@
    width:125px;
    border-radius: 5px;
    height:37px;
+   /* border: 1px solid rgba(74, 21, 75, 255); */
    background-color: rgba(74, 21, 75, 255);
    color: white;
    font-family: 'Noto Sans';
-
+   border:unset
 }
+
 .nav-signup-button:hover {
-
+   cursor:pointer
 }
+
 /* ************************SIGNUP ERRORS ******************** */
 .error-container {
    display: flex;
@@ -119,7 +122,7 @@
    padding: 7px;
    display: flex;
    justify-content: center;
-   border-radius: 5px;
+   border-radius: 5px;  
    background-color: rgba(74, 21, 75, 255);
    color: white;
    font-size: 20px;
@@ -127,4 +130,8 @@
 
 .signup-button:hover {
    color: white;
+   cursor: pointer;
+}
+.unset {
+   all: unset;
 }
