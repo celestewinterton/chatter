@@ -47,13 +47,15 @@
 }
 /****************** NAV BUTTONS ********************************* */
 .nav-login-button {
-   font-size: 20px;
-   width:125px;
+   width:130px;
    border-radius: 5px;
-   height: 37px;
-   font-family: 'Noto Sans';
-   font-weight: bold;
+   height: 40px;
+   font-size: .875rem;
+   font-weight: 700;
+   text-transform: uppercase;
    border: unset;
+   color:white;
+   background-color: rgba(74, 21, 75, 255);
 }
 .nav-login-button:hover {
    cursor: pointer;
