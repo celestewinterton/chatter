@@ -56,10 +56,17 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Austin Dang</div>
               <div>
+<<<<<<< HEAD
                 <a className="unset" href="https://www.linkedin.com/in/austin-dang-106834191/" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
                 <a className="unset" href="https://github.com/AuDang" target="_blank" rel="noopener noreferrer">
+=======
+                <a className="unset" href="https://www.linkedin.com/in/austin-dang-106834191/">
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
+                <a className="unset" href="https://github.com/AuDang">
+>>>>>>> bf79db6 (class --> className)
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -68,10 +75,17 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Brendan Downing</div>
               <div>
+<<<<<<< HEAD
                 <a className="unset" href="https://www.linkedin.com/in/brendan-downing-641672228/" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
                 <a className="unset" href="https://github.com/Downster" target="_blank" rel="noopener noreferrer">
+=======
+                <a className="unset" href="https://www.linkedin.com/in/brendan-downing-641672228/">
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
+                <a className="unset" href="https://github.com/Downster">
+>>>>>>> bf79db6 (class --> className)
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -80,6 +94,7 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Celeste Winterton</div>
               <div>
+<<<<<<< HEAD
                 <a className="unset" href="https://angel.co/u/celeste-winterton" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-angellist"></i>
                 </a>
@@ -87,6 +102,15 @@ function ProfileButton({ user }) {
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
                 <a className="unset" href="https://github.com/celestewinterton" target="_blank" rel="noopener noreferrer">
+=======
+                <a className="unset" href="https://angel.co/u/celeste-winterton">
+                  <i className="fa-brands fa-angellist"></i>
+                </a>
+                <a className="unset" href="https://www.linkedin.com/in/celestewinterton/">
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
+                <a className="unset" href="https://github.com/celestewinterton">
+>>>>>>> bf79db6 (class --> className)
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -95,7 +119,11 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Jingling Jin</div>
               <div>
+<<<<<<< HEAD
                 <a className="unset" href="https://github.com/ellen20" target="_blank" rel="noopener noreferrer">
+=======
+                <a className="unset" href="https://github.com/ellen20">
+>>>>>>> bf79db6 (class --> className)
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>

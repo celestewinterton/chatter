@@ -34,6 +34,7 @@ const LeftMenu = () => {
                     <div className="left-menu-label">
                         <button className='left-menu-button unset' onClick={e => showChannels ? setShowChannels(false) : setShowChannels(true)}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <i className="fa-solid fa-caret-down" style={showChannels ? null : {transform: "rotate(270deg)"}}></i>Channels
                         </button>
                         <i className="fas fa-plus" onClick={() => setShowModal(true)}></i>
@@ -43,6 +44,9 @@ const LeftMenu = () => {
                             </DarkModal>
 =======
                             <i class="fa-solid fa-caret-down" style={showChannels ? null : {transform: "rotate(270deg)"}}></i>Channels
+=======
+                            <i className="fa-solid fa-caret-down" style={showChannels ? null : {transform: "rotate(270deg)"}}></i>Channels
+>>>>>>> bf79db6 (class --> className)
                         </button>
                         <i className="fas fa-plus" onClick={() => setShowModal(true)}></i>
                         {showModal && (
@@ -59,10 +63,14 @@ const LeftMenu = () => {
                     <div className="left-menu-label">
                         <button className='left-menu-button unset' onClick={e => showGroups ? setShowGroups(false) : setShowGroups(true)}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <i className="fa-solid fa-caret-down" style={showGroups ? null : {transform: "rotate(270deg)"}}></i>Direct Messages
 =======
                             <i class="fa-solid fa-caret-down" style={showGroups ? null : {transform: "rotate(270deg)"}}></i>Direct Messages
 >>>>>>> 77ae731 (added dropdowns for left menu)
+=======
+                            <i className="fa-solid fa-caret-down" style={showGroups ? null : {transform: "rotate(270deg)"}}></i>Direct Messages
+>>>>>>> bf79db6 (class --> className)
                         </button>
                         <NavLink className='unset' to={`/groups/new`}><i className="fas fa-plus"></i></NavLink>
                     </div>
