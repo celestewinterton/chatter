@@ -40,6 +40,7 @@ const LoginForm = () => {
         <div className='signin-form-headers'>
           <div className='signin-form-logo-container' href='/#'>
             <img className='signin-form-logo' alt='sign up form logo' src={chatter}></img>
+            <p className='signin-form-name'>chatter</p>
           </div>
           <h2 className='signin-header1'> Sign in to Chatter</h2>
           {/* <h4 className='signin-header2'>New to Chatter?</h4> */}
