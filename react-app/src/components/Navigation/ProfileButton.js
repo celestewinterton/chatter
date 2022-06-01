@@ -56,10 +56,10 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Austin Dang</div>
               <div>
-                <a className="unset" href="https://www.linkedin.com/in/austin-dang-106834191/">
+                <a className="unset" href="https://www.linkedin.com/in/austin-dang-106834191/" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
-                <a className="unset" href="https://github.com/AuDang">
+                <a className="unset" href="https://github.com/AuDang" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -68,10 +68,10 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Brendan Downing</div>
               <div>
-                <a className="unset" href="https://www.linkedin.com/in/brendan-downing-641672228/">
+                <a className="unset" href="https://www.linkedin.com/in/brendan-downing-641672228/" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
-                <a className="unset" href="https://github.com/Downster">
+                <a className="unset" href="https://github.com/Downster" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -80,13 +80,13 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Celeste Winterton</div>
               <div>
-                <a className="unset" href="https://angel.co/u/celeste-winterton">
+                <a className="unset" href="https://angel.co/u/celeste-winterton" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-angellist"></i>
                 </a>
-                <a className="unset" href="https://www.linkedin.com/in/celestewinterton/">
+                <a className="unset" href="https://www.linkedin.com/in/celestewinterton/" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
-                <a className="unset" href="https://github.com/celestewinterton">
+                <a className="unset" href="https://github.com/celestewinterton" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -95,7 +95,7 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Jingling Jin</div>
               <div>
-                <a className="unset" href="https://github.com/ellen20">
+                <a className="unset" href="https://github.com/ellen20" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
