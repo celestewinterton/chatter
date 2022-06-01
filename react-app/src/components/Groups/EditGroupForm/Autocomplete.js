@@ -33,7 +33,7 @@ function SearchAutocomplete({ members, setMembers }) {
                 fuseOptions={{ keys: ["username"] }} // Search on both fields
                 resultStringKeyName="username" // String to display in the results
                 showIcon={false}
-                placeholder={'<i class="fa fa-search"></i> Find members'}
+                placeholder={'Find members'}
                 onSelect={handleOnSelect}
                 styling={{
                     borderRadius: "5px",
