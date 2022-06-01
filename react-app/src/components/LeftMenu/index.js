@@ -4,10 +4,19 @@ import CreateGroupModal from "../Groups/CreateGroupModal"
 import Groups from "../Groups"
 import { NavLink } from "react-router-dom"
 import "./LeftMenu.css"
+import { useState, useEffect } from "react"
+import { Modal } from '../../context/Modal'
+import ChannelForm from "../Channels/ChannelForm";
 
 
 const LeftMenu = () => {
+    const [showChannels, setShowChannels] = useState(true)
+    const [showGroups, setShowGroups] = useState(true)
+    const [showModal, setShowModal] = useState(false);
 
+    useEffect(() => {
+        return () => setShowModal(false);
+    }, []);
 
     return (
         <>
@@ -18,19 +27,34 @@ const LeftMenu = () => {
                     </NavLink>
                 </div>
                 <div className="channel-container">
-                    <CreateChannelModal />
-                    <Channels user={true} />
+                    <div className="left-menu-label">
+                        <button className='left-menu-button unset' onClick={e => showChannels ? setShowChannels(false) : setShowChannels(true)}>
+                            <i class="fa-solid fa-caret-down" style={showChannels ? null : {transform: "rotate(270deg)"}}></i>Channels
+                        </button>
+                        <i className="fas fa-plus" onClick={() => setShowModal(true)}></i>
+                        {showModal && (
+                            <Modal onClose={() => setShowModal(false)}>
+                                <ChannelForm setShowModal={setShowModal} />
+                            </Modal>
+                        )}
+                    </div>
+                    {showChannels && <Channels user={true} />}
                 </div>
                 <div className="instant-message-container">
                     {/* <CreateGroupModal /> */}
-                    <NavLink className='create-group unset' to={`/groups/new`}>
-                        Direct Messages <i className="fas fa-plus"></i>
-                    </NavLink>
-                    <Groups all={true} />
+                    <div className="left-menu-label">
+                        <button className='left-menu-button unset' onClick={e => showGroups ? setShowGroups(false) : setShowGroups(true)}>
+                            <i class="fa-solid fa-caret-down" style={showGroups ? null : {transform: "rotate(270deg)"}}></i>Direct Messages
+                        </button>
+                        <NavLink className='unset' to={`/groups/new`}><i className="fas fa-plus"></i></NavLink>
+                    </div>
+                    {showGroups && <Groups all={true} />}
                 </div>
             </div>
         </>
     )
 }
+
+
 
 export default LeftMenu

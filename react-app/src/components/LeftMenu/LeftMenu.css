@@ -34,3 +34,31 @@
 .grey-hover:hover {
   background-color: #232129;
 }
+
+.fa-caret-down {
+  color: #d1d2d3;
+  padding: 5px;
+}
+
+.left-menu-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate {
+  transform: rotate(90deg) translateY(-100%);
+  transform-origin: top left;
+}
+
+.left-menu-label {
+  color: #a1a1a4;
+  padding: 0px 16px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
