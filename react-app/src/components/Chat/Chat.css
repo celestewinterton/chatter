@@ -1,9 +1,45 @@
 #editor{
+    display: flex;
     position: fixed;
+    flex-direction: column;
     bottom: 0;
-    width: 70%;
+    width: 80%;
     padding-left: 30px;
 
+}
+
+.chat-messages-container{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.outer-chat-container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.hope-this-works{
+    display: flex;
+    overflow-y: auto;
+    height: 80%;
+}
+
+
+.ql-toolbar.ql-snow {
+    border: 0px !important
+}
+.ql-container.ql-snow {
+    border: 0px !important
+}
+
+.chat-input{
+    border: 1px solid #818385;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    margin-bottom: 24px;
 }
 
 
@@ -43,6 +79,10 @@
     position: absolute;
     background-color: var(--main-container);
 
+}
+
+.chat-room-container{
+    display: flex;
 }
 
 .chat-card-pic{
