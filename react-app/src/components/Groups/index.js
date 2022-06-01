@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import GroupCard from "./GroupCard";
 import GroupForm from "./GroupForm";
+import Chat from "../Chat";
 import './Groups.css'
 
 
-const Groups = ({all, single, form}) => {
+const Groups = ({ all, single, form }) => {
   const dispatch = useDispatch();
   const { groupId } = useParams()
   const groups = useSelector(state => state.chatRooms)
@@ -35,6 +36,7 @@ const Groups = ({all, single, form}) => {
       </div>}
 
       {single && <GroupCard group={singleGroup} single={true} />}
+      {single && <Chat group={true} />}
 
       {!single && form && <GroupForm />}
     </>
