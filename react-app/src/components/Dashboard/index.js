@@ -10,6 +10,7 @@ import './Dashboard.css'
 import { loadUsers } from '../../store/users';
 import GroupForm from '../Groups/GroupForm';
 import { reloadCurrentUser } from '../../store/session';
+import { getChannels } from '../../store/channels';
 
 let socket;
 const Dashboard = () => {
@@ -32,7 +33,13 @@ const Dashboard = () => {
 
       socket.on('delete-channel', (data) => {
          dispatch(reloadCurrentUser(sessionUser.id))
+         dispatch(getChannels())
          history.push('/')
+      })
+
+      socket.on('create-channel', (data) => {
+         console.log('channel created')
+         dispatch(getChannels())
       })
 
       return (() => {

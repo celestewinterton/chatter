@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createChannelRoom, editChannelRoom, getChannels, leaveChannelRoom } from "../../../store/channels";
 import { reloadCurrentUser } from "../../../store/session";
+import { io } from 'socket.io-client'
 
+let socket;
 const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
@@ -28,6 +30,8 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
             errors = await dispatch(editChannelRoom(formData, channel.id))
         } else {
             errors = await dispatch(createChannelRoom(formData))
+            socket = io()
+            socket.emit('create-channel', { 'user': user.username })
         }
 
         if (errors) {
