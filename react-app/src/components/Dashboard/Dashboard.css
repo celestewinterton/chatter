@@ -13,6 +13,7 @@
 }
 
 .left-menu-title{
+    cursor: pointer;
     color: #d1d2d3
 }
 
@@ -31,4 +32,3 @@
     overflow-y: hidden
 
 }
-
