@@ -25,6 +25,7 @@ import nasa from '../../images/nasa.png'
 import time from '../../images/time.png'
 import './SplashPage.css'
 
+
 // import 
 
 const SplashPage = () => {
@@ -153,7 +154,6 @@ const SplashPage = () => {
             <Footer />
             <p className='copyright'>©2022 Chatter Technologies, LLC, a Salesforce company. All rights reserved. Various trademarks held by their respective owners.</p>
          </div>
-
       </div>
    )
 }
