@@ -6,10 +6,14 @@ import { NavLink } from "react-router-dom"
 import "./LeftMenu.css"
 import { useState, useEffect } from "react"
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { DarkModal } from '../../context/Modal'
 =======
 import { Modal } from '../../context/Modal'
 >>>>>>> 77ae731 (added dropdowns for left menu)
+=======
+import { DarkModal } from '../../context/Modal'
+>>>>>>> d60f45b (added dark modal for when logged in)
 import ChannelForm from "../Channels/ChannelForm";
 
 
@@ -40,6 +44,7 @@ const LeftMenu = () => {
                         <i className="fas fa-plus" onClick={() => setShowModal(true)}></i>
                         {showModal && (
                             <DarkModal onClose={() => setShowModal(false)}>
+<<<<<<< HEAD
                                 <ChannelForm setShowModal={setShowModal} />
                             </DarkModal>
 =======
@@ -54,6 +59,10 @@ const LeftMenu = () => {
                                 <ChannelForm setShowModal={setShowModal} />
                             </Modal>
 >>>>>>> 77ae731 (added dropdowns for left menu)
+=======
+                                <ChannelForm setShowModal={setShowModal} />
+                            </DarkModal>
+>>>>>>> d60f45b (added dark modal for when logged in)
                         )}
                     </div>
                     {showChannels && <Channels user={true} />}
