@@ -17,7 +17,7 @@ function DemoUser() {
    }
    return (
       <div>
-         <button className='demo-button-splash' onClick={handleSubmit}>Try a Demo</button>
+         <button className='demo-button-splash purple-border-button' onClick={handleSubmit}>Try a Demo</button>
       </div>
    )
 }
