@@ -2,6 +2,7 @@
    display: flex;
    justify-content: space-between;
    height:auto;
+   align-self: center;
    border-top: 1px solid rgba(0, 0, 0, 0.26);
    padding-top:15px;
 
@@ -75,3 +76,8 @@
    margin-top: 60px;
    margin-left:20px;
 }
+/* .container {
+   display:flex;
+   justify-content: space-between;
+   width: 1700px;
+} */

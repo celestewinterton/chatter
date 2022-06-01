@@ -1,9 +1,9 @@
 
-
 .splash-main-container {
    min-height: 100vw;
    max-width:100%;
    overflow-x: hidden;
+   justify-content: center;
 }
 .splash-container-header{
    /* font-size: 48px; */
@@ -20,8 +20,8 @@
 /* CONTAINER 1 */
 .splash-container-1 {
    display:grid;
-   grid-template-columns: 45% 45%;
-   grid-column-gap: 30px;
+   grid-template-columns: 50% 50%;
+   grid-column-gap: 40px;
    background-color: rgba(84, 21, 84, 255);
    padding:75px 0px 35px;
 }
@@ -33,16 +33,17 @@
    width:600px;
    height: 300px;
    justify-self: end;
-   
-      
 }
 .splash-container-1-header {
-   font-size: 3rem;
+   font-size: 3.5rem;
    color:white;
    padding-bottom:10px;
    margin-top:40px;
    line-height: 1.4;
-   /* font-weight:bolder; */
+   font-weight: 700;
+}
+.splash-container-1-digital {
+   color: rgba(236, 178, 46, 255);
 }
 .splash-container-1-text {
    font-size: 20px;
@@ -103,14 +104,14 @@
 }
 /* CONTAINER 2 */
 
-.splash-container-2 {
+/* .splash-container-2 {
    display: grid;
-   grid-template-columns: 45% 45%;
+   grid-template-columns: 50% 50%;
    grid-column-gap: 40px;
-   /* background-color: rgba(246, 239, 232, 255); */
    background-color: rgba(74, 21, 75, 255);
    padding: 50px 0px 30px;
-}
+} */
+
 /* .splash-container-2-image {
    justify-self: end;
    width:510px
@@ -120,20 +121,20 @@
    height: 300px;
 } */
 
-.splash-container-2-title {
+/* .splash-container-2-title {
    display:flex;
    flex-direction: column;
    color:white;
    width: 516px;
    height:200px;
    padding-top:50px;
-}
+} */
 
 /* CONTAINER 3 */
 .splash-container-3 {
    display: grid;
-   grid-template-columns: 45% 45%;
-   grid-column-gap: 40px;
+   grid-template-columns: 50% 50%;
+   grid-column-gap: 8em;
    padding: 50px 0px 30px;
    background-color: rgba(244, 237, 228, 255);
 }
@@ -144,7 +145,7 @@
    height: 300px;
    color: black;
    margin-top:40px;
-   justify-self: center;
+   justify-self: start;
 }
 /* .splash-container-3-image {
    width: 450px;
@@ -168,8 +169,8 @@
 /* CONTAINER 4 */
 .splash-container-4 {
    display: grid;
-   grid-template-columns: 45% 45%;
-   grid-column-gap: 40px;
+   grid-template-columns: 50% 50%;
+   grid-gap: 2em;
    padding: 50px 0px 30px;
    height:auto;
    background-color: rgba(244, 237, 228, 255);
@@ -177,8 +178,8 @@
 .splash-container-4-title {
    display: flex;
    flex-direction: column;
-   justify-self: center;
-   margin-right:20px;
+   justify-self: end;
+   margin-right:100px;
    margin-top: 40px;
    color: black;
    width: 500px;
@@ -205,8 +206,8 @@
 /* CONTAINER 5 */
 .splash-container-5 {
    display: grid;
-   grid-template-columns: 45% 45%;
-   grid-column-gap: 40px;
+   grid-template-columns: 50% 50%;
+   grid-column-gap: 8em;
    padding: 50px 0px 50px;
    background-color: rgba(244, 237, 228, 255);
 }
@@ -217,7 +218,7 @@
    height: 300px;
    color: black;
    margin-top: 40px;
-   justify-self: center;
+   justify-self: start;
 }
 /* .splash-container-5-image {
    width: 450px;
@@ -306,20 +307,21 @@ font-size: 20px;
 }
 .splash-container-7-video {
    height: 400px;
-   width: 700px;
+   width: 770px;
    justify-self: end;
 }
 .video7 {
    height:380px;
-   width:700px;
-   border-top-right-radius: 600px;
-   border-bottom-right-radius: 600px;
+   width:760px;
+   border-top-right-radius: 590px;
+   border-bottom-right-radius: 590px;
+   margin-left:10px;
 }
 .splash-container-7-title {
    display:flex;
    flex-direction: column;
    padding:2em;
-   height:37px;
+   height:240px;
    width: 683px;
    color:black;
 }
@@ -336,6 +338,7 @@ font-size: 20px;
 font-weight:700;
 padding-bottom:7px;
 padding-top:7px;
+width: 615px;
 }
 /* CONTAINER 8*/
 .splash-container-8 {

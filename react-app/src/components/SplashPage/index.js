@@ -30,7 +30,9 @@ const SplashPage = () => {
       <div className='splash-main-container'>
          <div className='splash-container-1'>
             <div className='splash-container-1-title'>
-               <h1 className='splash-container-1-header'>Great teamwork starts with a digital HQ </h1>
+               <h1 className='splash-container-1-header'>Great teamwork starts with a 
+               <span className='splash-container-1-digital'> digital HQ</span>
+               </h1>
                <p className='splash-container-1-text'>With all your people, tools and communication in one place, you can work faster and more flexibly than ever before.</p>
                <div className='splash-buttons'>
                   <SignUpFormModal1 />
