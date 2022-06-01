@@ -5,7 +5,7 @@ import Groups from "../Groups"
 import { NavLink } from "react-router-dom"
 import "./LeftMenu.css"
 import { useState, useEffect } from "react"
-import { Modal } from '../../context/Modal'
+import { DarkModal } from '../../context/Modal'
 import ChannelForm from "../Channels/ChannelForm";
 
 
@@ -33,9 +33,9 @@ const LeftMenu = () => {
                         </button>
                         <i className="fas fa-plus" onClick={() => setShowModal(true)}></i>
                         {showModal && (
-                            <Modal onClose={() => setShowModal(false)}>
+                            <DarkModal onClose={() => setShowModal(false)}>
                                 <ChannelForm setShowModal={setShowModal} />
-                            </Modal>
+                            </DarkModal>
                         )}
                     </div>
                     {showChannels && <Channels user={true} />}

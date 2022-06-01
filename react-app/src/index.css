@@ -86,3 +86,56 @@ div > .purple-border-button {
     text-transform: uppercase;
     padding: 12px 16px;
 }
+
+.dark-input {
+    all: unset;
+    padding: 0px 12px;
+    height: 44px;
+    width: 400px;
+    font-size: 18px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    background-color: transparent;
+    margin: 6px 12px;
+}
+
+.dark-textarea {
+    all: unset;
+    padding: 8px 12px 2px 12px;
+    height: 88px;
+    width: 400px;
+    font-size: 18px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    background-color: transparent;
+    margin: 6px 12px;
+}
+
+.green-button {
+    all: unset;
+    z-index: 100;
+    border: 1px solid #35373b;
+    background-color: #007A5A;
+    padding: 8px 24px;
+    border-radius: 6px;
+    margin: 6px 12px;
+    font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;
+    font-size: 16px;
+}
+
+.grey-button {
+    background-color: #1a1d21;
+    z-index: 100;
+    border: 1px solid #35373b;
+    color: #d1d2d3;
+    padding: 8px 20px;
+    border-radius: 6px;
+    margin: 6px 0px 6px 12px;
+    font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;
+    font-size: 16px;
+}
+
+.buttons-right-container {
+    display: flex;
+    justify-content: flex-end;
+}
