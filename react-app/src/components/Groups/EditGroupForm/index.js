@@ -54,14 +54,14 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
 
 
     return (
-        <form autoComplete="off" className="channel-form-container" onSubmit={handleSubmit}>
+        <form autoComplete="off" className="edit-group-form-container" onSubmit={handleSubmit}>
             <h1 className="groups-title" >{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
             <div className='channel-form-input-container'>
                 <SearchAutocomplete members={members} setMembers={setMembers} />
             </div>
-            <div className="edit-group-form-buttons">
-                <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Add People' : 'Start DM'}</button>
-                <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
+            <div className="buttons-right-container">
+                <button className='cancel-btn grey-button' onClick={handleCancelClick}>Cancel</button>
+                <button disabled={Object.keys(errors).length > 0} className='green-button' type="submit">{(edit) ? 'Add People' : 'Start DM'}</button>
             </div>
 
             <ul>

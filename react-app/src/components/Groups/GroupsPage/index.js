@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getGroupRooms } from "../../../store/chatRooms";
 import { useParams } from 'react-router-dom';
-import { Modal } from '../../../context/Modal'
+import { DarkModal } from '../../../context/Modal'
 import EditGroupForm from "../EditGroupForm"
 
 const GroupsPage = () => {
@@ -28,9 +28,9 @@ const GroupsPage = () => {
                 <h1 className="groups-title" >{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
                 <i class="fa-solid fa-angle-down" onClick={() => setShowModal(true)}></i>
                 {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
+                    <DarkModal onClose={() => setShowModal(false)}>
                         <EditGroupForm setShowModal={setShowModal} />
-                    </Modal>
+                    </DarkModal>
                 )}
             </div>
         </div>
