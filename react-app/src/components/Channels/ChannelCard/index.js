@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ChannelForm from "../ChannelForm"
 import { io } from 'socket.io-client';
-import { getChannels, deleteChannelRoom, joinChannelRoom } from "../../../store/channels";
+import { getChannels, deleteChannelRoom, joinChannelRoom, leaveChannelRoom } from "../../../store/channels";
 import { NavLink } from "react-router-dom";
 import ChannelHeader from "../ChannelHeader";
 import Chat from "../../Chat";
@@ -27,6 +27,13 @@ const ChannelCard = ({ channel, single, nav }) => {
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))
         history.push(`/channels/${channel.id}`)
+    }
+
+    const leaveChannel = async () => {
+        await dispatch(leaveChannelRoom(channel.id))
+        await dispatch(getChannels())
+        await dispatch(reloadCurrentUser(user.id))
+        history.push('/')
     }
 
     const checkChannels = (id) => {
@@ -56,7 +63,7 @@ const ChannelCard = ({ channel, single, nav }) => {
                         <div className="channel-buttons">
                             <button className="view-channel-button">View</button>
                             {checkChannels(channel.id) && <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>}
-                            {!checkChannels(channel.id) && <button className="leave-channel-button view-channel-button" onClick={(e) => joinChannel(e)}>Leave</button>}
+                            {!checkChannels(channel.id) && <button className="leave-channel-button view-channel-button" onClick={(e) => leaveChannel(e)}>Leave</button>}
                         </div>
 
                     </div>
