@@ -57,7 +57,6 @@ export const createGroupRoom = (formData) => async (dispatch) => {
 }
 
 export const editGroupRoom = (formData, groupId) => async (dispatch) => {
-    console.log(">>>>>>>", formData.get("members"), formData.get("user_id"))
     const res = await easyFetch(`/api/groups/${groupId}`, {
         method: 'PUT',
         body: formData
