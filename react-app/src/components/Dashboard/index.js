@@ -36,7 +36,7 @@ const Dashboard = () => {
          setTimeout(async () => {
             await dispatch(reloadCurrentUser(sessionUser.id))
             await dispatch(getChannels())
-         }, 500)
+         }, 2000)
       })
 
       socket.on('create-channel', async (data) => {
