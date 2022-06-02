@@ -38,8 +38,10 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
     return (
         <>
             {(edit) ? <ChatInput value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
-            {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : null}
-            {(userId == msg.owner_id) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
+            <div className="chat-buttons">
+                {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : null}
+                {(userId == msg.owner_id) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
+            </div>
         </>
     )
 }

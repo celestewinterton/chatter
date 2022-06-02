@@ -51,8 +51,8 @@
 .chat-profile-pic{
     width: 36px;
     height: 36px;
+    border-radius: 4px;
 }
-
 
 
 .status-circle.online {
@@ -111,4 +111,66 @@
 .button-div{
     display: flex;
     justify-content: flex-end;
+}
+
+.chat-message{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 30px;
+
+    box-sizing: border-box;
+    width: 100%;
+    /* width: 82vw; */
+}
+
+.chat-message:hover {
+    background-color: #1e2126;
+}
+
+.chat-buttons > button {
+    all: unset;
+    cursor: pointer;
+    margin: 2px 4px;
+    font-size: 12px;
+    color: transparent;
+    padding: 4px 8px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+}
+
+.chat-message:hover .chat-buttons > button {
+    border: 1px solid #35363a;
+    color: #d1d2d3;
+}
+
+.chat-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.chat-metadata {
+    display: flex;
+    flex-direction: column;
+}
+
+.created-at-msg {
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: lighter;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.chat-text {
+    font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    padding: 8px 6px;
+    box-sizing: border-box;
+    width: 78vw;
+}
+
+.chat-username {
+    padding: 0px 6px;
 }
