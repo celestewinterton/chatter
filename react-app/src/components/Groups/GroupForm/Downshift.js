@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useCombobox, useMultipleSelection } from 'downshift'
 import { useSelector, useDispatch } from 'react-redux'
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
+import { useHistory } from 'react-router-dom';
 
 
 const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const user = useSelector(state => state.session.user)
   const users = useSelector(state => state.users)
   const usernames = Object.values(users)?.map(user => user.username)
@@ -17,16 +19,17 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let errors;
+    let data;
     const memberIds = Object.values(users).filter(user => members.includes(user.username)).map(user => user.id).join(", ")
     const formData = new FormData();
     formData.append('members', memberIds)
     formData.append('owner_id', user.id)
 
     if (edit) dispatch(editGroupRoom(formData, group.id))
-    else errors = await dispatch(createGroupRoom(formData))
+    else data = await dispatch(createGroupRoom(formData))
 
-    if (errors) console.log(errors)
+    if (data.errors) setErrors(data.errors)
+    else history.push(`/groups/${data?.id}`)
 
     // setShowModal(false);
   }
