@@ -77,8 +77,6 @@ def sign_up():
         url = upload["url"]
     else:
         url = 'https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png'
-    
-    print(url)
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
