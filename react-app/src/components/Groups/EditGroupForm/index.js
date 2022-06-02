@@ -4,6 +4,7 @@ import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
 import SearchAutocomplete from "./Autocomplete";
 import { useParams } from 'react-router-dom';
+import './EditGroupForm.css'
 
 const EditGroupForm = ({ setShowModal, edit, group }) => {
     edit = true
@@ -49,48 +50,29 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         setShowModal(false);
     };
 
-    const inputMembers = (e) => {
-        const addedMember = e.target.value
-        const addedMemberArr = addedMember?.split(" ")
-        let addedMemberIdArr = []
-        addedMemberArr?.forEach(member => {
-            let memberObj = usersArr?.find(user => user?.username == member)
-            if (memberObj) addedMemberIdArr.push(memberObj["id"])
-        });
-        console.log("????", addedMemberIdArr)
-        setMembers(addedMemberIdArr.join(" "))
-    }
-
     useEffect(() => {
         setErrors(errors)
     }, [errors]);
 
 
     return (
-        <form autoComplete="off" className="channel-form-container" onSubmit={handleSubmit}>
+        <form autoComplete="off" className="edit-group-form-container" onSubmit={handleSubmit}>
             <h1 className="groups-title" >{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
             <div className='channel-form-input-container'>
-                {/* <SearchAutocomplete members={members} setMembers={setMembers} /> */}
-                <input
-                    name="member"
-                    type="text"
-                    onChange={inputMembers}
-                    placeholder="Find People"></input>
-                <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">{(edit) ? 'Add People' : 'Start DM'}</button>
-                <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
+                <SearchAutocomplete members={members} setMembers={setMembers} />
+            </div>
+            <div className="buttons-right-container">
+                <button className='cancel-btn grey-button' onClick={handleCancelClick}>Cancel</button>
+                <button disabled={Object.keys(errors).length > 0} className='green-button' type="submit">{(edit) ? 'Add People' : 'Start DM'}</button>
             </div>
 
             <ul>
-                {usersArr.map(user => (
-                    <li>
-                        {user.username}
-                    </li>
-                ))}
-                {/* {singleGroupName.map((user) => (
-                    <li>
+                {singleGroupName.map((user,idx) => (
+                    <li key={idx}>
+                        <img className="side-nav-img" src="https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png" />
                         {user}
                     </li>
-                ))} */}
+                ))}
             </ul>
 
 

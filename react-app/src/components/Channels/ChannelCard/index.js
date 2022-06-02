@@ -51,6 +51,7 @@ const ChannelCard = ({ channel, single, nav }) => {
     return (
         <>
 
+
             {!single && !nav &&
                 <>
                     <div className="channel-card app-body-hover">
@@ -65,7 +66,6 @@ const ChannelCard = ({ channel, single, nav }) => {
                             {checkChannels(channel.id) && <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>}
                             {!checkChannels(channel.id) && <button className="leave-channel-button view-channel-button" onClick={(e) => leaveChannel(e)}>Leave</button>}
                         </div>
-
                     </div>
                 </>
             }
