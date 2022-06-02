@@ -56,7 +56,7 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
                 </div>
             </div>
             <div className="chat-buttons">
-                {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : <button onClick={cancelEdit}>Cancel</button>}
+                {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : (edit) ? <button onClick={cancelEdit}>Cancel</button> : null}
                 {(userId == msg.owner_id && !edit) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
             </div>
         </>
