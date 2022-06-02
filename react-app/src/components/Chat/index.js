@@ -42,8 +42,7 @@ const Chat = ({ group, subscribed }) => {
 
 
 
-    const sendChat = async (e) => {
-        e.preventDefault();
+    const sendChat = async () => {
         if (messageBody !== '') {
             socket.emit('chat', {
                 user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
