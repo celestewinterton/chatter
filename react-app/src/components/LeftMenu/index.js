@@ -23,7 +23,7 @@ const LeftMenu = () => {
             <div className="left-navigation-menu">
                 <div className="left-menu-header">
                     <NavLink className="unset" to={`/`}>
-                        <h1 className="left-menu-title">Chatter</h1>
+                        <h1 className="left-menu-title">chatter</h1>
                     </NavLink>
                     <NavLink className='left-navigation-icon' to='/groups/new'>
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -42,6 +42,13 @@ const LeftMenu = () => {
                         )}
                     </div>
                     {showChannels && <Channels user={true} />}
+                    <div className='grey-hover'>
+                        {showChannels && 
+                        <NavLink className='left-menu-add'to='/'>
+                            <i className="fa fa-plus" aria-hidden="true"></i>
+                            Browse Channels
+                        </NavLink>}
+                    </div>
                 </div>
                 <div className="instant-message-container">
                     {/* <CreateGroupModal /> */}
@@ -52,6 +59,13 @@ const LeftMenu = () => {
                         <NavLink className='unset' to={`/groups/new`}><i className="fas fa-plus"></i></NavLink>
                     </div>
                     {showGroups && <Groups all={true} />}
+                    <div className='grey-hover'>
+                        {showGroups && 
+                        <NavLink className='left-menu-add'to='/groups/new'>
+                            <i className="fa fa-plus" aria-hidden="true"></i>
+                            Add Teammates
+                        </NavLink>}
+                    </div>
                 </div>
             </div>
         </>
