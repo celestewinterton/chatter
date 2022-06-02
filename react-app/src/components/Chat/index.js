@@ -42,6 +42,7 @@ const Chat = ({ group, subscribed }) => {
 
 
 
+
     const sendChat = async () => {
         if (messageBody !== '') {
             socket.emit('chat', {
@@ -119,7 +120,7 @@ const Chat = ({ group, subscribed }) => {
                                             <ChatUserCard msg={msg} />
                                         </div>
                                         <div className='chat-metadata'>
-                                            <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{(new Date(msg.created_at)).toLocaleTimeString()}</span></p>
+                                            <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{new Date(msg.created_at).toLocaleTimeString()}</span></p>
                                             <div className='chat-text' id={msg.id}>
                                                 <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
                                             </div>

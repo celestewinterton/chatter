@@ -26,7 +26,7 @@ const LeftMenu = () => {
                         <h1 className="left-menu-title">chatter</h1>
                     </NavLink>
                     <NavLink className='left-navigation-icon' to='/groups/new'>
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </NavLink>
                 </div>
                 <div className="channel-container">
@@ -43,11 +43,11 @@ const LeftMenu = () => {
                     </div>
                     {showChannels && <Channels user={true} />}
                     <div className='grey-hover'>
-                        {showChannels && 
-                        <NavLink className='left-menu-add'to='/'>
-                            <i className="fa fa-plus" aria-hidden="true"></i>
-                            Browse Channels
-                        </NavLink>}
+                        {showChannels &&
+                            <NavLink className='left-menu-add' to='/'>
+                                <i className="fa fa-plus" aria-hidden="true"></i>
+                                Browse Channels
+                            </NavLink>}
                     </div>
                 </div>
                 <div className="instant-message-container">
@@ -60,11 +60,11 @@ const LeftMenu = () => {
                     </div>
                     {showGroups && <Groups all={true} />}
                     <div className='grey-hover'>
-                        {showGroups && 
-                        <NavLink className='left-menu-add'to='/groups/new'>
-                            <i className="fa fa-plus" aria-hidden="true"></i>
-                            Add Teammates
-                        </NavLink>}
+                        {showGroups &&
+                            <NavLink className='left-menu-add' to='/groups/new'>
+                                <i className="fa fa-plus" aria-hidden="true"></i>
+                                Add Teammates
+                            </NavLink>}
                     </div>
                 </div>
             </div>
