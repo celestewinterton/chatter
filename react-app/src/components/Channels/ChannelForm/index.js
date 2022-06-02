@@ -48,9 +48,10 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
         setShowDeleteModal(true)
     }
 
-    const leaveChannel = () => {
-        dispatch(leaveChannelRoom(channel.id))
-        dispatch(getChannels())
+    const leaveChannel = async () => {
+        await dispatch(leaveChannelRoom(channel.id))
+        await dispatch(getChannels())
+        await dispatch(reloadCurrentUser(user.id))
         history.push('/')
     }
 
