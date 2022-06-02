@@ -10,18 +10,23 @@ socketio = SocketIO(cors_allowed_origins="*")
 @socketio.on("chat")
 def handle_chat(data):
     room = data['room']
-    params = {
-        'owner_id': int(data['userId']),
-        'body': data['msg']
-    }
-    if room[0] == 'c':
-        params['channel_id'] = int(room[1:])
-    else:
-        params['group_id'] = int(room[1:])
-    message = Message(**params)
-    db.session.add(message)
-    db.session.commit()
-    emit("chat", data, broadcast=True, to=room)
+    message = data['msg']
+    print('messssssssage' ,len(message))
+    if len(message) > 254:
+        emit('error', data)
+    else :
+        params = {
+            'owner_id': int(data['userId']),
+            'body': data['msg']
+        }
+        if room[0] == 'c':
+            params['channel_id'] = int(room[1:])
+        else:
+            params['group_id'] = int(room[1:])
+        message = Message(**params)
+        db.session.add(message)
+        db.session.commit()
+        emit("chat", data, broadcast=True, to=room)
 
 @socketio.on("edit")
 def edit_chat(data):
