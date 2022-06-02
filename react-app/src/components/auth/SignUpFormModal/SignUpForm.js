@@ -18,8 +18,10 @@ const SignUpForm = () => {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const user = useSelector(state => state.session.user);
+  const emailRegex = /\S+@\S+\.\S+/;
   const dispatch = useDispatch();
-  const history =useHistory()
+  const history = useHistory()
+  const emailValidator = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -40,7 +42,7 @@ const SignUpForm = () => {
     } if (password !== repeatPassword) {
       setErrors(['password: Password doesn\'t match'])
     } else {
-    history.push('/')
+      history.push('/')
     }
   };
   const updateImage = (e) => {

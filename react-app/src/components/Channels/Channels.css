@@ -16,8 +16,10 @@
     padding-left: 18px;
 }
 
-.channel-title {
-    color: #d1d2d3
+.channel-title{
+    color: #d1d2d3;
+    cursor: pointer;
+
 }
 
 .channel-card {

@@ -149,6 +149,7 @@
    width: 25px;
    height: 25px;
    border-radius: 4px;
+   cursor: pointer;
 }
 
 .user-image-nav-2 {
