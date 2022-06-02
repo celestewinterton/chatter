@@ -12,7 +12,23 @@ const ChatInput = ({ value, onChange, send, group, room }) => {
     const toolbarOptions = [['bold', 'italic', 'strike'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['blockquote'], ['code', 'codeblock']];
     const modules = {
         'toolbar': toolbarOptions,
+        keyboard: {
+            bindings: {
+                shift_enter: {
+                    key: 13,
+                    shiftKey: true,
+                    handler: (range, ctx) => {
+                        console.log(range, ctx); // if you want to see the output of the binding
+                    }
+                },
+                enter: {
+                    key: 13,
+                    handler: () => send()
+                }
+            }
+        }
     }
+
 
     return (
         <>
