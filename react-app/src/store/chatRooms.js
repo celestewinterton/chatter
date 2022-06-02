@@ -51,6 +51,7 @@ export const createGroupRoom = (formData) => async (dispatch) => {
     const data = await res.json()
     if (res.ok) {
         dispatch(createGroup(data))
+        return data
     } else {
         return data
     }
