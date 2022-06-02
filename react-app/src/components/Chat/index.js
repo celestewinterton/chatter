@@ -41,8 +41,9 @@ const Chat = ({ group, subscribed }) => {
 
 
 
+
     const sendChat = async () => {
-        if (messageBody !== '') {
+        if (messageBody !== "<p><br></p>") {
             socket.emit('chat', {
                 user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
             });
@@ -77,6 +78,10 @@ const Chat = ({ group, subscribed }) => {
         socket.on('chat', (message) => {
             dispatch(loadChatMessages(id, type))
         });
+
+        socket.on('error', (data) => {
+            setMessageBody('Message cannot be over 255 characters')
+        })
 
         socket.on('edit', (message) => {
             dispatch(loadChatMessages(id, type))
