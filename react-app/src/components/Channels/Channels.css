@@ -17,6 +17,7 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .channel-title{
     color: #d1d2d3;
     cursor: pointer;
@@ -24,6 +25,15 @@
 .channel-title {
     color: #d1d2d3
 >>>>>>> 638d66d (fixed pointers on unsets)
+=======
+.channel-title {
+    color: #d1d2d3
+=======
+.channel-title{
+    color: #d1d2d3;
+    cursor: pointer;
+>>>>>>> 402753b (yay)
+>>>>>>> 1eb5043 (yay)
 }
 
 .channel-card {
