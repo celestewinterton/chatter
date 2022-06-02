@@ -9,7 +9,7 @@ const ChatInput = ({ value, onChange, send, group, room }) => {
     } else {
         users = room?.name
     }
-    const toolbarOptions = [['bold', 'italic', 'strike'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['blockquote'], ['code', 'codeblock']];
+    const toolbarOptions = [['bold', 'italic', 'strike'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['blockquote']];
     const modules = {
         'toolbar': toolbarOptions,
         keyboard: {
@@ -35,7 +35,7 @@ const ChatInput = ({ value, onChange, send, group, room }) => {
             <div className='chat-input'>
                 <ReactQuill value={value}
                     modules={modules}
-                    placeholder={(group) ? "Message " + users : "Message " + users}
+                    placeholder={(group) ? "Message " + users : "Message #" + users}
                     theme='snow'
                     onChange={onChange} />
                 <div className='button-div'>

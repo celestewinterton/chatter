@@ -35,6 +35,10 @@
     border: 0px !important
 }
 
+.ql-editor.ql-blank::before{
+    color: #787a7c;
+}
+
 .chat-input{
     display: flex;
     flex-direction: column;
@@ -54,31 +58,47 @@
     border-radius: 4px;
 }
 
+.user-info-card{
+    display: flex;
+    gap: 15px;
+}
+
+.user-title-container{
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.user-card-username{
+    font-size: 20px;
+}
+
 
 .status-circle.online {
     border-radius: 50%;
     background-color: #037a5b;
     border: 3px solid var(--side-panel);
-    width: 20px;
-    height: 20px;
-    right: -5px;
-    bottom: -5px;
+    width: 10px;
+    height: 10px;
+
 }
 
 .status-circle.offline {
     border-radius: 50%;
     background-color: var(--main-container);
     border: 3px solid var(--side-panel);
-    width: 20px;
-    height: 20px;
-    right: -5px;
-    bottom: -5px;
+    width: 10px;
+    height: 10px;
+
 }
 
 .status-circle.offline > .inner-circle {
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 5px;
+    height: 5px;
     border: 3px solid grey;
     position: absolute;
     background-color: var(--main-container);
@@ -92,6 +112,8 @@
 .chat-card-pic{
     width: 280px;
     height: 280px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .send-button{
@@ -173,4 +195,64 @@
 
 .chat-username {
     padding: 0px 6px;
+}
+
+@media screen and (max-width:1400px) {
+    #editor{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            width: 78%;
+            bottom: 0;
+            padding-left: 30px;
+
+    }
+    .outer-chat-container{
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    #editor{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            width: 75%;
+            bottom: 0;
+            padding-left: 30px;
+            
+    }
+    .outer-chat-container{
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width:950px) {
+    #editor{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            width: 72%;
+            bottom: 0;
+            padding-left: 30px;
+            
+    }
+    .outer-chat-container{
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width:800px) {
+    #editor{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            width: 67%;
+            bottom: 0;
+            padding-left: 30px;
+            
+    }
+    .outer-chat-container{
+            overflow-x: hidden;
+    }
 }

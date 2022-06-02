@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { Modal } from "../../../context/Modal"
+import { DarkModal } from "../../../context/Modal"
 import { useState } from "react"
 
 const ChatUserCard = ({ msg }) => {
@@ -9,27 +9,31 @@ const ChatUserCard = ({ msg }) => {
 
     const getPosition = (e) => {
         let y = e.target.getBoundingClientRect().y
-        let x = (e.clientX)
-        setStyle({ top: y + 'px', left: '240px' })
+        let x = e.target.getBoundingClientRect().x
+        setStyle({ top: y + 'px', left: x + 42 + 'px', padding: '0px' })
         setShowModal(true)
     }
 
     return (
         <>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)} style={style}>
+                <DarkModal onClose={() => setShowModal(false)} style={style}>
                     <div className="profile-card">
                         <div className='chat-card-div'>
-                            <img className='chat-card-pic' src={msg.user.photo} alt={msg.user.username} onMouseDown={getPosition}></img>
+                            <img className='chat-card-pic' src={msg.user.photo} alt={msg.user.username}></img>
                         </div>
-                        <div className="user-card-title">
-                            <p>{msg.user.username}</p>
-                        </div>
-                        <div style={style} className={(users[msg.user.id].online) ? 'status-circle online' : 'status-circle offline'}>
-                            <div className='inner-circle'></div>
+                        <div className="user-info-card">
+                            <div className="user-title-container">
+                                <div className="user-card-title">
+                                    <p className="user-card-username">{msg.user.username}</p>
+                                </div>
+                                <div style={style} className={(users[msg.user.id].online) ? 'status-circle online' : 'status-circle offline'}>
+                                    <div className='inner-circle'></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </Modal>
+                </DarkModal>
             )
             }
             <div className='profile-pic-div'>
