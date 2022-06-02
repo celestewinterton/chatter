@@ -36,6 +36,7 @@ const Dashboard = () => {
          setTimeout(async () => {
             await dispatch(reloadCurrentUser(sessionUser.id))
             await dispatch(getChannels())
+            console.log('updated')
          }, 2000)
       })
 
