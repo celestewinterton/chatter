@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  console.log(user)
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory()
 
@@ -40,6 +41,9 @@ function ProfileButton({ user }) {
           src={user.photo}
           onClick={openMenu}
         />
+        <div className={(user.online) ? 'status-circle online-profile' : 'status-circle offline-profile'}>
+          <div className='inner-circle-profile'></div>
+        </div>
       </div>
       {showMenu && (
         <div className="profile-dropdown">
@@ -50,6 +54,11 @@ function ProfileButton({ user }) {
                 onClick={openMenu}
               />
               <div className="profile-username">{user.username}</div>
+              <div className={(user.online) ? 'status-circle online-profile1' : 'status-circle offline-profile1'}>
+                <div className='inner-circle-profile'></div>
+              </div>
+              <div className="status">
+              </div>
             </div>
 
 
