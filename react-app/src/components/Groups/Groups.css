@@ -24,11 +24,24 @@
   border-bottom: 1px solid #3a3d40;
   display: flex;
   align-items: center;
-  padding-left: 18px;
+  padding-left: 15px;
+}
+
+.edit-groups-title {
+  color: #d1d2d3;
+  padding-bottom: 18px;
 }
 
 .groups-title {
-  color: #d1d2d3
+  color: #d1d2d3;
+  padding-right: 18px;
+}
+
+.edit-group-from-users{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 300;
 }
 
 .create-group{

@@ -166,3 +166,9 @@ div > .purple-border-button {
     display: flex;
     justify-content: flex-end;
 }
+
+.buttons-center-container{
+    margin-top: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
