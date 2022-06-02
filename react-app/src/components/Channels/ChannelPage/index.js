@@ -7,6 +7,7 @@ import { deleteChannelRoom, getChannels } from "../../../store/channels";
 import { reloadCurrentUser } from "../../../store/session";
 import { io } from 'socket.io-client'
 import ChannelForm from "../ChannelForm";
+import ChannelCard from "../ChannelCard";
 import ChannelHeader from "../ChannelHeader";
 import Chat from "../../Chat";
 
@@ -46,7 +47,7 @@ const ChannelPage = () => {
 
     return (
         <>
-            {showModal && user.id === channel.owner_id && (
+            {showModal && (
                 <DarkModal onClose={() => setShowModal(false)}>
                 <ChannelForm setShowModal={setShowModal} edit={true} channel={channel} setShowDeleteModal={setShowDeleteModal} />
                 </DarkModal>

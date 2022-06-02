@@ -133,6 +133,7 @@ const Chat = ({ group, subscribed }) => {
                                 )
 
                             })}
+
                         </div>
                     </div>
                 </div>

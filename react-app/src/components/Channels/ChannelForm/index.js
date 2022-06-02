@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom"
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -14,6 +15,10 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
     const [name, setName] = useState((edit) ? channel.name : '')
     const [topic, setTopic] = useState((edit) ? channel.topic : '')
     const [description, setDescription] = useState((edit) ? channel.description : '')
+    const { id } = useParams()
+    const channels = useSelector(state => state.channels.all[id])
+    // const channels = Object.values(channelsObj)
+    console.log('channel =====>', channels?.owner_id)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -39,7 +44,7 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
             await dispatch(reloadCurrentUser(user.id))
             setShowModal(false);
         }
-
+        
 
     }
 
@@ -108,7 +113,7 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
                     </div>
                     <div className="line channel-line">
                         {edit && <button className="leave-button grey-button" onClick={leaveChannel}>Leave Channel</button>}
-                        {edit && <button className="delete-button grey-button" onClick={deleteChannel}>Delete Channel</button>
+                        {(edit) && user?.id === channels?.owner_id &&  <button className="delete-button grey-button" onClick={deleteChannel}>Delete Channel</button>
                         }
                     </div>
                 </div>
