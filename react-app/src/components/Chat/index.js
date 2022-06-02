@@ -8,8 +8,6 @@ import { loadChatMessages, clearMessages, removeMessage } from '../../store/mess
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
 import './Chat.css'
-import ChatUserCard from './ChatUserCard';
-
 
 let socket;
 
@@ -116,15 +114,7 @@ const Chat = ({ group, subscribed }) => {
                             {chatMessages?.map(msg => {
                                 return (
                                     <div className='chat-message' id={msg.owner} key={msg.id}>
-                                        <div className='pic-container'>
-                                            <ChatUserCard msg={msg} />
-                                        </div>
-                                        <div className='chat-metadata'>
-                                            <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{new Date(msg.created_at).toLocaleTimeString()}</span></p>
-                                            <div className='chat-text' id={msg.id}>
-                                                <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
-                                            </div>
-                                        </div>
+                                        <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
                                     </div>
                                 )
 

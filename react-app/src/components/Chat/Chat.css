@@ -138,11 +138,10 @@
 .chat-message{
     display: flex;
     flex-direction: row;
+    /* justify-content: space-between;  */
     padding: 5px 30px;
-
+    margin-top: 6px;
     box-sizing: border-box;
-    width: 100%;
-    /* width: 82vw; */
 }
 
 .chat-message:hover {
@@ -152,7 +151,7 @@
 .chat-buttons > button {
     all: unset;
     cursor: pointer;
-    margin: 2px 4px;
+    margin: 0px 4px 4px 4px;
     font-size: 12px;
     color: transparent;
     padding: 4px 8px;
@@ -173,7 +172,8 @@
 
 .chat-metadata {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .created-at-msg {
@@ -188,13 +188,19 @@
     font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
-    padding: 8px 6px;
+    padding: 4px 6px;
     box-sizing: border-box;
-    width: 78vw;
+    /* width: 78vw; */
 }
 
 .chat-username {
     padding: 0px 6px;
+}
+
+.chat-data {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 4px;
 }
 
 @media screen and (max-width:1400px) {
@@ -220,7 +226,7 @@
             width: 75%;
             bottom: 0;
             padding-left: 30px;
-            
+
     }
     .outer-chat-container{
         overflow-x: hidden;
@@ -235,7 +241,7 @@
             width: 72%;
             bottom: 0;
             padding-left: 30px;
-            
+
     }
     .outer-chat-container{
         overflow-x: hidden;
@@ -250,9 +256,10 @@
             width: 67%;
             bottom: 0;
             padding-left: 30px;
-            
+
     }
     .outer-chat-container{
             overflow-x: hidden;
     }
+
 }
