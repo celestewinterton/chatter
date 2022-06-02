@@ -119,7 +119,9 @@ const Chat = ({ group, subscribed }) => {
                             {chatMessages?.map(msg => {
                                 return (
                                     <div className='chat-message' id={msg.owner} key={msg.id}>
-                                        <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
+                                        <div className='chat-message-inner'>
+                                            <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
+                                        </div>
                                     </div>
                                 )
 

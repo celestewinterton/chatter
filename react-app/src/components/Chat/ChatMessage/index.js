@@ -1,10 +1,9 @@
 import EditChatInput from "../ChatInput"
+import ChatUserCard from "../ChatUserCard";
 import Parser from 'html-react-parser';
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setEditFalse, setEditTrue } from "../../../store/session";
-import ChatUserCard from '../ChatUserCard';
-
 
 const ChatMessage = ({ msg, socket, roomId, userId }) => {
     const user = useSelector(state => state.session.user);
@@ -43,27 +42,22 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
 
     return (
         <>
-<<<<<<< HEAD
-            <div className='pic-container'>
-                <ChatUserCard msg={msg} />
-            </div>
-            <div className="chat-data">
-                <div className='chat-metadata'>
-                    <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{new Date(msg.created_at).toLocaleTimeString()}</span></p>
-                    <div className="chat-buttons">
-                        {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : null}
-                        {(userId == msg.owner_id) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
+            <div className="chat-data-container">
+                <div className='pic-container'>
+                    <ChatUserCard msg={msg} />
+                </div>
+                <div className="chat-data">
+                    <div className='chat-metadata'>
+                        <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{new Date(msg.created_at).toLocaleTimeString()}</span></p>
+                    </div>
+                    <div className='chat-text' id={msg.id}>
+                        {(edit) ? <EditChatInput value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
                     </div>
                 </div>
-                <div className='chat-text' id={msg.id}>
-                    {(edit) ? <ChatInput value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
-                </div>
-=======
-            {(edit) ? <EditChatInput value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
+            </div>
             <div className="chat-buttons">
                 {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : <button onClick={cancelEdit}>Cancel</button>}
-                {(userId == msg.owner_id) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
->>>>>>> d628605 (Fixed edit message)
+                {(userId == msg.owner_id && !edit) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
             </div>
         </>
     )
