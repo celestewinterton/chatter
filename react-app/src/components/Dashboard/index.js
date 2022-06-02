@@ -11,6 +11,7 @@ import { loadUsers } from '../../store/users';
 import GroupForm from '../Groups/GroupForm';
 import { reloadCurrentUser } from '../../store/session';
 import { getChannels } from '../../store/channels';
+import { getGroupRooms } from '../../store/chatRooms'
 
 let socket;
 const Dashboard = () => {
@@ -36,12 +37,24 @@ const Dashboard = () => {
          setTimeout(async () => {
             await dispatch(reloadCurrentUser(sessionUser.id))
             await dispatch(getChannels())
-            console.log('updated')
          }, 2000)
+      })
+
+      socket.on('delete-group', async (data) => {
+         console.log('deleting')
+         history.push('/')
+         setTimeout(async () => {
+            await dispatch(reloadCurrentUser(sessionUser.id))
+            await dispatch(getGroupRooms())
+         }, 1000)
       })
 
       socket.on('create-channel', async (data) => {
          await dispatch(getChannels())
+      })
+
+      socket.on('create-group', async (data) => {
+         await dispatch(getGroupRooms())
       })
 
       return (() => {
