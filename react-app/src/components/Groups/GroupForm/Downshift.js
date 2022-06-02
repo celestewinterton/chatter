@@ -3,8 +3,9 @@ import { useCombobox, useMultipleSelection } from 'downshift'
 import { useSelector, useDispatch } from 'react-redux'
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { useHistory } from 'react-router-dom';
+import { io } from 'socket.io-client'
 
-
+let socket;
 const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
   const dispatch = useDispatch();
   const history = useHistory()
@@ -26,7 +27,11 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     formData.append('owner_id', user.id)
 
     if (edit) dispatch(editGroupRoom(formData, group.id))
-    else data = await dispatch(createGroupRoom(formData))
+    else {
+      data = await dispatch(createGroupRoom(formData))
+      socket = io()
+      socket.emit('create-group', { 'user': user.username })
+    }
 
     if (data.errors) setErrors(data.errors)
     else history.push(`/groups/${data?.id}`)

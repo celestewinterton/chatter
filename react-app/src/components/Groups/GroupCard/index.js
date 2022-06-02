@@ -5,7 +5,9 @@ import { deleteGroupRoom } from "../../../store/chatRooms";
 import { useState, useEffect } from "react";
 import { DarkModal } from "../../../context/Modal"
 import GroupsPage from "../GroupsPage";
+import { io } from 'socket.io-client'
 
+let socket;
 const GroupCard = ({ group, all, single, modal, nav }) => {
     const sessionUser = useSelector(state => state.session.user)
     const groups = useSelector(state => state.chatRooms.subscribed)
@@ -22,11 +24,12 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
 
-    const deleteGroup = () => {
-        dispatch(deleteGroupRoom(group.id))
-        // console.log("Deleteing ===>", group.id)
-        setShowDeleteModal(false)
+    const deleteGroup = async () => {
         history.push('/')
+        await dispatch(deleteGroupRoom(group.id))
+        socket = io()
+        socket.emit('delete-group', { 'username': `${sessionUser.username}` });
+        setShowDeleteModal(false)
     }
 
     return (

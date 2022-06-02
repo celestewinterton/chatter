@@ -12,7 +12,7 @@ def handle_chat(data):
     room = data['room']
     message = data['msg']
     print('messssssssage' ,len(message))
-    if len(message) > 254:
+    if len(message) > 255:
         emit('error', data)
     else :
         params = {
@@ -89,8 +89,16 @@ def delete_channel(data):
     emit('delete-channel', data, broadcast=True)
 
 @socketio.on('create-channel')
-def delete_channel(data):
+def create_channel(data):
     emit('create-channel', data, broadcast=True)
+
+@socketio.on('delete-group')
+def delete_group(data):
+    emit('delete-group', data, broadcast=True)
+
+@socketio.on('create-group')
+def create_group(data):
+    emit('create-group', data, broadcast=True)
 
 @socketio.on('leave-channel')
 def on_join(data):
