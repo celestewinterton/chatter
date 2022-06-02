@@ -1,12 +1,43 @@
 
-
 .channel-card-name {
   padding: 5px 20px;
   font-weight: 300;
 }
+.fa.fa-pencil-square-o {
+  color:black;
+  display:flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.747);
+  padding:4px;
+}
 
+.left-menu-header {
+  display: flex;
+  justify-content: space-between;
+}
 .channel-nav {
   text-decoration: none;
+}
+
+.left-menu-add {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+  font-size: 15.5px;
+  text-align: center;
+  margin-top: 10px;
+  color:rgba(163, 163, 166, 255)
+}
+.fa.fa-plus {
+  color:rgba(117, 116, 124, 255);
+  margin-right:5px;
+  background-color: rgba(43, 42, 48, 255);
+  font-size:13px;
+  padding:2.3px;
+  border-radius:3px;
+
 }
 
 .groups-nav {
