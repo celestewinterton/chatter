@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import Parser from 'html-react-parser';
@@ -27,8 +27,6 @@ const Chat = ({ group, subscribed }) => {
     const user = useSelector(state => state.session.user);
     const stateMessages = useSelector(state => state.messages);
     chatMessages = Object.values(stateMessages)
-
-
     if (group) {
         chatRoom = groupRooms.subscribed[id];
         roomId = 'g' + id
@@ -36,13 +34,10 @@ const Chat = ({ group, subscribed }) => {
         chatRoom = channelRooms.all[id];
         roomId = 'c' + id
     }
-
-
-
-
-
-
-
+    
+    console.log('messages =====>', messages)
+    
+    
     const sendChat = async () => {
         if (messageBody !== '') {
             socket.emit('chat', {
@@ -53,9 +48,18 @@ const Chat = ({ group, subscribed }) => {
             setMessageBody('Message cannot be empty, please input a message')
         }
     };
+    
+    const bottomRef = useRef()
 
+    const scrollToBottom = () => {
+    bottomRef.current.scrollIntoView({ behavior: "smooth" })
+	}
 
-
+    useEffect(() => {
+    if(bottomRef.current){
+        scrollToBottom()
+    }
+    })  
 
     useEffect(() => {
         if (group) {
@@ -108,14 +112,14 @@ const Chat = ({ group, subscribed }) => {
 
     return (
         <>
-            <div className='hope-this-works'>
+            <div className='hope-this-works' >
 
                 <div className='outer-chat-container'>
                     <div className='chat-room-container'>
-                        <div className='chat-messages-container'>
+                        <div className='chat-messages-container' ref={bottomRef}>
                             {chatMessages?.map(msg => {
                                 return (
-                                    <div className='chat-message' id={msg.owner} key={msg.id}>
+                                    <div className='chat-message' id={msg.owner} key={msg.id} >
                                         <div className='pic-container'>
                                             <ChatUserCard msg={msg} />
                                         </div>
