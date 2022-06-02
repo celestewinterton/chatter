@@ -36,7 +36,7 @@ const Groups = ({ all, single, form }) => {
       </div>}
 
       {single && <GroupCard group={singleGroup} single={true} />}
-      {single && <Chat group={true} />}
+      {single && <Chat group={true} subscribed={true} />}
 
       {!single && form && <GroupForm />}
     </>
