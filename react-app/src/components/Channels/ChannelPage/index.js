@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { Modal } from "../../../context/Modal"
+import { Modal, DarkModal } from "../../../context/Modal"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -39,16 +39,18 @@ const ChannelPage = () => {
     return (
         <>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <DarkModal onClose={() => setShowModal(false)}>
                     <ChannelForm setShowModal={setShowModal} edit={true} channel={channel} setShowDeleteModal={setShowDeleteModal} />
-                </Modal>
+                </DarkModal>
             )}
             {showDeleteModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <DarkModal onClose={() => setShowModal(false)}>
                     <h1>Are you sure you want to delete this channel?</h1>
-                    <button onClick={deleteChannel}>Yes</button>
-                    <button onClick={() => setShowDeleteModal(false)}>No</button>
-                </Modal>
+                    <div className="buttons-right-container">
+                        <button className="grey-button" onClick={() => setShowDeleteModal(false)}>No</button>
+                        <button className="grey-button" onClick={deleteChannel}>Yes</button>
+                    </div>
+                </DarkModal>
             )}
             <ChannelHeader single={true} channel={channel} modal={() => setShowModal(true)} />
             <Chat />

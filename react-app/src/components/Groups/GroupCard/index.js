@@ -54,7 +54,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
                         <h1>Are you sure you want to delete this message thread?</h1>
                         <div className="buttons-right-container">
                             <button className="grey-button" onClick={() => setShowDeleteModal(false)}>No</button>
-                            <button className="green-button" onClick={deleteGroup}>Yes</button>
+                            <button className="grey-button" onClick={deleteGroup}>Yes</button>
                         </div>
                     </DarkModal>
                 )}
