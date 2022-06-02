@@ -17,7 +17,7 @@ class Message(db.Model):
 
   group_id = db.Column(db.Integer, db.ForeignKey("groups.id"))
   group = db.relationship("Group", back_populates='message')
-  created_at = db.Column(db.DateTime, default=datetime.utcnow())
+  created_at = db.Column(db.DateTime(timezone=True), default=datetime.now())
 
   def to_dict(self):
     return {
