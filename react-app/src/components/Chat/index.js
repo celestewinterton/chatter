@@ -13,7 +13,7 @@ import ChatUserCard from './ChatUserCard';
 
 let socket;
 
-const Chat = ({ group }) => {
+const Chat = ({ group, subscribed }) => {
     let type = group ? 'groups' : 'channels'
     let chatMessages;
     let chatRoom;
@@ -134,7 +134,7 @@ const Chat = ({ group }) => {
                 </div>
             </div>
             <div className='message-editor' id='editor'>
-                <ChatInput group={group} room={chatRoom} value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />
+                {subscribed && <ChatInput group={group} room={chatRoom} value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />}
             </div>
         </>
     )

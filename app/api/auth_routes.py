@@ -65,7 +65,7 @@ def logout():
 def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    image = form["image"].data
+    image = form.data["image"]
     if image:
         if not allowed_file(image.filename):
             return {"errors": ["file type not allowed"]}, 400

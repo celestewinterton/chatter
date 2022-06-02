@@ -12,6 +12,7 @@ import Chat from "../../Chat";
 
 let socket;
 const ChannelPage = () => {
+    let subscribed = false;
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const history = useHistory()
@@ -19,6 +20,12 @@ const ChannelPage = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const { id } = useParams()
     const channel = useSelector(state => state.channels.all[id])
+    const users = channel.users
+    for (let channelUser of users) {
+        if (channelUser.username === user.username) {
+            subscribed = true
+        }
+    }
 
 
     const editChannel = () => {
@@ -53,7 +60,7 @@ const ChannelPage = () => {
                 </DarkModal>
             )}
             <ChannelHeader single={true} channel={channel} modal={() => setShowModal(true)} />
-            <Chat />
+            < Chat subscribed={subscribed} />
         </>
     )
 }

@@ -62,7 +62,7 @@ const ChannelCard = ({ channel, single, nav }) => {
                             </div>
                         </NavLink>
                         <div className="channel-buttons">
-                            <button className="view-channel-button">View</button>
+                            <button className="view-channel-button" onClick={(e) => history.push(`/channels/${channel.id}`)}>View</button>
                             {checkChannels(channel.id) && <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>}
                             {!checkChannels(channel.id) && <button className="leave-channel-button view-channel-button" onClick={(e) => leaveChannel(e)}>Leave</button>}
                         </div>
