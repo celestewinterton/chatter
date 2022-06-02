@@ -43,8 +43,9 @@ function SearchAutocomplete({ members, setMembers }) {
                     boxShadow: "none",
                     hoverBackgroundColor: "steelblue",
                     clearIconMargin: "3px 8px 0 0",
-                    zIndex: 2,
+                    zIndex: 5000,
                     height: "38px",
+
                 }}
             />
         </div>
