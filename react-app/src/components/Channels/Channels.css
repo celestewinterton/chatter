@@ -89,3 +89,16 @@
 .join-channel-button:hover  {
     background-color: #048d68;
 }
+
+.leave-button, .delete-button {
+    width: 95%;
+    color: #e01e5a;
+    padding: 8px 14px;
+    margin: 6px 0px 6px 6px;
+    border: none;
+}
+
+.channel-line {
+    margin-top: 60px;
+    width: 98%;
+}

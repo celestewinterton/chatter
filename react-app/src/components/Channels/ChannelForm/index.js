@@ -104,9 +104,11 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
                     </div>
                     <div className="buttons-right-container">
                         <button className='cancel-btn grey-button' onClick={handleCancelClick}>Cancel</button>
-                        <button id='create-channel' className="green-button" type="submit">{(edit) ? 'Edit Channel' : 'Create Channel'}</button>
-                        {edit && <button className="leave-button" onClick={leaveChannel}>Leave Channel</button>}
-                        {edit && <button className="delete-button" onClick={deleteChannel}>Delete Channel</button>}
+                        <button id='create-channel' className="green-button" type="submit">{(edit) ? 'Save' : 'Create Channel'}</button>
+                    </div>
+                    <div className="line channel-line">
+                        {edit && <button className="leave-button grey-button" onClick={leaveChannel}>Leave Channel</button>}
+                        {edit && <button className="delete-button grey-button" onClick={deleteChannel}>Delete Channel</button>}
                     </div>
                 </div>
             </form>
