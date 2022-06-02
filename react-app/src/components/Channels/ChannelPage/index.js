@@ -21,6 +21,7 @@ const ChannelPage = () => {
     const { id } = useParams()
     const channel = useSelector(state => state.channels.all[id])
     const users = channel.users
+    // console.log('channel =====>', channel.owner_id)
     for (let channelUser of users) {
         if (channelUser.username === user.username) {
             subscribed = true
@@ -45,11 +46,12 @@ const ChannelPage = () => {
 
     return (
         <>
-            {showModal && (
+            {showModal && user.id === channel.owner_id && (
                 <DarkModal onClose={() => setShowModal(false)}>
-                    <ChannelForm setShowModal={setShowModal} edit={true} channel={channel} setShowDeleteModal={setShowDeleteModal} />
+                <ChannelForm setShowModal={setShowModal} edit={true} channel={channel} setShowDeleteModal={setShowDeleteModal} />
                 </DarkModal>
-            )}
+                )}
+
             {showDeleteModal && (
                 <DarkModal onClose={() => setShowModal(false)}>
                     <h1>Are you sure you want to delete this channel?</h1>
