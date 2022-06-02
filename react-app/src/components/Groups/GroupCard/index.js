@@ -3,15 +3,7 @@ import { NavLink, useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteGroupRoom } from "../../../store/chatRooms";
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { DarkModal } from "../../../context/Modal"
-=======
-import { Modal } from "../../../context/Modal"
->>>>>>> 52a9a16 (aedit GrouCard and GroupsPage and add EditGroupForm components)
-=======
-import { DarkModal } from "../../../context/Modal"
->>>>>>> 88267bb (dark modal)
 import GroupsPage from "../GroupsPage";
 
 const GroupCard = ({ group, all, single, modal, nav }) => {

@@ -44,19 +44,23 @@ const ChannelCard = ({ channel, single, nav }) => {
     return (
         <>
 
-            {!single && !nav && <NavLink className="unset" to={`/channels/${channel.id}`}>
-                <div className="channel-card app-body-hover">
-                    <div className="channel-information">
-                        <h1 className="channel-card-name bold"># {channel.name}</h1>
-                        <h1 className="channel-users">{channel.users.length} members</h1>
-                    </div>
-                    <div className="channel-buttons">
-                        <button className="view-channel-button">View</button>
-                        {checkChannels(channel.id) && <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>}
-                        {!checkChannels(channel.id) && <button className="leave-channel-button view-channel-button" onClick={(e) => joinChannel(e)}>Leave</button>}
-                    </div>
+            {!single && !nav &&
+                <>
+                    <div className="channel-card app-body-hover">
+                        <NavLink className="unset" to={`/channels/${channel.id}`}>
+                            <div className="channel-information">
+                                <h1 className="channel-card-name bold"># {channel.name}</h1>
+                                <h1 className="channel-users">{channel.users.length} members</h1>
+                            </div>
+                        </NavLink>
+                        <div className="channel-buttons">
+                            <button className="view-channel-button">View</button>
+                            {checkChannels(channel.id) && <button className="join-channel-button" onClick={(e) => joinChannel(e)}>Join</button>}
+                            {!checkChannels(channel.id) && <button className="leave-channel-button view-channel-button" onClick={(e) => joinChannel(e)}>Leave</button>}
+                        </div>
 
-                </div></NavLink>
+                    </div>
+                </>
             }
             {nav && <NavLink className="channel-nav" to={`/channels/${channel.id}`}><h1 className="channel-card-name grey-hover"># {channel.name}</h1></NavLink>}
         </>
