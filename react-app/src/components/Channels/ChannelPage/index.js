@@ -3,7 +3,7 @@ import { Modal, DarkModal } from "../../../context/Modal"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { deleteChannelRoom, getChannels } from "../../../store/channels";
+import { deleteChannelRoom, getChannels, joinChannelRoom } from "../../../store/channels";
 import { reloadCurrentUser } from "../../../store/session";
 import { io } from 'socket.io-client'
 import ChannelForm from "../ChannelForm";
@@ -28,6 +28,16 @@ const ChannelPage = () => {
         }
     }
 
+    const joinChannel = async (e) => {
+        e.preventDefault()
+        const roomId = 'c' + channel.id
+        socket = io()
+        socket.emit('join-channel', { 'username': `${user.username}`, 'room': roomId });
+        await dispatch(joinChannelRoom(channel.id))
+        await dispatch(getChannels())
+        await dispatch(reloadCurrentUser(user.id))
+    }
+
 
     const editChannel = () => {
         setShowModal(true)
@@ -48,9 +58,9 @@ const ChannelPage = () => {
         <>
             {showModal && user.id === channel.owner_id && (
                 <DarkModal onClose={() => setShowModal(false)}>
-                <ChannelForm setShowModal={setShowModal} edit={true} channel={channel} setShowDeleteModal={setShowDeleteModal} />
+                    <ChannelForm setShowModal={setShowModal} edit={true} channel={channel} setShowDeleteModal={setShowDeleteModal} />
                 </DarkModal>
-                )}
+            )}
 
             {showDeleteModal && (
                 <DarkModal onClose={() => setShowModal(false)}>
@@ -63,6 +73,13 @@ const ChannelPage = () => {
             )}
             <ChannelHeader single={true} channel={channel} modal={() => setShowModal(true)} />
             < Chat subscribed={subscribed} />
+            {!subscribed &&
+                <div className="need-to-join">
+
+                    <p>You are not a member of this channel</p>
+                    <button className="joinchannel-button" onClick={joinChannel}>Join Channel</button>
+                </div>
+            }
         </>
     )
 }

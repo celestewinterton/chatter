@@ -2,15 +2,27 @@ import EditChatInput from "../ChatInput"
 import ChatUserCard from "../ChatUserCard";
 import Parser from 'html-react-parser';
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setEditFalse, setEditTrue } from "../../../store/session";
 
 const ChatMessage = ({ msg, socket, roomId, userId }) => {
+    const { id } = useParams()
     const user = useSelector(state => state.session.user);
     const canEdit = useSelector(state => state.session.edit)
     const [edit, setEdit] = useState(false)
     const [message, setMessageBody] = useState(msg.message)
     const dispatch = useDispatch()
+
+    const checkIfSubscribed = () => {
+        for (let channel of user.subscribed_channels) {
+            if (channel.id == id) {
+                return true
+            }
+        }
+        return false
+    }
+    const isSubscribed = checkIfSubscribed()
 
 
     const editMessage = async (e, msgId) => {
@@ -56,8 +68,12 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
                 </div>
             </div>
             <div className="chat-buttons">
-                {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : (edit) ? <button onClick={cancelEdit}>Cancel</button> : null}
-                {(userId == msg.owner_id && !edit) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
+                {isSubscribed &&
+                    <>
+                        {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : (edit) ? <button onClick={cancelEdit}>Cancel</button> : null}
+                        {(userId == msg.owner_id && !edit) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
+                    </>
+                }
             </div>
         </>
     )

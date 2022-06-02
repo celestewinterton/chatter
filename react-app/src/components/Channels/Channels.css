@@ -84,6 +84,17 @@
     margin-right: 16px;
 }
 
+.joinchannel-button{
+    all: unset;
+    cursor: pointer;
+    z-index: 100;
+    border: 1px solid #35373b;
+    background-color: #007A5A;
+    padding: 8px 24px;
+    border-radius: 6px;
+    margin-right: 16px;
+}
+
 .view-channel-button:hover  {
     background-color: #1f2228;
 }
