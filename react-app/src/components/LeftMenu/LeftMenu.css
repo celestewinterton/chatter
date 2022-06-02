@@ -4,16 +4,17 @@
   font-weight: 300;
 }
 .fa.fa-pencil-square-o {
-  color:white;
+  color:black;
   display:flex;
   justify-content: flex-end;
   margin-right: 15px;
+  border-radius: 50px;
+  background-color: white;
+  padding:4px;
 }
 
-/* .left-navigation-icon {
-  display:flex;
-  justify-content: flex-end;
-} */
+
+
 .left-menu-header {
   display: flex;
   justify-content: space-between;
