@@ -33,12 +33,12 @@ const ChannelPage = () => {
     }
 
     const deleteChannel = async () => {
+        history.push('/')
         await dispatch(deleteChannelRoom(channel.id))
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))
         socket = io()
         socket.emit('delete-channel', { 'username': `${user.username}` });
-        history.push('/')
         setShowDeleteModal(false)
     }
 
