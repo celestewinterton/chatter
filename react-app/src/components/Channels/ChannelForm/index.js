@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createChannelRoom, editChannelRoom, getChannels, leaveChannelRoom } from "../../../store/channels";
+import channelsReducer, { createChannelRoom, editChannelRoom, getChannels, leaveChannelRoom } from "../../../store/channels";
 import { reloadCurrentUser } from "../../../store/session";
 import { io } from 'socket.io-client'
 
@@ -14,7 +14,6 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
     const [name, setName] = useState((edit) ? channel.name : '')
     const [topic, setTopic] = useState((edit) ? channel.topic : '')
     const [description, setDescription] = useState((edit) ? channel.description : '')
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -109,7 +108,8 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
                     </div>
                     <div className="line channel-line">
                         {edit && <button className="leave-button grey-button" onClick={leaveChannel}>Leave Channel</button>}
-                        {edit && <button className="delete-button grey-button" onClick={deleteChannel}>Delete Channel</button>}
+                        {edit && <button className="delete-button grey-button" onClick={deleteChannel}>Delete Channel</button>
+                        }
                     </div>
                 </div>
             </form>
