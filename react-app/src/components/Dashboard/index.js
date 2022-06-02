@@ -23,23 +23,22 @@ const Dashboard = () => {
       socket = io();
       socket.emit('sign-in', { 'id': sessionUser.id, 'username': sessionUser.username, 'room': 'chatter', 'online': true })
 
-      socket.on('sign-in', (data) => {
-         dispatch(loadUsers())
+      socket.on('sign-in', async (data) => {
+         await dispatch(loadUsers())
       });
 
-      socket.on('log-out', (data) => {
-         dispatch(loadUsers())
+      socket.on('log-out', async (data) => {
+         await dispatch(loadUsers())
       })
 
-      socket.on('delete-channel', (data) => {
-         dispatch(reloadCurrentUser(sessionUser.id))
-         dispatch(getChannels())
+      socket.on('delete-channel', async (data) => {
+         await dispatch(reloadCurrentUser(sessionUser.id))
+         await dispatch(getChannels())
          history.push('/')
       })
 
-      socket.on('create-channel', (data) => {
-         console.log('channel created')
-         dispatch(getChannels())
+      socket.on('create-channel', async (data) => {
+         await dispatch(getChannels())
       })
 
       return (() => {

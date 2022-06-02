@@ -68,13 +68,12 @@ def sign_up():
     image = form["image"].data
     if image:
         if not allowed_file(image.filename):
-            return {"errors": "file type not allowed"}, 400
+            return {"errors": ["file type not allowed"]}, 400
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
-        print(upload)
 
         if "url" not in upload:
-            return upload, 400
+            return {'errors' : [upload]}, 400
         url = upload["url"]
     else:
         url = 'https://chatrapp.s3.amazonaws.com/T03GU501J-U02QBM38FC2-g2b8bfde2116-512.png'
