@@ -25,6 +25,9 @@ const LeftMenu = () => {
                     <NavLink className="unset" to={`/`}>
                         <h1 className="left-menu-title">Chatter</h1>
                     </NavLink>
+                    <div className='left-navigation-icon'>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div className="channel-container">
                     <div className="left-menu-label">

@@ -1,10 +1,23 @@
 
-
 .channel-card-name {
   padding: 5px 20px;
   font-weight: 300;
 }
+.fa.fa-pencil-square-o {
+  color:white;
+  display:flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+}
 
+/* .left-navigation-icon {
+  display:flex;
+  justify-content: flex-end;
+} */
+.left-menu-header {
+  display: flex;
+  justify-content: space-between;
+}
 .channel-nav {
   text-decoration: none;
 }
