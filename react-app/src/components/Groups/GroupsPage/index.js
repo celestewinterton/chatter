@@ -25,7 +25,7 @@ const GroupsPage = () => {
     return (
         <div className="app-body">
             <div className="groups-header">
-                <h1 className="groups-title" >{singleGroupName.filter(user => user != sessionUser.username).join(", ")}</h1>
+                <h1 className="groups-title" >{singleGroupName?.filter(user => user != sessionUser.username).join(", ")}</h1>
                 <div>
                     <i className="fa-solid fa-angle-down" onClick={() => setShowModal(true)}></i>
                 </div>

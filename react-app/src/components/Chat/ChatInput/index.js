@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 const ChatInput = ({ value, onChange, send, group, room, errors }) => {
     let users;
     if (group) {
-        users = room.users.map(user => user.username).join(', ')
+        users = room?.users?.map(user => user.username).join(', ')
     } else {
         users = room?.name
     }

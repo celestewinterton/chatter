@@ -43,7 +43,7 @@ const ChannelPage = () => {
         setShowModal(true)
     }
 
-    const deleteChannel = async () => {
+    const deleteThisChannel = async () => {
         history.push('/')
         await dispatch(deleteChannelRoom(channel.id))
         await dispatch(getChannels())
@@ -67,7 +67,7 @@ const ChannelPage = () => {
                     <h1>Are you sure you want to delete this channel?</h1>
                     <div className="buttons-right-container">
                         <button className="grey-button" onClick={() => setShowDeleteModal(false)}>No</button>
-                        <button className="grey-button" onClick={deleteChannel}>Yes</button>
+                        <button className="grey-button" onClick={deleteThisChannel}>Yes</button>
                     </div>
                 </DarkModal>
             )}

@@ -43,11 +43,13 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
 
     }
 
-    const deleteChannel = () => {
+    const deleteChannel = (e) => {
+        e.preventDefault()
         setShowDeleteModal(true)
     }
 
-    const leaveChannel = async () => {
+    const leaveChannel = async (e) => {
+        e.preventDefault()
         await dispatch(leaveChannelRoom(channel.id))
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))
@@ -107,8 +109,8 @@ const ChannelForm = ({ setShowModal, edit, channel, setShowDeleteModal }) => {
                         <button id='create-channel' className="green-button" type="submit">{(edit) ? 'Save' : 'Create Channel'}</button>
                     </div>
                     <div className="line channel-line">
-                        {edit && <button className="leave-button grey-button" onClick={leaveChannel}>Leave Channel</button>}
-                        {edit && <button className="delete-button grey-button" onClick={deleteChannel}>Delete Channel</button>
+                        {edit && <button className="leave-button grey-button" onClick={(e) => leaveChannel(e)}>Leave Channel</button>}
+                        {edit && <button className="delete-button grey-button" onClick={(e) => deleteChannel(e)}>Delete Channel</button>
                         }
                     </div>
                 </div>

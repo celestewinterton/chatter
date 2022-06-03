@@ -61,7 +61,6 @@ export const getChannels = () => async (dispatch) => {
     } else {
         return data
     }
-    console.log(data)
 }
 
 export const socketUpdateChannels = () => async (dispatch) => {
@@ -69,7 +68,6 @@ export const socketUpdateChannels = () => async (dispatch) => {
 
     const data = await res.json()
 
-    console.log(data)
     if (res.ok) {
         dispatch(updateCurrentChannels(data.channels))
     } else {

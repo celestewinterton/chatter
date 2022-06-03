@@ -31,6 +31,7 @@ const ChannelCard = ({ channel, single, nav }) => {
     }
 
     const leaveChannel = async () => {
+        socket.emit('update-channel', { 'username': `${user.username}` })
         await dispatch(leaveChannelRoom(channel.id))
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))

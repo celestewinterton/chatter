@@ -25,11 +25,11 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
     const dispatch = useDispatch()
 
     const deleteGroup = async () => {
-        history.push('/')
+        setShowDeleteModal(false)
         await dispatch(deleteGroupRoom(group.id))
+        history.push('/')
         socket = io()
         socket.emit('delete-group', { 'username': `${sessionUser.username}` });
-        setShowDeleteModal(false)
     }
 
     return (
