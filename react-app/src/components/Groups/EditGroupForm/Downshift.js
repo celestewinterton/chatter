@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 
 
-const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
+const DropdownMultipleCombobox = ({edit, group}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const users = useSelector(state => state.users)
@@ -28,8 +28,6 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
     else errors = await dispatch(createGroupRoom(formData))
 
     if (errors) console.log(errors)
-
-    // setShowModal(false);
   }
 
   useEffect(() => {
@@ -52,6 +50,7 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
 
   const {
     isOpen,
+    initialIsOpen,
     getToggleButtonProps,
     getLabelProps,
     getMenuProps,
@@ -107,6 +106,9 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
           <div {...getComboboxProps()}>
             <input
               className='multiselect-input'
+              style={
+                highlightedIndex === index ? {backgroundColor: '#2bac76'} : {} //#2bac76
+              }
               placeholder='@somebody'
               {...getInputProps(getDropdownProps({preventKeyAction: isOpen}))}
             />
@@ -115,11 +117,11 @@ const DropdownMultipleCombobox = ({setShowModal, edit, group}) => {
           <button className='multiselect-dropdown' {...getToggleButtonProps()} aria-label={'toggle menu'}></button>
         </div>
         <ul {...getMenuProps()}>
-          {isOpen &&
+          {true &&
             getFilteredItems(items).map((item, index) => (
               <li
                 style={
-                  highlightedIndex === index ? {backgroundColor: '#bde4ff'} : {}
+                  highlightedIndex === index ? {backgroundColor: '#2bac76'} : {} //#2bac76
                 }
                 key={`${item}${index}`}
                 {...getItemProps({item, index})}
