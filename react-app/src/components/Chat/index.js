@@ -36,6 +36,13 @@ const Chat = ({ group, subscribed }) => {
         roomId = 'c' + id
     }
 
+    const scroll = () => {
+        const container = document.querySelector('.chat-room-container');
+        if (container) {
+            container.scrollTop = container.scrollHeight;
+        }
+    }
+
 
 
 
@@ -79,6 +86,7 @@ const Chat = ({ group, subscribed }) => {
 
         socket.on('chat', (message) => {
             dispatch(loadChatMessages(id, type))
+            scroll()
         });
 
         socket.on('error', (data) => {
