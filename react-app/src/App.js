@@ -32,9 +32,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path='/home'>
-          {!sessionUser &&
-            <SplashPage />
+        <Route path='/home'>
+          {!sessionUser && 
+          <SplashPage />
           }
         </Route>
         <ProtectedRoute path='/' >

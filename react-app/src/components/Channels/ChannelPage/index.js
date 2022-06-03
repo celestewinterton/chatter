@@ -25,12 +25,15 @@ const ChannelPage = () => {
     console.log('channel =====>' ,channel)
     console.log('users ====> ',users)
     
+    
     if (users) {
         for (let channelUser of users) {
-            if (channelUser.username === user.username) {
+            if (channelUser?.username === user?.username) {
                 subscribed = true
             }
         }
+    } else {
+        history.push('/404-Page-Not-Found')
     }
     if (channel === undefined) {
         history.push('/404-Page-Not-Found')
