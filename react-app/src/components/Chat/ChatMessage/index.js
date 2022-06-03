@@ -14,8 +14,6 @@ const ChatMessage = ({ msg, socket, roomId, userId, group }) => {
     const [message, setMessageBody] = useState(msg.message)
     const dispatch = useDispatch()
 
-    console.log('edit',)
-    console.log('delete', (userId == msg.owner_id && !edit))
 
     const checkIfSubscribed = () => {
         for (let channel of user.subscribed_channels) {
