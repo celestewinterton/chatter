@@ -10,12 +10,14 @@ import './Dashboard.css'
 import { loadUsers } from '../../store/users';
 import GroupForm from '../Groups/GroupForm';
 import { reloadCurrentUser } from '../../store/session';
+import { useLocation } from 'react-router-dom';
 import { getChannels, socketUpdateChannels } from '../../store/channels';
 import { getGroupRooms, socketUpdateGroupRooms } from '../../store/chatRooms'
 
 let socket;
 const Dashboard = () => {
    const history = useHistory()
+   const location = useLocation()
    const dispatch = useDispatch()
    const sessionUser = useSelector((state) => state.session.user)
 
@@ -38,6 +40,7 @@ const Dashboard = () => {
 
       socket.on('delete-channel', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
+         console.log(location)
          console.log(window.location)
          history.push('/')
          await dispatch(socketUpdateChannels())
@@ -45,6 +48,8 @@ const Dashboard = () => {
 
       socket.on('delete-group', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
+         console.log(location)
+         console.log(window.location)
          history.push('/')
          await dispatch(socketUpdateGroupRooms())
       })
@@ -54,7 +59,8 @@ const Dashboard = () => {
       })
 
       socket.on('create-group', async (data) => {
-         await dispatch(getGroupRooms())
+         console.log('editinggggggggg')
+         await dispatch(socketUpdateGroupRooms())
       })
 
       return (() => {

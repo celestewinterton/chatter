@@ -135,7 +135,7 @@ const Chat = ({ group, subscribed }) => {
                                 return (
                                     <div className='chat-message' id={msg.owner} key={msg.id}>
                                         <div className='chat-message-inner'>
-                                            <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} lengthErrors={errors} />
+                                            <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} lengthErrors={errors} group={group} />
                                         </div>
                                     </div>
                                 )
