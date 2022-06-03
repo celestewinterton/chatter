@@ -8,7 +8,6 @@ import { loadChatMessages, clearMessages, removeMessage } from '../../store/mess
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
 import './Chat.css'
-import ReactSrollableFeed from 'react-scrollable-feed'
 
 let socket;
 
@@ -127,7 +126,7 @@ const Chat = ({ group, subscribed }) => {
             <div className='hope-this-works'>
 
                 <div className='outer-chat-container' >
-            {/* <ReactSrollableFeed> */}
+                    {/* <ReactSrollableFeed> */}
                     <div className='chat-room-container' >
                         <div className='chat-messages-container' >
 
@@ -142,7 +141,7 @@ const Chat = ({ group, subscribed }) => {
                             })}
                         </div>
                     </div>
-                <div ref={messageRef} />
+                    <div ref={messageRef} />
                     {/* </ReactSrollableFeed> */}
                 </div>
             </div>
