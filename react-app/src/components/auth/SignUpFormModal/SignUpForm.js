@@ -39,6 +39,7 @@ const SignUpForm = () => {
         setImageLoading(false);
         return
       }
+      history.push('/')
     } else if (password !== repeatPassword) {
       setErrors(['password: Password doesn\'t match'])
     } else {
