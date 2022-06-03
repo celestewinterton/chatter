@@ -34,7 +34,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/home'>
+
+        <Route exact path='/home'>
           <SplashPage />
         </Route>
         <ProtectedRoute path='/' >

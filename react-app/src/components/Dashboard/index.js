@@ -13,6 +13,8 @@ import { reloadCurrentUser } from '../../store/session';
 import { useLocation } from 'react-router-dom';
 import { getChannels, socketUpdateChannels } from '../../store/channels';
 import { getGroupRooms, socketUpdateGroupRooms } from '../../store/chatRooms'
+import ErrorPage from '../404'
+
 
 let socket;
 const Dashboard = () => {
@@ -100,6 +102,7 @@ const Dashboard = () => {
                      <Groups single={true} />
                   </div>
                </ProtectedRoute>
+               <ErrorPage />
             </Switch>
          </div>
       </>
