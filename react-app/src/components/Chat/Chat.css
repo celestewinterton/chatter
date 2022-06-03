@@ -53,8 +53,6 @@
     margin-bottom: 24px;
 }
 
-
-
 .chat-profile-pic{
     width: 36px;
     height: 36px;
@@ -223,6 +221,12 @@
     padding: 0px 4px;
 }
 
+.chat-bot {
+    display: flex;
+    align-items: center;
+    color: #d1d2d381;
+}
+
 @media screen and (max-width:1400px) {
     #editor{
             display: flex;
@@ -247,7 +251,7 @@
         overflow-y: auto;
         width: 100%;
     }
-    
+
 }
 
 
@@ -260,7 +264,7 @@
         overflow-y: auto;
         width: 100%;
     }
-    
+
 }
 
 @media screen and (max-width:1100px) {

@@ -30,7 +30,6 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
     const editMessage = async (e, msgId) => {
 
         if (message.length > 255) {
-            console.log('poopy')
             setMessageBody('')
             setErrors('Message cannot be over 255 characters')
 
@@ -68,6 +67,12 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
 
     return (
         <>
+            {msg.user.username == "chatter-bot" ?
+            <div className="chat-bot">
+                {Parser(msg.message)}
+            </div>
+            :
+            <>
             <div className="chat-data-container">
                 <div className='pic-container'>
                     <ChatUserCard msg={msg} />
@@ -89,6 +94,29 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
                     </>
                 }
             </div>
+            </>}
+
+            {/* <div className="chat-data-container">
+                <div className='pic-container'>
+                    <ChatUserCard msg={msg} />
+                </div>
+                <div className="chat-data">
+                    <div className='chat-metadata'>
+                        <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{new Date(msg.created_at).toLocaleTimeString()}</span></p>
+                    </div>
+                    <div className='chat-text' id={msg.id}>
+                        {(edit) ? <EditChatInput errors={errors} value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
+                    </div>
+                </div>
+            </div>
+            <div className="chat-buttons">
+                {isSubscribed &&
+                    <>
+                        {(canEdit && userId == msg.owner_id) ? <button onClick={updateEdit}>Edit</button> : (edit) ? <button onClick={cancelEdit}>Cancel</button> : null}
+                        {(userId == msg.owner_id && !edit) ? <button onClick={(e) => deleteMessage(e, msg.id)}>Delete</button> : null}
+                    </>
+                }
+            </div> */}
         </>
     )
 }
