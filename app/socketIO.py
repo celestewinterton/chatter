@@ -32,7 +32,6 @@ def edit_chat(data):
     room = data['room']
     message = data['msg']
     if len(message) > 255:
-        print('pooooooooooooooop')
         emit('edit-error', data)
     else:
         message = Message.query.get(data['msgId'])
