@@ -3,12 +3,13 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, Length, ValidationError
 from app.models import Channel
+from sqlalchemy import func
 
 
 def channel_exists(form, field):
     # Checking if username is already in use
     name = field.data
-    channel = Channel.query.filter(Channel.name == name).first()
+    channel = Channel.query.filter(func.lower(Channel.name) == func.lower(name)).first()
     if channel:
         raise ValidationError('Channel already exists')
 
