@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ChannelForm from "../ChannelForm"
 import { io } from 'socket.io-client';
-import { getChannels, deleteChannelRoom, joinChannelRoom, leaveChannelRoom } from "../../../store/channels";
+import { getChannels, deleteChannelRoom, joinChannelRoom, leaveChannelRoom, socketUpdateChannels } from "../../../store/channels";
 import { NavLink } from "react-router-dom";
 import ChannelHeader from "../ChannelHeader";
 import Chat from "../../Chat";
@@ -25,7 +25,7 @@ const ChannelCard = ({ channel, single, nav }) => {
         socket.emit('join-channel', { 'username': `${user.username}`, 'room': roomId });
         socket.emit('update-channel', { 'username': `${user.username}` })
         await dispatch(joinChannelRoom(channel.id))
-        await dispatch(getChannels())
+        await dispatch(socketUpdateChannels())
         await dispatch(reloadCurrentUser(user.id))
         history.push(`/channels/${channel.id}`)
     }
@@ -34,7 +34,7 @@ const ChannelCard = ({ channel, single, nav }) => {
         socket = io()
         socket.emit('update-channel', { 'username': `${user.username}` })
         await dispatch(leaveChannelRoom(channel.id))
-        await dispatch(getChannels())
+        await dispatch(socketUpdateChannels())
         await dispatch(reloadCurrentUser(user.id))
         history.push('/')
     }
