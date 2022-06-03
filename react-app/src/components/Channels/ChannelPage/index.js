@@ -38,6 +38,11 @@ const ChannelPage = () => {
         await dispatch(reloadCurrentUser(user.id))
     }
 
+    const notJoin = async (e) => {
+        e.preventDefault()
+        history.push("/")
+    }
+
 
     const editChannel = () => {
         setShowModal(true)
@@ -75,9 +80,13 @@ const ChannelPage = () => {
             < Chat subscribed={subscribed} />
             {!subscribed &&
                 <div className="need-to-join">
-
-                    <p>You are not a member of this channel</p>
-                    <button className="joinchannel-button" onClick={joinChannel}>Join Channel</button>
+                    {/* <div> */}
+                        <p>You are not a member of this channel</p>
+                    {/* </div> */}
+                    <div>
+                        <button className="joinchannel-button" onClick={joinChannel}>Join Channel</button>
+                        <button className="joinchannel-button cancel" onClick={notJoin} >Cancel</button>
+                    </div>
                 </div>
             }
         </>
