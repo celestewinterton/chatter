@@ -18,8 +18,12 @@
 
 .channel-title{
     color: #d1d2d3;
-    cursor: pointer;
 
+}
+
+.channel-title-auth{
+    color: #d1d2d3;
+    cursor: pointer;
 }
 
 .channel-card {
