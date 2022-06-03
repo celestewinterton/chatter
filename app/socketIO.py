@@ -94,7 +94,7 @@ def on_sign_in(data):
 
 @socketio.on('delete-channel')
 def delete_channel(data):
-    emit('delete-channel', data, broadcast=True)
+    emit('delete-channel', data, broadcast=True, to=data['roomId'])
 
 @socketio.on('create-channel')
 def create_channel(data):
