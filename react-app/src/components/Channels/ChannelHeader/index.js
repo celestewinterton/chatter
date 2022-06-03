@@ -3,7 +3,6 @@ import { useSelector } from "react-redux"
 const ChannelHeader = ({ all, single, channel, modal }) => {
     const allChannels = useSelector(state => state.channels.all)
     const user = useSelector(state => state.session.user)
-    console.log(channel)
 
     return (
         <>
@@ -20,7 +19,7 @@ const ChannelHeader = ({ all, single, channel, modal }) => {
             }
             {single &&
                 <div className="channel-header">
-                    <h1 className={(channel.owner_id === user.id) ? 'channel-title-auth' : "channel-title"} onClick={modal}># {channel?.name}</h1>
+                    <h1 className={(channel?.owner_id === user.id) ? 'channel-title-auth' : "channel-title"} onClick={modal}># {channel?.name}</h1>
 
                 </div>}
         </>
