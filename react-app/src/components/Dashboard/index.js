@@ -40,9 +40,8 @@ const Dashboard = () => {
 
       socket.on('delete-channel', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
-         const path = location.pathname.split('/')
-         console.log(path[1] == 'channels' && path[2] === data['channelId'])
-         if (path[1] == 'channels' && path[2] === data['channelId']) {
+         const path = window.location.href.split('/')
+         if (path[3] == 'channels' && path[4] === data['channelId']) {
             history.push('/')
          }
          await dispatch(socketUpdateChannels())
@@ -50,8 +49,8 @@ const Dashboard = () => {
 
       socket.on('delete-group', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
-         const path = location.pathname.split('/')
-         if (path[1] == 'groups' && path[2] !== 'new') {
+         const path = window.location.href.split('/')
+         if (path[3] == 'groups' && path[4] === data['groupId']) {
             history.push('/')
          }
          await dispatch(socketUpdateGroupRooms())

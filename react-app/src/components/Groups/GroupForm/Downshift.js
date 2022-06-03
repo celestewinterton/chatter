@@ -29,8 +29,6 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
 
     if (edit) {
       await dispatch(editGroupRoom(formData, group.id))
-      socket = io()
-      socket.emit('create-group', { 'user': user.username })
     } else {
       data = await dispatch(createGroupRoom(formData))
       socket = io()
@@ -65,7 +63,7 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
       (item) =>
         selectedItems.indexOf(item) < 0 &&
         item.toLowerCase().startsWith(inputValue.toLowerCase()),
-  )
+    )
 
   const {
     isOpen,

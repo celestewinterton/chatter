@@ -29,7 +29,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
         await dispatch(deleteGroupRoom(group.id))
         history.push('/')
         socket = io()
-        socket.emit('delete-group', { 'username': `${sessionUser.username}` });
+        socket.emit('delete-group', { 'username': `${sessionUser.username}`, 'groupId': `${group.id}` });
     }
 
     return (
