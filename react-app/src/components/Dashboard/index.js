@@ -32,9 +32,12 @@ const Dashboard = () => {
          await dispatch(loadUsers())
       })
 
+      socket.on('update-channel', async (data) => {
+         await dispatch(getChannels())
+      })
+
       socket.on('delete-channel', async (data) => {
          history.push('/')
-         console.log(data)
          await dispatch(reloadCurrentUser(sessionUser.id))
          await dispatch(socketUpdateChannels())
       })
@@ -43,7 +46,6 @@ const Dashboard = () => {
          history.push('/')
          await dispatch(reloadCurrentUser(sessionUser.id))
          await dispatch(socketUpdateGroupRooms())
-
       })
 
       socket.on('create-channel', async (data) => {

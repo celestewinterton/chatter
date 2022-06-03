@@ -73,6 +73,11 @@ def on_join(data):
     emit("chat", data, broadcast=True, to=room)
 
 
+@socketio.on('update-channel')
+def update(data):
+    emit('update-channel', data, broadcast=True)
+
+
 
 @socketio.on('leave')
 def on_leave(data):
