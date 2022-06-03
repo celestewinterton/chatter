@@ -35,16 +35,17 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-
         <Route exact path='/home'>
+          {!sessionUser && 
           <SplashPage />
+          }
         </Route>
         <ProtectedRoute path='/' >
           <Dashboard />
         </ProtectedRoute>
-        <Route>
+        {/* <Route>
           <ErrorPage />
-        </Route>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );
