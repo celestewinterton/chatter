@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setEditFalse, setEditTrue } from "../../../store/session";
-const ChatMessage = ({ msg, socket, roomId, userId }) => {
+const ChatMessage = ({ msg, socket, roomId, userId, group }) => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user);
     const canEdit = useSelector(state => state.session.edit)
@@ -13,6 +13,9 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
     const [edit, setEdit] = useState(false)
     const [message, setMessageBody] = useState(msg.message)
     const dispatch = useDispatch()
+
+    console.log('edit',)
+    console.log('delete', (userId == msg.owner_id && !edit))
 
     const checkIfSubscribed = () => {
         for (let channel of user.subscribed_channels) {
@@ -22,7 +25,10 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
         }
         return false
     }
-    const isSubscribed = checkIfSubscribed()
+    let isSubscribed = checkIfSubscribed()
+    if (group) {
+        isSubscribed = true;
+    }
 
 
 
@@ -30,7 +36,6 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
     const editMessage = async (e, msgId) => {
 
         if (message.length > 255) {
-            console.log('poopy')
             setMessageBody('')
             setErrors('Message cannot be over 255 characters')
 
