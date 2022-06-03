@@ -26,7 +26,6 @@ export function Modal({ onClose, children, style }) {
     const modalNode = useContext(ModalContext);
     if (!modalNode) return null;
 
-    console.log(style)
 
     return ReactDOM.createPortal(
         <div id="modal">
@@ -43,7 +42,6 @@ export function DarkModal({ onClose, children, style }) {
     const modalNode = useContext(ModalContext);
     if (!modalNode) return null;
 
-    console.log(style)
 
     return ReactDOM.createPortal(
         <div id="modal">

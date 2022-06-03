@@ -37,14 +37,14 @@ const Dashboard = () => {
       })
 
       socket.on('delete-channel', async (data) => {
-         history.push('/')
          await dispatch(reloadCurrentUser(sessionUser.id))
+         history.push('/')
          await dispatch(socketUpdateChannels())
       })
 
       socket.on('delete-group', async (data) => {
-         history.push('/')
          await dispatch(reloadCurrentUser(sessionUser.id))
+         history.push('/')
          await dispatch(socketUpdateGroupRooms())
       })
 
