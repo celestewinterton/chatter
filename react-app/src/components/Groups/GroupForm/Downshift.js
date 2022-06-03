@@ -84,10 +84,11 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
       switch (type) {
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(inputValue)
-          if (usernames.includes(inputValue)) {
-            addSelectedItem(inputValue)
+          const val = usernames.find(name => name.toLowerCase() == (inputValue).toLowerCase())
+          if (val) {
+            addSelectedItem(val)
             setInputValue('')
-            members.push(inputValue)
+            members.push(val)
           }
           break
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
