@@ -238,7 +238,20 @@
     }
 }
 
-@media screen and (max-height:600px) {
+@media screen and (max-height:500px) {
+    .outer-chat-container{
+        display: flex;
+        height: 80%;
+        width: 100%;
+        flex-direction: column;
+        overflow-y: auto;
+        width: 100%;
+    }
+    
+}
+
+
+@media screen and (max-height:800px) {
     .outer-chat-container{
         display: flex;
         height: 85%;
