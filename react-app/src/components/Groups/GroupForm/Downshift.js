@@ -79,6 +79,7 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
           if (usernames.includes(inputValue)) {
             addSelectedItem(inputValue)
             setInputValue('')
+            members.push(inputValue)
           }
           break
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -96,13 +97,6 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
       }
     },
   })
-
-
-  const inputOnChange = e => {
-    addSelectedItem(e.target.value)
-    setMembers(e.target.value)
-    console.log("INPUT", members, inputValue, getInputProps)
-  }
 
   return (
     <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
@@ -129,8 +123,6 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
               className='multiselect-input'
               placeholder='@somebody'
               value={members}
-              // onChange={e => setMembers(e.target.value)}
-              onChange={inputOnChange}
               {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
             />
           </div>
