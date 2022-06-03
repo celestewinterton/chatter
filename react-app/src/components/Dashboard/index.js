@@ -11,6 +11,8 @@ import { loadUsers } from '../../store/users';
 import GroupForm from '../Groups/GroupForm';
 import { reloadCurrentUser } from '../../store/session';
 import { getChannels, socketUpdateChannels} from '../../store/channels';
+import { socketUpdateGroupRooms } from '../../store/chatRooms';
+import { getGroupRooms } from '../../store/chatRooms';
 import ErrorPage from '../404'
 import NavBar from '../Navigation/NavBar'
 
