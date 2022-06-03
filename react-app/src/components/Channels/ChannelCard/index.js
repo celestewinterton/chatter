@@ -23,6 +23,7 @@ const ChannelCard = ({ channel, single, nav }) => {
         const roomId = 'c' + channel.id
         socket = io()
         socket.emit('join-channel', { 'username': `${user.username}`, 'room': roomId });
+        socket.emit('update-channel', { 'username': `${user.username}` })
         await dispatch(joinChannelRoom(channel.id))
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))
