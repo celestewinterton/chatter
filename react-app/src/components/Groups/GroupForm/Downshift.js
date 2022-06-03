@@ -41,10 +41,6 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     // setShowModal(false);
   }
 
-  const resetErrors = () => {
-    console.log('resetting')
-    setErrors([])
-  }
 
   useEffect(() => {
     setErrors(errors)
@@ -109,6 +105,9 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
       <div className='group-create-input-container'>
         <div className='multiselect-container'>
+          <div className='group-errors'>
+            {errors.length > 0 && <p className='group-errors'>Error : {errors}</p>}
+          </div>
           <label className='multiselect-label' {...getLabelProps()}>To: </label>
           {selectedItems.map((selectedItem, index) => (
             <span
