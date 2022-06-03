@@ -89,6 +89,7 @@
    height: 400px;
    padding: 20px;
    margin-left: 18px;
+   z-index: 1000;
 }
 
 .search-results-item {
