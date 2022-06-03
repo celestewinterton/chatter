@@ -27,8 +27,8 @@ const ChannelHeader = ({ all, single, channel, modal }) => {
             }
             {single &&
                 <div className="channel-header">
-                    <h1 className={(channel?.owner_id === user.id) ? 'channel-title-auth' : "channel-title"} onClick={modal}># {channel?.name}</h1>
-                    <div className="member-count" onClick={() => setShowModal(true)}>members {channel.users.length}</div>
+                    <h1 className={(channel?.owner_id === user?.id) ? 'channel-title-auth' : "channel-title"} onClick={modal}># {channel?.name}</h1>
+                    <div className="member-count" onClick={() => setShowModal(true)}>members {channel?.users.length}</div>
                 </div>}
 
             {showModal && (
@@ -36,7 +36,7 @@ const ChannelHeader = ({ all, single, channel, modal }) => {
                 <>
                     <h1>{channel.name}</h1>
                     <ul>{channel.users.map((user, idx) =>
-                        <li className="users-list-item" key={idx}><img className="user-image-nav-2" src={user.photo} alt=""></img>{user.username}</li>
+                        <li className="users-list-item" key={idx}><img className="user-image-nav-2" src={user?.photo} alt=""></img>{user?.username}</li>
                     )}</ul>
                 </>
             </DarkModal>)}
