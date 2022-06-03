@@ -1,6 +1,7 @@
 import { easyFetch } from "../utils/easyFetch"
 
 const LOAD_GROUP_ROOMS = 'chatRooms/LOAD_GROUP_ROOMS'
+const SOCKET_UPDATE = 'chatRooms/SOCKET_UPDATE'
 const CREATE_GROUP_ROOM = 'chatRooms/CREATE_GROUP_ROOM'
 const EDIT_GROUP_ROOM = 'chatRooms/EDIT_GROUP_ROOM'
 const DELETE_GROUP_ROOM = 'chatRooms/DELETE_GROUP_ROOM'
@@ -12,6 +13,11 @@ const LEAVE_CHANNEL = 'chatRooms/LEAVE_CHANNEL'
 
 const loadGroups = (groups) => ({
     type: LOAD_GROUP_ROOMS,
+    groups
+})
+
+const socketUpdate = (groups) => ({
+    type: SOCKET_UPDATE,
     groups
 })
 
@@ -38,6 +44,18 @@ export const getGroupRooms = () => async (dispatch) => {
 
     if (res.ok) {
         dispatch(loadGroups(data.groups))
+    } else {
+        return data
+    }
+}
+
+export const socketUpdateGroupRooms = () => async (dispatch) => {
+    const res = await easyFetch(`/api/groups`)
+
+    const data = await res.json()
+
+    if (res.ok) {
+        dispatch(socketUpdate(data.groups))
     } else {
         return data
     }
@@ -99,6 +117,16 @@ const chatRoomsReducer = (state = initialState, action) => {
                 });
             }
             return newState;
+        case SOCKET_UPDATE:
+            const socketState = {
+                subscribed: {}
+            };
+            if (action.groups.length) {
+                action.groups.forEach(group => {
+                    socketState.subscribed[group.id] = group;
+                });
+            }
+            return socketState
         case CREATE_GROUP_ROOM:
             newState.subscribed[action.group.id] = action.group
             return newState

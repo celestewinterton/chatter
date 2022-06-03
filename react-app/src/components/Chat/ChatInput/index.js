@@ -2,7 +2,7 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 
 
-const ChatInput = ({ value, onChange, send, group, room }) => {
+const ChatInput = ({ value, onChange, send, group, room, errors }) => {
     let users;
     if (group) {
         users = room.users.map(user => user.username).join(', ')
@@ -35,7 +35,7 @@ const ChatInput = ({ value, onChange, send, group, room }) => {
             <div className='chat-input'>
                 <ReactQuill value={value}
                     modules={modules}
-                    placeholder={(group) ? "Message " + users : "Message #" + users}
+                    placeholder={(errors) ? errors : (group) ? "Message " + users : "Message #" + users}
                     theme='snow'
                     onChange={onChange} />
                 <div className='button-div'>

@@ -18,6 +18,7 @@ const Chat = ({ group, subscribed }) => {
     let roomId;
     const [messages, setMessages] = useState([]);
     const [messageBody, setMessageBody] = useState("");
+    const [errors, setErrors] = useState('')
     const { id } = useParams();
     const dispatch = useDispatch();
     const groupRooms = useSelector(state => state.chatRooms);
@@ -47,9 +48,10 @@ const Chat = ({ group, subscribed }) => {
             socket.emit('chat', {
                 user: `${user.username}`, userId: `${user.id}`, msg: messageBody, room: roomId, user_image: user.photo, created_at: (new Date()).toLocaleTimeString()
             });
+            setErrors('')
             setMessageBody("");
         } else {
-            setMessageBody('Message cannot be empty, please input a message')
+            setErrors('Message cannot be empty, please input a message')
         }
     };
 
@@ -80,7 +82,7 @@ const Chat = ({ group, subscribed }) => {
         });
 
         socket.on('error', (data) => {
-            setMessageBody('Message cannot be over 255 characters')
+            setErrors('Message cannot be over 255 characters')
         })
 
         socket.on('edit', (message) => {
@@ -99,14 +101,13 @@ const Chat = ({ group, subscribed }) => {
 
 
         return (() => {
-            socket.emit('leave', { 'username': `${user.firstName} ${user.lastName}`, 'room': roomId });
+            socket.emit('leave', { 'username': `${user.username}`, 'room': roomId });
             dispatch(clearMessages())
             setMessages([]);
 
             socket.disconnect();
         })
     }, [roomId, user.firstName, user.lastName, dispatch]);
-    console.log(chatMessages)
 
 
     return (
@@ -120,7 +121,7 @@ const Chat = ({ group, subscribed }) => {
                                 return (
                                     <div className='chat-message' id={msg.owner} key={msg.id}>
                                         <div className='chat-message-inner'>
-                                            <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} />
+                                            <ChatMessage msg={msg} socket={socket} roomId={roomId} userId={user.id} lengthErrors={errors} />
                                         </div>
                                     </div>
                                 )
@@ -131,7 +132,7 @@ const Chat = ({ group, subscribed }) => {
                 </div>
             </div>
             <div className='message-editor' id='editor'>
-                {subscribed && <ChatInput group={group} room={chatRoom} value={messageBody} onChange={(e) => setMessageBody(e)} send={sendChat} />}
+                {subscribed && <ChatInput group={group} room={chatRoom} value={messageBody} errors={errors} onChange={(e) => setMessageBody(e)} send={sendChat} />}
             </div>
         </>
     )

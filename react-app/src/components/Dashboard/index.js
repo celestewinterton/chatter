@@ -10,8 +10,8 @@ import './Dashboard.css'
 import { loadUsers } from '../../store/users';
 import GroupForm from '../Groups/GroupForm';
 import { reloadCurrentUser } from '../../store/session';
-import { getChannels } from '../../store/channels';
-import { getGroupRooms } from '../../store/chatRooms'
+import { getChannels, socketUpdateChannels } from '../../store/channels';
+import { getGroupRooms, socketUpdateGroupRooms } from '../../store/chatRooms'
 
 let socket;
 const Dashboard = () => {
@@ -36,17 +36,15 @@ const Dashboard = () => {
          history.push('/')
          setTimeout(async () => {
             await dispatch(reloadCurrentUser(sessionUser.id))
-            await dispatch(getChannels())
+            await dispatch(socketUpdateChannels())
          }, 2000)
       })
 
       socket.on('delete-group', async (data) => {
-         console.log('deleting')
          history.push('/')
-         setTimeout(async () => {
-            await dispatch(reloadCurrentUser(sessionUser.id))
-            await dispatch(getGroupRooms())
-         }, 1000)
+         await dispatch(reloadCurrentUser(sessionUser.id))
+         await dispatch(socketUpdateGroupRooms())
+
       })
 
       socket.on('create-channel', async (data) => {
