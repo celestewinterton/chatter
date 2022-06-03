@@ -131,7 +131,7 @@ div > .purple-border-button {
 .green-button {
     all: unset;
     cursor: pointer;
-    z-index: 100;
+    /* z-index: 100; */
     border: 1px solid #35373b;
     background-color: #007A5A;
     padding: 8px 20px;
@@ -148,12 +148,12 @@ div > .purple-border-button {
 .grey-button {
     cursor: pointer;
     background-color: #1a1d21;
-    z-index: 100;
+    /* z-index: 100; */
     border: 1px solid #35373b;
     color: #d1d2d3;
     padding: 8px 20px;
     border-radius: 6px;
-    margin: 6px 0px 6px 12px;
+    margin: 6px 12px;
     font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;
     font-size: 16px;
 }

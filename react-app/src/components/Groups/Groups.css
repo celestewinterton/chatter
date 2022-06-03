@@ -96,6 +96,10 @@
   border-bottom: 1px solid #3a3d40;
 }
 
+.downshift-213-item-1 {
+  background-color: red;
+}
+
 .multiselect-container {
   display: flex;
   flex-direction: row;
@@ -103,8 +107,26 @@
   align-items: center;
 }
 
+#downshift-1-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+#downshift-1-menu > li {
+  all: unset;
+  padding: 10px 20px;
+}
+
+.group-create-input-container > #downshift-1-menu > li:hover {
+  all: unset;
+  background-color: #1264a3 !important;
+  padding: 10px 20px;
+}
+
 .multiselect-input {
   all: unset;
+  cursor: default;
   padding: 5px;
 }
 
