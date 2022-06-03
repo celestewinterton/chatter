@@ -59,7 +59,8 @@ const Dashboard = () => {
       })
 
       socket.on('create-group', async (data) => {
-         await dispatch(getGroupRooms())
+         console.log('editinggggggggg')
+         await dispatch(socketUpdateGroupRooms())
       })
 
       return (() => {
