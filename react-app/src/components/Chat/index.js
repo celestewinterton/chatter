@@ -36,13 +36,6 @@ const Chat = ({ group, subscribed }) => {
         roomId = 'c' + id
     }
 
-
-
-
-
-
-
-
     const sendChat = async () => {
         if (messageBody !== "<p><br></p>") {
             socket.emit('chat', {
