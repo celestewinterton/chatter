@@ -15,7 +15,7 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
   const items = usernames
   const [members, setMembers] = useState((edit) ? group.members : [])
   const [inputValue, setInputValue] = useState('')
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
 
 
   const handleSubmit = async (e) => {
@@ -27,17 +27,25 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     formData.append('members', memberIds)
     formData.append('owner_id', user.id)
 
-    if (edit) dispatch(editGroupRoom(formData, group.id))
-    else {
+    if (edit) {
+      await dispatch(editGroupRoom(formData, group.id))
+      socket = io()
+      socket.emit('create-group', { 'user': user.username })
+    } else {
       data = await dispatch(createGroupRoom(formData))
       socket = io()
       socket.emit('create-group', { 'user': user.username })
     }
-
+    console.log(data.errors)
     if (data.errors) setErrors(data.errors)
     else history.push(`/groups/${data?.id}`)
 
     // setShowModal(false);
+  }
+
+  const resetErrors = () => {
+    console.log('resetting')
+    setErrors([])
   }
 
   useEffect(() => {
