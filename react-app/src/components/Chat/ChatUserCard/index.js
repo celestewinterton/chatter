@@ -9,6 +9,9 @@ const ChatUserCard = ({ msg }) => {
 
     const getPosition = (e) => {
         let y = e.target.getBoundingClientRect().y
+        if (y > window.innerHeight - 343) {
+            y = window.innerHeight - 350
+        }
         let x = e.target.getBoundingClientRect().x
         setStyle({ top: y + 'px', left: x + 42 + 'px', padding: '0px' })
         setShowModal(true)

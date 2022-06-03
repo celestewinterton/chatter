@@ -67,6 +67,7 @@ const Chat = ({ group, subscribed }) => {
 
 
     useEffect(() => {
+        scroll()
         if (messageRef.current) {
             messageRef.current.scrollIntoView(
                 {
