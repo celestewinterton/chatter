@@ -126,3 +126,21 @@
     margin-top: 60px;
     width: 98%;
 }
+
+.need-to-join {
+    display: flex;
+    align-items: center;
+    gap: 15%;
+    position: absolute;
+    top: 200px;
+    left: 400px;
+    padding: 30px;
+    width: 50%;
+    background-color: #1a1d21;
+    border: 1px solid white;
+    border-radius: 15px;
+}
+
+.joinchannel-button.cancel{
+    background-color: transparent;
+}
