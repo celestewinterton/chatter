@@ -33,7 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+          <NavBar />
       <Switch>
         <Route exact path='/home'>
           {!sessionUser && 

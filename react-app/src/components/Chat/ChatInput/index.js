@@ -3,7 +3,7 @@ import 'react-quill/dist/quill.snow.css';
 import { useHistory } from 'react-router-dom';
 
 
-const ChatInput = ({ value, onChange, send, group, room }) => {
+const ChatInput = ({ value, onChange, send, group, room, errors}) => {
     const history=useHistory()
     let users;
     console.log('user======>', users)
