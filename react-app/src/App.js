@@ -11,6 +11,7 @@ import Groups from './components/Groups/index.js';
 import { getGroupRooms, getRooms } from './store/chatRooms';
 import { getChannels } from './store/channels';
 import SplashPage from './components/SplashPage';
+import ErrorPage from './components/404';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,14 +33,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+          <NavBar />
       <Switch>
-        <Route path='/home'>
+        <Route exact path='/home'>
+          {!sessionUser && 
           <SplashPage />
+          }
         </Route>
         <ProtectedRoute path='/' >
           <Dashboard />
         </ProtectedRoute>
+        {/* <Route>
+          <ErrorPage />
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );

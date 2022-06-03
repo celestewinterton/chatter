@@ -21,14 +21,19 @@ const ChannelPage = () => {
     const { id } = useParams()
     const channel = useSelector(state => state.channels.all[id])
     const users = channel?.users
-    // console.log('channel =====>', channel.owner_id)
-    if (users) {
 
+    console.log('channel =====>' ,channel)
+    console.log('users ====> ',users)
+    
+    if (users) {
         for (let channelUser of users) {
             if (channelUser.username === user.username) {
                 subscribed = true
             }
         }
+    }
+    if (channel === undefined) {
+        history.push('/404-Page-Not-Found')
     }
 
     const joinChannel = async (e) => {

@@ -1,13 +1,19 @@
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
+import { useHistory } from 'react-router-dom';
 
 
-const ChatInput = ({ value, onChange, send, group, room, errors }) => {
+const ChatInput = ({ value, onChange, send, group, room, errors}) => {
+    const history=useHistory()
     let users;
+    console.log('user======>', users)
     if (group) {
-        users = room?.users?.map(user => user.username).join(', ')
+        users = room?.users?.map(user => user?.username).join(', ')
+        if (users === undefined) {
+            history.push('/404-Page-Not-Found')
+        }
     } else {
-        users = room?.name
+        users = room.name
     }
     const toolbarOptions = [['bold', 'italic', 'strike'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['blockquote']];
     const modules = {
