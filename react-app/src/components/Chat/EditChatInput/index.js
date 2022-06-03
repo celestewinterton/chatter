@@ -9,7 +9,8 @@ const EditChatInput = ({ value, onChange, send, group, room, errors }) => {
     } else {
         users = room?.name
     }
-    const toolbarOptions = [['bold', 'italic', 'strike'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['blockquote']];
+    const toolbarOptions = [['bold', 'italic', 'strike'], ['link']];
+
     const modules = {
         'toolbar': toolbarOptions,
         keyboard: {
