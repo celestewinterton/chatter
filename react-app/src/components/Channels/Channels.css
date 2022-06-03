@@ -36,6 +36,12 @@
     border-bottom: solid 1px #35373b;
 }
 
+.nav-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 174px;
+}
+
 .channel-container {
     /* padding-left: 16px;
     padding-right: 12px; */
