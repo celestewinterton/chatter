@@ -16,7 +16,7 @@
 
 .outer-chat-container{
     display: flex;
-    height: 100%;
+    height: 98%;
     width: 100%;
     flex-direction: column;
 }

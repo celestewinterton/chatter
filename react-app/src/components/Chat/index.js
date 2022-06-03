@@ -37,9 +37,9 @@ const Chat = ({ group, subscribed }) => {
     }
 
     const scroll = () => {
-        const container = document.querySelector('.chat-room-container');
+        const container = document.querySelector('.outer-chat-container');
         if (container) {
-            container.scrollTop = container.scrollHeight;
+            container.scrollTop = container.scrollHeight
         }
     }
 
@@ -84,8 +84,8 @@ const Chat = ({ group, subscribed }) => {
         socket.emit('join', { 'username': `${user.username}`, 'room': roomId });
 
 
-        socket.on('chat', (message) => {
-            dispatch(loadChatMessages(id, type))
+        socket.on('chat', async (message) => {
+            await dispatch(loadChatMessages(id, type))
             scroll()
         });
 
