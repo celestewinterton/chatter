@@ -41,6 +41,7 @@ const Dashboard = () => {
       socket.on('delete-channel', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
          const path = window.location.href.split('/')
+         console.log(path)
          if (path[3] == 'channels' && path[4] === data['channelId']) {
             history.push('/')
          }
@@ -50,6 +51,7 @@ const Dashboard = () => {
       socket.on('delete-group', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
          const path = window.location.href.split('/')
+         console.log(path)
          if (path[3] == 'groups' && path[4] === data['groupId']) {
             history.push('/')
          }

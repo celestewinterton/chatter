@@ -36,6 +36,7 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(formData));
       if (data) {
         setErrors(data)
+        setImageLoading(false);
         return
       }
     } else if (password !== repeatPassword) {
