@@ -23,6 +23,7 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     let data;
     const memberIds = Object.values(users).filter(user => members.includes(user.username)).map(user => user.id).join(", ")
     const formData = new FormData();
+    console.log(formData, members)
     formData.append('members', memberIds)
     formData.append('owner_id', user.id)
 
@@ -50,12 +51,13 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     removeSelectedItem,
     selectedItems,
   } = useMultipleSelection({ initialSelectedItems: [] })
+
   const getFilteredItems = (items) =>
     items.filter(
       (item) =>
         selectedItems.indexOf(item) < 0 &&
         item.toLowerCase().startsWith(inputValue.toLowerCase()),
-    )
+  )
 
   const {
     isOpen,
@@ -74,6 +76,10 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
       switch (type) {
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(inputValue)
+          if (usernames.includes(inputValue)) {
+            addSelectedItem(inputValue)
+            setInputValue('')
+          }
           break
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
@@ -91,6 +97,12 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     },
   })
 
+
+  const inputOnChange = e => {
+    addSelectedItem(e.target.value)
+    setMembers(e.target.value)
+    console.log("INPUT", members, inputValue, getInputProps)
+  }
 
   return (
     <form autoComplete="off" className="group-create-container" onSubmit={handleSubmit}>
@@ -116,6 +128,9 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
             <input
               className='multiselect-input'
               placeholder='@somebody'
+              value={members}
+              // onChange={e => setMembers(e.target.value)}
+              onChange={inputOnChange}
               {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
             />
           </div>
