@@ -57,7 +57,7 @@ export const getChannels = () => async (dispatch) => {
     const data = await res.json()
 
     if (res.ok) {
-        dispatch(updateCurrentChannels(data.channels))
+        dispatch(loadChannels(data.channels))
     } else {
         return data
     }
@@ -69,14 +69,13 @@ export const socketUpdateChannels = () => async (dispatch) => {
 
     const data = await res.json()
 
+    console.log(data)
     if (res.ok) {
-        dispatch(loadChannels(data.channels))
+        dispatch(updateCurrentChannels(data.channels))
     } else {
         return data
     }
-    console.log(data)
 }
-
 
 export const createChannelRoom = (formData) => async (dispatch) => {
     const res = await easyFetch(`/api/channels`, {
@@ -172,6 +171,8 @@ const channelsReducer = (state = initialState, action) => {
                 action.channels.forEach(channel => {
                     socketState.all[channel.id] = channel;
                 });
+            } else {
+                socketState.all = {}
             }
             return socketState;
         case CREATE_CHANNEL_ROOM:

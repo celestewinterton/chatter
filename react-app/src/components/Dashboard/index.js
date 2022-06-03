@@ -34,6 +34,7 @@ const Dashboard = () => {
 
       socket.on('delete-channel', async (data) => {
          history.push('/')
+         console.log(data)
          await dispatch(reloadCurrentUser(sessionUser.id))
          await dispatch(socketUpdateChannels())
       })
