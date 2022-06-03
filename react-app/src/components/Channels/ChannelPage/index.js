@@ -49,7 +49,7 @@ const ChannelPage = () => {
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))
         socket = io()
-        socket.emit('delete-channel', { 'username': `${user.username}`, 'roomId': `c${channel.id}` });
+        socket.emit('delete-channel', { 'username': `${user.username}`, 'channelId': `${channel.id}` });
         setShowDeleteModal(false)
     }
 
