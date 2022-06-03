@@ -38,7 +38,7 @@ const GroupCard = ({ group, all, single, modal, nav }) => {
                 <NavLink className="groups-nav grey-hover" to={`/groups/${group.id}`}>
                     <div className="groups-nav-name">
                         <img className="side-nav-img" src="https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png" />
-                        <div>{groupName}</div>
+                        <div className="group-nav-members">{groupName}</div>
                     </div>
                     <div>
                         <i className="fas fa-xmark" onClick={() => setShowDeleteModal(true)}></i>

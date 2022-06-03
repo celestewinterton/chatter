@@ -121,7 +121,7 @@
 .group-create-input-container > #downshift-1-menu > li:hover {
   all: unset;
   background-color: #1264a3 !important;
-  padding: 10px 20px;
+  padding: 10px 20px !important;
 }
 
 .multiselect-input {
