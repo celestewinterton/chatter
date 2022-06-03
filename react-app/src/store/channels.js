@@ -1,6 +1,7 @@
 import { easyFetch } from "../utils/easyFetch"
 
 const LOAD_CHANNEL_ROOMS = 'channels/LOAD_CHANNEL_ROOMS'
+const SOCKET_UPDATE = 'channels/SOCKET_UPDATE'
 const LOAD_SUBSCRIBED_ROOMS = 'channels/LOAD_SUBSCRIBED_ROOMS'
 const CREATE_CHANNEL_ROOM = 'channels/CREATE_ROOM'
 const EDIT_CHANNEL_ROOM = 'channels/EDIT_CHANNEL_ROOM'
@@ -12,6 +13,11 @@ const LEAVE_CHANNEL = 'channels/LEAVE_CHANNEL'
 
 const loadChannels = (channels) => ({
     type: LOAD_CHANNEL_ROOMS,
+    channels
+})
+
+const updateCurrentChannels = (channels) => ({
+    type: SOCKET_UPDATE,
     channels
 })
 
@@ -51,12 +57,26 @@ export const getChannels = () => async (dispatch) => {
     const data = await res.json()
 
     if (res.ok) {
+        dispatch(updateCurrentChannels(data.channels))
+    } else {
+        return data
+    }
+    console.log(data)
+}
+
+export const socketUpdateChannels = () => async (dispatch) => {
+    const res = await easyFetch(`/api/channels`)
+
+    const data = await res.json()
+
+    if (res.ok) {
         dispatch(loadChannels(data.channels))
     } else {
         return data
     }
     console.log(data)
 }
+
 
 export const createChannelRoom = (formData) => async (dispatch) => {
     const res = await easyFetch(`/api/channels`, {
@@ -143,6 +163,17 @@ const channelsReducer = (state = initialState, action) => {
                 });
             }
             return newState;
+        case SOCKET_UPDATE:
+            const socketState = {
+                all: {},
+                subscribed: {}
+            };
+            if (action.channels.length) {
+                action.channels.forEach(channel => {
+                    socketState.all[channel.id] = channel;
+                });
+            }
+            return socketState;
         case CREATE_CHANNEL_ROOM:
             newState.all[action.channel.id] = action.channel
             newState.subscribed[action.channel.id] = action.channel
