@@ -27,12 +27,7 @@
     display: flex;
     overflow-y: auto;
     scrollbar-color: grey transparent;
-<<<<<<< HEAD
     height: 80%;
-    width: 100%;
-=======
-    height: 85%;
->>>>>>> 8ae96f4 (working onAuto scroll)
 }
 
 

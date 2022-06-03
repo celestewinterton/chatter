@@ -70,7 +70,7 @@ const Chat = ({ group, subscribed }) => {
                 }
             )
         }
-    }, [])
+    }, [chatMessages])
 
 
     useEffect(() => {
