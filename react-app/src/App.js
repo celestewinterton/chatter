@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginFormModal/LoginForm';
-import SignUpForm from './components/auth/SignUpFormModal/SignUpForm';
 import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Dashboard from './components/Dashboard';
-import Groups from './components/Groups/index.js';
 import { getGroupRooms, getRooms } from './store/chatRooms';
 import { getChannels } from './store/channels';
 import SplashPage from './components/SplashPage';
@@ -33,11 +30,11 @@ function App() {
 
   return (
     <BrowserRouter>
-          <NavBar />
+      <NavBar />
       <Switch>
         <Route exact path='/home'>
-          {!sessionUser && 
-          <SplashPage />
+          {!sessionUser &&
+            <SplashPage />
           }
         </Route>
         <ProtectedRoute path='/' >
