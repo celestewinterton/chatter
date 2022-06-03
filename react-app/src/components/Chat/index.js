@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import Parser from 'html-react-parser';
@@ -8,6 +8,7 @@ import { loadChatMessages, clearMessages, removeMessage } from '../../store/mess
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
 import './Chat.css'
+import ReactSrollableFeed from 'react-scrollable-feed'
 
 let socket;
 
@@ -26,7 +27,7 @@ const Chat = ({ group, subscribed }) => {
     const user = useSelector(state => state.session.user);
     const stateMessages = useSelector(state => state.messages);
     chatMessages = Object.values(stateMessages)
-
+    const messageRef = useRef(null);
 
     if (group) {
         chatRoom = groupRooms.subscribed[id];
@@ -35,6 +36,7 @@ const Chat = ({ group, subscribed }) => {
         chatRoom = channelRooms.all[id];
         roomId = 'c' + id
     }
+
 
     const sendChat = async () => {
         if (messageBody !== "<p><br></p>") {
@@ -48,9 +50,6 @@ const Chat = ({ group, subscribed }) => {
         }
     };
 
-
-
-
     useEffect(() => {
         if (group) {
             dispatch(loadChatMessages(id, type))
@@ -61,7 +60,17 @@ const Chat = ({ group, subscribed }) => {
     }, [roomId, dispatch])
 
 
-
+    useEffect(() => {
+        if (messageRef.current) {
+            messageRef.current.scrollIntoView(
+                {
+                    behavior: 'smooth',
+                    block: 'end',
+                    inline: 'nearest'
+                }
+            )
+        }
+    }, [])
 
 
     useEffect(() => {
@@ -103,13 +112,17 @@ const Chat = ({ group, subscribed }) => {
     }, [roomId, user.firstName, user.lastName, dispatch]);
 
 
+
+
     return (
         <>
             <div className='hope-this-works'>
 
-                <div className='outer-chat-container'>
-                    <div className='chat-room-container'>
-                        <div className='chat-messages-container'>
+                <div className='outer-chat-container' >
+            {/* <ReactSrollableFeed> */}
+                    <div className='chat-room-container' >
+                        <div className='chat-messages-container' >
+
                             {chatMessages?.map(msg => {
                                 return (
                                     <div className='chat-message' id={msg.owner} key={msg.id}>
@@ -118,10 +131,11 @@ const Chat = ({ group, subscribed }) => {
                                         </div>
                                     </div>
                                 )
-
                             })}
                         </div>
                     </div>
+                <div ref={messageRef} />
+                    {/* </ReactSrollableFeed> */}
                 </div>
             </div>
             <div className='message-editor' id='editor'>
