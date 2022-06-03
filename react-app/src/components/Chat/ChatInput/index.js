@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 const ChatInput = ({ value, onChange, send, group, room, errors}) => {
     const history=useHistory()
     let users;
-    console.log('user======>', users)
+
     if (group) {
         users = room?.users?.map(user => user?.username).join(', ')
         if (users === undefined) {

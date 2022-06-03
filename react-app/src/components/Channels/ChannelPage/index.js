@@ -22,9 +22,7 @@ const ChannelPage = () => {
     const channel = useSelector(state => state.channels.all[id])
     const users = channel?.users
 
-    console.log('channel =====>' ,channel)
-    console.log('users ====> ',users)
-    
+
     
     if (users) {
         for (let channelUser of users) {

@@ -20,7 +20,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
     const [errors, setErrors] = useState({});
     const [members, setMembers] = useState('')
-    // console.log("SSSSSS",singleGroupName)
+
 
 
     useEffect(() => {
