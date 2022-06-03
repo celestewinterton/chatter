@@ -34,10 +34,8 @@ const Dashboard = () => {
 
       socket.on('delete-channel', async (data) => {
          history.push('/')
-         setTimeout(async () => {
-            await dispatch(reloadCurrentUser(sessionUser.id))
-            await dispatch(socketUpdateChannels())
-         }, 2000)
+         await dispatch(reloadCurrentUser(sessionUser.id))
+         await dispatch(socketUpdateChannels())
       })
 
       socket.on('delete-group', async (data) => {
