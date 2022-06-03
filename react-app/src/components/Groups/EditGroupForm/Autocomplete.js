@@ -11,12 +11,10 @@ function SearchAutocomplete({ members, setMembers }) {
     // Search for existing groups with same users, pull up that thread
 
     const handleOnSelect = (item) => {
-        console.log(item, item.id);
         setMembers(item.id)
     };
 
     const formatResult = (item) => {
-        console.log(item);
         return (
             <div className="result-wrapper">
                 <img className='result-image' src={item?.image ? item.image : null} alt=''></img>

@@ -40,17 +40,19 @@ const Dashboard = () => {
 
       socket.on('delete-channel', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
-         console.log(location)
-         console.log(window.location)
-         history.push('/')
+         const path = window.location.href.split('/')
+         if (path[3] == 'channels' && path[4] === data['channelId']) {
+            history.push('/')
+         }
          await dispatch(socketUpdateChannels())
       })
 
       socket.on('delete-group', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
-         console.log(location)
-         console.log(window.location)
-         history.push('/')
+         const path = window.location.href.split('/')
+         if (path[3] == 'groups' && path[4] === data['groupId']) {
+            history.push('/')
+         }
          await dispatch(socketUpdateGroupRooms())
       })
 
@@ -59,8 +61,7 @@ const Dashboard = () => {
       })
 
       socket.on('create-group', async (data) => {
-         console.log('editinggggggggg')
-         await dispatch(socketUpdateGroupRooms())
+         await dispatch(getGroupRooms())
       })
 
       return (() => {

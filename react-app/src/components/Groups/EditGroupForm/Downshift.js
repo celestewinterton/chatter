@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import {useCombobox, useMultipleSelection} from 'downshift'
+import React, { useState, useEffect } from 'react'
+import { useCombobox, useMultipleSelection } from 'downshift'
 import { useSelector, useDispatch } from 'react-redux'
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
+import { io } from 'socket.io-client'
 
 
-const DropdownMultipleCombobox = ({edit, group}) => {
+const DropdownMultipleCombobox = ({ edit, group }) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const users = useSelector(state => state.users)
@@ -14,7 +15,7 @@ const DropdownMultipleCombobox = ({edit, group}) => {
   const [inputValue, setInputValue] = useState('')
   const [errors, setErrors] = useState({});
 
-
+  let socket;
   const handleSubmit = async (e) => {
     e.preventDefault()
     let errors;
@@ -24,7 +25,10 @@ const DropdownMultipleCombobox = ({edit, group}) => {
     formData.append('members', members)
     formData.append('owner_id', user.id)
 
-    if (edit) dispatch(editGroupRoom(formData, group.id))
+    if (edit) {
+      console.log('woof')
+      dispatch(editGroupRoom(formData, group.id))
+    }
     else errors = await dispatch(createGroupRoom(formData))
 
     if (errors) console.log(errors)
@@ -40,7 +44,7 @@ const DropdownMultipleCombobox = ({edit, group}) => {
     addSelectedItem,
     removeSelectedItem,
     selectedItems,
-  } = useMultipleSelection({initialSelectedItems: []})
+  } = useMultipleSelection({ initialSelectedItems: [] })
   const getFilteredItems = (items) =>
     items.filter(
       (item) =>
@@ -62,7 +66,7 @@ const DropdownMultipleCombobox = ({edit, group}) => {
   } = useCombobox({
     inputValue,
     items: getFilteredItems(items),
-    onStateChange: ({inputValue, type, selectedItem}) => {
+    onStateChange: ({ inputValue, type, selectedItem }) => {
       switch (type) {
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(inputValue)
@@ -93,7 +97,7 @@ const DropdownMultipleCombobox = ({edit, group}) => {
             <span
               className='multiselected-user'
               key={`selected-item-${index}`}
-              {...getSelectedItemProps({selectedItem, index})}
+              {...getSelectedItemProps({ selectedItem, index })}
             >
               {selectedItem}
               <span
@@ -107,10 +111,10 @@ const DropdownMultipleCombobox = ({edit, group}) => {
             <input
               className='multiselect-input'
               style={
-                highlightedIndex === index ? {backgroundColor: '#2bac76'} : {} //#2bac76
+                highlightedIndex === index ? { backgroundColor: '#2bac76' } : {} //#2bac76
               }
               placeholder='@somebody'
-              {...getInputProps(getDropdownProps({preventKeyAction: isOpen}))}
+              {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
             />
           </div>
           <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">Start DM</button>
@@ -121,10 +125,10 @@ const DropdownMultipleCombobox = ({edit, group}) => {
             getFilteredItems(items).map((item, index) => (
               <li
                 style={
-                  highlightedIndex === index ? {backgroundColor: '#2bac76'} : {} //#2bac76
+                  highlightedIndex === index ? { backgroundColor: '#2bac76' } : {} //#2bac76
                 }
                 key={`${item}${index}`}
-                {...getItemProps({item, index})}
+                {...getItemProps({ item, index })}
               >
                 {item}
               </li>

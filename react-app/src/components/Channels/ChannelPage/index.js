@@ -20,11 +20,14 @@ const ChannelPage = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const { id } = useParams()
     const channel = useSelector(state => state.channels.all[id])
-    const users = channel.users
+    const users = channel?.users
     // console.log('channel =====>', channel.owner_id)
-    for (let channelUser of users) {
-        if (channelUser.username === user.username) {
-            subscribed = true
+    if (users) {
+
+        for (let channelUser of users) {
+            if (channelUser.username === user.username) {
+                subscribed = true
+            }
         }
     }
 
@@ -54,7 +57,7 @@ const ChannelPage = () => {
         await dispatch(getChannels())
         await dispatch(reloadCurrentUser(user.id))
         socket = io()
-        socket.emit('delete-channel', { 'username': `${user.username}`, 'roomId': `c${channel.id}` });
+        socket.emit('delete-channel', { 'username': `${user.username}`, 'channelId': `${channel.id}` });
         setShowDeleteModal(false)
     }
 

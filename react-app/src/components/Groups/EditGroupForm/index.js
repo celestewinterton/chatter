@@ -4,7 +4,10 @@ import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
 import SearchAutocomplete from "./Autocomplete";
 import { useParams } from 'react-router-dom';
+import { io } from 'socket.io-client'
 
+
+let socket;
 const EditGroupForm = ({ setShowModal, edit, group }) => {
     edit = true
     const dispatch = useDispatch();
@@ -34,6 +37,8 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
             formData.append('members', members)
             formData.append('user_id', sessionUser.id)
             dispatch(editGroupRoom(formData, singleGroupId))
+            socket = io()
+            socket.emit('create-group', { 'user': 'whatever' })
         } else {
             errors = await dispatch(createGroupRoom(formData))
         }
@@ -66,7 +71,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
             </div>
 
             <ul >
-                {singleGroupName.map((user,idx) => (
+                {singleGroupName.map((user, idx) => (
                     <li key={idx} >
                         <div className="edit-group-from-users">
                             <img className="side-nav-img" src="https://user-images.githubusercontent.com/96894806/170845227-028c8ef0-17a6-4b92-a334-038e4f6a469b.png" />
