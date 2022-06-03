@@ -1,15 +1,15 @@
 import EditChatInput from "../ChatInput"
 import ChatUserCard from "../ChatUserCard";
 import Parser from 'html-react-parser';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setEditFalse, setEditTrue } from "../../../store/session";
-
 const ChatMessage = ({ msg, socket, roomId, userId }) => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user);
     const canEdit = useSelector(state => state.session.edit)
+    const [errors, setErrors] = useState('')
     const [edit, setEdit] = useState(false)
     const [message, setMessageBody] = useState(msg.message)
     const dispatch = useDispatch()
@@ -25,13 +25,27 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
     const isSubscribed = checkIfSubscribed()
 
 
+
+
     const editMessage = async (e, msgId) => {
-        socket.emit('edit', {
-            user: `${user.username}`, userId: `${user.id}`, msgId: msgId, msg: message, room: roomId, created_at: (new Date()).toLocaleTimeString()
-        });
-        dispatch(setEditTrue())
-        setEdit(false)
+
+        if (message.length > 255) {
+            console.log('poopy')
+            setMessageBody('')
+            setErrors('Message cannot be over 255 characters')
+
+        } else if (message !== "<p><br></p>") {
+            socket.emit('edit', {
+                user: `${user.username}`, userId: `${user.id}`, msgId: msgId, msg: message, room: roomId, created_at: (new Date()).toLocaleTimeString()
+            });
+            dispatch(setEditTrue())
+            setEdit(false)
+            setErrors('')
+        } else {
+            setErrors('Message cannot be empty, please input a message')
+        }
     }
+
 
     const deleteMessage = async (e, msgId) => {
         e.preventDefault()
@@ -63,7 +77,7 @@ const ChatMessage = ({ msg, socket, roomId, userId }) => {
                         <p className='chat-username bold'>{msg.user.username}<span className='created-at-msg'>{new Date(msg.created_at).toLocaleTimeString()}</span></p>
                     </div>
                     <div className='chat-text' id={msg.id}>
-                        {(edit) ? <EditChatInput value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
+                        {(edit) ? <EditChatInput errors={errors} value={message} onChange={(e) => setMessageBody(e)} send={(e) => editMessage(e, msg.id)} /> : Parser(msg.message)}
                     </div>
                 </div>
             </div>

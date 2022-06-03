@@ -11,7 +11,6 @@ socketio = SocketIO(cors_allowed_origins="*")
 def handle_chat(data):
     room = data['room']
     message = data['msg']
-    print('messssssssage' ,len(message))
     if len(message) > 255:
         emit('error', data)
     else :
@@ -31,10 +30,15 @@ def handle_chat(data):
 @socketio.on("edit")
 def edit_chat(data):
     room = data['room']
-    message = Message.query.get(data['msgId'])
-    message.body = data['msg']
-    db.session.commit()
-    emit("edit", data, broadcast=True, to=room)
+    message = data['msg']
+    if len(message) > 255:
+        print('pooooooooooooooop')
+        emit('edit-error', data)
+    else:
+        message = Message.query.get(data['msgId'])
+        message.body = data['msg']
+        db.session.commit()
+        emit("edit", data, broadcast=True, to=room)
 
 @socketio.on("delete")
 def edit_chat(data):
