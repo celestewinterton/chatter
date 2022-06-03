@@ -102,7 +102,9 @@ const Dashboard = () => {
                      <Groups single={true} />
                   </div>
                </ProtectedRoute>
+               <Route>
                <ErrorPage />
+               </Route>
             </Switch>
          </div>
       </>

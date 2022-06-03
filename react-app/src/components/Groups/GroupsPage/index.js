@@ -10,7 +10,7 @@ const GroupsPage = () => {
     const groups = useSelector(state => state.chatRooms.subscribed)
     const params = useParams()
     const singleGroupId = params.id
-    const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
+    const singleGroupName = Object.values(groups).find(group => group?.id == singleGroupId)?.users?.map(user => user?.username)
     const sessionUser = useSelector(state => state.session.user)
     const [showModal, setShowModal] = useState(false);
 
