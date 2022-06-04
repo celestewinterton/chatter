@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import ProtectedRoute from '../auth/ProtectedRoute';
@@ -10,7 +10,7 @@ import './Dashboard.css'
 import { loadUsers } from '../../store/users';
 import GroupForm from '../Groups/GroupForm';
 import { reloadCurrentUser } from '../../store/session';
-import { getChannels, socketUpdateChannels} from '../../store/channels';
+import { getChannels, socketUpdateChannels } from '../../store/channels';
 import { socketUpdateGroupRooms } from '../../store/chatRooms';
 import { getGroupRooms } from '../../store/chatRooms';
 import ErrorPage from '../404'
@@ -20,7 +20,7 @@ import NavBar from '../Navigation/NavBar'
 let socket;
 const Dashboard = () => {
    const history = useHistory()
-   const [loaded, setLoaded] = useState(false); 
+   const [loaded, setLoaded] = useState(false);
    const dispatch = useDispatch()
    const sessionUser = useSelector((state) => state.session.user)
 
@@ -44,7 +44,6 @@ const Dashboard = () => {
       socket.on('delete-channel', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
          const path = window.location.href.split('/')
-         console.log(path)
          if (path[3] == 'channels' && path[4] === data['channelId']) {
             history.push('/')
          }
@@ -54,7 +53,6 @@ const Dashboard = () => {
       socket.on('delete-group', async (data) => {
          await dispatch(reloadCurrentUser(sessionUser.id))
          const path = window.location.href.split('/')
-         console.log(path)
          if (path[3] == 'groups' && path[4] === data['groupId']) {
             history.push('/')
          }

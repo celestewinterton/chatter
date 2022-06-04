@@ -34,7 +34,6 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
       socket = io()
       socket.emit('create-group', { 'user': user.username })
     }
-    console.log(data.errors)
     if (data.errors) setErrors(data.errors)
     else history.push(`/groups/${data?.id}`)
 

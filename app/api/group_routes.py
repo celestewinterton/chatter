@@ -1,4 +1,5 @@
 from tabnanny import check
+import collections
 from flask import Blueprint, jsonify, redirect, session, request
 from app.models import User, Group, db
 from ..utils import form_validation_errors
@@ -33,7 +34,7 @@ def create_group():
     members = form.data["members"]
     members_list = members.split(',')
     strippedMembers = [member.strip() for member in members_list]
-    print(strippedMembers)
+    print('---------------------', strippedMembers)
     intMembers = [int(member) for member in strippedMembers]
     intMembers.append(current_user.id)
 
@@ -42,10 +43,7 @@ def create_group():
         groups = Group.query.all()
         groups_as_dicts = [group.compare_dict() for group in groups]
         for group in groups_as_dicts:
-            print('group      ', group)
-            print('GROUP     ', group['user_id'] == input)
-            print('INPUT      ', input)
-            if group['user_id'] == input:
+            if collections.Counter(group['user_id']) == collections.Counter(input):
                 return True
 
 
