@@ -131,7 +131,7 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
               {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
             />
           </div>
-          <button disabled={Object.keys(errors).length > 0} id='create-group' type="submit">Start DM</button>
+          <button id='create-group' type="submit">Start DM</button>
           <button className='multiselect-dropdown' {...getToggleButtonProps()} aria-label={'toggle menu'}></button>
         </div>
         <ul {...getMenuProps()}>

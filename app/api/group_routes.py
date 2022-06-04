@@ -38,7 +38,6 @@ def create_group():
     intMembers = [int(member) for member in strippedMembers]
     intMembers.append(current_user.id)
 
-
     def validate_group(input):
         groups = Group.query.all()
         groups_as_dicts = [group.compare_dict() for group in groups]
