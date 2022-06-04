@@ -29,6 +29,6 @@
     flex-direction: column;
     background-color: #1a1d21;
     width: 100%;
-    overflow-y: hidden
-
+    overflow-y: hidden;
+    overflow: auto;
 }

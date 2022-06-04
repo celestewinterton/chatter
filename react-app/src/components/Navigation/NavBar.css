@@ -139,8 +139,8 @@
    border: 3px solid #121016;
    width: 8px;
    height: 8px;
-   right: 7px;
-   bottom: 7px;
+   right: -5px;
+   bottom: -5px;
 }
 
 .status-circle.offline-profile {

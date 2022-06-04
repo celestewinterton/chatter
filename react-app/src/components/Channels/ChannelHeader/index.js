@@ -32,12 +32,12 @@ const ChannelHeader = ({ all, single, channel, modal }) => {
 
             {showModal && (
                 <DarkModal onClose={() => setShowModal(false)}>
-                    <>
+                    <div className="channel-members-container">
                         <h1>{channel.name}</h1>
-                        <ul>{channel.users.map((user, idx) =>
+                        <ul className="channel-members-list">{channel.users.map((user, idx) =>
                             <li className="users-list-item" key={idx}><img className="user-image-nav-2" src={user?.photo} alt=""></img>{user?.username}</li>
                         )}</ul>
-                    </>
+                    </div>
                 </DarkModal>)}
         </>
     )
