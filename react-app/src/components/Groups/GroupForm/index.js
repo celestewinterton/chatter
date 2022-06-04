@@ -19,7 +19,7 @@ const GroupForm = ({ setShowModal, edit, group }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         let errors;
-        console.log(members)
+        // console.log(members)
         const formData = new FormData();
         formData.append('members', members)
         formData.append('owner_id', user.id)
