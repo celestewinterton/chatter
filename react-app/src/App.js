@@ -5,10 +5,9 @@ import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Dashboard from './components/Dashboard';
-import { getGroupRooms, getRooms } from './store/chatRooms';
+import { getGroupRooms } from './store/chatRooms';
 import { getChannels } from './store/channels';
 import SplashPage from './components/SplashPage';
-import ErrorPage from './components/404';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,8 +32,8 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/home'>
-          {!sessionUser && 
-          <SplashPage />
+          {!sessionUser &&
+            <SplashPage />
           }
         </Route>
         <ProtectedRoute path='/' >
