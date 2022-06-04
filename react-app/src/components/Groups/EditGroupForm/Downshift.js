@@ -26,7 +26,6 @@ const DropdownMultipleCombobox = ({ edit, group }) => {
     formData.append('owner_id', user.id)
 
     if (edit) {
-      console.log('woof')
       dispatch(editGroupRoom(formData, group.id))
     }
     else errors = await dispatch(createGroupRoom(formData))
