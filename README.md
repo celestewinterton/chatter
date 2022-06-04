@@ -1,11 +1,9 @@
-# Chatter
+<h1 align="center"><img height="22px" width="22px" src="https://user-images.githubusercontent.com/96894806/170635110-72da3973-33be-438e-802b-7719c6f1e724.png" alt=""><img>  Chatter</h1>
 
-### Welcome to the Slack clone wiki!
 
-Chatter is a full-stack web application clone of <a href="https://slack.com/">slack.com</a>. Chatter allows users create and join channels, interact with other users in a live chat for channels they are subscribed to, and send direct messages to other users or groups of users.
+Chatter is a full-stack web application clone of <a href="https://slack.com/">slack.com</a>. Chatter allows users create and join channels, interact with other users via a live chat, and send direct messages to other users or groups of users.
 
 <a href="https://chatter-with-us.herokuapp.com/" target="_blank"><strong>Explore the website »</strong></a><br/>
-
 
 
 <details open="open">
@@ -72,9 +70,44 @@ Chatter is a full-stack web application clone of <a href="https://slack.com/">sl
 
 <a href="https://github.com/celestewinterton/guestly/wiki">See wiki page for feature list</a>
 
+### Splash Page
+Landing page for when users first arrive at Chatter. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="https://chatter-with-us.herokuapp.com/" target="_blank">here</a>! 
+![Splash Page](https://user-images.githubusercontent.com/96894806/171970664-f718ba0b-fb5e-4f4d-98a7-9a958797a375.png)
+
+### Channel Browser
+Once a user has been authenticated, they will be redirected to the channel browser, a dashboard that shows all existing channels. The side navigation pannel allows the user to easily find their direct messages or channels that they have joined.
+![Channel Browser](https://user-images.githubusercontent.com/96894806/171970774-a95bcb11-38e7-48bd-aa6d-fbea889ac5a3.png)
+
+### Channel Page
+If the user clicks on a channel in which they are not a member, they can easily join and start sending messages. 
+![Channel Page](https://user-images.githubusercontent.com/96894806/171971142-4d996ad4-7348-4dd8-bcaf-a23a7e705312.png)
+
+### Create/Edit Channel Form
+If the user creates a channel, they will also be able to edit, delete, or leave that channel. If a user did not create the channel, they will not have access to this form. 
+![Channel Form](https://user-images.githubusercontent.com/96894806/171971158-6b94074f-7c80-4586-9dfc-63a410d9da19.png)
+
+### Live Chat and User Active Status
+Channels and direct messages both have an integrated live chat feature that uses socket.io. This allows users to interact in real-time and also shows when users are active by clicking on a user image.
+![Live Chat](https://user-images.githubusercontent.com/96894806/171971148-50968802-75dc-483a-a9a4-679987551b27.png)
+
+### Direct Message and Multi-Person Messages
+Users can create direct messages to another user or a group of users. When they start typing, a dropdown will allow the user to select other users or will autofill when a name matches an existing user. When this field is submitted, a new message will be created and redered in theside navitation menu.
+![Multi-Person Messages](https://user-images.githubusercontent.com/96894806/171971170-aff97327-5d39-4d88-8a4f-59c536abba8f.png)
+
+### Search
+Users can search for message groups that they are a part of, or all channels regardless of whether they are a member or not. Clicking search results will redirect the user to the targeted message or channel. 
+![Search](https://user-images.githubusercontent.com/96894806/171971226-8f77fabd-3dda-4c9b-929e-9c1c6c1f448d.png)
+
 ## Database Schema
 [Back to top](#table-of-contents)
 
 ![Database Schema](https://user-images.githubusercontent.com/96894806/170581187-3d274be1-5f04-45fa-84fd-e0625a57f4df.png)
 
 ## Future Features
+
+### Reactions 
+* Users will be able to react to messages with different emojis
+* Messages will be displayed with existing reactions and a count of how many people have reacted with a particular emoji 
+
+### Notifications
+* Users will receive notifications when they receive direct messages, group messages, or when there are new posts in channels that they are subscribed to
