@@ -75,9 +75,7 @@ def edit_group(groupId):
         groups = Group.query.all()
         groups_as_dicts = [group.compare_dict() for group in groups]
         for group in groups_as_dicts:
-            print('GROUP     ', group['user_id'] == input)
-            print('INPUT      ', input)
-            if group['user_id'] == input:
+            if collections.Counter(group['user_id']) == collections.Counter(input):
                 return True
 
     if form.validate_on_submit():

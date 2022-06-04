@@ -32,6 +32,10 @@
   padding-bottom: 18px;
 }
 
+.group-errors{
+  padding-left: 5px;
+}
+
 .groups-title {
   color: #d1d2d3;
   padding-right: 18px;
