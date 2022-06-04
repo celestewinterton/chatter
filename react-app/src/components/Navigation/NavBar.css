@@ -90,6 +90,7 @@
    padding: 20px;
    margin-left: 18px;
    z-index: 1000;
+   overflow: auto;
 }
 
 .search-results-item {
@@ -199,6 +200,7 @@
    align-items: flex-end;
    flex-direction: column;
    color: #d1d2d3;
+   position: absolute;
 }
 
 .profile-container {

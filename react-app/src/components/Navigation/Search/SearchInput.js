@@ -13,6 +13,10 @@ const SearchInput = () => {
 
   const icon = (<i className="fa fa-search" aria-hidden="true"></i>)
 
+  document.addEventListener("click", e => {
+    console.log(e.target.id)
+  })
+
   return (
     <div className='search-container'>
       {<div>
