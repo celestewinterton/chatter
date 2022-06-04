@@ -3,8 +3,8 @@ import 'react-quill/dist/quill.snow.css';
 import { useHistory } from 'react-router-dom';
 
 
-const ChatInput = ({ value, onChange, send, group, room, errors}) => {
-    const history=useHistory()
+const ChatInput = ({ value, onChange, send, group, room, errors }) => {
+    const history = useHistory()
     let users;
 
     if (group) {
@@ -13,7 +13,7 @@ const ChatInput = ({ value, onChange, send, group, room, errors}) => {
             history.push('/404-Page-Not-Found')
         }
     } else {
-        users = room.name
+        users = room?.name
     }
     const toolbarOptions = [['bold', 'italic', 'strike'], ['link']];
     const modules = {
