@@ -104,6 +104,7 @@ Users can search for message groups that they are a part of, or all channels reg
 ![Database Schema](https://user-images.githubusercontent.com/96894806/170581187-3d274be1-5f04-45fa-84fd-e0625a57f4df.png)
 
 ## Future Features
+[Back to top](#table-of-contents)
 
 ### Reactions 
 * Users will be able to react to messages with different emojis
