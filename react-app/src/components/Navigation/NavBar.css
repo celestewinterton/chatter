@@ -175,8 +175,8 @@
    border: 3px solid var(--side-panel);
    width: 20px;
    height: 20px;
-   right: -5px;
-   bottom: -5px;
+   /* right: -5px;
+   bottom: -5px; */
 }
 
 .status-circle.offline > .inner-circle-profile {
