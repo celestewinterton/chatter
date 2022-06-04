@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { Modal, DarkModal } from "../../../context/Modal"
+import { DarkModal } from "../../../context/Modal"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -22,10 +22,10 @@ const ChannelPage = () => {
     const channel = useSelector(state => state.channels.all[id])
     const users = channel?.users
 
-    console.log('channel =====>' ,channel)
-    console.log('users ====> ',users)
-    
-    
+    console.log('channel =====>', channel)
+    console.log('users ====> ', users)
+
+
     if (users) {
         for (let channelUser of users) {
             if (channelUser?.username === user?.username) {
@@ -55,9 +55,6 @@ const ChannelPage = () => {
     }
 
 
-    const editChannel = () => {
-        setShowModal(true)
-    }
 
     const deleteThisChannel = async () => {
         history.push('/')
@@ -92,7 +89,7 @@ const ChannelPage = () => {
             {!subscribed &&
                 <div className="need-to-join">
                     {/* <div> */}
-                        <p>You are not a member of this channel</p>
+                    <p>You are not a member of this channel</p>
                     {/* </div> */}
                     <div>
                         <button className="joinchannel-button" onClick={joinChannel}>Join Channel</button>

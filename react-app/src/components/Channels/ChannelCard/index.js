@@ -1,13 +1,8 @@
-
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import ChannelForm from "../ChannelForm"
+import { useHistory } from "react-router-dom";
 import { io } from 'socket.io-client';
-import { getChannels, deleteChannelRoom, joinChannelRoom, leaveChannelRoom, socketUpdateChannels } from "../../../store/channels";
+import { joinChannelRoom, leaveChannelRoom, socketUpdateChannels } from "../../../store/channels";
 import { NavLink } from "react-router-dom";
-import ChannelHeader from "../ChannelHeader";
-import Chat from "../../Chat";
 import { reloadCurrentUser } from "../../../store/session";
 
 let socket;

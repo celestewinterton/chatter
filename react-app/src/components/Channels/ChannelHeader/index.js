@@ -5,7 +5,6 @@ import { DarkModal } from '../../../context/Modal'
 const ChannelHeader = ({ all, single, channel, modal }) => {
     const allChannels = useSelector(state => state.channels.all)
     const user = useSelector(state => state.session.user)
-    const [showMembers, setShowMembers] = useState(false)
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -32,14 +31,14 @@ const ChannelHeader = ({ all, single, channel, modal }) => {
                 </div>}
 
             {showModal && (
-            <DarkModal onClose={() => setShowModal(false)}>
-                <>
-                    <h1>{channel.name}</h1>
-                    <ul>{channel.users.map((user, idx) =>
-                        <li className="users-list-item" key={idx}><img className="user-image-nav-2" src={user?.photo} alt=""></img>{user?.username}</li>
-                    )}</ul>
-                </>
-            </DarkModal>)}
+                <DarkModal onClose={() => setShowModal(false)}>
+                    <>
+                        <h1>{channel.name}</h1>
+                        <ul>{channel.users.map((user, idx) =>
+                            <li className="users-list-item" key={idx}><img className="user-image-nav-2" src={user?.photo} alt=""></img>{user?.username}</li>
+                        )}</ul>
+                    </>
+                </DarkModal>)}
         </>
     )
 
