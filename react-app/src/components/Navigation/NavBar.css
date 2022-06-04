@@ -130,7 +130,11 @@
 }
 /* ****************** Profile Button and Dropdown ***************** */
 
-
+.profile-active-image-container {
+   position: absolute;
+   right: 5px;
+   bottom: -26px;
+}
 
 .status-circle.online-profile {
    position: absolute;
@@ -231,6 +235,9 @@
    display: flex;
    width: 300px;
    margin-top: 6px;
+   position: absolute;
+   right: 5px;
+   bottom: -304px
 }
 
 .profile-dropdown-name {
@@ -270,6 +277,11 @@
 
 .profile-dropdown-content {
    padding: 5px 0px 5px 0px;
+   /* background-color: rgb(34,37,41); */
+   /* position: absolute;
+   right: 5px;
+   bottom: -298px; */
+
 }
 
 .profile-dropdown-content div, .profile-dropdown-content button {
