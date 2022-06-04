@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createGroupRoom, editGroupRoom } from "../../../store/chatRooms";
 import { loadUsers } from "../../../store/users";
@@ -20,6 +20,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
     const singleGroupName = Object.values(groups)?.find(group => group.id == singleGroupId)?.users?.map(user => user?.username)
     const [demErrors, setDemErrors] = useState([]);
     const [members, setMembers] = useState('')
+    const [storage, setStorage] = useState([]);
 
 
 
@@ -44,16 +45,16 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
         }
 
         if (data.errors) {
-            console.log(data.errors)
-            setDemErrors(data.errors)
+            alert(data.errors)
+        } else {
+            setShowModal(false);
         }
-        console.log(demErrors)
-        setShowModal(false);
     }
 
     useEffect(() => {
-        setDemErrors(demErrors)
-    }, [demErrors]);
+        console.log('rerender')
+        setStorage(storage)
+    }, [storage]);
     const handleCancelClick = async (e) => {
         e.preventDefault();
         setShowModal(false);
@@ -75,7 +76,7 @@ const EditGroupForm = ({ setShowModal, edit, group }) => {
                 <button className='green-button' type="submit">{(edit) ? 'Add People' : 'Start DM'}</button>
             </div>
 
-            <ul >
+            <ul>
                 {singleGroupName.map((user, idx) => (
                     <li key={idx} >
                         <div className="edit-group-from-users">
