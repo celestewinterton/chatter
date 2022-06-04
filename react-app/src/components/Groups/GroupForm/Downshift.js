@@ -23,7 +23,6 @@ const DropdownMultipleCombobox = ({ setShowModal, edit, group }) => {
     let data;
     const memberIds = Object.values(users).filter(user => members.includes(user.username)).map(user => user.id).join(", ")
     const formData = new FormData();
-    console.log(formData, members)
     formData.append('members', memberIds)
     formData.append('owner_id', user.id)
 

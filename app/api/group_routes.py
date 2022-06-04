@@ -66,20 +66,29 @@ def create_group():
 @group_routes.route("/<int:groupId>", methods=["PUT"])
 def edit_group(groupId):
     form = NewGroupForm()
+    group = Group.query.get(groupId)
     form['csrf_token'].data = request.cookies['csrf_token']
     members = form.data["members"]
     members_list = members.split(',')
     strippedMembers = [int(member.strip()) for member in members_list]
+    intMembers = [int(member) for member in strippedMembers]
+    group_dicty = group.compare_dict()
+    group_list = group_dicty['user_id']
+    group_list.append(int(members))
 
     def validate_group(input):
         groups = Group.query.all()
         groups_as_dicts = [group.compare_dict() for group in groups]
         for group in groups_as_dicts:
+            print('lssldsakgnhdfjnbdf', group['user_id'])
+            print('memeebebvfhsajdgkskhjgsfbjkgfhs', members)
+            print('likdhgsfakjgfhkjdfsgbkljnfgd', input)
+            print(collections.Counter(group['user_id']) == collections.Counter(input))
             if collections.Counter(group['user_id']) == collections.Counter(input):
                 return True
 
     if form.validate_on_submit():
-        if validate_group(strippedMembers):
+        if validate_group(group_list):
             return {'errors': 'group already exists'}, 401
         else:
             edit_group = Group.query.get(groupId)
