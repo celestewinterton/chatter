@@ -19,7 +19,6 @@ const Search = ({query, setQuery, setSearchResults}) => {
   const subscribedGroups = Object.values(groups)?.filter(group => group.users.map(user => user.username).includes(sessionUser.username))
   const dispatch = useDispatch()
 
-/////////////////////////
   const subbedChannels = sessionUser.subscribed_channels
   const history = useHistory()
 
@@ -49,7 +48,6 @@ const Search = ({query, setQuery, setSearchResults}) => {
       }
       return true
   }
-////////////////////////
 
 
   useEffect(() => {

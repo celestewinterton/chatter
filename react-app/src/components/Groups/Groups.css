@@ -29,7 +29,7 @@
 
 .edit-groups-title {
   color: #d1d2d3;
-  padding-bottom: 18px;
+  padding-bottom: 20px;
 }
 
 .group-errors{
@@ -152,4 +152,26 @@
 
 .multiselect-label {
   margin: 5px 16px ;
+}
+
+.buttons-center-container > .green-button {
+    width: 100%;
+    padding: 8px 20px;
+    white-space: nowrap;
+    margin: 20px 0px 20px 20px;
+}
+
+.buttons-center-container > .cancel-btn {
+  width: 100%;
+  padding: 8px 20px;
+  white-space: nowrap;
+  margin: 20px 0px;
+}
+
+.user-image-nav-2 {
+    margin: 10px 10px 10px 0px;
+}
+
+li > .edit-group-from-user > img {
+  margin-left: 20px;
 }

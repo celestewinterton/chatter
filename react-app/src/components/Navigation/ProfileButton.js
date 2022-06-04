@@ -36,12 +36,14 @@ function ProfileButton({ user }) {
   return (
     <div className="profile-and-dropdown">
       <div className='profile-container'>
-        <img className="user-image-nav-1"
-          src={user.photo}
-          onClick={openMenu}
-        />
-        <div className={(user.online) ? 'status-circle online-profile' : 'status-circle offline-profile'}>
-          <div className='inner-circle-profile'></div>
+        <div className="profile-active-image-container">
+          <img className="user-image-nav-1"
+            src={user.photo} alt=""
+            onClick={openMenu}
+          />
+          <div className={(user.online) ? 'status-circle online-profile' : 'status-circle offline-profile'}>
+            <div className='inner-circle-profile'></div>
+          </div>
         </div>
       </div>
       {showMenu && (
@@ -49,7 +51,7 @@ function ProfileButton({ user }) {
           <div className='profile-dropdown-content'>
             <div className="profile-dropdown-name">
               <img className="user-image-nav-2"
-                src={user.photo}
+                src={user.photo} alt=""
                 onClick={openMenu}
               />
               <div className="profile-username">{user.username}</div>
