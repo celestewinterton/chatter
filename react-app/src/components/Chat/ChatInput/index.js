@@ -2,6 +2,9 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 import { useHistory } from 'react-router-dom';
 
+//adding comments to see if i can get docker
+//to rebuild
+
 
 const ChatInput = ({ value, onChange, send, group, room, errors }) => {
     const history = useHistory()
