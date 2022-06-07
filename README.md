@@ -68,7 +68,7 @@ Chatter is a full-stack web application clone of <a href="https://slack.com/">sl
 ## Features
 [Back to top](#table-of-contents)
 
-<a href="https://github.com/celestewinterton/guestly/wiki">See wiki page for feature list</a>
+<a href="https://github.com/celestewinterton/chatter/wiki">See wiki page for feature list</a>
 
 ### Splash Page
 Landing page for when users first arrive at Chatter. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="https://chatter-with-us.herokuapp.com/" target="_blank">here</a>! 
