@@ -108,6 +108,9 @@ function ProfileButton({ user }) {
             <div className="profile-item blue-hover">
               <div>Jingling Jin</div>
               <div>
+                <a className="unset" href="https://www.linkedin.com/in/jingling-jin-4641961a9/" target="_blank" rel="noopener noreferrer">
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
                 <a className="unset" href="https://github.com/ellen20" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-github"></i>
                 </a>
